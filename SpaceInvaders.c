@@ -60,9 +60,45 @@
 #include "Timer0.h"
 #include "Timer1.h"
 
+typedef struct Sprite SpriteType;
+typedef struct SpriteInstance SpriteInstanceType;
+typedef struct SpriteSelect SpriteSelectType;
+
+SpriteInstanceType *sprites;
+
+struct Sprite {
+	const uint16_t *image;	
+	int16_t width; 
+	int16_t height;
+};
+
+struct SpriteInstance {
+	int16_t x_left; 
+	int16_t y_bottom;
+	const SpriteType sprite;
+};
+
+
+struct SpriteSelect {
+	SpriteInstanceType *sprites;
+	uint16_t spriteArrayLength;
+	int16_t currentIndex;
+};
+
+
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Delay100ms(uint32_t count); // time delay in 0.1 seconds
+
+void DrawStartScreen(SpriteSelectType *starterSelect);
+void DrawSpriteImg(SpriteInstanceType sprite);
+void DrawSpriteSelection(SpriteInstanceType sprite, uint8_t width, uint16_t color);
+void DrawSpriteSelectionDefault(SpriteInstanceType sprite);
+
+void nextIndex(SpriteSelectType *selectType);
+
+
+const SpriteType Pokemon1 = {SmallEnemy10pointA, 16, 10};
 
 
 int main(void){
@@ -73,30 +109,86 @@ int main(void){
   Output_Init();
   ST7735_FillScreen(0x0000);            // set screen to black
   
-  ST7735_DrawBitmap(52, 159, ns, 18,8); // player ship middle bottom
-  ST7735_DrawBitmap(53, 151, Bunker0, 18,5);
+	//ST7735_SetCursor(1, 1);
+  //ST7735_OutString("Pokemon");
+	//ST7735_SetCursor(1, 2);
+  //ST7735_OutString("Andy & Iris");
+	
+	//ST7735_SetCursor(1, 3);
+  //ST7735_OutString("Welcome, newbie.");
+	//ST7735_SetCursor(1, 4);
+  //ST7735_OutString("Please select your Pokemon");
+	
+  //ST7735_DrawBitmap(52, 159, ns, 18,8); // player ship middle bottom
+  //ST7735_DrawBitmap(53, 151, Bunker0, 18,5);
 
-  ST7735_DrawBitmap(0, 9, SmallEnemy10pointA, 16,10);
-  ST7735_DrawBitmap(20,9, SmallEnemy10pointB, 16,10);
-  ST7735_DrawBitmap(40, 9, SmallEnemy20pointA, 16,10);
-  ST7735_DrawBitmap(60, 9, SmallEnemy20pointB, 16,10);
-  ST7735_DrawBitmap(80, 9, SmallEnemy30pointA, 16,10);
-  ST7735_DrawBitmap(100, 9, SmallEnemy30pointB, 16,10);
+  //ST7735_DrawBitmap(0, 9, SmallEnemy10pointA, 16,10);
+  //ST7735_DrawBitmap(20,9, SmallEnemy10pointB, 16,10);
+  //ST7735_DrawBitmap(40, 9, SmallEnemy20pointA, 16,10);
+  //ST7735_DrawBitmap(60, 9, SmallEnemy20pointB, 16,10);
+  //ST7735_DrawBitmap(80, 9, SmallEnemy30pointA, 16,10);
+  //ST7735_DrawBitmap(100, 9, SmallEnemy30pointB, 16,10);	
+	
+  //Delay100ms(50);              // delay 5 sec at 80 MHz
 
-  Delay100ms(50);              // delay 5 sec at 80 MHz
-
-  ST7735_FillScreen(0x0000);            // set screen to black
-  ST7735_SetCursor(1, 1);
-  ST7735_OutString("GAME OVER");
-  ST7735_SetCursor(1, 2);
-  ST7735_OutString("Nice try,");
-  ST7735_SetCursor(1, 3);
-  ST7735_OutString("Earthling!");
-  ST7735_SetCursor(2, 4);
-  LCD_OutDec(1234);
-  while(1){
+  //ST7735_FillScreen(0x0000);            // set screen to black
+  //ST7735_SetCursor(1, 1);
+  //ST7735_OutString("GAME OVER");
+  //ST7735_SetCursor(1, 2);
+  //ST7735_OutString("Nice try,");
+  //ST7735_SetCursor(1, 3);
+  //ST7735_OutString("Earthling!");
+  //ST7735_SetCursor(2, 4);
+  //LCD_OutDec(1234);
+  
+	
+	SpriteInstanceType poke1 = {20, 130, Pokemon1};
+  SpriteInstanceType poke2 = {50, 130, Pokemon1};
+  SpriteInstanceType poke3 = {80, 130, Pokemon1};
+  SpriteInstanceType starters[3] = {poke1, poke2, poke3};
+	SpriteSelectType starter = (SpriteSelectType) {starters, 3, 1};
+	
+	while(1){
+		ST7735_FillScreen(0x0000);   
+		DrawStartScreen(&starter);
   }
 
+}
+
+void DrawStartScreen(SpriteSelectType *starterSelect){
+	for(int i=0; i<3; i++){
+		if(i == starterSelect->currentIndex){
+			DrawSpriteSelectionDefault(starterSelect->sprites[i]);
+		}else {
+			DrawSpriteImg(starterSelect->sprites[i]);
+		}
+	}
+	nextIndex(starterSelect);
+	Delay100ms(1); 
+}
+
+void DrawSpriteImg(SpriteInstanceType spriteInst){
+	ST7735_DrawBitmap(spriteInst.x_left, spriteInst.y_bottom, spriteInst.sprite.image, spriteInst.sprite.width, spriteInst.sprite.height);
+}
+
+void DrawSpriteSelection(SpriteInstanceType spriteInst, uint8_t width, uint16_t color){
+	ST7735_FillRect(spriteInst.x_left-width, 
+		spriteInst.y_bottom-spriteInst.sprite.height-width, spriteInst.sprite.width+width*2, spriteInst.sprite.height+width*3, color);
+	DrawSpriteImg(spriteInst);
+}
+
+void DrawSpriteSelectionDefault(SpriteInstanceType spriteInst){
+	DrawSpriteSelection(spriteInst, 1, 0x0F6F);
+}
+
+void MenuSelect(){
+
+}
+
+
+void nextIndex(SpriteSelectType *selectType){
+	uint8_t index = (selectType->currentIndex + 1) % selectType->spriteArrayLength;
+	selectType->currentIndex = index;
 }
 
 
