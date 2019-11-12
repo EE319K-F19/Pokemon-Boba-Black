@@ -19,9 +19,7 @@
 ; VCC (pin 2) connected to +3.3 V
 ; Gnd (pin 1) connected to ground
 
-DC                      EQU   0x40004100
-DC_COMMAND              EQU   0
-DC_DATA                 EQU   0x40
+GPIO_PORTA_DATA_R       EQU   0x400043FC
 SSI0_DR_R               EQU   0x40008008
 SSI0_SR_R               EQU   0x4000800C
 SSI_SR_RNE              EQU   0x00000004  ; SSI Receive FIFO Not Empty
@@ -65,8 +63,25 @@ writecommand
 ;5) Read SSI0_SR_R and check bit 4, 
 ;6) If bit 4 is high, loop back to step 5 (wait for BUSY bit to be low)
 
-
-    
+    ; copy/paste Lab 7 solution here
+    LDR R1,= SSI0_SR_R
+busy_wait1		
+	LDR R2,[R1]
+	ANDS R2, R2, #0x10
+	BNE busy_wait1
+	
+	LDR R2,=GPIO_PORTA_DATA_R
+	LDR R3,[R2]
+	BIC R3,R3,#0x40
+	STR R3,[R2]
+	
+	LDR R3,=SSI0_DR_R
+	STRB R0,[R3]
+	
+busy_wait2
+	LDR R2,[R1]
+	ANDS R2, R2, #0x10
+	BNE busy_wait2
     BX  LR                          ;   return
 
 ; This is a helper function that sends an 8-bit data to the LCD.
@@ -79,8 +94,19 @@ writedata
 ;3) Set D/C=PA6 to one
 ;4) Write the 8-bit data to SSI0_DR_R
 
+        ; copy/paste Lab 7 solution here
+datacheck1
+	LDR R3, =SSI0_SR_R
+	LDR R1, [R3]
+	ANDS R1, #0x02
+	BEQ datacheck1
+	LDR R1, =GPIO_PORTA_DATA_R
+	LDR R2, [R1]
+	ORR R2, #0x40
+	STR R2, [R1]
+	LDR R3,=SSI0_DR_R
+	STRB R0, [R3]
 
-    
     BX  LR                          ;   return
 
 
