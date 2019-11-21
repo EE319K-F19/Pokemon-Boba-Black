@@ -75,8 +75,11 @@ typedef struct Player PlayerType;
 struct Player {
 	uint32_t XPos;
 	uint32_t YPos;
-	SpriteType sprite;
+	const SpriteType *sprite;
 };
+
+const SpriteType PlayerSprite = {player, 16, 16};
+PlayerType p1 = {0, 0, &PlayerSprite};
 
 SpriteInstanceType *sprites;
 uint32_t x = 0;
@@ -85,8 +88,12 @@ uint32_t y = 0;
 SpriteSelectType starter;
 FieldType mainField = {fieldArray, 64, 40, 0, 0};
 
-void DrawSpriteImgPlater(PlayerType player){
-	//ST7735_DrawBitmap(player.x_left, player.y_bottom, player.sprite.image, player.sprite.width, player.sprite.height);
+void DrawSpriteImgPlayer(PlayerType player){
+	if(player.XPos >= GetMidGrid()/2) {
+		mainField.XPos ++;
+		player.XPos = GetMidGrid()/2-1;
+	}
+	ST7735_DrawBitmap(player.XPos*16, player.YPos*16+player.sprite->height, player.sprite->image, player.sprite->width, player.sprite->height);
 }
 
 int main(void){
@@ -95,7 +102,7 @@ int main(void){
   Random_Init(1);
 
   Output_Init();
-  ST7735_FillScreen(0x0000);            // set screen to black
+  ST7735_FillScreen(0x0000);            // set screen to white
   
 	//ST7735_SetCursor(1, 1);
   //ST7735_OutString("Pokemon");
@@ -155,8 +162,8 @@ int main(void){
 		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
 		//ST7735_FillRect(0, 160-y, 128-x, y, 0x6FFF);
 		//ST7735_FillRect(128-x, 160-y, 128-x, 160-y, 0x00FF);
-		//ST7735_SetCursor(1, 1)
-		//ST7735_OutString("Pokemon");
+		//ST7735_SetCursor(1, 1);
+		//ST7735_OutString("Pokemon Boba Black");
 		//ST7735_SetCursor(1, 2);
 		//ST7735_OutString("Andy & Iris");
 	
@@ -169,9 +176,12 @@ int main(void){
 		//y+=2;
 		
 		DrawField(mainField);
+		DrawSpriteImgPlayer(p1);
+		//p1.XPos++;
 		//DrawSpriteImg()
 		//mainField.XPos ++;
-		//Delay10ms(1);
+		p1.XPos++;
+		Delay100ms(5);
   }
 
 }

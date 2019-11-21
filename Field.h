@@ -8,7 +8,7 @@ extern const uint8_t W; //water
 typedef struct Field FieldType;
 
 void DrawField(FieldType field);
-
+uint32_t GetMidGrid(void);
 struct Field {
 	const uint8_t *FieldArray;
 	const uint32_t FieldWidth;

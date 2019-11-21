@@ -3,7 +3,7 @@
 #include "ST7735.h"
 #include "Field.h"
 
-static const uint8_t GRID_LENGTH = 8;
+static const uint8_t GRID_LENGTH = 16;
 static uint8_t grid_columns;
 static uint8_t grid_rows;
 
@@ -26,6 +26,10 @@ void DrawField(FieldType field){
 			ST7735_FillRect((j-field.XPos)*GRID_LENGTH, (i-field.YPos)*GRID_LENGTH, GRID_LENGTH, GRID_LENGTH, fieldColor);
 		}
 	}
+}
+
+uint32_t GetMidGrid(){
+	return GetHeight()/GRID_LENGTH;
 }
 
 const uint8_t fieldArray[] = {
