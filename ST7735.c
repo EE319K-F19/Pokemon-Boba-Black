@@ -477,6 +477,14 @@ void writecommand(uint8_t c);
 
 void writedata(uint8_t c);
 
+int16_t GetWidth(void){
+	return _width;
+}
+
+int16_t GetHeight(void){
+	return _height;
+}
+
 // Subroutine to wait 1 msec
 // Inputs: None
 // Outputs: None

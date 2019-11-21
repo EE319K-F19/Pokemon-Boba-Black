@@ -60,46 +60,34 @@
 #include "Timer0.h"
 #include "Timer1.h"
 
-typedef struct Sprite SpriteType;
-typedef struct SpriteInstance SpriteInstanceType;
-typedef struct SpriteSelect SpriteSelectType;
-
-SpriteInstanceType *sprites;
-
-struct Sprite {
-	const uint16_t *image;	
-	int16_t width; 
-	int16_t height;
-};
-
-struct SpriteInstance {
-	int16_t x_left; 
-	int16_t y_bottom;
-	const SpriteType sprite;
-};
-
-
-struct SpriteSelect {
-	SpriteInstanceType *sprites;
-	uint16_t spriteArrayLength;
-	int16_t currentIndex;
-};
-
+#include "Draw.h"
+#include "Field.h"
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
-void Delay100ms(uint32_t count); // time delay in 0.1 seconds
 
-void DrawStartScreen(SpriteSelectType *starterSelect);
-void DrawSpriteImg(SpriteInstanceType sprite);
-void DrawSpriteSelection(SpriteInstanceType sprite, uint8_t width, uint16_t color);
-void DrawSpriteSelectionDefault(SpriteInstanceType sprite);
+const SpriteType Bulbasaur = {bulbasaur, 40, 40};
+const SpriteType Charmander = {charmander, 40, 40};
+const SpriteType Squirtle = {squirtle, 40, 40};
 
-void nextIndex(SpriteSelectType *selectType);
+typedef struct Player PlayerType;
 
+struct Player {
+	uint32_t XPos;
+	uint32_t YPos;
+	SpriteType sprite;
+};
 
-const SpriteType Pokemon1 = {SmallEnemy10pointA, 16, 10};
+SpriteInstanceType *sprites;
+uint32_t x = 0;
+uint32_t y = 0;
 
+SpriteSelectType starter;
+FieldType mainField = {fieldArray, 64, 40, 0, 0};
+
+void DrawSpriteImgPlater(PlayerType player){
+	//ST7735_DrawBitmap(player.x_left, player.y_bottom, player.sprite.image, player.sprite.width, player.sprite.height);
+}
 
 int main(void){
   DisableInterrupts();
@@ -141,65 +129,54 @@ int main(void){
   //ST7735_SetCursor(2, 4);
   //LCD_OutDec(1234);
   
+	//uint32_t topleft = 0xBFAF;
+	//uint32_t botright = 0xB15F;
 	
-	SpriteInstanceType poke1 = {20, 130, Pokemon1};
-  SpriteInstanceType poke2 = {50, 130, Pokemon1};
-  SpriteInstanceType poke3 = {80, 130, Pokemon1};
+	//for(int i=0; i<30000; i++){
+		//int column = i%150;
+		//int row = i/200;
+		//BackgroundStuff[i] = topleft + 
+			//((botright&0x0100)-(topleft&0x0100))*column/80 +
+		  //((botright&0x0010)-(topleft&0x0010))*row/80;
+	//}
+	
+	
+	SpriteInstanceType poke1 = {2, 130, Bulbasaur};
+  SpriteInstanceType poke2 = {42, 130, Charmander};
+  SpriteInstanceType poke3 = {84, 130, Squirtle};
   SpriteInstanceType starters[3] = {poke1, poke2, poke3};
-	SpriteSelectType starter = (SpriteSelectType) {starters, 3, 1};
+	starter = (SpriteSelectType) {starters, 3, 1};
+	//DrawSpriteImg(poke1);
+	
+	//ST7735_DrawBitmap(0, 0xA0, BackgroundStuff, 0x80, 0xA0);
 	
 	while(1){
-		ST7735_FillScreen(0x0000);   
-		DrawStartScreen(&starter);
+		//ST7735_FillScreen(0xFFFF);   
+		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
+		//ST7735_FillRect(0, 160-y, 128-x, y, 0x6FFF);
+		//ST7735_FillRect(128-x, 160-y, 128-x, 160-y, 0x00FF);
+		//ST7735_SetCursor(1, 1)
+		//ST7735_OutString("Pokemon");
+		//ST7735_SetCursor(1, 2);
+		//ST7735_OutString("Andy & Iris");
+	
+		//ST7735_SetCursor(1, 3);
+		//ST7735_OutString("Welcome, newbie.");
+		//ST7735_SetCursor(1, 4);
+		//ST7735_OutString("Please select your Pokemon");
+		//DrawStartScreen(&starter);
+		//x+=3;
+		//y+=2;
+		
+		DrawField(mainField);
+		//DrawSpriteImg()
+		//mainField.XPos ++;
+		//Delay10ms(1);
   }
 
-}
-
-void DrawStartScreen(SpriteSelectType *starterSelect){
-	for(int i=0; i<3; i++){
-		if(i == starterSelect->currentIndex){
-			DrawSpriteSelectionDefault(starterSelect->sprites[i]);
-		}else {
-			DrawSpriteImg(starterSelect->sprites[i]);
-		}
-	}
-	nextIndex(starterSelect);
-	Delay100ms(1); 
-}
-
-void DrawSpriteImg(SpriteInstanceType spriteInst){
-	ST7735_DrawBitmap(spriteInst.x_left, spriteInst.y_bottom, spriteInst.sprite.image, spriteInst.sprite.width, spriteInst.sprite.height);
-}
-
-void DrawSpriteSelection(SpriteInstanceType spriteInst, uint8_t width, uint16_t color){
-	ST7735_FillRect(spriteInst.x_left-width, 
-		spriteInst.y_bottom-spriteInst.sprite.height-width, spriteInst.sprite.width+width*2, spriteInst.sprite.height+width*3, color);
-	DrawSpriteImg(spriteInst);
-}
-
-void DrawSpriteSelectionDefault(SpriteInstanceType spriteInst){
-	DrawSpriteSelection(spriteInst, 1, 0x0F6F);
 }
 
 void MenuSelect(){
 
 }
 
-
-void nextIndex(SpriteSelectType *selectType){
-	uint8_t index = (selectType->currentIndex + 1) % selectType->spriteArrayLength;
-	selectType->currentIndex = index;
-}
-
-
-// You can't use this timer, it is here for starter code only 
-// you must use interrupts to perform delays
-void Delay100ms(uint32_t count){uint32_t volatile time;
-  while(count>0){
-    time = 727240;  // 0.1sec at 80 MHz
-    while(time){
-	  	time--;
-    }
-    count--;
-  }
-}

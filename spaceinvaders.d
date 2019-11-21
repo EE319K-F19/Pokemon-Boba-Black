@@ -9,3 +9,5 @@
 .\spaceinvaders.o: Sound.h
 .\spaceinvaders.o: Timer0.h
 .\spaceinvaders.o: Timer1.h
+.\spaceinvaders.o: Draw.h
+.\spaceinvaders.o: Field.h

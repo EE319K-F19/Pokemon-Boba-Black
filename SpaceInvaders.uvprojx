@@ -442,6 +442,51 @@
               <FileType>1</FileType>
               <FilePath>.\PLL.c</FilePath>
             </File>
+            <File>
+              <FileName>Sprite.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Sprite.c</FilePath>
+            </File>
+            <File>
+              <FileName>Draw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Draw.c</FilePath>
+            </File>
+            <File>
+              <FileName>Draw.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Draw.h</FilePath>
+            </File>
+            <File>
+              <FileName>Field.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Field.c</FilePath>
+            </File>
+            <File>
+              <FileName>Field.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Field.h</FilePath>
+            </File>
+            <File>
+              <FileName>PokemonType.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\PokemonType.c</FilePath>
+            </File>
+            <File>
+              <FileName>PokemonType.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PokemonType.h</FilePath>
+            </File>
+            <File>
+              <FileName>Pokemon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Pokemon.c</FilePath>
+            </File>
+            <File>
+              <FileName>Pokemon.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Pokemon.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -1,0 +1,1 @@
+.\sprite.o: Sprite.c
