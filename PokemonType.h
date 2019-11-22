@@ -1,4 +1,7 @@
 
+#ifndef POKEMONTYPEH
+#define POKEMONTYPEH
+
 #include <stdint.h>
 
 extern const uint8_t Normal; 
@@ -50,3 +53,5 @@ struct Typing {
 
 void InitTyping(void);
 extern TypingType Typings[18];
+
+#endif

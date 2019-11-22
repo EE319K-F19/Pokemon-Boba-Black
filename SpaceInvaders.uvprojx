@@ -393,6 +393,16 @@
               <FilePath>.\random.s</FilePath>
             </File>
             <File>
+              <FileName>SystemInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SystemInfo.h</FilePath>
+            </File>
+            <File>
+              <FileName>SystemInfo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SystemInfo.c</FilePath>
+            </File>
+            <File>
               <FileName>DAC.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\DAC.c</FilePath>
@@ -438,19 +448,14 @@
               <FilePath>.\ST7735.c</FilePath>
             </File>
             <File>
+              <FileName>SpaceInvaders.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SpaceInvaders.h</FilePath>
+            </File>
+            <File>
               <FileName>PLL.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\PLL.c</FilePath>
-            </File>
-            <File>
-              <FileName>Sprite.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Sprite.c</FilePath>
-            </File>
-            <File>
-              <FileName>Draw.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Draw.c</FilePath>
             </File>
             <File>
               <FileName>Draw.h</FileName>
@@ -458,9 +463,9 @@
               <FilePath>.\Draw.h</FilePath>
             </File>
             <File>
-              <FileName>Field.c</FileName>
+              <FileName>Draw.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Field.c</FilePath>
+              <FilePath>.\Draw.c</FilePath>
             </File>
             <File>
               <FileName>Field.h</FileName>
@@ -468,9 +473,9 @@
               <FilePath>.\Field.h</FilePath>
             </File>
             <File>
-              <FileName>PokemonType.c</FileName>
+              <FileName>Field.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\PokemonType.c</FilePath>
+              <FilePath>.\Field.c</FilePath>
             </File>
             <File>
               <FileName>PokemonType.h</FileName>
@@ -478,14 +483,49 @@
               <FilePath>.\PokemonType.h</FilePath>
             </File>
             <File>
-              <FileName>Pokemon.c</FileName>
+              <FileName>PokemonType.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Pokemon.c</FilePath>
+              <FilePath>.\PokemonType.c</FilePath>
             </File>
             <File>
               <FileName>Pokemon.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Pokemon.h</FilePath>
+            </File>
+            <File>
+              <FileName>Pokemon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Pokemon.c</FilePath>
+            </File>
+            <File>
+              <FileName>Battle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Battle.h</FilePath>
+            </File>
+            <File>
+              <FileName>Player.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Player.h</FilePath>
+            </File>
+            <File>
+              <FileName>Battle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Battle.c</FilePath>
+            </File>
+            <File>
+              <FileName>Player.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Player.c</FilePath>
+            </File>
+            <File>
+              <FileName>Shop.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Shop.h</FilePath>
+            </File>
+            <File>
+              <FileName>Shop.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Shop.c</FilePath>
             </File>
             <File>
               <FileName>ImagesOther.h</FileName>

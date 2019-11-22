@@ -1,4 +1,7 @@
 
+#ifndef _FIELDH_
+#define _FIELDH_
+
 #include <stdint.h>
 
 extern const uint8_t N; //normal
@@ -18,3 +21,5 @@ struct Field {
 };
 
 extern const uint8_t fieldArray[];
+
+#endif

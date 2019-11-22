@@ -1,4 +1,8 @@
 
+#ifndef _DRAWH_
+#define _DRAWH_
+
+
 #include <stdint.h>
 
 void Delay10ms(uint32_t count);
@@ -33,3 +37,5 @@ struct SpriteSelect {
 	uint16_t spriteArrayLength;
 	int16_t currentIndex;
 };
+
+#endif

@@ -16,6 +16,7 @@ void DAC_Init(void){
 	GPIO_PORTB_DEN_R |= 0x0F;
 }
 
+
 // **************DAC_Out*********************
 // output to DAC
 // Input: 4-bit data, 0 to 15 

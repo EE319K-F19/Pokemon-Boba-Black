@@ -57,6 +57,8 @@
 #include "ST7735.h"
 #include "../inc/tm4c123gh6pm.h"
 
+#include "SystemInfo.h"
+
 // 16 rows (0 to 15) and 21 characters (0 to 20)
 // Requires (11 + size*size*6*8) bytes of transmission for each character
 uint32_t StX=0; // position along the horizonal axis 0 to 20 
@@ -447,13 +449,9 @@ static const uint8_t Font[] = {
   0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-
 static uint8_t ColStart, RowStart; // some displays need this changed
 static uint8_t Rotation;           // 0 to 3
 static enum initRFlags TabColor;
-static int16_t _width = ST7735_TFTWIDTH;   // this could probably be a constant, except it is used in Adafruit_GFX and depends on image rotation
-static int16_t _height = ST7735_TFTHEIGHT;
-
 
 // The Data/Command pin must be valid when the eighth bit is
 // sent.  The SSI module has hardware input and output FIFOs
@@ -477,13 +475,6 @@ void writecommand(uint8_t c);
 
 void writedata(uint8_t c);
 
-int16_t GetWidth(void){
-	return _width;
-}
-
-int16_t GetHeight(void){
-	return _height;
-}
 
 // Subroutine to wait 1 msec
 // Inputs: None
@@ -498,6 +489,7 @@ void Delay1ms(uint32_t n){uint32_t volatile time;
     n--;
   }
 }
+
 
 // Rather than a bazillion writecommand() and writedata() calls, screen
 // initialization commands and arguments are organized in these tables

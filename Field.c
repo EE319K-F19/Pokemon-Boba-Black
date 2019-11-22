@@ -2,20 +2,17 @@
 #include <stdint.h>
 #include "ST7735.h"
 #include "Field.h"
-
-static const uint8_t GRID_LENGTH = 16;
-static uint8_t grid_columns;
-static uint8_t grid_rows;
+#include "SystemInfo.h"
 
 const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
 
 void DrawField(FieldType field){
-	int16_t _width = GetWidth();
-	int16_t _height = GetHeight();
-	grid_columns = _width / GRID_LENGTH;
-	grid_rows = _height / GRID_LENGTH;
+	
+	uint32_t grid_rows = GetScreenRows();
+	uint32_t grid_columns = GetScreenColumns();	
+	
 	for(int i=field.YPos; i<grid_rows+field.YPos; i++){
 		for(int j=field.XPos; j<grid_columns+field.XPos; j++){
 			uint8_t fieldType = field.FieldArray[i*field.FieldWidth+j];
@@ -28,9 +25,6 @@ void DrawField(FieldType field){
 	}
 }
 
-uint32_t GetMidGrid(){
-	return GetHeight()/GRID_LENGTH;
-}
 
 const uint8_t fieldArray[] = {
 //0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63
