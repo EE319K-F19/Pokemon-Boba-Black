@@ -487,6 +487,11 @@
               <FileType>5</FileType>
               <FilePath>.\Pokemon.h</FilePath>
             </File>
+            <File>
+              <FileName>ImagesOther.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ImagesOther.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
