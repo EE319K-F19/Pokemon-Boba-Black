@@ -1,4 +1,7 @@
 
+#ifndef _POKEMONH_
+#define _POKEMONH_
+
 #include <stdint.h>
 #include "Draw.h"
 #include "PokemonType.h"
@@ -22,3 +25,5 @@ struct PokemonInst {
 	uint32_t spdefense;
 	uint32_t speed;
 };
+
+#endif

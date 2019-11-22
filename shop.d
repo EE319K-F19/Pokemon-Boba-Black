@@ -1,0 +1,1 @@
+.\shop.o: Shop.c

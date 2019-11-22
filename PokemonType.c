@@ -31,33 +31,19 @@ TypingType Typings[] = {
 		{B,	B, B, B, B, B, B, B, B, B, B, B, C, D, B, B, C, B}, //Normal
 		{B, C, C, B, A, A, B, B, B, B, B, A, C, B, C, B, A, B}, //Fire
 		{B, A, C, B, C, B, B, B, A, B, B, B, A, B, C, B, B, B}, //Water
-		{B, B, A, C, C, B, B, B, D, A, B, B, B, B, B, B, B, B}, //Electric
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Grass
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Ice
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Fighting
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Poison
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Ground
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Flying
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Psychic
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Bug
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Rock
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Ghost
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Dragon
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Dark
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B}, //Steel
-		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B, B},  //Fairy
+		{B, B, A, C, C, B, B, B, D, A, B, B, B, B, C, B, B, B}, //Electric
+		{B, C, A, B, C, B, B, C, A, C, B, C, A, B, C, B, C, B}, //Grass
+		{B, C, C, B, A, C, B, B, A, A, B, B, B, B, A, B, C, B}, //Ice
+		{A, B, B, B, B, A, B, C, A, C, C, C, A, D, B, A, A, C}, //Fighting
+		{B, B, B, B, A, B, B, C, C, B, B, B, C, C, B, B, D, A}, //Poison
+		{B, A, B, A, C, B, B, A, B, D, B, C, A, B, B, B, A, B}, //Ground
+		{B, B, B, C, A, B, A, B, B, B, B, A, C, B, B, B, C, B}, //Flying
+		{B, B, B, B, B, B, A, A, B, B, C, B, B, B, B, D, C, B}, //Psychic
+		{B, C, B, B, A, B, C, C, B, C, A, B, B, C, B, A, C, C}, //Bug
+		{B, A, B, B, B, A, C, B, C, A, B, A, B, B, B, B, C, B}, //Rock
+		{D, B, B, B, B, B, B, B, B, B, A, B, B, A, B, C, B, B}, //Ghost
+		{B, B, B, B, B, B, B, B, B, B, B, B, B, B, A, B, C, D}, //Dragon
+		{B, B, B, B, B, B, C, B, B, B, A, B, B, A, B, C, B, C}, //Dark
+		{B, C, C, C, B, A, B, B, B, B, B, B, A, B, B, B, C, A}, //Steel
+		{B, C, B, B, B, B, A, C, B, B, B, B, B, B, A, A, C, B},  //Fairy
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-

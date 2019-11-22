@@ -34,7 +34,6 @@ void ADC_Init(void){
 }
 
 
-
 //------------ADC_In------------
 // Busy-wait Analog to digital conversion
 // Input: none

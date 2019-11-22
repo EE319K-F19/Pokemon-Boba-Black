@@ -60,24 +60,15 @@
 #include "Timer0.h"
 #include "Timer1.h"
 
-#include "Draw.h"
+#include "Battle.h"
 #include "Field.h"
-
-void DisableInterrupts(void); // Disable interrupts
-void EnableInterrupts(void);  // Enable interrupts
+#include "Player.h"
+#include "SpaceInvaders.h"
+#include "SystemInfo.h"
 
 const SpriteType Bulbasaur = {bulbasaur, 40, 40};
 const SpriteType Charmander = {charmander, 40, 40};
 const SpriteType Squirtle = {squirtle, 40, 40};
-
-typedef struct Player PlayerType;
-
-struct Player {
-	uint32_t XPos;
-	uint32_t YPos;
-	const SpriteType *sprite;
-};
-
 const SpriteType PlayerSprite = {player, 16, 16};
 PlayerType p1 = {0, 0, &PlayerSprite};
 
@@ -87,14 +78,6 @@ uint32_t y = 0;
 
 SpriteSelectType starter;
 FieldType mainField = {fieldArray, 64, 40, 0, 0};
-
-void DrawSpriteImgPlayer(PlayerType player){
-	if(player.XPos >= GetMidGrid()/2) {
-		mainField.XPos ++;
-		player.XPos = GetMidGrid()/2-1;
-	}
-	ST7735_DrawBitmap(player.XPos*16, player.YPos*16+player.sprite->height, player.sprite->image, player.sprite->width, player.sprite->height);
-}
 
 int main(void){
   DisableInterrupts();
@@ -185,8 +168,3 @@ int main(void){
   }
 
 }
-
-void MenuSelect(){
-
-}
-
