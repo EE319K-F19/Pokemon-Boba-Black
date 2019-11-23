@@ -29,8 +29,6 @@ struct ItemInventory {
 	uint32_t count;
 };
 
-void DrawSpriteImgPlayer(PlayerType player){
-	ST7735_DrawBitmap(player.XPos*16, player.YPos*16+player.sprite->height, player.sprite->image, player.sprite->width, player.sprite->height);
-}
+void DrawSpriteImgPlayer(PlayerType player);
 
 #endif
