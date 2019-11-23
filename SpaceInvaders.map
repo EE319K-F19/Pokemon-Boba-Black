@@ -611,15 +611,15 @@ Image Symbol Table
     i.setAddrWindow                          0x00000b58   Section        0  st7735.o(i.setAddrWindow)
     setAddrWindow                            0x00000b59   Thumb Code   106  st7735.o(i.setAddrWindow)
     .constdata                               0x00000bcc   Section       10  systeminfo.o(.constdata)
-    .constdata                               0x00000bd8   Section    11752  spaceinvaders.o(.constdata)
-    .constdata                               0x000039c0   Section     2018  st7735.o(.constdata)
-    Font                                     0x000039c0   Data        1275  st7735.o(.constdata)
-    Bcmd                                     0x00003ebb   Data         103  st7735.o(.constdata)
-    Rcmd1                                    0x00003f22   Data          59  st7735.o(.constdata)
-    Rcmd2green                               0x00003f5d   Data          13  st7735.o(.constdata)
-    Rcmd2red                                 0x00003f6a   Data          13  st7735.o(.constdata)
-    Rcmd3                                    0x00003f77   Data          43  st7735.o(.constdata)
-    .constdata                               0x000041a2   Section     2563  field.o(.constdata)
+    .constdata                               0x00000bd8   Section    23400  spaceinvaders.o(.constdata)
+    .constdata                               0x00006740   Section     2018  st7735.o(.constdata)
+    Font                                     0x00006740   Data        1275  st7735.o(.constdata)
+    Bcmd                                     0x00006c3b   Data         103  st7735.o(.constdata)
+    Rcmd1                                    0x00006ca2   Data          59  st7735.o(.constdata)
+    Rcmd2green                               0x00006cdd   Data          13  st7735.o(.constdata)
+    Rcmd2red                                 0x00006cea   Data          13  st7735.o(.constdata)
+    Rcmd3                                    0x00006cf7   Data          43  st7735.o(.constdata)
+    .constdata                               0x00006f22   Section     2563  field.o(.constdata)
     .data                                    0x20000000   Section        4  systeminfo.o(.data)
     .data                                    0x20000004   Section        4  timer0.o(.data)
     .data                                    0x20000008   Section        4  timer1.o(.data)
@@ -957,6 +957,35 @@ Image Symbol Table
     SCREEN_ROWS                              0x00000bd2   Data           2  systeminfo.o(.constdata)
     SCREEN_MID_COL                           0x00000bd4   Data           1  systeminfo.o(.constdata)
     SCREEN_MID_ROW                           0x00000bd5   Data           1  systeminfo.o(.constdata)
+<<<<<<< HEAD
+    bulbasaur                                0x00000bd8   Data        3200  spaceinvaders.o(.constdata)
+    bulbasaurFlipped                         0x00001858   Data        3200  spaceinvaders.o(.constdata)
+    charmander                               0x000024d8   Data        3200  spaceinvaders.o(.constdata)
+    charmanderFlipped                        0x00003158   Data        3200  spaceinvaders.o(.constdata)
+    squirtle                                 0x00003dd8   Data        3200  spaceinvaders.o(.constdata)
+    squirtleFlipped                          0x00004a58   Data        3200  spaceinvaders.o(.constdata)
+    playerFront                              0x000056d8   Data         512  spaceinvaders.o(.constdata)
+    playerBack                               0x000058d8   Data         512  spaceinvaders.o(.constdata)
+    playerSide                               0x00005ad8   Data         512  spaceinvaders.o(.constdata)
+    playerSideFlipped                        0x00005cd8   Data         512  spaceinvaders.o(.constdata)
+    pokeball                                 0x00005ed8   Data         512  spaceinvaders.o(.constdata)
+    healthPotion                             0x000060d8   Data         512  spaceinvaders.o(.constdata)
+    heart                                    0x000062d8   Data         512  spaceinvaders.o(.constdata)
+    coin                                     0x000064d8   Data         512  spaceinvaders.o(.constdata)
+    Bulbasaur                                0x000066d8   Data           8  spaceinvaders.o(.constdata)
+    Charmander                               0x000066e0   Data           8  spaceinvaders.o(.constdata)
+    Squirtle                                 0x000066e8   Data           8  spaceinvaders.o(.constdata)
+    PlayerFront                              0x000066f0   Data           8  spaceinvaders.o(.constdata)
+    PlayerBack                               0x000066f8   Data           8  spaceinvaders.o(.constdata)
+    PlayerSide                               0x00006700   Data           8  spaceinvaders.o(.constdata)
+    dBfs                                     0x00006d22   Data         512  st7735.o(.constdata)
+    N                                        0x00006f22   Data           1  field.o(.constdata)
+    G                                        0x00006f23   Data           1  field.o(.constdata)
+    W                                        0x00006f24   Data           1  field.o(.constdata)
+    fieldArray                               0x00006f25   Data        2560  field.o(.constdata)
+    Region$$Table$$Base                      0x00007928   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00007948   Number         0  anon$$obj.o(Region$$Table)
+=======
     player                                   0x00000bd8   Data         512  spaceinvaders.o(.constdata)
     bulbasaur                                0x00000dd8   Data        3200  spaceinvaders.o(.constdata)
     charmander                               0x00001a58   Data        3200  spaceinvaders.o(.constdata)
@@ -977,6 +1006,7 @@ Image Symbol Table
     fieldArray                               0x000041a5   Data        2560  field.o(.constdata)
     Region$$Table$$Base                      0x00004ba8   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x00004bc8   Number         0  anon$$obj.o(Region$$Table)
+>>>>>>> master
 >>>>>>> master
     _width                                   0x20000000   Data           2  systeminfo.o(.data)
     _height                                  0x20000002   Data           2  systeminfo.o(.data)
@@ -1023,6 +1053,11 @@ Memory Map of the image
   Image Entry point : 0x0000026d
 
 <<<<<<< HEAD
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000079a8, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00007948, Max: 0xffffffff, ABSOLUTE)
+=======
+<<<<<<< HEAD
   Load Region LR_1 (Base: 0x00000000, Size: 0x00004ee4, Max: 0xffffffff, ABSOLUTE)
 
     Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00004e90, Max: 0xffffffff, ABSOLUTE)
@@ -1030,6 +1065,7 @@ Memory Map of the image
   Load Region LR_1 (Base: 0x00000000, Size: 0x00004c28, Max: 0xffffffff, ABSOLUTE)
 
     Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00004bc8, Max: 0xffffffff, ABSOLUTE)
+>>>>>>> master
 >>>>>>> master
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
@@ -1230,34 +1266,38 @@ Memory Map of the image
     0x00000b58   0x00000b58   0x00000074   Code   RO          296    i.setAddrWindow     st7735.o
     0x00000bcc   0x00000bcc   0x0000000a   Data   RO           16    .constdata          systeminfo.o
     0x00000bd6   0x00000bd6   0x00000002   PAD
-    0x00000bd8   0x00000bd8   0x00002de8   Data   RO          194    .constdata          spaceinvaders.o
-    0x000039c0   0x000039c0   0x000007e2   Data   RO          298    .constdata          st7735.o
-    0x000041a2   0x000041a2   0x00000a03   Data   RO          612    .constdata          field.o
-    0x00004ba5   0x00004ba5   0x00000003   PAD
-    0x00004ba8   0x00004ba8   0x00000020   Data   RO          893    Region$$Table       anon$$obj.o
+    0x00000bd8   0x00000bd8   0x00005b68   Data   RO          194    .constdata          spaceinvaders.o
+    0x00006740   0x00006740   0x000007e2   Data   RO          298    .constdata          st7735.o
+    0x00006f22   0x00006f22   0x00000a03   Data   RO          612    .constdata          field.o
+    0x00007925   0x00007925   0x00000003   PAD
+    0x00007928   0x00007928   0x00000020   Data   RO          893    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00004bc8, Size: 0x00000060, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00007948, Size: 0x00000060, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00004bc8   0x00000004   Data   RW           17    .data               systeminfo.o
-    0x20000004   0x00004bcc   0x00000004   Data   RW           77    .data               timer0.o
-    0x20000008   0x00004bd0   0x00000004   Data   RW           98    .data               timer1.o
-    0x2000000c   0x00004bd4   0x0000001d   Data   RW          195    .data               spaceinvaders.o
-    0x20000029   0x00004bf1   0x00000003   PAD
-    0x2000002c   0x00004bf4   0x00000028   Data   RW          299    .data               st7735.o
-    0x20000054   0x00004c1c   0x00000008   Data   RW          686    .data               adc_joystick.o
-    0x2000005c   0x00004c24   0x00000004   Data   RW           12    DATA                random.o
+    0x20000000   0x00007948   0x00000004   Data   RW           17    .data               systeminfo.o
+    0x20000004   0x0000794c   0x00000004   Data   RW           77    .data               timer0.o
+    0x20000008   0x00007950   0x00000004   Data   RW           98    .data               timer1.o
+    0x2000000c   0x00007954   0x0000001d   Data   RW          195    .data               spaceinvaders.o
+    0x20000029   0x00007971   0x00000003   PAD
+    0x2000002c   0x00007974   0x00000028   Data   RW          299    .data               st7735.o
+    0x20000054   0x0000799c   0x00000008   Data   RW          686    .data               adc_joystick.o
+    0x2000005c   0x000079a4   0x00000004   Data   RW           12    DATA                random.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000060, Load base: 0x00004c28, Size: 0x00000470, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000060, Load base: 0x000079a8, Size: 0x00000470, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000060        -       0x0000000c   Zero   RW          193    .bss                spaceinvaders.o
     0x2000006c        -       0x00000060   Zero   RW          767    .bss                c_w.l(libspace.o)
+<<<<<<< HEAD
+    0x200000cc   0x000079a8   0x00000004   PAD
+=======
     0x200000cc   0x00004c28   0x00000004   PAD
+>>>>>>> master
 >>>>>>> master
     0x200000d0        -       0x00000000   Zero   RW            2    HEAP                startup.o
     0x200000d0        -       0x00000400   Zero   RW            1    STACK               startup.o
@@ -1283,10 +1323,14 @@ Image component sizes
        124          4          0          0          0        439   pll.o
         64         14          0          4          0        232   random.o
 <<<<<<< HEAD
+       300         52      23400         29         12       4177   spaceinvaders.o
+=======
+<<<<<<< HEAD
        492         52      11768         28         28       3968   spaceinvaders.o
       1306        128       2018         40          0       9330   st7735.o
 =======
        300         52      11752         29         12       3790   spaceinvaders.o
+>>>>>>> master
       1006        120       2018         40          0       8382   st7735.o
 >>>>>>> master
        692        632          0          0       1024        964   startup.o
@@ -1296,11 +1340,15 @@ Image component sizes
 
     ----------------------------------------------------------------------
 <<<<<<< HEAD
+      2740        894      28028         96       1036      28720   Object Totals
+=======
+<<<<<<< HEAD
       3336        906      16396         84       1052      30946   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          5          0          0          0   (incl. Padding)
 =======
       2740        894      16380         96       1036      28333   Object Totals
+>>>>>>> master
          0          0         32          0          0          0   (incl. Generated)
          2          0          5          3          0          0   (incl. Padding)
 >>>>>>> master
@@ -1361,6 +1409,11 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
 <<<<<<< HEAD
+      3020        910      28028         96       1136      28260   Grand Totals
+      3020        910      28028         96       1136      28260   ELF Image Totals
+      3020        910      28028         96          0          0   ROM Totals
+=======
+<<<<<<< HEAD
       3716        922      16396         84       1148      30358   Grand Totals
       3716        922      16396         84       1148      30358   ELF Image Totals
       3716        922      16396         84          0          0   ROM Totals
@@ -1374,12 +1427,17 @@ Image component sizes
       3020        910      16380         96       1136      27873   Grand Totals
       3020        910      16380         96       1136      27873   ELF Image Totals
       3020        910      16380         96          0          0   ROM Totals
+>>>>>>> master
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                19400 (  18.95kB)
+    Total RO  Size (Code + RO Data)                31048 (  30.32kB)
     Total RW  Size (RW Data + ZI Data)              1232 (   1.20kB)
+<<<<<<< HEAD
+    Total ROM Size (Code + RO Data + RW Data)      31144 (  30.41kB)
+=======
     Total ROM Size (Code + RO Data + RW Data)      19496 (  19.04kB)
+>>>>>>> master
 >>>>>>> master
 
 ==============================================================================
