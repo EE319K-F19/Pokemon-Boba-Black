@@ -527,6 +527,16 @@
               <FileType>5</FileType>
               <FilePath>.\ImagesOther.h</FilePath>
             </File>
+            <File>
+              <FileName>ADC_Joystick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ADC_Joystick.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_Joystick.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ADC_Joystick.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
