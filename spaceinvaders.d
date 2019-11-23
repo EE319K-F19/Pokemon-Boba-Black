@@ -10,3 +10,12 @@
 .\spaceinvaders.o: Timer1.h
 .\spaceinvaders.o: ADC_Joystick.h
 .\spaceinvaders.o: DrawScreen.h
+.\spaceinvaders.o: ImagesPokemon.h
+.\spaceinvaders.o: Battle.h
+.\spaceinvaders.o: Field.h
+.\spaceinvaders.o: Player.h
+.\spaceinvaders.o: Pokemon.h
+.\spaceinvaders.o: Draw.h
+.\spaceinvaders.o: PokemonType.h
+.\spaceinvaders.o: ImagesOther.h
+.\spaceinvaders.o: SystemInfo.h
