@@ -27,6 +27,7 @@ struct Sprite {
 	const uint16_t *image;	
 	int16_t width; 
 	int16_t height;
+	uint8_t reverse;
 };
 
 struct SpriteInstance {

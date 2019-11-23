@@ -1,0 +1,14 @@
+.\drawscreen.o: DrawScreen.c
+.\drawscreen.o: DrawScreen.h
+.\drawscreen.o: ADC_Joystick.h
+.\drawscreen.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\drawscreen.o: ST7735.h
+.\drawscreen.o: ImagesPokemon.h
+.\drawscreen.o: Battle.h
+.\drawscreen.o: Field.h
+.\drawscreen.o: Player.h
+.\drawscreen.o: Pokemon.h
+.\drawscreen.o: Draw.h
+.\drawscreen.o: PokemonType.h
+.\drawscreen.o: ImagesOther.h
+.\drawscreen.o: SystemInfo.h

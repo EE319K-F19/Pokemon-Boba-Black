@@ -717,7 +717,7 @@ void static commonInit(const uint8_t *cmdList) {
 void ST7735_InitB(void) {
   commonInit(Bcmd);
   ST7735_SetCursor(0,0);
-  StTextColor = ST7735_YELLOW;
+  StTextColor = ST7735_BLACK;
   ST7735_FillScreen(0);                 // set screen to black
 }
 
@@ -1093,7 +1093,7 @@ uint32_t ST7735_DrawString(uint16_t x, uint16_t y, char *pt, int16_t textColor){
   uint32_t count = 0;
   if(y>15) return 0;
   while(*pt){
-    ST7735_DrawCharS(x*6, y*10, *pt, textColor, ST7735_BLACK, 1);
+    ST7735_DrawCharS(x*6, y*10, *pt, textColor, 0xFFFF, 1);
     pt++;
     x = x+1;
     if(x>20) return count;  // number of characters printed
@@ -1488,7 +1488,7 @@ void ST7735_OutChar(char ch){
     ST7735_DrawString(0,StY,"                     ",StTextColor);
     return;
   }
-  ST7735_DrawCharS(StX*6,StY*10,ch,ST7735_YELLOW,ST7735_BLACK, 1);
+  ST7735_DrawCharS(StX*6,StY*10,ch,0x0000,0xFFFF, 1);
   StX++;
   if(StX>20){
     StX = 20;
