@@ -18,4 +18,5 @@ void Sound_Fastinvader2(void);
 void Sound_Fastinvader3(void);
 void Sound_Fastinvader4(void);
 void Sound_Highpitch(void);
+int sound_main(void);
 

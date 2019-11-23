@@ -82,7 +82,7 @@ PlayerType p1;
 SpriteSelectType starter;
 FieldType mainField = {fieldArray, 64, 40, 0, 0};
 
-int main(void){
+int main1(void){
   DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
@@ -149,5 +149,15 @@ int main(void){
 }
 
 uint8_t ADCStatus = 0;
+
+int main(void){
+	PLL_Init(Bus80MHz);
+	Sound_Init();
+	ADC_Init89();
+	EnableInterrupts();
+	while(1){
+		Sound_Highpitch();
+	}
+}
 
 
