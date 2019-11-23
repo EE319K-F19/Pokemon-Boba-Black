@@ -2,24 +2,24 @@
 #include <stdint.h>
 #include "PokemonType.h"
 
-const uint8_t Normal = 0; 
-const uint8_t Fire = 1; 
-const uint8_t Water = 2;
-const uint8_t Electric = 3;
-const uint8_t Grass = 4;
-const uint8_t Ice = 5;
-const uint8_t Fighting = 6;
-const uint8_t Poison = 7;
-const uint8_t Ground = 8;
-const uint8_t Flying = 9;
-const uint8_t Psychic = 10;
-const uint8_t Bug = 11;
-const uint8_t Rock = 12;
-const uint8_t Ghost = 13;
-const uint8_t Dragon = 14;
-const uint8_t Dark = 15;
-const uint8_t Steel = 16;
-const uint8_t Fairy = 17;
+#define Normal = 0; 
+#define Fire = 1; 
+#define Water = 2;
+#define Electric = 3;
+#define Grass = 4;
+#define Ice = 5;
+#define Fighting = 6;
+#define Poison = 7;
+#define Ground = 8;
+#define Flying = 9;
+#define Psychic = 10;
+#define Bug = 11;
+#define Rock = 12;
+#define Ghost = 13;
+#define Dragon = 14;
+#define Dark = 15;
+#define Steel = 16;
+#define Fairy = 17;
 
 const uint8_t A = 4; //Very Effective
 const uint8_t B = 2; //Normal effectiveness

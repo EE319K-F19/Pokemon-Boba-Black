@@ -11,11 +11,13 @@ typedef struct PokemonInst PokemonInstType;
 
 struct Pokemon {
 	const char *name;
-	const TypingType type;
+	const uint8_t type;
 	const SpriteType sprite;
 };
 
 struct PokemonInst {
+	uint16_t xPos;
+	uint16_t yPos;
 	const PokemonType species;
 	uint32_t mhealth;
 	uint32_t chealth;
@@ -25,5 +27,9 @@ struct PokemonInst {
 	uint32_t spdefense;
 	uint32_t speed;
 };
+
+extern PokemonType Bulbasaur;
+extern PokemonType Squirtle;
+extern PokemonType Charmander;
 
 #endif
