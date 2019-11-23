@@ -17,6 +17,10 @@ struct Player {
 	//PokemonInstType *PokemonTeam;
 	
 	const SpriteType *sprite;
+	const SpriteType *spriteFront;
+	const SpriteType *spriteBack;
+	const SpriteType *spriteSide;
+	uint8_t spriteFlip;
 };
 
 struct Item {
@@ -30,5 +34,10 @@ struct ItemInventory {
 };
 
 void DrawSpriteImgPlayer(PlayerType player);
+
+void MoveUp(PlayerType *player);
+void MoveDown(PlayerType *player);
+void MoveLeft(PlayerType *player);
+void MoveRight(PlayerType *player);
 
 #endif
