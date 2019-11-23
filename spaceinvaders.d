@@ -10,6 +10,7 @@
 .\spaceinvaders.o: Sound.h
 .\spaceinvaders.o: Timer0.h
 .\spaceinvaders.o: Timer1.h
+.\spaceinvaders.o: ADC_Joystick.h
 .\spaceinvaders.o: Battle.h
 .\spaceinvaders.o: Field.h
 .\spaceinvaders.o: Player.h

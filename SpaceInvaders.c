@@ -60,6 +60,7 @@
 #include "Sound.h"
 #include "Timer0.h"
 #include "Timer1.h"
+#include "ADC_Joystick.h"
 
 #include "Battle.h"
 #include "Field.h"
@@ -146,3 +147,7 @@ int main(void){
   }
 
 }
+
+uint8_t ADCStatus = 0;
+
+
