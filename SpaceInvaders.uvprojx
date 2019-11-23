@@ -537,6 +537,11 @@
               <FileType>5</FileType>
               <FilePath>.\ADC_Joystick.h</FilePath>
             </File>
+            <File>
+              <FileName>ImagesPokemon2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ImagesPokemon2.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
