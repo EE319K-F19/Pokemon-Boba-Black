@@ -144,4 +144,28 @@ void Sound_Highpitch(void){
 	idx = (idx + 1) % 1802;
 };
 
+uint32_t portEDataPE3;
+int sound_main(void){
+	volatile uint8_t delay;
+	//PLL_Init(Bus80MHz);
+	Sound_Init();
+	SYSCTL_RCGCGPIO_R |= 0x10;
+	delay++;
+	delay++;
+	GPIO_PORTE_DIR_R &= ~0x0C;
+	GPIO_PORTE_PDR_R |= 0x0C;
+	GPIO_PORTE_DEN_R |= 0x0C;
+	//ST7735_InitR(INITR_REDTAB);
+	// ADC_Init89();
+	//EnableInterrupts();
+	while(1){
+		portEDataPE3 = GPIO_PORTE_DATA_R & 0x08;;
+		// Sound_Highpitch();
+		//ST7735_SetCursor(0,0);
+		//ST7735_OutString("SW: ");
+		//LCD_OutDec(portEDataPE3);
+		// ST7735_OutString("\n");
+	}
+}
+
 

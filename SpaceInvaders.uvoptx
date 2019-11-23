@@ -79,8 +79,8 @@
       </OPTFL>
       <CpuCode>4</CpuCode>
       <DebugOpt>
-        <uSim>1</uSim>
-        <uTrg>0</uTrg>
+        <uSim>0</uSim>
+        <uTrg>1</uTrg>
         <sLdApp>1</sLdApp>
         <sGomain>1</sGomain>
         <sRbreak>1</sRbreak>
@@ -117,6 +117,10 @@
         <pMon>BIN\lmidk-agdi.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGUARM</Key>
+        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
@@ -217,18 +221,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>18</LineNumber>
+          <LineNumber>155</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>1290</Address>
+          <Address>1494</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\Field.c</Filename>
+          <Filename>.\SpaceInvaders.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\Field.c\18</Expression>
+          <Expression>\\SpaceInvaders\SpaceInvaders.c\155</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -241,6 +245,16 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>SCREEN_COLUMNS</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>GPIO_PORTE_DATA_R</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>portEData</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -257,7 +271,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
