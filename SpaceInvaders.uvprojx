@@ -542,6 +542,16 @@
               <FileType>5</FileType>
               <FilePath>.\ImagesPokemon2.h</FilePath>
             </File>
+            <File>
+              <FileName>DrawScreen.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DrawScreen.c</FilePath>
+            </File>
+            <File>
+              <FileName>DrawScreen.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DrawScreen.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
