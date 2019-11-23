@@ -14,13 +14,13 @@ FieldType mainField = {fieldArray, 64, 40};
 static SpriteSelectType starterScreen;
 
 void InitDrawScreen(){
-	const SpriteType Bulbasaur = {bulbasaur, 40, 40};
-	const SpriteType Charmander = {charmander, 40, 40};
-	const SpriteType Squirtle = {squirtle, 40, 40};
+	SpriteType Bulbasaur = {bulbasaur, 40, 40, 0};
+	SpriteType Charmander = {charmander, 40, 40, 0};
+	SpriteType Squirtle = {squirtle, 40, 40, 0};
 
-	const SpriteType PlayerFront = {playerFront, 16, 16};
-	const SpriteType PlayerBack = {playerBack, 16, 16};
-	const SpriteType PlayerSide = {playerSide, 16, 16};
+	SpriteType PlayerFront = {playerFront, 16, 16, 0};
+	SpriteType PlayerBack = {playerBack, 16, 16, 0};
+	SpriteType PlayerSide = {playerSide, 16, 16, 0};
 	
 	SpriteInstanceType poke1 = {2, 130, Bulbasaur};
   SpriteInstanceType poke2 = {44, 130, Charmander};

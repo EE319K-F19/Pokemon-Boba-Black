@@ -312,23 +312,23 @@ Removing Unused input sections from the image.
     Removing st7735.o(.bss), (12 bytes).
     Removing draw.o(i.Delay10ms), (36 bytes).
     Removing draw.o(i.DrawGridFill), (52 bytes).
-    Removing draw.o(i.DrawGridSprite), (52 bytes).
-    Removing draw.o(i.DrawSpriteSelectionDefault), (24 bytes).
+    Removing draw.o(i.DrawGridSprite), (54 bytes).
+    Removing draw.o(i.DrawSpriteSelectionDefault), (26 bytes).
     Removing draw.o(i.GetGridX), (28 bytes).
     Removing draw.o(i.GetGridY), (28 bytes).
     Removing draw.o(i.nextIndex), (24 bytes).
-    Removing field.o(i.DrawField), (172 bytes).
+    Removing field.o(i.DrawField), (176 bytes).
     Removing pokemontype.o(.constdata), (22 bytes).
     Removing pokemontype.o(.data), (324 bytes).
     Removing pokemon.o(i.PokemonAttack), (2 bytes).
     Removing player.o(i.DrawSpriteImgPlayer), (48 bytes).
-    Removing player.o(i.MoveDown), (16 bytes).
-    Removing player.o(i.MoveLeft), (16 bytes).
-    Removing player.o(i.MoveRight), (16 bytes).
-    Removing player.o(i.MoveUp), (16 bytes).
+    Removing player.o(i.MoveDown), (22 bytes).
+    Removing player.o(i.MoveLeft), (22 bytes).
+    Removing player.o(i.MoveRight), (22 bytes).
+    Removing player.o(i.MoveUp), (22 bytes).
     Removing drawscreen.o(i.DrawWorld), (2 bytes).
 
-61 unused section(s) (total 19297 bytes) removed from the image.
+61 unused section(s) (total 19329 bytes) removed from the image.
 
 ==============================================================================
 
@@ -476,48 +476,48 @@ Image Symbol Table
     i.DrawAllSprites                         0x0000065c   Section        0  draw.o(i.DrawAllSprites)
     i.DrawBorder                             0x0000067e   Section        0  draw.o(i.DrawBorder)
     i.DrawSelection                          0x000006fa   Section        0  draw.o(i.DrawSelection)
-    i.DrawSpriteImg                          0x0000074c   Section        0  draw.o(i.DrawSpriteImg)
-    i.DrawSpriteSelection                    0x0000076a   Section        0  draw.o(i.DrawSpriteSelection)
-    i.DrawTitleScreen                        0x000007a0   Section        0  drawscreen.o(i.DrawTitleScreen)
-    i.InitDrawScreen                         0x0000089c   Section        0  drawscreen.o(i.InitDrawScreen)
-    i.Output_Init                            0x000009e0   Section        0  st7735.o(i.Output_Init)
-    i.PLL_Init                               0x000009f0   Section        0  pll.o(i.PLL_Init)
-    i.ST7735_DrawBitmap                      0x00000a6c   Section        0  st7735.o(i.ST7735_DrawBitmap)
-    i.ST7735_DrawCharS                       0x00000b8c   Section        0  st7735.o(i.ST7735_DrawCharS)
-    i.ST7735_DrawPixel                       0x00000c84   Section        0  st7735.o(i.ST7735_DrawPixel)
-    i.ST7735_DrawString                      0x00000ccc   Section        0  st7735.o(i.ST7735_DrawString)
-    i.ST7735_FillRect                        0x00000d24   Section        0  st7735.o(i.ST7735_FillRect)
-    i.ST7735_FillScreen                      0x00000dd0   Section        0  st7735.o(i.ST7735_FillScreen)
-    i.ST7735_InitR                           0x00000df4   Section        0  st7735.o(i.ST7735_InitR)
-    i.ST7735_OutChar                         0x00000e70   Section        0  st7735.o(i.ST7735_OutChar)
-    i.ST7735_OutString                       0x00000f44   Section        0  st7735.o(i.ST7735_OutString)
-    i.ST7735_SetCursor                       0x00000f5c   Section        0  st7735.o(i.ST7735_SetCursor)
-    i.ST7735_SetTextColor                    0x00000f7c   Section        0  st7735.o(i.ST7735_SetTextColor)
-    i.SysTick_Handler                        0x00000f88   Section        0  adc_joystick.o(i.SysTick_Handler)
-    i.SysTick_Init                           0x00000fa0   Section        0  adc_joystick.o(i.SysTick_Init)
-    i.Timer0A_Handler                        0x00000fb8   Section        0  timer0.o(i.Timer0A_Handler)
-    i.Timer1A_Handler                        0x00000fd0   Section        0  timer1.o(i.Timer1A_Handler)
-    i.commandList                            0x00000fe8   Section        0  st7735.o(i.commandList)
-    commandList                              0x00000fe9   Thumb Code    86  st7735.o(i.commandList)
-    i.commonInit                             0x00001040   Section        0  st7735.o(i.commonInit)
-    commonInit                               0x00001041   Thumb Code   342  st7735.o(i.commonInit)
-    i.getJoystickX                           0x000011c8   Section        0  adc_joystick.o(i.getJoystickX)
-    i.getJoystickY                           0x000011f0   Section        0  adc_joystick.o(i.getJoystickY)
-    i.main                                   0x00001218   Section        0  spaceinvaders.o(i.main)
-    i.pushColor                              0x00001248   Section        0  st7735.o(i.pushColor)
-    pushColor                                0x00001249   Thumb Code    18  st7735.o(i.pushColor)
-    i.setAddrWindow                          0x0000125c   Section        0  st7735.o(i.setAddrWindow)
-    setAddrWindow                            0x0000125d   Thumb Code   106  st7735.o(i.setAddrWindow)
-    .constdata                               0x000012d0   Section       10  systeminfo.o(.constdata)
-    .constdata                               0x000012da   Section     2018  st7735.o(.constdata)
-    Font                                     0x000012da   Data        1275  st7735.o(.constdata)
-    Bcmd                                     0x000017d5   Data         103  st7735.o(.constdata)
-    Rcmd1                                    0x0000183c   Data          59  st7735.o(.constdata)
-    Rcmd2green                               0x00001877   Data          13  st7735.o(.constdata)
-    Rcmd2red                                 0x00001884   Data          13  st7735.o(.constdata)
-    Rcmd3                                    0x00001891   Data          43  st7735.o(.constdata)
-    .constdata                               0x00001abc   Section     2563  field.o(.constdata)
-    .constdata                               0x000024c0   Section    21340  drawscreen.o(.constdata)
+    i.DrawSpriteImg                          0x00000744   Section        0  draw.o(i.DrawSpriteImg)
+    i.DrawSpriteSelection                    0x00000764   Section        0  draw.o(i.DrawSpriteSelection)
+    i.DrawTitleScreen                        0x00000798   Section        0  drawscreen.o(i.DrawTitleScreen)
+    i.InitDrawScreen                         0x00000894   Section        0  drawscreen.o(i.InitDrawScreen)
+    i.Output_Init                            0x000009f8   Section        0  st7735.o(i.Output_Init)
+    i.PLL_Init                               0x00000a08   Section        0  pll.o(i.PLL_Init)
+    i.ST7735_DrawBitmap                      0x00000a84   Section        0  st7735.o(i.ST7735_DrawBitmap)
+    i.ST7735_DrawCharS                       0x00000ba4   Section        0  st7735.o(i.ST7735_DrawCharS)
+    i.ST7735_DrawPixel                       0x00000c9c   Section        0  st7735.o(i.ST7735_DrawPixel)
+    i.ST7735_DrawString                      0x00000ce4   Section        0  st7735.o(i.ST7735_DrawString)
+    i.ST7735_FillRect                        0x00000d3c   Section        0  st7735.o(i.ST7735_FillRect)
+    i.ST7735_FillScreen                      0x00000de8   Section        0  st7735.o(i.ST7735_FillScreen)
+    i.ST7735_InitR                           0x00000e0c   Section        0  st7735.o(i.ST7735_InitR)
+    i.ST7735_OutChar                         0x00000e88   Section        0  st7735.o(i.ST7735_OutChar)
+    i.ST7735_OutString                       0x00000f5c   Section        0  st7735.o(i.ST7735_OutString)
+    i.ST7735_SetCursor                       0x00000f74   Section        0  st7735.o(i.ST7735_SetCursor)
+    i.ST7735_SetTextColor                    0x00000f94   Section        0  st7735.o(i.ST7735_SetTextColor)
+    i.SysTick_Handler                        0x00000fa0   Section        0  adc_joystick.o(i.SysTick_Handler)
+    i.SysTick_Init                           0x00000fb8   Section        0  adc_joystick.o(i.SysTick_Init)
+    i.Timer0A_Handler                        0x00000fd0   Section        0  timer0.o(i.Timer0A_Handler)
+    i.Timer1A_Handler                        0x00000fe8   Section        0  timer1.o(i.Timer1A_Handler)
+    i.commandList                            0x00001000   Section        0  st7735.o(i.commandList)
+    commandList                              0x00001001   Thumb Code    86  st7735.o(i.commandList)
+    i.commonInit                             0x00001058   Section        0  st7735.o(i.commonInit)
+    commonInit                               0x00001059   Thumb Code   342  st7735.o(i.commonInit)
+    i.getJoystickX                           0x000011e0   Section        0  adc_joystick.o(i.getJoystickX)
+    i.getJoystickY                           0x00001208   Section        0  adc_joystick.o(i.getJoystickY)
+    i.main                                   0x00001230   Section        0  spaceinvaders.o(i.main)
+    i.pushColor                              0x00001260   Section        0  st7735.o(i.pushColor)
+    pushColor                                0x00001261   Thumb Code    18  st7735.o(i.pushColor)
+    i.setAddrWindow                          0x00001274   Section        0  st7735.o(i.setAddrWindow)
+    setAddrWindow                            0x00001275   Thumb Code   106  st7735.o(i.setAddrWindow)
+    .constdata                               0x000012e8   Section       10  systeminfo.o(.constdata)
+    .constdata                               0x000012f2   Section     2018  st7735.o(.constdata)
+    Font                                     0x000012f2   Data        1275  st7735.o(.constdata)
+    Bcmd                                     0x000017ed   Data         103  st7735.o(.constdata)
+    Rcmd1                                    0x00001854   Data          59  st7735.o(.constdata)
+    Rcmd2green                               0x0000188f   Data          13  st7735.o(.constdata)
+    Rcmd2red                                 0x0000189c   Data          13  st7735.o(.constdata)
+    Rcmd3                                    0x000018a9   Data          43  st7735.o(.constdata)
+    .constdata                               0x00001ad4   Section     2563  field.o(.constdata)
+    .constdata                               0x000024d8   Section    21376  drawscreen.o(.constdata)
     .data                                    0x20000000   Section        4  systeminfo.o(.data)
     .data                                    0x20000004   Section        4  timer0.o(.data)
     .data                                    0x20000008   Section        4  timer1.o(.data)
@@ -780,55 +780,55 @@ Image Symbol Table
     Delay1ms                                 0x0000063d   Thumb Code    32  st7735.o(i.Delay1ms)
     DrawAllSprites                           0x0000065d   Thumb Code    34  draw.o(i.DrawAllSprites)
     DrawBorder                               0x0000067f   Thumb Code   124  draw.o(i.DrawBorder)
-    DrawSelection                            0x000006fb   Thumb Code    82  draw.o(i.DrawSelection)
-    DrawSpriteImg                            0x0000074d   Thumb Code    30  draw.o(i.DrawSpriteImg)
-    DrawSpriteSelection                      0x0000076b   Thumb Code    52  draw.o(i.DrawSpriteSelection)
-    DrawTitleScreen                          0x000007a1   Thumb Code   170  drawscreen.o(i.DrawTitleScreen)
-    InitDrawScreen                           0x0000089d   Thumb Code   286  drawscreen.o(i.InitDrawScreen)
-    Output_Init                              0x000009e1   Thumb Code    16  st7735.o(i.Output_Init)
-    PLL_Init                                 0x000009f1   Thumb Code   120  pll.o(i.PLL_Init)
-    ST7735_DrawBitmap                        0x00000a6d   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
-    ST7735_DrawCharS                         0x00000b8d   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
-    ST7735_DrawPixel                         0x00000c85   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
-    ST7735_DrawString                        0x00000ccd   Thumb Code    86  st7735.o(i.ST7735_DrawString)
-    ST7735_FillRect                          0x00000d25   Thumb Code   164  st7735.o(i.ST7735_FillRect)
-    ST7735_FillScreen                        0x00000dd1   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
-    ST7735_InitR                             0x00000df5   Thumb Code    90  st7735.o(i.ST7735_InitR)
-    ST7735_OutChar                           0x00000e71   Thumb Code   174  st7735.o(i.ST7735_OutChar)
-    ST7735_OutString                         0x00000f45   Thumb Code    24  st7735.o(i.ST7735_OutString)
-    ST7735_SetCursor                         0x00000f5d   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
-    ST7735_SetTextColor                      0x00000f7d   Thumb Code     6  st7735.o(i.ST7735_SetTextColor)
-    SysTick_Handler                          0x00000f89   Thumb Code    16  adc_joystick.o(i.SysTick_Handler)
-    SysTick_Init                             0x00000fa1   Thumb Code    24  adc_joystick.o(i.SysTick_Init)
-    Timer0A_Handler                          0x00000fb9   Thumb Code    16  timer0.o(i.Timer0A_Handler)
-    Timer1A_Handler                          0x00000fd1   Thumb Code    16  timer1.o(i.Timer1A_Handler)
-    getJoystickX                             0x000011c9   Thumb Code    34  adc_joystick.o(i.getJoystickX)
-    getJoystickY                             0x000011f1   Thumb Code    34  adc_joystick.o(i.getJoystickY)
-    main                                     0x00001219   Thumb Code    48  spaceinvaders.o(i.main)
-    GRID_LENGTH                              0x000012d0   Data           1  systeminfo.o(.constdata)
-    GAME_BORDER_W                            0x000012d1   Data           1  systeminfo.o(.constdata)
-    GAME_BORDER_COLOR                        0x000012d2   Data           2  systeminfo.o(.constdata)
-    SCREEN_COLUMNS                           0x000012d4   Data           2  systeminfo.o(.constdata)
-    SCREEN_ROWS                              0x000012d6   Data           2  systeminfo.o(.constdata)
-    SCREEN_MID_COL                           0x000012d8   Data           1  systeminfo.o(.constdata)
-    SCREEN_MID_ROW                           0x000012d9   Data           1  systeminfo.o(.constdata)
-    dBfs                                     0x000018bc   Data         512  st7735.o(.constdata)
-    N                                        0x00001abc   Data           1  field.o(.constdata)
-    G                                        0x00001abd   Data           1  field.o(.constdata)
-    W                                        0x00001abe   Data           1  field.o(.constdata)
-    fieldArray                               0x00001abf   Data        2560  field.o(.constdata)
-    bulbasaur                                0x000024c0   Data        3200  drawscreen.o(.constdata)
-    bulbasaurFlipped                         0x00003140   Data        3200  drawscreen.o(.constdata)
-    charmander                               0x00003dc0   Data        3200  drawscreen.o(.constdata)
-    charmanderFlipped                        0x00004a40   Data        3200  drawscreen.o(.constdata)
-    squirtle                                 0x000056c0   Data        3200  drawscreen.o(.constdata)
-    squirtleFlipped                          0x00006340   Data        3200  drawscreen.o(.constdata)
-    playerFront                              0x00006fc0   Data         512  drawscreen.o(.constdata)
-    playerBack                               0x000071c0   Data         512  drawscreen.o(.constdata)
-    playerSide                               0x000073c0   Data         512  drawscreen.o(.constdata)
-    playerSideFlipped                        0x000075c0   Data         512  drawscreen.o(.constdata)
-    Region$$Table$$Base                      0x0000781c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0000783c   Number         0  anon$$obj.o(Region$$Table)
+    DrawSelection                            0x000006fb   Thumb Code    74  draw.o(i.DrawSelection)
+    DrawSpriteImg                            0x00000745   Thumb Code    32  draw.o(i.DrawSpriteImg)
+    DrawSpriteSelection                      0x00000765   Thumb Code    52  draw.o(i.DrawSpriteSelection)
+    DrawTitleScreen                          0x00000799   Thumb Code   170  drawscreen.o(i.DrawTitleScreen)
+    InitDrawScreen                           0x00000895   Thumb Code   320  drawscreen.o(i.InitDrawScreen)
+    Output_Init                              0x000009f9   Thumb Code    16  st7735.o(i.Output_Init)
+    PLL_Init                                 0x00000a09   Thumb Code   120  pll.o(i.PLL_Init)
+    ST7735_DrawBitmap                        0x00000a85   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
+    ST7735_DrawCharS                         0x00000ba5   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
+    ST7735_DrawPixel                         0x00000c9d   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
+    ST7735_DrawString                        0x00000ce5   Thumb Code    86  st7735.o(i.ST7735_DrawString)
+    ST7735_FillRect                          0x00000d3d   Thumb Code   164  st7735.o(i.ST7735_FillRect)
+    ST7735_FillScreen                        0x00000de9   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
+    ST7735_InitR                             0x00000e0d   Thumb Code    90  st7735.o(i.ST7735_InitR)
+    ST7735_OutChar                           0x00000e89   Thumb Code   174  st7735.o(i.ST7735_OutChar)
+    ST7735_OutString                         0x00000f5d   Thumb Code    24  st7735.o(i.ST7735_OutString)
+    ST7735_SetCursor                         0x00000f75   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
+    ST7735_SetTextColor                      0x00000f95   Thumb Code     6  st7735.o(i.ST7735_SetTextColor)
+    SysTick_Handler                          0x00000fa1   Thumb Code    16  adc_joystick.o(i.SysTick_Handler)
+    SysTick_Init                             0x00000fb9   Thumb Code    24  adc_joystick.o(i.SysTick_Init)
+    Timer0A_Handler                          0x00000fd1   Thumb Code    16  timer0.o(i.Timer0A_Handler)
+    Timer1A_Handler                          0x00000fe9   Thumb Code    16  timer1.o(i.Timer1A_Handler)
+    getJoystickX                             0x000011e1   Thumb Code    34  adc_joystick.o(i.getJoystickX)
+    getJoystickY                             0x00001209   Thumb Code    34  adc_joystick.o(i.getJoystickY)
+    main                                     0x00001231   Thumb Code    48  spaceinvaders.o(i.main)
+    GRID_LENGTH                              0x000012e8   Data           1  systeminfo.o(.constdata)
+    GAME_BORDER_W                            0x000012e9   Data           1  systeminfo.o(.constdata)
+    GAME_BORDER_COLOR                        0x000012ea   Data           2  systeminfo.o(.constdata)
+    SCREEN_COLUMNS                           0x000012ec   Data           2  systeminfo.o(.constdata)
+    SCREEN_ROWS                              0x000012ee   Data           2  systeminfo.o(.constdata)
+    SCREEN_MID_COL                           0x000012f0   Data           1  systeminfo.o(.constdata)
+    SCREEN_MID_ROW                           0x000012f1   Data           1  systeminfo.o(.constdata)
+    dBfs                                     0x000018d4   Data         512  st7735.o(.constdata)
+    N                                        0x00001ad4   Data           1  field.o(.constdata)
+    G                                        0x00001ad5   Data           1  field.o(.constdata)
+    W                                        0x00001ad6   Data           1  field.o(.constdata)
+    fieldArray                               0x00001ad7   Data        2560  field.o(.constdata)
+    bulbasaur                                0x000024d8   Data        3200  drawscreen.o(.constdata)
+    bulbasaurFlipped                         0x00003158   Data        3200  drawscreen.o(.constdata)
+    charmander                               0x00003dd8   Data        3200  drawscreen.o(.constdata)
+    charmanderFlipped                        0x00004a58   Data        3200  drawscreen.o(.constdata)
+    squirtle                                 0x000056d8   Data        3200  drawscreen.o(.constdata)
+    squirtleFlipped                          0x00006358   Data        3200  drawscreen.o(.constdata)
+    playerFront                              0x00006fd8   Data         512  drawscreen.o(.constdata)
+    playerBack                               0x000071d8   Data         512  drawscreen.o(.constdata)
+    playerSide                               0x000073d8   Data         512  drawscreen.o(.constdata)
+    playerSideFlipped                        0x000075d8   Data         512  drawscreen.o(.constdata)
+    Region$$Table$$Base                      0x00007858   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00007878   Number         0  anon$$obj.o(Region$$Table)
     _width                                   0x20000000   Data           2  systeminfo.o(.data)
     _height                                  0x20000002   Data           2  systeminfo.o(.data)
     PeriodicTask0                            0x20000004   Data           4  timer0.o(.data)
@@ -856,9 +856,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00007894, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000078d0, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x0000783c, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00007878, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -929,67 +929,66 @@ Memory Map of the image
     0x0000063c   0x0000063c   0x00000020   Code   RO          223    i.Delay1ms          st7735.o
     0x0000065c   0x0000065c   0x00000022   Code   RO          504    i.DrawAllSprites    draw.o
     0x0000067e   0x0000067e   0x0000007c   Code   RO          505    i.DrawBorder        draw.o
-    0x000006fa   0x000006fa   0x00000052   Code   RO          508    i.DrawSelection     draw.o
-    0x0000074c   0x0000074c   0x0000001e   Code   RO          509    i.DrawSpriteImg     draw.o
-    0x0000076a   0x0000076a   0x00000034   Code   RO          510    i.DrawSpriteSelection  draw.o
-    0x0000079e   0x0000079e   0x00000002   PAD
-    0x000007a0   0x000007a0   0x000000fc   Code   RO          733    i.DrawTitleScreen   drawscreen.o
-    0x0000089c   0x0000089c   0x00000144   Code   RO          735    i.InitDrawScreen    drawscreen.o
-    0x000009e0   0x000009e0   0x00000010   Code   RO          226    i.Output_Init       st7735.o
-    0x000009f0   0x000009f0   0x0000007c   Code   RO          490    i.PLL_Init          pll.o
-    0x00000a6c   0x00000a6c   0x00000120   Code   RO          230    i.ST7735_DrawBitmap  st7735.o
-    0x00000b8c   0x00000b8c   0x000000f8   Code   RO          232    i.ST7735_DrawCharS  st7735.o
-    0x00000c84   0x00000c84   0x00000048   Code   RO          235    i.ST7735_DrawPixel  st7735.o
-    0x00000ccc   0x00000ccc   0x00000056   Code   RO          236    i.ST7735_DrawString  st7735.o
-    0x00000d22   0x00000d22   0x00000002   PAD
-    0x00000d24   0x00000d24   0x000000ac   Code   RO          237    i.ST7735_FillRect   st7735.o
-    0x00000dd0   0x00000dd0   0x00000024   Code   RO          238    i.ST7735_FillScreen  st7735.o
-    0x00000df4   0x00000df4   0x0000007c   Code   RO          240    i.ST7735_InitR      st7735.o
-    0x00000e70   0x00000e70   0x000000d4   Code   RO          242    i.ST7735_OutChar    st7735.o
-    0x00000f44   0x00000f44   0x00000018   Code   RO          243    i.ST7735_OutString  st7735.o
-    0x00000f5c   0x00000f5c   0x00000020   Code   RO          253    i.ST7735_SetCursor  st7735.o
-    0x00000f7c   0x00000f7c   0x0000000c   Code   RO          255    i.ST7735_SetTextColor  st7735.o
-    0x00000f88   0x00000f88   0x00000018   Code   RO          686    i.SysTick_Handler   adc_joystick.o
-    0x00000fa0   0x00000fa0   0x00000018   Code   RO          687    i.SysTick_Init      adc_joystick.o
-    0x00000fb8   0x00000fb8   0x00000018   Code   RO           75    i.Timer0A_Handler   timer0.o
-    0x00000fd0   0x00000fd0   0x00000018   Code   RO           96    i.Timer1A_Handler   timer1.o
-    0x00000fe8   0x00000fe8   0x00000056   Code   RO          257    i.commandList       st7735.o
-    0x0000103e   0x0000103e   0x00000002   PAD
-    0x00001040   0x00001040   0x00000188   Code   RO          258    i.commonInit        st7735.o
-    0x000011c8   0x000011c8   0x00000028   Code   RO          688    i.getJoystickX      adc_joystick.o
-    0x000011f0   0x000011f0   0x00000028   Code   RO          689    i.getJoystickY      adc_joystick.o
-    0x00001218   0x00001218   0x00000030   Code   RO          192    i.main              spaceinvaders.o
-    0x00001248   0x00001248   0x00000012   Code   RO          263    i.pushColor         st7735.o
-    0x0000125a   0x0000125a   0x00000002   PAD
-    0x0000125c   0x0000125c   0x00000074   Code   RO          264    i.setAddrWindow     st7735.o
-    0x000012d0   0x000012d0   0x0000000a   Data   RO           16    .constdata          systeminfo.o
-    0x000012da   0x000012da   0x000007e2   Data   RO          266    .constdata          st7735.o
-    0x00001abc   0x00001abc   0x00000a03   Data   RO          590    .constdata          field.o
-    0x000024bf   0x000024bf   0x00000001   PAD
-    0x000024c0   0x000024c0   0x0000535c   Data   RO          737    .constdata          drawscreen.o
-    0x0000781c   0x0000781c   0x00000020   Data   RO          948    Region$$Table       anon$$obj.o
+    0x000006fa   0x000006fa   0x0000004a   Code   RO          508    i.DrawSelection     draw.o
+    0x00000744   0x00000744   0x00000020   Code   RO          509    i.DrawSpriteImg     draw.o
+    0x00000764   0x00000764   0x00000034   Code   RO          510    i.DrawSpriteSelection  draw.o
+    0x00000798   0x00000798   0x000000fc   Code   RO          733    i.DrawTitleScreen   drawscreen.o
+    0x00000894   0x00000894   0x00000164   Code   RO          735    i.InitDrawScreen    drawscreen.o
+    0x000009f8   0x000009f8   0x00000010   Code   RO          226    i.Output_Init       st7735.o
+    0x00000a08   0x00000a08   0x0000007c   Code   RO          490    i.PLL_Init          pll.o
+    0x00000a84   0x00000a84   0x00000120   Code   RO          230    i.ST7735_DrawBitmap  st7735.o
+    0x00000ba4   0x00000ba4   0x000000f8   Code   RO          232    i.ST7735_DrawCharS  st7735.o
+    0x00000c9c   0x00000c9c   0x00000048   Code   RO          235    i.ST7735_DrawPixel  st7735.o
+    0x00000ce4   0x00000ce4   0x00000056   Code   RO          236    i.ST7735_DrawString  st7735.o
+    0x00000d3a   0x00000d3a   0x00000002   PAD
+    0x00000d3c   0x00000d3c   0x000000ac   Code   RO          237    i.ST7735_FillRect   st7735.o
+    0x00000de8   0x00000de8   0x00000024   Code   RO          238    i.ST7735_FillScreen  st7735.o
+    0x00000e0c   0x00000e0c   0x0000007c   Code   RO          240    i.ST7735_InitR      st7735.o
+    0x00000e88   0x00000e88   0x000000d4   Code   RO          242    i.ST7735_OutChar    st7735.o
+    0x00000f5c   0x00000f5c   0x00000018   Code   RO          243    i.ST7735_OutString  st7735.o
+    0x00000f74   0x00000f74   0x00000020   Code   RO          253    i.ST7735_SetCursor  st7735.o
+    0x00000f94   0x00000f94   0x0000000c   Code   RO          255    i.ST7735_SetTextColor  st7735.o
+    0x00000fa0   0x00000fa0   0x00000018   Code   RO          686    i.SysTick_Handler   adc_joystick.o
+    0x00000fb8   0x00000fb8   0x00000018   Code   RO          687    i.SysTick_Init      adc_joystick.o
+    0x00000fd0   0x00000fd0   0x00000018   Code   RO           75    i.Timer0A_Handler   timer0.o
+    0x00000fe8   0x00000fe8   0x00000018   Code   RO           96    i.Timer1A_Handler   timer1.o
+    0x00001000   0x00001000   0x00000056   Code   RO          257    i.commandList       st7735.o
+    0x00001056   0x00001056   0x00000002   PAD
+    0x00001058   0x00001058   0x00000188   Code   RO          258    i.commonInit        st7735.o
+    0x000011e0   0x000011e0   0x00000028   Code   RO          688    i.getJoystickX      adc_joystick.o
+    0x00001208   0x00001208   0x00000028   Code   RO          689    i.getJoystickY      adc_joystick.o
+    0x00001230   0x00001230   0x00000030   Code   RO          192    i.main              spaceinvaders.o
+    0x00001260   0x00001260   0x00000012   Code   RO          263    i.pushColor         st7735.o
+    0x00001272   0x00001272   0x00000002   PAD
+    0x00001274   0x00001274   0x00000074   Code   RO          264    i.setAddrWindow     st7735.o
+    0x000012e8   0x000012e8   0x0000000a   Data   RO           16    .constdata          systeminfo.o
+    0x000012f2   0x000012f2   0x000007e2   Data   RO          266    .constdata          st7735.o
+    0x00001ad4   0x00001ad4   0x00000a03   Data   RO          590    .constdata          field.o
+    0x000024d7   0x000024d7   0x00000001   PAD
+    0x000024d8   0x000024d8   0x00005380   Data   RO          737    .constdata          drawscreen.o
+    0x00007858   0x00007858   0x00000020   Data   RO          948    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x0000783c, Size: 0x00000058, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00007878, Size: 0x00000058, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x0000783c   0x00000004   Data   RW           17    .data               systeminfo.o
-    0x20000004   0x00007840   0x00000004   Data   RW           77    .data               timer0.o
-    0x20000008   0x00007844   0x00000004   Data   RW           98    .data               timer1.o
-    0x2000000c   0x00007848   0x00000028   Data   RW          267    .data               st7735.o
-    0x20000034   0x00007870   0x00000008   Data   RW          690    .data               adc_joystick.o
-    0x2000003c   0x00007878   0x00000018   Data   RW          738    .data               drawscreen.o
-    0x20000054   0x00007890   0x00000004   Data   RW           12    DATA                random.o
+    0x20000000   0x00007878   0x00000004   Data   RW           17    .data               systeminfo.o
+    0x20000004   0x0000787c   0x00000004   Data   RW           77    .data               timer0.o
+    0x20000008   0x00007880   0x00000004   Data   RW           98    .data               timer1.o
+    0x2000000c   0x00007884   0x00000028   Data   RW          267    .data               st7735.o
+    0x20000034   0x000078ac   0x00000008   Data   RW          690    .data               adc_joystick.o
+    0x2000003c   0x000078b4   0x00000018   Data   RW          738    .data               drawscreen.o
+    0x20000054   0x000078cc   0x00000004   Data   RW           12    DATA                random.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000058, Load base: 0x00007894, Size: 0x00000480, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000058, Load base: 0x000078d0, Size: 0x00000480, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000058        -       0x0000001c   Zero   RW          736    .bss                drawscreen.o
     0x20000074        -       0x00000060   Zero   RW          822    .bss                c_w.l(libspace.o)
-    0x200000d4   0x00007894   0x00000004   PAD
+    0x200000d4   0x000078d0   0x00000004   PAD
     0x200000d8        -       0x00000000   Zero   RW            2    HEAP                startup.o
     0x200000d8        -       0x00000400   Zero   RW            1    STACK               startup.o
 
@@ -1002,8 +1001,8 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        404         46          0          8          0       3222   adc_joystick.o
-       358          6          0          0          0       4425   draw.o
-       576        120      21340         24         28       4605   drawscreen.o
+       352          6          0          0          0       4445   draw.o
+       608        118      21376         24         28       4625   drawscreen.o
          0          0       2563          0          0        603   field.o
         72         12          0          0          0        228   lcd.o
        124          4          0          0          0        439   pll.o
@@ -1016,9 +1015,9 @@ Image component sizes
         24          8          0          4          0        902   timer1.o
 
     ----------------------------------------------------------------------
-      4360       1042      25964         88       1052      36345   Object Totals
+      4384       1040      26000         88       1052      36385   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         8          0          1          0          0          0   (incl. Padding)
+         6          0          1          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1067,15 +1066,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      4816       1058      25964         88       1152      35213   Grand Totals
-      4816       1058      25964         88       1152      35213   ELF Image Totals
-      4816       1058      25964         88          0          0   ROM Totals
+      4840       1056      26000         88       1152      35253   Grand Totals
+      4840       1056      26000         88       1152      35253   ELF Image Totals
+      4840       1056      26000         88          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                30780 (  30.06kB)
+    Total RO  Size (Code + RO Data)                30840 (  30.12kB)
     Total RW  Size (RW Data + ZI Data)              1240 (   1.21kB)
-    Total ROM Size (Code + RO Data + RW Data)      30868 (  30.14kB)
+    Total ROM Size (Code + RO Data + RW Data)      30928 (  30.20kB)
 
 ==============================================================================
 

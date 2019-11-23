@@ -16,10 +16,10 @@ struct Player {
 	uint32_t YPos;
 	//PokemonInstType *PokemonTeam;
 	
-	const SpriteType *sprite;
-	const SpriteType *spriteFront;
-	const SpriteType *spriteBack;
-	const SpriteType *spriteSide;
+	SpriteType *sprite;
+	SpriteType *spriteFront;
+	SpriteType *spriteBack;
+	SpriteType *spriteSide;
 	uint8_t spriteFlip;
 };
 
