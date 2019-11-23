@@ -83,17 +83,21 @@ SpriteSelectType starter;
 FieldType mainField = {fieldArray, 64, 40, 0, 0};
 
 int main(void){
-  DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
   
+	ADC_Init89();
+	ST7735_InitR(INITR_REDTAB);
+	SysTick_Init();
+  EnableInterrupts();
+	
 	ST7735_FillScreen(0xFFFF);
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	SpriteInstanceType poke1 = {2, 130, Bulbasaur};
-  SpriteInstanceType poke2 = {42, 130, Charmander};
-  SpriteInstanceType poke3 = {84, 130, Squirtle};
+  SpriteInstanceType poke2 = {44, 130, Charmander};
+  SpriteInstanceType poke3 = {86, 130, Squirtle};
   SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	starter = (SpriteSelectType) {starters, 3, 1};
 	
@@ -102,8 +106,9 @@ int main(void){
 	
 	//ST7735_DrawBitmap(0, 0xA0, BackgroundStuff, 0x80, 0xA0);
 	
+	DrawAllSprites(starter.sprites, starter.spriteArrayLength);
+	
 	while(1){
-		//ST7735_FillScreen(0xFFFF);   
 		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
 		//ST7735_FillRect(0, 160-y, 128-x, y, 0x6FFF);
 		//ST7735_FillRect(128-x, 160-y, 128-x, 160-y, 0x00FF);
@@ -116,34 +121,42 @@ int main(void){
 		//ST7735_OutString("Welcome, newbie.");
 		//ST7735_SetCursor(1, 4);
 		//ST7735_OutString("Please select your Pokemon");
-		//DrawStartScreen(&starter);
+		
 		//x+=3;
 		//y+=2;
-		MoveRight(&p1);
-		DrawField(p1, mainField);
+		//while(ADCStatus == 0){}
+			
+		uint8_t xDir = getJoystickX();
+		uint8_t yDir = getJoystickY();
+		
+		if(xDir == 2){
+			starter.currentIndex = (starter.currentIndex + 1)%3;
+		}else if(xDir == 0){
+			starter.currentIndex = starter.currentIndex - 1;
+			if(starter.currentIndex < 0) starter.currentIndex = 2;
+		}
+			
+		DrawSelection(&starter, 0x0000, 0xFFFF, 2);
+			
+		//if(xDir == 0){
+			//MoveLeft(&p1);
+		//}else if(xDir == 2){
+			//MoveRight(&p1);
+		//}else if(yDir == 0){
+			//MoveUp(&p1);
+		//}else if(yDir == 2){
+			//MoveDown(&p1);
+		//}
+		
+		//DrawField(p1, mainField);
+		ADCStatus = 0;
 		
 		//DrawSpriteImgPlayer(p1);
 		//p1.XPos++;
 		//DrawSpriteImg()
 		//mainField.XPos ++;
 		//p1.XPos++;
-		Delay100ms(5);
-		
-		MoveDown(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveDown(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveUp(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveRight(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
+		Delay100ms(2);
   }
 
 }
