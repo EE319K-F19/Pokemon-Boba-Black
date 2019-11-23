@@ -134,3 +134,21 @@ uint32_t getJoystickY(void){
 		return 1; // center
 	}
 }
+
+int Joystick_main(void){
+	//PLL_Init(Bus80MHz);
+	ADC_Init89();
+	ST7735_InitR(INITR_REDTAB);
+	SysTick_Init();
+  //EnableInterrupts();
+	while(1){
+		while(ADCStatus == 0){}
+		ST7735_SetCursor(0,0);
+		ST7735_OutString("X direction: ");
+		LCD_OutDec(getJoystickX());
+		ST7735_OutString("\n");
+		ST7735_OutString("Y direction: ");
+		LCD_OutDec(getJoystickY());
+		ADCStatus = 0;
+	}
+}
