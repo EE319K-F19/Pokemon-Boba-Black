@@ -3,6 +3,7 @@
 #define _FIELDH_
 
 #include <stdint.h>
+#include "Player.h"
 
 extern const uint8_t N; //normal
 extern const uint8_t G; //grass
@@ -10,7 +11,7 @@ extern const uint8_t W; //water
 
 typedef struct Field FieldType;
 
-void DrawField(FieldType field);
+void DrawField(PlayerType player, FieldType field);
 uint32_t GetMidGrid(void);
 struct Field {
 	const uint8_t *FieldArray;

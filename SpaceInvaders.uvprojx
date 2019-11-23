@@ -448,11 +448,6 @@
               <FilePath>.\ST7735.c</FilePath>
             </File>
             <File>
-              <FileName>SpaceInvaders.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SpaceInvaders.h</FilePath>
-            </File>
-            <File>
               <FileName>PLL.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\PLL.c</FilePath>
@@ -508,14 +503,14 @@
               <FilePath>.\Player.h</FilePath>
             </File>
             <File>
-              <FileName>Battle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Battle.c</FilePath>
-            </File>
-            <File>
               <FileName>Player.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Player.c</FilePath>
+            </File>
+            <File>
+              <FileName>Battle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Battle.c</FilePath>
             </File>
             <File>
               <FileName>Shop.h</FileName>

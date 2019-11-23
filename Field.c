@@ -3,24 +3,24 @@
 #include "ST7735.h"
 #include "Field.h"
 #include "SystemInfo.h"
+#include "Draw.h"
 
 const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
 
-void DrawField(FieldType field){
+uint32_t* currentScreenArray;
+
+void DrawField(PlayerType player, FieldType field){
 	
-	uint32_t grid_rows = GetScreenRows();
-	uint32_t grid_columns = GetScreenColumns();	
-	
-	for(int i=field.YPos; i<grid_rows+field.YPos; i++){
-		for(int j=field.XPos; j<grid_columns+field.XPos; j++){
+	for(int i=player.YPos-SCREEN_MID_ROW; i<=SCREEN_MID_ROW+player.YPos; i++){
+		for(int j=player.XPos-SCREEN_MID_COL; j<=SCREEN_MID_COL+player.XPos; j++){			
 			uint8_t fieldType = field.FieldArray[i*field.FieldWidth+j];
 			uint32_t fieldColor = ST7735_WHITE;
 			if(fieldType == N) fieldColor = 0x4A5A;
 			else if(fieldType == W) fieldColor = 0xEFC7;
 			else if(fieldType == G) fieldColor = 0x9F8F;
-			ST7735_FillRect((j-field.XPos)*GRID_LENGTH, (i-field.YPos)*GRID_LENGTH, GRID_LENGTH, GRID_LENGTH, fieldColor);
+			DrawGridFill(j, i, fieldColor);
 		}
 	}
 }

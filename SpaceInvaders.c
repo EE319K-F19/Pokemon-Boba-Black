@@ -56,25 +56,27 @@
 #include "PLL.h"
 #include "ADC.h"
 #include "ImagesPokemon.h"
+#include "ImagesOther.h"
 #include "Sound.h"
 #include "Timer0.h"
 #include "Timer1.h"
 
 #include "Battle.h"
 #include "Field.h"
-#include "Player.h"
-#include "SpaceInvaders.h"
 #include "SystemInfo.h"
+
+void DisableInterrupts(void); // Disable interrupts
+void EnableInterrupts(void);  // Enable interrupts
 
 const SpriteType Bulbasaur = {bulbasaur, 40, 40};
 const SpriteType Charmander = {charmander, 40, 40};
 const SpriteType Squirtle = {squirtle, 40, 40};
-const SpriteType PlayerSprite = {player, 16, 16};
-PlayerType p1 = {0, 0, &PlayerSprite};
 
-SpriteInstanceType *sprites;
-uint32_t x = 0;
-uint32_t y = 0;
+const SpriteType PlayerFront = {playerFront, 16, 16};
+const SpriteType PlayerBack = {playerBack, 16, 16};
+const SpriteType PlayerSide = {playerSide, 16, 16};
+
+PlayerType p1;
 
 SpriteSelectType starter;
 FieldType mainField = {fieldArray, 64, 40, 0, 0};
@@ -83,63 +85,22 @@ int main(void){
   DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
-
   Output_Init();
-  ST7735_FillScreen(0x0000);            // set screen to white
   
-	//ST7735_SetCursor(1, 1);
-  //ST7735_OutString("Pokemon");
-	//ST7735_SetCursor(1, 2);
-  //ST7735_OutString("Andy & Iris");
-	
-	//ST7735_SetCursor(1, 3);
-  //ST7735_OutString("Welcome, newbie.");
-	//ST7735_SetCursor(1, 4);
-  //ST7735_OutString("Please select your Pokemon");
-	
-  //ST7735_DrawBitmap(52, 159, ns, 18,8); // player ship middle bottom
-  //ST7735_DrawBitmap(53, 151, Bunker0, 18,5);
-
-  //ST7735_DrawBitmap(0, 9, SmallEnemy10pointA, 16,10);
-  //ST7735_DrawBitmap(20,9, SmallEnemy10pointB, 16,10);
-  //ST7735_DrawBitmap(40, 9, SmallEnemy20pointA, 16,10);
-  //ST7735_DrawBitmap(60, 9, SmallEnemy20pointB, 16,10);
-  //ST7735_DrawBitmap(80, 9, SmallEnemy30pointA, 16,10);
-  //ST7735_DrawBitmap(100, 9, SmallEnemy30pointB, 16,10);	
-	
-  //Delay100ms(50);              // delay 5 sec at 80 MHz
-
-  //ST7735_FillScreen(0x0000);            // set screen to black
-  //ST7735_SetCursor(1, 1);
-  //ST7735_OutString("GAME OVER");
-  //ST7735_SetCursor(1, 2);
-  //ST7735_OutString("Nice try,");
-  //ST7735_SetCursor(1, 3);
-  //ST7735_OutString("Earthling!");
-  //ST7735_SetCursor(2, 4);
-  //LCD_OutDec(1234);
-  
-	//uint32_t topleft = 0xBFAF;
-	//uint32_t botright = 0xB15F;
-	
-	//for(int i=0; i<30000; i++){
-		//int column = i%150;
-		//int row = i/200;
-		//BackgroundStuff[i] = topleft + 
-			//((botright&0x0100)-(topleft&0x0100))*column/80 +
-		  //((botright&0x0010)-(topleft&0x0010))*row/80;
-	//}
-	
+	ST7735_FillScreen(0xFFFF);
+	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	SpriteInstanceType poke1 = {2, 130, Bulbasaur};
   SpriteInstanceType poke2 = {42, 130, Charmander};
   SpriteInstanceType poke3 = {84, 130, Squirtle};
   SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	starter = (SpriteSelectType) {starters, 3, 1};
+	
+	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront};
 	//DrawSpriteImg(poke1);
 	
 	//ST7735_DrawBitmap(0, 0xA0, BackgroundStuff, 0x80, 0xA0);
-	
+	DrawField(p1, mainField);
 	while(1){
 		//ST7735_FillScreen(0xFFFF);   
 		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
@@ -158,13 +119,13 @@ int main(void){
 		//x+=3;
 		//y+=2;
 		
-		DrawField(mainField);
-		DrawSpriteImgPlayer(p1);
+		
+		//DrawSpriteImgPlayer(p1);
 		//p1.XPos++;
 		//DrawSpriteImg()
 		//mainField.XPos ++;
-		p1.XPos++;
-		Delay100ms(5);
+		//p1.XPos++;
+		//Delay100ms(5);
   }
 
 }

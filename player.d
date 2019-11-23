@@ -1,1 +1,7 @@
 .\player.o: Player.c
+.\player.o: Player.h
+.\player.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\player.o: ST7735.h
+.\player.o: Pokemon.h
+.\player.o: Draw.h
+.\player.o: PokemonType.h
