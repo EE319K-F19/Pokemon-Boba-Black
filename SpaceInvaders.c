@@ -96,11 +96,11 @@ int main(void){
   SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	starter = (SpriteSelectType) {starters, 3, 1};
 	
-	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront};
+	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, 0};
 	//DrawSpriteImg(poke1);
 	
 	//ST7735_DrawBitmap(0, 0xA0, BackgroundStuff, 0x80, 0xA0);
-	DrawField(p1, mainField);
+	
 	while(1){
 		//ST7735_FillScreen(0xFFFF);   
 		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
@@ -118,14 +118,31 @@ int main(void){
 		//DrawStartScreen(&starter);
 		//x+=3;
 		//y+=2;
-		
+		MoveRight(&p1);
+		DrawField(p1, mainField);
 		
 		//DrawSpriteImgPlayer(p1);
 		//p1.XPos++;
 		//DrawSpriteImg()
 		//mainField.XPos ++;
 		//p1.XPos++;
-		//Delay100ms(5);
+		Delay100ms(5);
+		
+		MoveDown(&p1);
+		DrawField(p1, mainField);
+		Delay100ms(5);
+		
+		MoveDown(&p1);
+		DrawField(p1, mainField);
+		Delay100ms(5);
+		
+		MoveUp(&p1);
+		DrawField(p1, mainField);
+		Delay100ms(5);
+		
+		MoveRight(&p1);
+		DrawField(p1, mainField);
+		Delay100ms(5);
   }
 
 }

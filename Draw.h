@@ -20,6 +20,7 @@ void DrawSpriteImg(SpriteInstanceType sprite);
 void DrawSpriteSelection(SpriteInstanceType sprite, uint8_t width, uint16_t color);
 void DrawSpriteSelectionDefault(SpriteInstanceType sprite);
 void DrawGridFill(uint8_t column, uint8_t row, uint16_t color);
+void DrawGridSprite(uint8_t column, uint8_t row, SpriteType sprite);
 void nextIndex(SpriteSelectType *selectType);
 
 struct Sprite {

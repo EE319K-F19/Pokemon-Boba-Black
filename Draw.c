@@ -17,7 +17,7 @@ void DrawBorder(uint16_t itemX, uint16_t itemY, uint16_t itemW, uint16_t itemH, 
 }
 
 void DrawGridSprite(uint8_t column, uint8_t row, SpriteType sprite){
-	ST7735_DrawBitmap(GetGridX(column), GetGridY(row), sprite.image, sprite.width, sprite.height);
+	ST7735_DrawBitmap(GetGridX(column), GetGridY(row+1)-1, sprite.image, sprite.width, sprite.height);
 }
 
 void DrawGridFill(uint8_t column, uint8_t row, uint16_t color){

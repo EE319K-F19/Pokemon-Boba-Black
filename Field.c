@@ -9,18 +9,23 @@ const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
 
-uint32_t* currentScreenArray;
-
 void DrawField(PlayerType player, FieldType field){
 	
-	for(int i=player.YPos-SCREEN_MID_ROW; i<=SCREEN_MID_ROW+player.YPos; i++){
-		for(int j=player.XPos-SCREEN_MID_COL; j<=SCREEN_MID_COL+player.XPos; j++){			
-			uint8_t fieldType = field.FieldArray[i*field.FieldWidth+j];
-			uint32_t fieldColor = ST7735_WHITE;
+	for(int i=0; i<SCREEN_ROWS; i++){
+		for(int j=0; j<SCREEN_COLUMNS; j++){
+			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
+			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
+			
+			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
+			uint16_t fieldColor = ST7735_WHITE;
 			if(fieldType == N) fieldColor = 0x4A5A;
 			else if(fieldType == W) fieldColor = 0xEFC7;
 			else if(fieldType == G) fieldColor = 0x9F8F;
 			DrawGridFill(j, i, fieldColor);
+			
+			if(player.XPos == screenCol && player.YPos == screenRow){
+				DrawGridSprite(j, i, *player.sprite);
+			}
 		}
 	}
 }
