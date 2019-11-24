@@ -63,13 +63,15 @@
 #include "DrawScreen.h"
 #include "Battle.h"
 #include "Field.h"
-#include "ImagesOther.h"
+// #include "ImagesOther.h"
 #include "SystemInfo.h"
 #include "ImagesPokemon.h"
 #include "Draw.h"
 #include "SpaceInvaders.h"
+#include "Shop.h"
+#include "Player.h"
 
-uint8_t ADCStatus = 0;
+uint8_t ADCStatus;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
@@ -94,10 +96,10 @@ int main(void){
 	//SpriteType Charmander = {charmander, 40, 40, 0};
 	//SpriteType Squirtle = {squirtle, 40, 40, 0};
 	
-	SpriteType PlayerFront = {playerFront, 16, 16};
-	SpriteType PlayerBack = {playerBack, 16, 16};
-	SpriteType PlayerSide = {playerSide, 16, 16};
-	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0};
+//	SpriteType PlayerFront = {playerFront, 16, 16};
+//	SpriteType PlayerBack = {playerBack, 16, 16};
+//	SpriteType PlayerSide = {playerSide, 16, 16};
+//	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0};
 	
 	SpriteType bulbasaurS = {bulbasaur, 40, 40};
 	SpriteType squirtleS = {squirtle, 40, 40};
@@ -194,6 +196,7 @@ uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h){
 	reverseImage = newimage;
 	return reverseImage;
 }
+
 
 void DrawTitleScreen(SpriteSelectType starterScreen){
 	ST7735_FillScreen(0xFFFF);

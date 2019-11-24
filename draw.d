@@ -5,3 +5,7 @@
 .\draw.o: Draw.h
 .\draw.o: SpaceInvaders.h
 .\draw.o: PokemonType.h
+.\draw.o: Shop.h
+.\draw.o: Player.h
+.\draw.o: SpaceInvaders.h
+.\draw.o: Shop.h

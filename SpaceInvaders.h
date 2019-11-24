@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include "Draw.h"
 #include "PokemonType.h"
+#include "Shop.h"
 
 typedef struct Pokemon PokemonType;
 typedef struct PokemonInst PokemonInstType;
@@ -34,6 +35,8 @@ extern PokemonType CharmanderT;
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
+
+// void DrawShopScreen(SpriteSelectType shopScreen, const ItemInstType shopItems[3]);
 
 void DrawTitleScreen(SpriteSelectType starterScreen);
 void DrawWorld(void);
