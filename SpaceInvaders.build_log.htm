@@ -38,8 +38,23 @@ SpaceInvaders.c(141): warning:  #177-D: variable "length"  was declared but neve
   	uint16_t length = w*h;
 SpaceInvaders.c: 4 warnings, 0 errors
 linking...
+
+.\SpaceInvaders.axf: Error: L6200E: Symbol playerFront multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol playerBack multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol playerSide multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol playerSideFlipped multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol pokeball multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol healthPotion multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol heart multiply defined (by shop.o and spaceinvaders.o).
+.\SpaceInvaders.axf: Error: L6200E: Symbol coin multiply defined (by shop.o and spaceinvaders.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 8 error messages.
+".\SpaceInvaders.axf" - 8 Error(s), 2 Warning(s).
+
 Program Size: Code=4980 RO-data=26252 RW-data=84 ZI-data=1276  
 ".\SpaceInvaders.axf" - 0 Error(s), 4 Warning(s).
+
 
 <h2>Software Packages used:</h2>
 
@@ -62,6 +77,9 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
+
+Target not created.
+
 Build Time Elapsed:  00:00:01
 </pre>
 </body>

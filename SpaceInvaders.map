@@ -16,6 +16,41 @@ Section Cross References
     startup.o(.text) refers to startup.o(HEAP) for HeapMem
     startup.o(.text) refers to startup.o(STACK) for StackMem
     random.o(.text) refers to random.o(DATA) for M
+
+    timer0.o(i.Timer0A_Handler) refers to timer0.o(.data) for PeriodicTask0
+    timer0.o(i.Timer0_Init) refers to timer0.o(.data) for PeriodicTask0
+    timer1.o(i.Timer1A_Handler) refers to timer1.o(.data) for PeriodicTask1
+    timer1.o(i.Timer1_Init) refers to timer1.o(.data) for PeriodicTask1
+    sound.o(i.Sound_Highpitch) refers to dac.o(i.DAC_Out) for DAC_Out
+    sound.o(i.Sound_Highpitch) refers to sound.o(.constdata) for highpitch
+    sound.o(i.Sound_Highpitch) refers to sound.o(.data) for idx
+    sound.o(i.Sound_Init) refers to dac.o(i.DAC_Init) for DAC_Init
+    sound.o(i.Sound_Init) refers to timer0.o(i.Timer0_Init) for Timer0_Init
+    sound.o(i.Sound_Init) refers to sound.o(i.Sound_Highpitch) for Sound_Highpitch
+    sound.o(i.sound_main) refers to sound.o(i.Sound_Init) for Sound_Init
+    sound.o(i.sound_main) refers to sound.o(.data) for portEDataPE3
+    print.o(.text) refers (Special) to st7735.o(i.ST7735_OutString) for ST7735_OutString
+    print.o(.text) refers to st7735.o(i.ST7735_OutChar) for ST7735_OutChar
+    spaceinvaders.o(i.main) refers to startup.o(.text) for DisableInterrupts
+    spaceinvaders.o(i.main) refers to pll.o(i.PLL_Init) for PLL_Init
+    spaceinvaders.o(i.main) refers to random.o(.text) for Random_Init
+    spaceinvaders.o(i.main) refers to st7735.o(i.Output_Init) for Output_Init
+    spaceinvaders.o(i.main) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
+    spaceinvaders.o(i.main) refers to draw.o(i.DrawBorder) for DrawBorder
+    spaceinvaders.o(i.main) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    spaceinvaders.o(i.main) refers to player.o(i.MoveRight) for MoveRight
+    spaceinvaders.o(i.main) refers to field.o(i.DrawField) for DrawField
+    spaceinvaders.o(i.main) refers to draw.o(i.Delay100ms) for Delay100ms
+    spaceinvaders.o(i.main) refers to player.o(i.MoveDown) for MoveDown
+    spaceinvaders.o(i.main) refers to player.o(i.MoveUp) for MoveUp
+    spaceinvaders.o(i.main) refers to systeminfo.o(.constdata) for GAME_BORDER_COLOR
+    spaceinvaders.o(i.main) refers to systeminfo.o(.data) for _height
+    spaceinvaders.o(i.main) refers to spaceinvaders.o(.constdata) for .constdata
+    spaceinvaders.o(i.main) refers to spaceinvaders.o(.data) for starter
+    spaceinvaders.o(i.main) refers to spaceinvaders.o(.bss) for p1
+    spaceinvaders.o(.constdata) refers to shop.o(.constdata) for playerFront
+    spaceinvaders.o(.data) refers to field.o(.constdata) for fieldArray
+
     st7735.o(i.Output_Clear) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     st7735.o(i.Output_Color) refers to st7735.o(i.ST7735_SetTextColor) for ST7735_SetTextColor
     st7735.o(i.Output_Init) refers to st7735.o(i.ST7735_InitR) for ST7735_InitR
@@ -169,6 +204,22 @@ Section Cross References
     field.o(i.DrawField) refers to draw.o(i.DrawGridFill) for DrawGridFill
     field.o(i.DrawField) refers to systeminfo.o(.constdata) for SCREEN_MID_COL
     player.o(i.DrawSpriteImgPlayer) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
+
+    shop.o(i.displayShop) refers to draw.o(i.DrawSpriteSelectionDefault) for DrawSpriteSelectionDefault
+    shop.o(i.displayShop) refers to draw.o(i.DrawSpriteImg) for DrawSpriteImg
+    shop.o(i.displayShop) refers to draw.o(i.nextIndex) for nextIndex
+    shop.o(i.displayShop) refers to draw.o(i.Delay10ms) for Delay10ms
+    shop.o(.constdata) refers to spaceinvaders.o(.constdata) for healthPotion
+    adc_joystick.o(i.Joystick_main) refers to adc_joystick.o(i.ADC_Init89) for ADC_Init89
+    adc_joystick.o(i.Joystick_main) refers to st7735.o(i.ST7735_InitR) for ST7735_InitR
+    adc_joystick.o(i.Joystick_main) refers to adc_joystick.o(i.SysTick_Init) for SysTick_Init
+    adc_joystick.o(i.Joystick_main) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    adc_joystick.o(i.Joystick_main) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
+    adc_joystick.o(i.Joystick_main) refers to adc_joystick.o(i.getJoystickX) for getJoystickX
+    adc_joystick.o(i.Joystick_main) refers to print.o(.text) for LCD_OutDec
+    adc_joystick.o(i.Joystick_main) refers to adc_joystick.o(i.getJoystickY) for getJoystickY
+    adc_joystick.o(i.Joystick_main) refers to spaceinvaders.o(.data) for ADCStatus
+
     adc_joystick.o(i.SysTick_Handler) refers to adc_joystick.o(i.ADC_In89) for ADC_In89
     adc_joystick.o(i.SysTick_Handler) refers to adc_joystick.o(.data) for joystickData
     adc_joystick.o(i.SysTick_Handler) refers to spaceinvaders.o(.data) for ADCStatus
@@ -1229,4 +1280,5 @@ Image component sizes
     Total ROM Size (Code + RO Data + RW Data)      31316 (  30.58kB)
 
 ==============================================================================
+
 
