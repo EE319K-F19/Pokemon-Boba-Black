@@ -3,7 +3,7 @@
 .\field.o: ST7735.h
 .\field.o: Field.h
 .\field.o: Player.h
-.\field.o: Pokemon.h
+.\field.o: SpaceInvaders.h
 .\field.o: Draw.h
 .\field.o: PokemonType.h
 .\field.o: SystemInfo.h

@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include "ST7735.h"
 
-#include "Pokemon.h"
+#include "SpaceInvaders.h"
 
 typedef struct Item ItemType;
 typedef struct ItemInventory ItemInventoryType;

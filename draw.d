@@ -3,3 +3,5 @@
 .\draw.o: ST7735.h
 .\draw.o: SystemInfo.h
 .\draw.o: Draw.h
+.\draw.o: SpaceInvaders.h
+.\draw.o: PokemonType.h
