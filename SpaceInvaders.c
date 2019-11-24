@@ -83,6 +83,20 @@ static PokemonType CharmanderT;
 uint16_t* reverseImage;
 
 int main(void){
+	PLL_Init(Bus80MHz);
+	Sound_Init();
+	ADC_Init89();
+	EnableInterrupts();
+	while(1){
+		Sound_Highpitch();
+		//ST7735_SetCursor(0,0);
+		//ST7735_OutString("SW: ");
+		//LCD_OutDec(portEDataPE3);
+		// ST7735_OutString("\n");
+	}
+}
+
+int main1(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
