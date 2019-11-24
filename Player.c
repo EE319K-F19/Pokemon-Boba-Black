@@ -19,7 +19,7 @@ void MoveDown(PlayerType *player){
 
 void MoveLeft(PlayerType *player){
 	player->spriteSide->reverse = 1;
-	player->sprite = player->spriteLeft;
+	player->sprite = player->spriteSide;
 	player->XPos --;
 }
 

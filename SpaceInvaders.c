@@ -66,7 +66,6 @@
 #include "Field.h"
 #include "ImagesOther.h"
 #include "SystemInfo.h"
-#include "Pokemon.h"
 
 
 void DisableInterrupts(void); // Disable interrupts
@@ -75,15 +74,12 @@ void EnableInterrupts(void);  // Enable interrupts
 void DrawTitleScreen(void);
 void DrawWorld(void);
 void InitDrawScreen(void);
-uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h);
 
 uint8_t ADCStatus = 0;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
 static SpriteSelectType starterScreen;
-
-uint16_t* reverseImage;
 
 int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
@@ -94,12 +90,11 @@ int main(void){
 	ST7735_InitR(INITR_REDTAB);
 	SysTick_Init();
   EnableInterrupts();
-	InitPokemon();
 	
 	SpriteType Bulbasaur = {bulbasaur, 40, 40, 0};
 	SpriteType Charmander = {charmander, 40, 40, 0};
 	SpriteType Squirtle = {squirtle, 40, 40, 0};
-	
+
 	SpriteType PlayerFront = {playerFront, 16, 16, 0};
 	SpriteType PlayerBack = {playerBack, 16, 16, 0};
 	SpriteType PlayerSide = {playerSide, 16, 16, 0};
@@ -110,37 +105,9 @@ int main(void){
   SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	starterScreen = (SpriteSelectType) {starters, 3, 1};
 	
-	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0};
+	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, 0};
 	
-	//DrawWorld();
-	
-	//battle screen
-	//ST7735_FillScreen(0xFFFF);
-	
-	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
-	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
-	
-}
-
-void DrawPokemon(PokemonInstType pokeInst){
-	//ST7735_DrawBitmap(pokeInst.xPos, pokeInst.yPos+pokeInst.species.sprite.height-1, 
-}
-
-uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h){
-	uint16_t newimage[w*h];
-	
-	uint16_t length = w*h;
-	for(uint8_t i=0; i<h; i++){
-			for(uint8_t j=0; j<w; j++){
-				uint16_t front = i*w + j;
-				uint16_t back = (i+1)*w - j;
-				uint16_t temp = image[back];
-				newimage[back] = image[front];
-				newimage[front] = image[back];
-			}
-	}
-	reverseImage = newimage;
-	return reverseImage;
+	DrawWorld();
 }
 
 void DrawTitleScreen(){
