@@ -38,6 +38,7 @@ void EnableInterrupts(void);  // Enable interrupts
 void DrawTitleScreen(SpriteSelectType starterScreen);
 void DrawWorld(void);
 void InitDrawScreen(void);
+void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
 uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h);
 
 #endif

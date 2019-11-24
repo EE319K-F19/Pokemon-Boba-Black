@@ -85,9 +85,9 @@ int main(void){
   Random_Init(1);
   Output_Init();
   
-	ADC_Init89();
-	ST7735_InitR(INITR_REDTAB);
-	SysTick_Init();
+	//ADC_Init89();
+	//ST7735_InitR(INITR_REDTAB);
+	//SysTick_Init();
   EnableInterrupts();
 	
 	//SpriteType Bulbasaur = {bulbasaur, 40, 40, 0};
@@ -112,18 +112,22 @@ int main(void){
   //SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	//starterScreen = (SpriteSelectType) {starters, 3, 1};
 	
+	//PokemonInstType BulbasaurStart = {2, 130, BulbasaurT.mhealth, BulbasaurT};
+	//PokemonInstType SquirtleStart = {44, 130, SquirtleT.mhealth, SquirtleT};
+	PokemonInstType CharmanderStart = {86, 130, CharmanderT.mhealth, CharmanderT};
+	
 	PokemonInstType BulbasaurStart = {2, 90, BulbasaurT.mhealth, BulbasaurT};
-	PokemonInstType SquirtleStart = {44, 90, SquirtleT.mhealth, SquirtleT};
-	PokemonInstType CharmanderStart = {86, 90, CharmanderT.mhealth, CharmanderT};
+	PokemonInstType SquirtleStart = {86, 90, SquirtleT.mhealth, SquirtleT};
 	           
 	const SpriteInstType starterInsts[3] = {
-		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos+BulbasaurStart.species.sprite.height-1, BulbasaurStart.species.sprite},
-		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos+SquirtleStart.species.sprite.height-1, SquirtleStart.species.sprite},
-		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos+CharmanderStart.species.sprite.height-1, CharmanderStart.species.sprite}
+		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos, BulbasaurStart.species.sprite},
+		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos, SquirtleStart.species.sprite},
+		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos, CharmanderStart.species.sprite}
 	};
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
-	DrawTitleScreen(starterScreen);
+	DrawBattleScreen(&BulbasaurStart, &SquirtleStart);
+	//DrawTitleScreen(starterScreen);
 	
 	//DrawWorld();
 	
@@ -133,6 +137,45 @@ int main(void){
 	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	
+}
+
+
+void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	ST7735_FillScreen(0xFFFF);
+	SpriteInstType leftInst = (SpriteInstType) {pokeLeft->xPos, pokeLeft->yPos, pokeLeft->species.sprite};
+	SpriteInstType rightInst = (SpriteInstType) {pokeRight->xPos, pokeRight->yPos, pokeRight->species.sprite};
+	
+	DrawSpriteImg(leftInst);
+	DrawSpriteImg(rightInst);
+	
+	ST7735_FillRect(pokeLeft->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeRight->xPos, 30, 40, 2, 0x0000);
+	
+	ST7735_FillRect(pokeLeft->xPos, 30, pokeLeft->chealth*40/pokeLeft->species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokeRight->xPos, 30, pokeRight->chealth*40/pokeRight->species.mhealth, 2, 0x00FF);
+	//ST7735_DrawString(pokeLeft->xPos, 30, (pokeLeft->chealth+0x30)+"/"+pokeLeft->species.mhealth, 0x0000)
+	
+	Delay100ms(15);
+	pokeRight->chealth-=12;
+	ST7735_FillRect(pokeLeft->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeRight->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeLeft->xPos, 30, pokeLeft->chealth*40/pokeLeft->species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokeRight->xPos, 30, pokeRight->chealth*40/pokeRight->species.mhealth, 2, 0x00FF);
+	
+	
+	Delay100ms(15);
+	pokeLeft->chealth-=21;
+	ST7735_FillRect(pokeLeft->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeRight->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeLeft->xPos, 30, pokeLeft->chealth*40/pokeLeft->species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokeRight->xPos, 30, pokeRight->chealth*40/pokeRight->species.mhealth, 2, 0x00FF);
+	
+	Delay100ms(15);
+	pokeRight->chealth-=15;
+	ST7735_FillRect(pokeLeft->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeRight->xPos, 30, 40, 2, 0x0000);
+	ST7735_FillRect(pokeLeft->xPos, 30, pokeLeft->chealth*40/pokeLeft->species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokeRight->xPos, 30, pokeRight->chealth*40/pokeRight->species.mhealth, 2, 0x00FF);
 }
 
 uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h){

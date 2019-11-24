@@ -1,9 +1,9 @@
 <html>
 <body>
 <pre>
-<h1>µVision Build Log</h1>
+<h1>ï¿½Vision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.28.0.0
+IDE-Version: ï¿½Vision V5.28.0.0
 Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
 License Information: Andy Ni, University of Texas - Austin, LIC=----
  
@@ -32,12 +32,16 @@ ADC_Joystick.h(23): warning:  #1-D: last line of file ends without a newline
   #endif
 ImagesOther.h(91): warning:  #1-D: last line of file ends without a newline
   #endif /* __images_h */
-SpaceInvaders.c(146): warning:  #177-D: variable "temp"  was declared but never referenced
+SpaceInvaders.c(128): warning:  #177-D: variable "starterScreen"  was declared but never referenced
+  	SpriteSelectType starterScreen = {starterInsts, 3, 0};
+SpaceInvaders.c(187): warning:  #177-D: variable "temp"  was declared but never referenced
   				uint16_t temp = image[back];
-SpaceInvaders.c(141): warning:  #177-D: variable "length"  was declared but never referenced
+SpaceInvaders.c(182): warning:  #177-D: variable "length"  was declared but never referenced
   	uint16_t length = w*h;
-SpaceInvaders.c: 4 warnings, 0 errors
+SpaceInvaders.c: 5 warnings, 0 errors
 linking...
+Program Size: Code=3960 RO-data=26252 RW-data=84 ZI-data=1276  
+".\SpaceInvaders.axf" - 0 Error(s), 5 Warning(s).
 
 .\SpaceInvaders.axf: Error: L6200E: Symbol playerFront multiply defined (by shop.o and spaceinvaders.o).
 .\SpaceInvaders.axf: Error: L6200E: Symbol playerBack multiply defined (by shop.o and spaceinvaders.o).
@@ -77,6 +81,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
+Build Time Elapsed:  00:00:03
 
 Target not created.
 
