@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include "ST7735.h"
 
-#include "Pokemon.h"
+#include "SpaceInvaders.h"
 
 typedef struct Item ItemType;
 typedef struct ItemInventory ItemInventoryType;
@@ -29,10 +29,11 @@ struct Player {
 	uint32_t YPos;
 	//PokemonInstType *PokemonTeam;
 	
-	const SpriteType *sprite;
-	const SpriteType *spriteFront;
-	const SpriteType *spriteBack;
-	const SpriteType *spriteSide;
+	SpriteType *sprite;
+	SpriteType *spriteFront;
+	SpriteType *spriteBack;
+	SpriteType *spriteSide;
+	SpriteType *spriteLeft;
 	uint8_t spriteFlip;
 	uint32_t coins;
 	uint32_t happiness;

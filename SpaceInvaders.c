@@ -55,100 +55,158 @@
 #include "Random.h"
 #include "PLL.h"
 #include "ADC.h"
-#include "ImagesPokemon.h"
-#include "ImagesOther.h"
 #include "Sound.h"
 #include "Timer0.h"
 #include "Timer1.h"
-#include "ADC_Joystick.h"
 
+#include "ADC_Joystick.h"
+#include "DrawScreen.h"
 #include "Battle.h"
 #include "Field.h"
+#include "ImagesOther.h"
 #include "SystemInfo.h"
+#include "ImagesPokemon.h"
+#include "Draw.h"
+#include "SpaceInvaders.h"
 
-void DisableInterrupts(void); // Disable interrupts
-void EnableInterrupts(void);  // Enable interrupts
+uint8_t ADCStatus = 0;
 
-const SpriteType Bulbasaur = {bulbasaur, 40, 40};
-const SpriteType Charmander = {charmander, 40, 40};
-const SpriteType Squirtle = {squirtle, 40, 40};
+static PlayerType p1;
+static FieldType mainField = {fieldArray, 64, 40};
 
-const SpriteType PlayerFront = {playerFront, 16, 16};
-const SpriteType PlayerBack = {playerBack, 16, 16};
-const SpriteType PlayerSide = {playerSide, 16, 16};
+static PokemonType BulbasaurT;
+static PokemonType SquirtleT;
+static PokemonType CharmanderT;
 
-PlayerType p1;
-
-SpriteSelectType starter;
-FieldType mainField = {fieldArray, 64, 40, 0, 0};
+uint16_t* reverseImage;
 
 int main(void){
-  DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
   
-	ST7735_FillScreen(0xFFFF);
-	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
+	ADC_Init89();
+	ST7735_InitR(INITR_REDTAB);
+	SysTick_Init();
+  EnableInterrupts();
 	
-	SpriteInstanceType poke1 = {2, 130, Bulbasaur};
-  SpriteInstanceType poke2 = {42, 130, Charmander};
-  SpriteInstanceType poke3 = {84, 130, Squirtle};
-  SpriteInstanceType starters[3] = {poke1, poke2, poke3};
-	starter = (SpriteSelectType) {starters, 3, 1};
+	//SpriteType Bulbasaur = {bulbasaur, 40, 40, 0};
+	//SpriteType Charmander = {charmander, 40, 40, 0};
+	//SpriteType Squirtle = {squirtle, 40, 40, 0};
 	
-	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, 0};
-	//DrawSpriteImg(poke1);
+	SpriteType PlayerFront = {playerFront, 16, 16};
+	SpriteType PlayerBack = {playerBack, 16, 16};
+	SpriteType PlayerSide = {playerSide, 16, 16};
+	p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0};
 	
-	//ST7735_DrawBitmap(0, 0xA0, BackgroundStuff, 0x80, 0xA0);
+	SpriteType bulbasaurS = {bulbasaur, 40, 40};
+	SpriteType squirtleS = {squirtle, 40, 40};
+	SpriteType charmanderS = {charmander, 40, 40};
 	
-	while(1){
-		//ST7735_FillScreen(0xFFFF);   
-		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
-		//ST7735_FillRect(0, 160-y, 128-x, y, 0x6FFF);
-		//ST7735_FillRect(128-x, 160-y, 128-x, 160-y, 0x00FF);
-		//ST7735_SetCursor(1, 1);
-		//ST7735_OutString("Pokemon Boba Black");
-		//ST7735_SetCursor(1, 2);
-		//ST7735_OutString("Andy & Iris");
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65};
+	//SpriteInstanceType poke1 = {2, 130, Bulbasaur};
+  //SpriteInstanceType poke2 = {44, 130, Charmander};
+  //SpriteInstanceType poke3 = {86, 130, Squirtle};
+  //SpriteInstanceType starters[3] = {poke1, poke2, poke3};
+	//starterScreen = (SpriteSelectType) {starters, 3, 1};
 	
-		//ST7735_SetCursor(1, 3);
-		//ST7735_OutString("Welcome, newbie.");
-		//ST7735_SetCursor(1, 4);
-		//ST7735_OutString("Please select your Pokemon");
-		//DrawStartScreen(&starter);
-		//x+=3;
-		//y+=2;
-		MoveRight(&p1);
-		DrawField(p1, mainField);
-		
-		//DrawSpriteImgPlayer(p1);
-		//p1.XPos++;
-		//DrawSpriteImg()
-		//mainField.XPos ++;
-		//p1.XPos++;
-		Delay100ms(5);
-		
-		MoveDown(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveDown(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveUp(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveRight(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-  }
-
+	PokemonInstType BulbasaurStart = {2, 90, BulbasaurT.mhealth, BulbasaurT};
+	PokemonInstType SquirtleStart = {44, 90, SquirtleT.mhealth, SquirtleT};
+	PokemonInstType CharmanderStart = {86, 90, CharmanderT.mhealth, CharmanderT};
+	           
+	const SpriteInstType starterInsts[3] = {
+		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos+BulbasaurStart.species.sprite.height-1, BulbasaurStart.species.sprite},
+		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos+SquirtleStart.species.sprite.height-1, SquirtleStart.species.sprite},
+		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos+CharmanderStart.species.sprite.height-1, CharmanderStart.species.sprite}
+	};
+	
+	SpriteSelectType starterScreen = {starterInsts, 3, 0};
+	DrawTitleScreen(starterScreen);
+	
+	//DrawWorld();
+	
+	//battle screen
+	//ST7735_FillScreen(0xFFFF);
+	
+	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
+	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
+	
 }
 
-uint8_t ADCStatus = 0;
+uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h){
+	uint16_t newimage[w*h];
+	
+	uint16_t length = w*h;
+	for(uint8_t i=0; i<h; i++){
+			for(uint8_t j=0; j<w; j++){
+				uint16_t front = i*w + j;
+				uint16_t back = (i+1)*w - j;
+				uint16_t temp = image[back];
+				newimage[back] = image[front];
+				newimage[front] = image[back];
+			}
+	}
+	reverseImage = newimage;
+	return reverseImage;
+}
+
+void DrawTitleScreen(SpriteSelectType starterScreen){
+	ST7735_FillScreen(0xFFFF);
+	
+	DrawAllSprites(starterScreen);
+	ST7735_SetTextColor(ST7735_BLACK);
+	ST7735_SetCursor(1, 1);
+	ST7735_OutString("Pokemon Boba Black");
+	ST7735_SetCursor(1, 2);
+	ST7735_OutString("Made by Andy & Iris");
+	ST7735_SetCursor(1, 3);
+	ST7735_OutString("Please select your\n starter.");
+	while(1){
+		
+		while(ADCStatus == 0){}
+			
+		uint8_t xDir = getJoystickX();
+		uint8_t yDir = getJoystickY();
+		ADCStatus = 0;
+		
+		if(xDir == 2){
+			starterScreen.currentIndex = (starterScreen.currentIndex + 1)%3;
+		}else if(xDir == 0){
+			starterScreen.currentIndex = starterScreen.currentIndex - 1;
+			if(starterScreen.currentIndex < 0) starterScreen.currentIndex = 2;
+		}
+			
+		DrawSelection(&starterScreen, 0x0000, 0xFFFF, 1);
+		Delay100ms(2);
+  }
+}
+
+void DrawWorld(){
+	//draws black border around the edges of the screen
+	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
+
+	while(1){
+	while(ADCStatus == 0){}
+			
+	uint8_t xDir = getJoystickX();
+	uint8_t yDir = getJoystickY();
+	ADCStatus = 0;
+		
+	if(xDir == 0){
+		MoveLeft(&p1);
+	}else if(xDir == 2){
+		MoveRight(&p1);
+	}else if(yDir == 0){
+		MoveUp(&p1);
+	}else if(yDir == 2){
+		MoveDown(&p1);
+	}
+		
+	DrawField(p1, mainField);
+	}
+}
 
 
 

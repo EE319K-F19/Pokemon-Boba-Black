@@ -7,24 +7,20 @@ void DrawSpriteImgPlayer(PlayerType player){
 
 void MoveUp(PlayerType *player){
 	player->sprite = player->spriteBack;
-	player->spriteFlip = 0;
 	player->YPos --;
 }
 
 void MoveDown(PlayerType *player){
 	player->sprite = player->spriteFront;
-	player->spriteFlip = 0;
 	player->YPos ++;
 }
 
 void MoveLeft(PlayerType *player){
-	player->sprite = player->spriteSide;
-	player->spriteFlip = 1;
+	player->sprite = player->spriteLeft;
 	player->XPos --;
 }
 
 void MoveRight(PlayerType *player){
 	player->sprite = player->spriteSide;
-	player->spriteFlip = 0;
 	player->XPos ++;
 }
