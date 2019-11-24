@@ -11,6 +11,19 @@ typedef struct Item ItemType;
 typedef struct ItemInventory ItemInventoryType;
 typedef struct Player PlayerType;
 
+struct Item {
+	char* name;
+	SpriteType sprite;
+	uint32_t price;
+	uint32_t index;
+};
+
+struct ItemInventory {
+	ItemType item;
+	uint32_t count;
+};
+
+
 struct Player {
 	uint32_t XPos;
 	uint32_t YPos;
@@ -21,17 +34,11 @@ struct Player {
 	const SpriteType *spriteBack;
 	const SpriteType *spriteSide;
 	uint8_t spriteFlip;
+	uint32_t coins;
+	uint32_t happiness;
+	ItemInventoryType playerInventory[3];
 };
 
-struct Item {
-	char* name;
-	SpriteType sprite;
-};
-
-struct ItemInventory {
-	ItemType item;
-	uint32_t count;
-};
 
 void DrawSpriteImgPlayer(PlayerType player);
 
