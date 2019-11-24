@@ -23,5 +23,6 @@ void DAC_Init(void){
 // Input=n is converted to n*3.3V/15
 // Output: none
 void DAC_Out(uint32_t data){
+	
 	GPIO_PORTB_DATA_R = data;
 }

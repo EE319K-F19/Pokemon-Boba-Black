@@ -1,1 +1,9 @@
 .\shop.o: Shop.c
+.\shop.o: Player.h
+.\shop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\shop.o: ST7735.h
+.\shop.o: Pokemon.h
+.\shop.o: Draw.h
+.\shop.o: PokemonType.h
+.\shop.o: ImagesOther.h
+.\shop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
