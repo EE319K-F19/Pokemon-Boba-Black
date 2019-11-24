@@ -107,7 +107,7 @@ const uint8_t highpitch[1802] = {
 
 void Sound_Init(void){
 // write this
-	DAC_Init();
+	//DAC_Init();
 	Timer0_Init(Sound_Highpitch, 7272);
 };
 void Sound_Play(const uint8_t *pt, uint32_t count){
@@ -140,7 +140,7 @@ void Sound_Highpitch(void){
 	if((GPIO_PORTE_DATA_R & 0x08) == 0){
 		return;
 	}
-	DAC_Out(highpitch[idx]);
+	//DAC_Out(highpitch[idx]);
 	idx = (idx + 1) % 1802;
 };
 
