@@ -165,38 +165,6 @@
           <ExecCommand></ExecCommand>
           <Expression>\\SpaceInvaders\SpaceInvaders.c\127</Expression>
         </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>159</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>1740</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\SpaceInvaders.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\SpaceInvaders.c\159</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>165</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>1782</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\SpaceInvaders.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\SpaceInvaders.c\165</Expression>
-        </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>

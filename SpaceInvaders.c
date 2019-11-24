@@ -112,18 +112,19 @@ int main(void){
   //SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	//starterScreen = (SpriteSelectType) {starters, 3, 1};
 	
-	PokemonInstType BulbasaurStart = {2, 90, BulbasaurT.mhealth, BulbasaurT};
-	PokemonInstType SquirtleStart = {44, 90, SquirtleT.mhealth, SquirtleT};
-	PokemonInstType CharmanderStart = {86, 90, CharmanderT.mhealth, CharmanderT};
+	PokemonInstType BulbasaurStart = {2, 130, BulbasaurT.mhealth, BulbasaurT};
+	PokemonInstType SquirtleStart = {44, 130, SquirtleT.mhealth, SquirtleT};
+	PokemonInstType CharmanderStart = {86, 130, CharmanderT.mhealth, CharmanderT};
 	           
 	const SpriteInstType starterInsts[3] = {
-		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos+BulbasaurStart.species.sprite.height-1, BulbasaurStart.species.sprite},
-		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos+SquirtleStart.species.sprite.height-1, SquirtleStart.species.sprite},
-		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos+CharmanderStart.species.sprite.height-1, CharmanderStart.species.sprite}
+		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos, BulbasaurStart.species.sprite},
+		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos, SquirtleStart.species.sprite},
+		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos, CharmanderStart.species.sprite}
 	};
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
-	DrawTitleScreen(starterScreen);
+	DrawBattleScreen(BulbasaurStart, SquirtleStart);
+	//DrawTitleScreen(starterScreen);
 	
 	//DrawWorld();
 	
@@ -133,6 +134,12 @@ int main(void){
 	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	
+}
+
+void DrawBattleScreen(PokemonInstType pokeLeft, PokemonInstType pokeRight){
+	ST7735_FillScreen(0xFFFF);
+	SpriteInstType leftInst = (SpriteInstType) {pokeLeft.xPos, pokeLeft.yPos, pokeLeft.species.sprite};
+	SpriteInstType rightInst = (SpriteInstType) {pokeRight.xPos, pokeRight.yPos, pokeRight.species.sprite};
 }
 
 uint16_t* GetReverseXImage(const uint16_t *image, uint8_t w, uint8_t h){
