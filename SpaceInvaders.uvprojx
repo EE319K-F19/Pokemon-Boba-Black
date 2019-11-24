@@ -532,6 +532,16 @@
               <FileType>5</FileType>
               <FilePath>.\ImagesPokemon2.h</FilePath>
             </File>
+            <File>
+              <FileName>TextSprites.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\TextSprites.h</FilePath>
+            </File>
+            <File>
+              <FileName>DrawScreen.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DrawScreen.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
