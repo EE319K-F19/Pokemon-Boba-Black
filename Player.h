@@ -6,23 +6,10 @@
 #include "ST7735.h"
 
 #include "SpaceInvaders.h"
+#include "Shop.h"
 
-typedef struct Item ItemType;
-typedef struct ItemInventory ItemInventoryType;
 typedef struct Player PlayerType;
-
-struct Item {
-	char* name;
-	SpriteType sprite;
-	uint32_t price;
-	uint32_t index;
-};
-
-struct ItemInventory {
-	ItemType item;
-	uint32_t count;
-};
-
+typedef struct ItemInventory ItemInventoryType;
 
 struct Player {
 	uint32_t XPos;
@@ -37,7 +24,7 @@ struct Player {
 	uint8_t spriteFlip;
 	uint32_t coins;
 	uint32_t happiness;
-	ItemInventoryType playerInventory[3];
+	// ItemInventoryType playerInventory[3];
 };
 
 

@@ -85,6 +85,7 @@ void ADC_Init89(void){
   ADC0_SSCTL2_R = 0x0060;         // 13) no TS0 D0 IE0 END0 TS1 D1, yes IE1 END1
   ADC0_IM_R &= ~0x0004;           // 14) disable SS2 interrupts
   ADC0_ACTSS_R |= 0x0004;         // 15) enable sample sequencer 2
+	ADCStatus = 0;
 }
 
 //------------ADC_In89------------

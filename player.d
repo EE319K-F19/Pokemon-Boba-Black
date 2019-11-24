@@ -5,3 +5,5 @@
 .\player.o: SpaceInvaders.h
 .\player.o: Draw.h
 .\player.o: PokemonType.h
+.\player.o: Shop.h
+.\player.o: Player.h

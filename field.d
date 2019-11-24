@@ -6,4 +6,6 @@
 .\field.o: SpaceInvaders.h
 .\field.o: Draw.h
 .\field.o: PokemonType.h
+.\field.o: Shop.h
+.\field.o: Player.h
 .\field.o: SystemInfo.h

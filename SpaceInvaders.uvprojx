@@ -438,6 +438,11 @@
               <FilePath>.\Print.s</FilePath>
             </File>
             <File>
+              <FileName>SpaceInvaders.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SpaceInvaders.c</FilePath>
+            </File>
+            <File>
               <FileName>SystemInfo.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\SystemInfo.h</FilePath>
@@ -446,11 +451,6 @@
               <FileName>SystemInfo.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SystemInfo.c</FilePath>
-            </File>
-            <File>
-              <FileName>SpaceInvaders.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SpaceInvaders.c</FilePath>
             </File>
             <File>
               <FileName>Draw.h</FileName>

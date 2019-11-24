@@ -119,11 +119,6 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
-
-          <Key>DLGUARM</Key>
-        </SetRegEntry>
-        <SetRegEntry>
-          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -184,7 +179,6 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
-
           <Key>DLGDARM</Key>
           <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(9108=1047,363,1222,595,1)(9106=-1,-1,-1,-1,0)(9104=-1,-1,-1,-1,0)(9107=-1,-1,-1,-1,0)(9109=-1,-1,-1,-1,0)(9102=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
@@ -218,15 +212,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-
-          <LineNumber>155</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>1494</Address>
-
           <LineNumber>127</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>4366</Address>
-
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -235,9 +223,6 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\SpaceInvaders.c</Filename>
           <ExecCommand></ExecCommand>
-
-          <Expression>\\SpaceInvaders\SpaceInvaders.c\155</Expression>
-
           <Expression>\\SpaceInvaders\SpaceInvaders.c\127</Expression>
         </Bp>
         <Bp>
@@ -271,7 +256,6 @@
           <Filename>.\SpaceInvaders.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\SpaceInvaders\SpaceInvaders.c\165</Expression>
-
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -281,12 +265,12 @@
           <ItemText>starterScreen</ItemText>
         </Ww>
         <Ww>
-          <count>2</count>
+          <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>GPIO_PORTE_DATA_R</ItemText>
         </Ww>
         <Ww>
-          <count>3</count>
+          <count>2</count>
           <WinNumber>1</WinNumber>
           <ItemText>portEData</ItemText>
         </Ww>
@@ -296,11 +280,7 @@
       </Tracepoint>
       <DebugFlag>
         <trace>0</trace>
-
-        <periodic>1</periodic>
-
         <periodic>0</periodic>
-
         <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
@@ -481,11 +461,19 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>12</FileNumber>
-
       <FileType>1</FileType>
-
+      <tvExp>1</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\SpaceInvaders.c</PathWithFileName>
+      <FilenameWithoutPath>SpaceInvaders.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>13</FileNumber>
       <FileType>5</FileType>
-
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
@@ -496,25 +484,13 @@
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
-      <FileNumber>13</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\SystemInfo.c</PathWithFileName>
       <FilenameWithoutPath>SystemInfo.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>1</GroupNumber>
-      <FileNumber>14</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\SpaceInvaders.c</PathWithFileName>
-      <FilenameWithoutPath>SpaceInvaders.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
