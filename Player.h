@@ -20,6 +20,7 @@ struct Player {
 	SpriteType *spriteFront;
 	SpriteType *spriteBack;
 	SpriteType *spriteSide;
+	SpriteType *spriteLeft;
 	uint8_t spriteFlip;
 };
 

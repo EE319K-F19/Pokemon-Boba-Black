@@ -498,6 +498,11 @@
               <FilePath>.\Battle.h</FilePath>
             </File>
             <File>
+              <FileName>Battle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Battle.c</FilePath>
+            </File>
+            <File>
               <FileName>Player.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Player.h</FilePath>
@@ -506,11 +511,6 @@
               <FileName>Player.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Player.c</FilePath>
-            </File>
-            <File>
-              <FileName>Battle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Battle.c</FilePath>
             </File>
             <File>
               <FileName>Shop.h</FileName>
