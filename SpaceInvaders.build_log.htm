@@ -27,6 +27,14 @@ Project File Date:  11/23/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SpaceInvaders'
+compiling Shop.c...
+Shop.h(35): warning:  #1295-D: Deprecated declaration Shop_Init - give arg types
+  void Shop_Init();
+Shop.h(39): warning:  #1-D: last line of file ends without a newline
+  #endif
+ADC_Joystick.h(23): warning:  #1-D: last line of file ends without a newline
+  #endif
+Shop.c: 3 warnings, 0 errors
 compiling SpaceInvaders.c...
 ADC_Joystick.h(23): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -34,14 +42,14 @@ Shop.h(35): warning:  #1295-D: Deprecated declaration Shop_Init - give arg types
   void Shop_Init();
 Shop.h(39): warning:  #1-D: last line of file ends without a newline
   #endif
-SpaceInvaders.c(174): warning:  #177-D: variable "temp"  was declared but never referenced
+SpaceInvaders.c(148): warning:  #177-D: variable "temp"  was declared but never referenced
   				uint16_t temp = image[back];
-SpaceInvaders.c(169): warning:  #177-D: variable "length"  was declared but never referenced
+SpaceInvaders.c(143): warning:  #177-D: variable "length"  was declared but never referenced
   	uint16_t length = w*h;
 SpaceInvaders.c: 5 warnings, 0 errors
 linking...
 Program Size: Code=4876 RO-data=24172 RW-data=84 ZI-data=1284  
-".\SpaceInvaders.axf" - 0 Error(s), 5 Warning(s).
+".\SpaceInvaders.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 
