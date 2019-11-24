@@ -13,4 +13,7 @@
 .\spaceinvaders.o: Player.h
 .\spaceinvaders.o: SpaceInvaders.h
 .\spaceinvaders.o: PokemonType.h
+.\spaceinvaders.o: Shop.h
+.\spaceinvaders.o: Player.h
+.\spaceinvaders.o: SystemInfo.h
 .\spaceinvaders.o: ImagesPokemon.h

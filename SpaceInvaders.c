@@ -68,9 +68,10 @@
 #include "ImagesPokemon.h"
 
 #include "SpaceInvaders.h"
+#include "Shop.h"
+#include "Player.h"
 
-
-uint8_t ADCStatus = 0;
+uint8_t ADCStatus;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
@@ -151,7 +152,3 @@ int main(void){
 	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	
 }
-
-
-
-
