@@ -15,10 +15,7 @@ void DrawField(PlayerType player, FieldType field){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
 			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
 			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
-			if(player.XPos == screenCol && player.YPos == screenRow){
-				DrawGridSprite(j, i, *player.sprite);
-				continue;
-			}
+			
 			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
 			uint16_t fieldColor = ST7735_WHITE;
 			if(fieldType == N) fieldColor = 0x4A5A;
@@ -26,6 +23,9 @@ void DrawField(PlayerType player, FieldType field){
 			else if(fieldType == G) fieldColor = 0x9F8F;
 			DrawGridFill(j, i, fieldColor);
 			
+			if(player.XPos == screenCol && player.YPos == screenRow){
+				DrawGridSprite(j, i, *player.sprite);
+			}
 		}
 	}
 }

@@ -10,7 +10,7 @@ void DrawBorder(uint16_t itemX, uint16_t itemY, uint16_t itemW, uint16_t itemH, 
 	uint16_t borderXLength = itemW + borderW;
 	uint16_t borderYLength = itemH + borderW;
 	
-	ST7735_FillRect(borderXStart, borderYStart, borderXLength, borderW, borderColor);
+	ST7735_FillRect(borderXStart, borderXStart, borderXLength, borderW, borderColor);
 	ST7735_FillRect(borderXStart, borderYStart+borderW, borderW, borderYLength, borderColor);	
 	ST7735_FillRect(borderXStart+borderW, borderYStart+borderYLength, borderXLength, borderW, borderColor);
 	ST7735_FillRect(borderXStart+borderXLength, borderYStart, borderW, borderYLength, borderColor);
@@ -32,20 +32,16 @@ uint16_t GetGridY(uint8_t row){
 	return GAME_BORDER_W + row*GRID_LENGTH;
 }
 
-void DrawAllSprites(SpriteInstanceType *spriteArray, uint8_t length){
-	for(int i=0; i<length; i++){
-			DrawSpriteImg(spriteArray[i]);
-	}
-}
-
-void DrawSelection(SpriteSelectType *starterSelect, uint16_t selectColor, uint16_t deselectColor, uint8_t selectWidth){
-	for(int i=0; i<starterSelect->spriteArrayLength; i++){
+void DrawStartScreen(SpriteSelectType *starterSelect){
+	for(int i=0; i<3; i++){
 		if(i == starterSelect->currentIndex){
-			DrawSpriteSelection(starterSelect->sprites[i], selectWidth, selectColor);
+			DrawSpriteSelectionDefault(starterSelect->sprites[i]);
 		}else {
-			DrawSpriteSelection(starterSelect->sprites[i], selectWidth, deselectColor);
+			DrawSpriteImg(starterSelect->sprites[i]);
 		}
 	}
+	nextIndex(starterSelect);
+	Delay10ms(10); 
 }
 
 void DrawSpriteImg(SpriteInstanceType spriteInst){
@@ -54,7 +50,9 @@ void DrawSpriteImg(SpriteInstanceType spriteInst){
 
 
 void DrawSpriteSelection(SpriteInstanceType spriteInst, uint8_t width, uint16_t color){
-	DrawBorder(spriteInst.x_left, spriteInst.y_bottom-spriteInst.sprite.height+1, spriteInst.sprite.width, spriteInst.sprite.height, width, color);
+	ST7735_FillRect(spriteInst.x_left-width, 
+		spriteInst.y_bottom-spriteInst.sprite.height-width, spriteInst.sprite.width+width*2, spriteInst.sprite.height+width*3, color);
+	DrawSpriteImg(spriteInst);
 }
 
 void DrawSpriteSelectionDefault(SpriteInstanceType spriteInst){

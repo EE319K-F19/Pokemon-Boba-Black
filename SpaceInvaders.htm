@@ -3,15 +3,24 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
+<<<<<<< HEAD
 <BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Nov 23 16:58:13 2019
 <BR><P>
 <H3>Maximum Stack Usage =        344 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+=======
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Nov 23 14:47:52 2019
+<BR><P>
+<H3>Maximum Stack Usage =        296 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+Call chain for Maximum Stack Depth:</H3>
+__rt_entry_main &rArr; main &rArr; DrawField &rArr; DrawGridSprite &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+>>>>>>> master
 <P>
 <H3>
 Functions with no stack information
 </H3><UL>
+<<<<<<< HEAD
  <LI><a href="#[84]">Reset_Handler</a>
  <LI><a href="#[d0]">DisableInterrupts</a>
  <LI><a href="#[aa]">EnableInterrupts</a>
@@ -24,6 +33,20 @@ Functions with no stack information
  <LI><a href="#[d5]">Random</a>
  <LI><a href="#[a2]">writecommand</a>
  <LI><a href="#[95]">writedata</a>
+=======
+ <LI><a href="#[7f]">Reset_Handler</a>
+ <LI><a href="#[a6]">DisableInterrupts</a>
+ <LI><a href="#[d1]">EnableInterrupts</a>
+ <LI><a href="#[d2]">StartCritical</a>
+ <LI><a href="#[d3]">EndCritical</a>
+ <LI><a href="#[d4]">WaitForInterrupt</a>
+ <LI><a href="#[92]">__user_initial_stackheap</a>
+ <LI><a href="#[a8]">Random_Init</a>
+ <LI><a href="#[d5]">Random32</a>
+ <LI><a href="#[d6]">Random</a>
+ <LI><a href="#[a2]">writecommand</a>
+ <LI><a href="#[90]">writedata</a>
+>>>>>>> master
 </UL>
 </UL>
 <P>
@@ -684,9 +707,15 @@ Global Symbols
 
 <P><STRONG><a name="[cd]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
+<<<<<<< HEAD
 <P><STRONG><a name="[8e]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+=======
+<P><STRONG><a name="[89]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
+<BR><BR>[Stack]<UL><LI>Max Depth = 296 + Unknown Stack Size
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; DrawField &rArr; DrawGridSprite &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+>>>>>>> master
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -708,6 +737,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
+<<<<<<< HEAD
 <P><STRONG><a name="[d0]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
 <P><STRONG><a name="[aa]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
@@ -715,6 +745,15 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[d1]"></a>StartCritical</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+=======
+<P><STRONG><a name="[a6]"></a>DisableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[d1]"></a>EnableInterrupts</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+
+<P><STRONG><a name="[d2]"></a>StartCritical</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
+>>>>>>> master
 
 <P><STRONG><a name="[d2]"></a>EndCritical</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, startup.o(.text), UNUSED)
 
@@ -724,8 +763,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
+<<<<<<< HEAD
 <P><STRONG><a name="[a7]"></a>Random_Init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, random.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+=======
+<P><STRONG><a name="[a8]"></a>Random_Init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, random.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+>>>>>>> master
 </UL>
 
 <P><STRONG><a name="[d4]"></a>Random32</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, random.o(.text), UNUSED)
@@ -733,14 +777,21 @@ Global Symbols
 <P><STRONG><a name="[d5]"></a>Random</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, random.o(.text), UNUSED)
 
 <P><STRONG><a name="[a2]"></a>writecommand</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, lcd.o(.text))
+<<<<<<< HEAD
 <BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+=======
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
+>>>>>>> master
 </UL>
 
 <P><STRONG><a name="[95]"></a>writedata</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, lcd.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 </UL>
+<<<<<<< HEAD
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
@@ -750,6 +801,17 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ac]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
+=======
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+</UL>
+
+<P><STRONG><a name="[a9]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, rt_memcpy_w.o(.text))
+>>>>>>> master
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -793,6 +855,7 @@ Global Symbols
 
 <P><STRONG><a name="[e1]"></a>__semihosting_library_function</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, indicate_semi.o(.text), UNUSED)
 
+<<<<<<< HEAD
 <P><STRONG><a name="[8b]"></a>__user_setup_stackheap</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, sys_stackheap_outer.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = __user_setup_stackheap
@@ -836,30 +899,116 @@ Global Symbols
 <P><STRONG><a name="[99]"></a>DrawSpriteImg</STRONG> (Thumb, 32 bytes, Stack size 32 bytes, draw.o(i.DrawSpriteImg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
-</UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
-</UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+=======
+<P><STRONG><a name="[a4]"></a>ADC_In89</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, adc_joystick.o(i.ADC_In89))
+<BR><BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[9b]"></a>Output_Init</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, st7735.o(i.Output_Init))
+<P><STRONG><a name="[ab]"></a>Delay100ms</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, draw.o(i.Delay100ms))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Delay100ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[a5]"></a>Delay1ms</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, st7735.o(i.Delay1ms))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Delay1ms
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commonInit
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
+</UL>
+
+<P><STRONG><a name="[94]"></a>DrawBorder</STRONG> (Thumb, 124 bytes, Stack size 56 bytes, draw.o(i.DrawBorder))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
+<LI>Call Chain = DrawBorder &rArr; ST7735_FillRect &rArr; setAddrWindow
+</UL>
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[96]"></a>DrawField</STRONG> (Thumb, 150 bytes, Stack size 48 bytes, field.o(i.DrawField))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
+<LI>Call Chain = DrawField &rArr; DrawGridSprite &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+</UL>
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridSprite
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridFill
+</UL>
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[97]"></a>DrawGridFill</STRONG> (Thumb, 48 bytes, Stack size 32 bytes, draw.o(i.DrawGridFill))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88 + Unknown Stack Size
+<LI>Call Chain = DrawGridFill &rArr; ST7735_FillRect &rArr; setAddrWindow
+</UL>
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGridY
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGridX
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+</UL>
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawField
+</UL>
+
+<P><STRONG><a name="[98]"></a>DrawGridSprite</STRONG> (Thumb, 52 bytes, Stack size 40 bytes, draw.o(i.DrawGridSprite))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
+<LI>Call Chain = DrawGridSprite &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+>>>>>>> master
+</UL>
+<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGridY
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGridX
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+</UL>
+<<<<<<< HEAD
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+=======
+<BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawField
+</UL>
+
+<P><STRONG><a name="[9a]"></a>GetGridX</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, draw.o(i.GetGridX))
+<BR><BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridSprite
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridFill
+</UL>
+
+<P><STRONG><a name="[99]"></a>GetGridY</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, draw.o(i.GetGridY))
+<BR><BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridSprite
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridFill
+</UL>
+
+<P><STRONG><a name="[ac]"></a>MoveDown</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, player.o(i.MoveDown))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[aa]"></a>MoveRight</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, player.o(i.MoveRight))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+>>>>>>> master
+</UL>
+
+<P><STRONG><a name="[ad]"></a>MoveUp</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, player.o(i.MoveUp))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[9c]"></a>Output_Init</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, st7735.o(i.Output_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88 + Unknown Stack Size
 <LI>Call Chain = Output_Init &rArr; ST7735_InitR &rArr; ST7735_FillScreen &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
+<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
+<<<<<<< HEAD
 <P><STRONG><a name="[a6]"></a>PLL_Init</STRONG> (Thumb, 120 bytes, Stack size 0 bytes, pll.o(i.PLL_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+=======
+<P><STRONG><a name="[a7]"></a>PLL_Init</STRONG> (Thumb, 120 bytes, Stack size 0 bytes, pll.o(i.PLL_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+>>>>>>> master
 </UL>
 
-<P><STRONG><a name="[9a]"></a>ST7735_DrawBitmap</STRONG> (Thumb, 280 bytes, Stack size 40 bytes, st7735.o(i.ST7735_DrawBitmap))
+<P><STRONG><a name="[9b]"></a>ST7735_DrawBitmap</STRONG> (Thumb, 292 bytes, Stack size 40 bytes, st7735.o(i.ST7735_DrawBitmap))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
 <LI>Call Chain = ST7735_DrawBitmap &rArr; setAddrWindow
 </UL>
+<<<<<<< HEAD
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 </UL>
@@ -874,23 +1023,50 @@ Global Symbols
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
+=======
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+</UL>
+<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridSprite
 </UL>
 
-<P><STRONG><a name="[9d]"></a>ST7735_FillScreen</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, st7735.o(i.ST7735_FillScreen))
+<P><STRONG><a name="[95]"></a>ST7735_FillRect</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, st7735.o(i.ST7735_FillRect))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56 + Unknown Stack Size
+<LI>Call Chain = ST7735_FillRect &rArr; setAddrWindow
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setAddrWindow
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+</UL>
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawGridFill
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBorder
+>>>>>>> master
+</UL>
+
+<P><STRONG><a name="[9e]"></a>ST7735_FillScreen</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, st7735.o(i.ST7735_FillScreen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = ST7735_FillScreen &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
+<<<<<<< HEAD
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+=======
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+</UL>
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+>>>>>>> master
 </UL>
 
-<P><STRONG><a name="[9c]"></a>ST7735_InitR</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, st7735.o(i.ST7735_InitR))
+<P><STRONG><a name="[9d]"></a>ST7735_InitR</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, st7735.o(i.ST7735_InitR))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
 <LI>Call Chain = ST7735_InitR &rArr; ST7735_FillScreen &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
+<<<<<<< HEAD
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commonInit
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SetCursor
@@ -904,6 +1080,20 @@ Global Symbols
 
 <P><STRONG><a name="[a3]"></a>ST7735_SetCursor</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, st7735.o(i.ST7735_SetCursor))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+=======
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SetCursor
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commonInit
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
+</UL>
+<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
+</UL>
+
+<P><STRONG><a name="[a3]"></a>ST7735_SetCursor</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, st7735.o(i.ST7735_SetCursor))
+<BR><BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+>>>>>>> master
 </UL>
 
 <P><STRONG><a name="[11]"></a>SysTick_Handler</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, adc_joystick.o(i.SysTick_Handler))
@@ -913,11 +1103,15 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
+<<<<<<< HEAD
 <P><STRONG><a name="[a9]"></a>SysTick_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, adc_joystick.o(i.SysTick_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[25]"></a>Timer0A_Handler</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, timer0.o(i.Timer0A_Handler))
+=======
+<P><STRONG><a name="[20]"></a>Timer0A_Handler</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, timer0.o(i.Timer0A_Handler))
+>>>>>>> master
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Timer0A_Handler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
@@ -927,6 +1121,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
+<<<<<<< HEAD
 <P><STRONG><a name="[8f]"></a>main</STRONG> (Thumb, 372 bytes, Stack size 248 bytes, spaceinvaders.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344 + Unknown Stack Size
 <LI>Call Chain = main &rArr; DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
@@ -942,6 +1137,24 @@ Global Symbols
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+=======
+<P><STRONG><a name="[8a]"></a>main</STRONG> (Thumb, 440 bytes, Stack size 144 bytes, spaceinvaders.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 296 + Unknown Stack Size
+<LI>Call Chain = main &rArr; DrawField &rArr; DrawGridSprite &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveRight
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveDown
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawField
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBorder
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay100ms
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Random_Init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+>>>>>>> master
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -954,11 +1167,19 @@ Local Symbols
 <LI>Call Chain = commandList &rArr; Delay1ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay1ms
+<<<<<<< HEAD
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commonInit
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+=======
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
+</UL>
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commonInit
+>>>>>>> master
 </UL>
 
 <P><STRONG><a name="[a0]"></a>commonInit</STRONG> (Thumb, 342 bytes, Stack size 8 bytes, st7735.o(i.commonInit))
@@ -968,18 +1189,26 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay1ms
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;commandList
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
+<BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
 </UL>
 
-<P><STRONG><a name="[9e]"></a>setAddrWindow</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, st7735.o(i.setAddrWindow))
+<P><STRONG><a name="[9f]"></a>setAddrWindow</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, st7735.o(i.setAddrWindow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24 + Unknown Stack Size
 <LI>Call Chain = setAddrWindow
 </UL>
+<<<<<<< HEAD
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+=======
+<BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writedata
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
+</UL>
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap
+>>>>>>> master
 </UL>
 <P>
 <H3>
