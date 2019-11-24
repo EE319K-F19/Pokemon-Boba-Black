@@ -86,12 +86,10 @@ static SpriteSelectType starterScreen;
 uint16_t* reverseImage;
 
 int main(void){
-  DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
   
-<<<<<<< HEAD
 	ADC_Init89();
 	ST7735_InitR(INITR_REDTAB);
 	SysTick_Init();
@@ -105,14 +103,10 @@ int main(void){
 	SpriteType PlayerFront = {playerFront, 16, 16, 0};
 	SpriteType PlayerBack = {playerBack, 16, 16, 0};
 	SpriteType PlayerSide = {playerSide, 16, 16, 0};
-=======
-	ST7735_FillScreen(0xFFFF);
-	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
->>>>>>> master
 	
 	SpriteInstanceType poke1 = {2, 130, Bulbasaur};
-  SpriteInstanceType poke2 = {42, 130, Charmander};
-  SpriteInstanceType poke3 = {84, 130, Squirtle};
+  SpriteInstanceType poke2 = {44, 130, Charmander};
+  SpriteInstanceType poke3 = {86, 130, Squirtle};
   SpriteInstanceType starters[3] = {poke1, poke2, poke3};
 	starterScreen = (SpriteSelectType) {starters, 3, 1};
 	
@@ -120,7 +114,6 @@ int main(void){
 	
 	//DrawWorld();
 	
-<<<<<<< HEAD
 	//battle screen
 	//ST7735_FillScreen(0xFFFF);
 	
@@ -182,50 +175,6 @@ void DrawTitleScreen(){
 			
 		DrawSelection(&starterScreen, 0x0000, 0xFFFF, 1);
 		Delay100ms(2);
-=======
-	while(1){
-		//ST7735_FillScreen(0xFFFF);   
-		//ST7735_FillRect(128-x, 0, x, 160-y, 0xF50F);
-		//ST7735_FillRect(0, 160-y, 128-x, y, 0x6FFF);
-		//ST7735_FillRect(128-x, 160-y, 128-x, 160-y, 0x00FF);
-		//ST7735_SetCursor(1, 1);
-		//ST7735_OutString("Pokemon Boba Black");
-		//ST7735_SetCursor(1, 2);
-		//ST7735_OutString("Andy & Iris");
-	
-		//ST7735_SetCursor(1, 3);
-		//ST7735_OutString("Welcome, newbie.");
-		//ST7735_SetCursor(1, 4);
-		//ST7735_OutString("Please select your Pokemon");
-		//DrawStartScreen(&starter);
-		//x+=3;
-		//y+=2;
-		MoveRight(&p1);
-		DrawField(p1, mainField);
-		
-		//DrawSpriteImgPlayer(p1);
-		//p1.XPos++;
-		//DrawSpriteImg()
-		//mainField.XPos ++;
-		//p1.XPos++;
-		Delay100ms(5);
-		
-		MoveDown(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveDown(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveUp(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
-		
-		MoveRight(&p1);
-		DrawField(p1, mainField);
-		Delay100ms(5);
->>>>>>> master
   }
 }
 
