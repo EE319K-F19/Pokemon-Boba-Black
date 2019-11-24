@@ -12,12 +12,12 @@ extern const uint8_t fieldArray[];
 
 typedef struct Field FieldType;
 
-void DrawField(PlayerType player, FieldType field);
-
 struct Field {
 	const uint8_t *FieldArray;
 	const uint32_t FieldWidth;
 	const uint32_t FieldHeight;
 };
+
+void DrawField(PlayerType player, FieldType field);
 
 #endif

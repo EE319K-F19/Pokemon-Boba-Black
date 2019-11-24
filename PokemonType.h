@@ -28,9 +28,9 @@ extern const uint8_t B; //Normal effectiveness
 extern const uint8_t C; //Not very effective
 extern const uint8_t D; //No Effect
 
-typedef struct Typing TypingType;
+typedef struct Types TypeType;
 
-struct Typing {
+struct Types {
 	const uint8_t Normal; 
 	const uint8_t Fire; 
 	const uint8_t Water;
@@ -51,7 +51,7 @@ struct Typing {
 	const uint8_t Fairy;
 };
 
+extern TypeType TypesArray[18];
 void InitTyping(void);
-extern TypingType Typings[18];
 
 #endif
