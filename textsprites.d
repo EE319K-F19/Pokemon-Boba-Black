@@ -1,0 +1,1 @@
+.\textsprites.o: TextSprites.c

@@ -56,29 +56,24 @@
 #include "PLL.h"
 #include "ADC.h"
 #include "Sound.h"
-//#include "Timer0.h"
-//#include "Timer1.h"
+#include "Timer0.h"
+#include "Timer1.h"
 
 #include "ADC_Joystick.h"
+#include "Battle.h"
 #include "DrawScreen.h"
-//#include "Battle.h"
 #include "Field.h"
-//#include "ImagesOther.h"
-
-#include "ImagesPokemon.h"
+#include "Shop.h"
+#include "SystemInfo.h"
+#include "Player.h"
 
 #include "SpaceInvaders.h"
-#include "Shop.h"
-#include "Player.h"
+#include "ImagesOther.h"
 
 uint8_t ADCStatus;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
-
-static PokemonType BulbasaurT;
-static PokemonType SquirtleT;
-static PokemonType CharmanderT;
 
 int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
@@ -90,27 +85,9 @@ int main(void){
 	SysTick_Init();
   EnableInterrupts();
 	
-	//SpriteType Bulbasaur = {bulbasaur, 40, 40, 0};
-	//SpriteType Charmander = {charmander, 40, 40, 0};
-	//SpriteType Squirtle = {squirtle, 40, 40, 0};
-	
-	//SpriteType PlayerFront = {playerFront, 16, 16};
-	//SpriteType PlayerBack = {playerBack, 16, 16};
-	//SpriteType PlayerSide = {playerSide, 16, 16};
-	//p1 = (PlayerType) {SCREEN_MID_COL, SCREEN_MID_ROW, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0};
-	
-	SpriteType bulbasaurS = {bulbasaur, 40, 40};
-	SpriteType squirtleS = {squirtle, 40, 40};
-	SpriteType charmanderS = {charmander, 40, 40};
-	
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65};
-	//SpriteInstanceType poke1 = {2, 130, Bulbasaur};
-  //SpriteInstanceType poke2 = {44, 130, Charmander};
-  //SpriteInstanceType poke3 = {86, 130, Squirtle};
-  //SpriteInstanceType starters[3] = {poke1, poke2, poke3};
-	//starterScreen = (SpriteSelectType) {starters, 3, 1};
+	InitFieldArray();
+	InitPokemon();
+	InitPlayer();
 	
 	//PokemonInstType BulbasaurStart = {2, 130, BulbasaurT.mhealth, BulbasaurT};
 	//PokemonInstType SquirtleStart = {44, 130, SquirtleT.mhealth, SquirtleT};
@@ -126,12 +103,11 @@ int main(void){
 	
 	const PokemonInstType pokemons[3] = {CharmanderStart, SquirtleStart, BulbasaurStart};
 	
-	ST7735_FillScreen(0xFFFF);
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
-	//DrawWorld();
+	//DrawWorld(p1, mainField);
 	while(1){
 	//ST7735_SetCursor(5, 1);
-	
+	ST7735_FillScreen(0xFFFF);
 	uint32_t rannum = Random()%3;
 	
 	//char num = rannum + 0x30;
@@ -151,4 +127,11 @@ int main(void){
 	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	
+}
+
+void InitPlayer(){
+	SpriteType PlayerFront = {playerFront, 16, 16};
+	SpriteType PlayerBack = {playerBack, 16, 16};
+	SpriteType PlayerSide = {playerSide, 16, 16};
+	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0, 25};
 }

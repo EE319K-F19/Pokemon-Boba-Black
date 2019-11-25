@@ -13,13 +13,16 @@
 ".\spaceinvaders.o"
 ".\systeminfo.o"
 ".\draw.o"
+".\drawscreen.o"
 ".\field.o"
 ".\pokemontype.o"
 ".\battle.o"
 ".\player.o"
 ".\shop.o"
 ".\adc_joystick.o"
-".\drawscreen.o"
+".\imagesother.o"
+".\textsprites.o"
+".\imagespokemon2.o"
 --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\SpaceInvaders.map" -o .\SpaceInvaders.axf

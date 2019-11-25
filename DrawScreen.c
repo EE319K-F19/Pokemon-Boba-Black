@@ -1,10 +1,34 @@
 
 #include "DrawScreen.h"
 #include "ST7735.h"
-#include "TextSprites.h"
+
 #include "ADC_Joystick.h"
 #include "Field.h"
+#include "PokemonType.h"
 #include "SystemInfo.h"
+
+#include "TextSprites.h"
+#include "ImagesPokemon2.h"
+
+PokemonType BulbasaurT;
+PokemonType SquirtleT;
+PokemonType CharmanderT;
+PokemonType PidgeyT;
+PokemonType PikachuT;
+
+void InitPokemon(){
+	SpriteType bulbasaurS = {bulbasaur, 40, 40};
+	SpriteType squirtleS = {squirtle, 40, 40};
+	SpriteType charmanderS = {charmander, 40, 40};
+	SpriteType pidgeyS = {squirtle, 40, 40};
+	SpriteType pikachuS = {charmander, 40, 40};
+	
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90};
+}
 
 void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	ST7735_FillScreen(0xFFFF);
@@ -95,23 +119,23 @@ void DrawWorld(PlayerType p1, FieldType mainField){
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 
 	while(1){
-	while(ADCStatus == 0){}
+		while(ADCStatus == 0){}
 			
-	uint8_t xDir = getJoystickX();
-	uint8_t yDir = getJoystickY();
-	ADCStatus = 0;
+		uint8_t xDir = getJoystickX();
+		uint8_t yDir = getJoystickY();
+		ADCStatus = 0;
 		
-	if(xDir == 0){
-		MoveLeft(&p1);
-	}else if(xDir == 2){
-		MoveRight(&p1);
-	}else if(yDir == 0){
-		MoveUp(&p1);
-	}else if(yDir == 2){
-		MoveDown(&p1);
-	}
+		if(xDir == 0){
+			MoveLeft(&p1);
+		}else if(xDir == 2){
+			MoveRight(&p1);
+		}else if(yDir == 0){
+			MoveUp(&p1);
+		}else if(yDir == 2){
+			MoveDown(&p1);
+		}
 		
-	DrawField(p1, mainField);
+		DrawField(p1, mainField);
 	}
 }
 
