@@ -25,6 +25,7 @@
 #include "ADC_Joystick.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "ST7735.h"
+#include <stdbool.h>
 
 uint32_t joystickData[2];
 
@@ -139,5 +140,23 @@ uint32_t getJoystickY(void){
 	}
 	else{
 		return 1; // center
+	}
+}
+
+bool isPE2Pressed(void){
+	if((GPIO_PORTE_DATA_R & 0x04) == 0){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+bool isPE3Pressed(void){
+	if((GPIO_PORTE_DATA_R & 0x08) == 0){
+		return false;
+	}
+	else{
+		return true;
 	}
 }

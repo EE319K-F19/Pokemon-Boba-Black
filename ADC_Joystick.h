@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include "ST7735.h"
+#include <stdbool.h>
 
 extern uint32_t joystickData[2];
 extern uint8_t ADCStatus;
@@ -17,6 +18,9 @@ void SysTick_Handler(void);
 
 uint32_t getJoystickX(void);
 uint32_t getJoystickY(void);
+
+bool isPE2Pressed(void);
+bool isPE3Pressed(void);
 
 int Joystick_main(void);
 

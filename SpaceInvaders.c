@@ -63,27 +63,25 @@
 #include "Battle.h"
 #include "DrawScreen.h"
 #include "Field.h"
-<<<<<<< HEAD
 #include "ImagesOther.h"
 #include "PokemonType.h"
-
-#include "ImagesPokemon.h"
 #include "ImagesPokemon2.h"
 
 #include "SpaceInvaders.h"
-=======
->>>>>>> master
+
 #include "Shop.h"
 #include "SystemInfo.h"
 #include "Player.h"
 
-#include "SpaceInvaders.h"
-#include "ImagesOther.h"
+
 
 uint8_t ADCStatus;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
+
+ItemInstType shopItems[3];
+  SpriteInstType itemInsts[3];
 
 int main(void){
 	PLL_Init(Bus80MHz);
@@ -128,18 +126,28 @@ int main1(void){
 	const PokemonInstType pokemons[3] = {CharmanderStart, SquirtleStart, BulbasaurStart};
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
+	
+	Shop_Init();
+	
 	//DrawWorld(p1, mainField);
 	while(1){
 	//ST7735_SetCursor(5, 1);
-	ST7735_FillScreen(0xFFFF);
-	uint32_t rannum = Random()%3;
-	
-	//char num = rannum + 0x30;
-	//ST7735_OutString(&num);
-	PokemonInstType selected = pokemons[rannum];
-	DrawBattleScreen(&BulbasaurStart, &selected);
-	Delay100ms(15);
+//	ST7735_FillScreen(0xFFFF);
+//	uint32_t rannum = Random()%3;
+//	
+//	//char num = rannum + 0x30;
+//	//ST7735_OutString(&num);
+//	PokemonInstType selected = pokemons[rannum];
+//	DrawBattleScreen(&BulbasaurStart, &selected);
+//	Delay100ms(15);
+		SpriteSelectType shopScreen = {itemInsts, 3, 0};
+	DrawShopScreen(shopScreen, shopItems);
 	}
+	
+		// SHOP STUFF
+  
+	
+	// END OF SHOP STUFF
 	
 	//DrawTitleScreen(starterScreen);
 	

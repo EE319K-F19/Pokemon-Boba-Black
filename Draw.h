@@ -17,7 +17,7 @@ struct Sprite {
 struct SpriteInst {
 	int16_t x_left; 
 	int16_t y_bottom;
-	const SpriteType sprite;
+	SpriteType sprite;
 };
 
 struct SpriteSelect {
