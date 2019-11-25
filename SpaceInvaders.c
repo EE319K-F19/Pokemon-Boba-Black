@@ -85,13 +85,14 @@ int main(void){
 	SysTick_Init();
   EnableInterrupts();
 	
+	ClearScreenGrid();
+	InitBackgroundTypes();
 	InitFieldArray();
 	InitPokemon();
 	InitPlayer();
 	
 	//DrawTitleScreen();
 	DrawWorld(p1, mainField);
-	
 }
 
 void InitPlayer(){

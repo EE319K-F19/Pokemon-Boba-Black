@@ -10,9 +10,19 @@ const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
 const uint8_t R = 3;
-const uint8_t A = 4;
+const uint8_t E = 4;
 const uint8_t fieldCols = 64;
 const uint8_t fieldRows = 40;
+
+SpriteType background[4]; 
+
+uint8_t screenGrid[63];
+
+void ClearScreenGrid(){
+	for(int i=0; i<63; i++){
+		screenGrid[i] = E;
+	}
+}
 
 void InitFieldArray(){
 	for(int i=0; i<fieldRows; i++){
@@ -24,17 +34,21 @@ void InitFieldArray(){
 	}
 }
 
+void InitBackgroundTypes(){
+	background[0] = (SpriteType) {ground, 16, 16};
+	background[1] = (SpriteType) {grass, 16, 16};
+	background[2] = (SpriteType) {water, 16, 16};
+	background[3] = (SpriteType) {rock, 16, 16};
+}
+
 void DrawField(PlayerType player, FieldType field){
-	SpriteType groundS = {ground, 16, 16};
-	SpriteType grassS = {grass, 16, 16};
-	SpriteType waterS = {water, 16, 16};
-	SpriteType rockS = {rock, 16, 16};
-	SpriteType background[] = {groundS, grassS, waterS, rockS};
+	
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
 			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
 			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
 			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
+			
 			if(player.XPos == screenCol && player.YPos == screenRow){
 				uint16_t combinedSprite[16*16];
 				for(int i=0; i<16*16; i++){
@@ -46,9 +60,10 @@ void DrawField(PlayerType player, FieldType field){
 				}
 				SpriteType combined = {combinedSprite, 16, 16};
 				DrawGridSprite(j, i, combined);
-				continue;
+			}else if(screenGrid[i*SCREEN_COLUMNS+j] != fieldType){
+				DrawGridSprite(j, i, background[fieldType]);
+				screenGrid[i*SCREEN_COLUMNS+j] = fieldType;
 			}
-			DrawGridSprite(j, i, background[fieldType]);
 		}
 	}
 }

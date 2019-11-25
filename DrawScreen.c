@@ -34,6 +34,7 @@ void InitPokemon(){
 }
 
 void DrawBattleScreen(PokemonType* pokeLeft, PokemonType* pokeRight){
+	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->sprite};
 	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};
