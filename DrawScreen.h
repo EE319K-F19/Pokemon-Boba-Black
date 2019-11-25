@@ -26,6 +26,8 @@ struct PokemonInst {
 extern PokemonType BulbasaurT;
 extern PokemonType SquirtleT;
 extern PokemonType CharmanderT;
+extern PokemonType PidgeyT;
+extern PokemonType PikachuT;
 
 void InitPokemon(void);
 void DrawTitleScreen(SpriteSelectType starterScreen);

@@ -80,10 +80,10 @@ int main(void){
   Random_Init(1);
   Output_Init();
   
-	//ADC_Init89();
-	//ST7735_InitR(INITR_REDTAB);
-	//SysTick_Init();
-  //EnableInterrupts();
+	ADC_Init89();
+	ST7735_InitR(INITR_REDTAB);
+	SysTick_Init();
+  EnableInterrupts();
 	
 	InitFieldArray();
 	InitPokemon();
@@ -104,7 +104,7 @@ int main(void){
 	const PokemonInstType pokemons[3] = {CharmanderStart, SquirtleStart, BulbasaurStart};
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
-	DrawWorld(p1, mainField);
+	//DrawWorld(p1, mainField);
 	while(1){
 	//ST7735_SetCursor(5, 1);
 	ST7735_FillScreen(0xFFFF);

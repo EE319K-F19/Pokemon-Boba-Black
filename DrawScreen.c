@@ -13,14 +13,21 @@
 PokemonType BulbasaurT;
 PokemonType SquirtleT;
 PokemonType CharmanderT;
+PokemonType PidgeyT;
+PokemonType PikachuT;
 
 void InitPokemon(){
 	SpriteType bulbasaurS = {bulbasaur, 40, 40};
 	SpriteType squirtleS = {squirtle, 40, 40};
 	SpriteType charmanderS = {charmander, 40, 40};
+	SpriteType pidgeyS = {squirtle, 40, 40};
+	SpriteType pikachuS = {charmander, 40, 40};
+	
 	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45};
 	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43};
 	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90};
 }
 
 void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){

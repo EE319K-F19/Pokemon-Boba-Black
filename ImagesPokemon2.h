@@ -8,5 +8,9 @@ extern const unsigned short charmander[];
 extern const unsigned short charmanderFlipped[];
 extern const unsigned short squirtle[];
 extern const unsigned short squirtleFlipped[];
+extern const unsigned short pidget[];
+extern const unsigned short pidgetFlipped[];
+extern const unsigned short pikachu[];
+extern const unsigned short pikachuFlipped[];
 
 #endif
