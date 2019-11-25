@@ -1,9 +1,4 @@
 
-#ifndef _IMAGESPOKEMONH_
-#define _IMAGESPOKEMONH_
-#include <stdint.h>
-
-
 //width=40 x height=40
 const unsigned short bulbasaur[] = {
  0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF,
@@ -631,6 +626,3 @@ const unsigned short squirtleFlipped[] = {
 
 
 };
-
-
-#endif

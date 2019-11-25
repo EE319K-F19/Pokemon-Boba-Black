@@ -8,6 +8,19 @@
 const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
+const uint8_t R = 3;
+const uint8_t fieldCols = 64;
+const uint8_t fieldRows = 40;
+
+void InitFieldArray(){
+	for(int i=0; i<fieldRows; i++){
+		for(int j=0; j<fieldCols; j++){
+			if(i==SCREEN_MID_ROW || j==SCREEN_MID_COL || i==fieldRows-SCREEN_MID_ROW-1 || j==fieldCols-SCREEN_MID_ROW-1){
+				SetFieldGrid(i, j, R);
+			}
+		}
+	}
+}
 
 void DrawField(PlayerType player, FieldType field){
 	
@@ -30,7 +43,15 @@ void DrawField(PlayerType player, FieldType field){
 	}
 }
 
-const uint8_t fieldArray[] = {
+uint8_t GetFieldGrid(uint8_t row, uint8_t col){
+	return fieldArray[row*fieldCols + col];
+}
+
+void SetFieldGrid(uint8_t row, uint8_t col, uint8_t fieldType){
+	fieldArray[row*fieldCols + col] = fieldType;
+}
+
+uint8_t fieldArray[] = {
 //0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63
 	N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, //0
 	N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, //1
