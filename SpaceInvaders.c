@@ -63,9 +63,11 @@
 #include "DrawScreen.h"
 //#include "Battle.h"
 #include "Field.h"
-//#include "ImagesOther.h"
+#include "ImagesOther.h"
+#include "PokemonType.h"
 
 #include "ImagesPokemon.h"
+#include "ImagesPokemon2.h"
 
 #include "SpaceInvaders.h"
 #include "Shop.h"
@@ -90,7 +92,7 @@ int main(void){
 		//ST7735_SetCursor(0,0);
 		//ST7735_OutString("SW: ");
 		//LCD_OutDec(portEDataPE3);
-		// ST7735_OutString("\n");
+		//ST7735_OutString("\n");
 	}
 }
 

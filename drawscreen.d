@@ -8,5 +8,6 @@
 .\drawscreen.o: Field.h
 .\drawscreen.o: Player.h
 .\drawscreen.o: SpaceInvaders.h
-.\drawscreen.o: PokemonType.h
+.\drawscreen.o: Shop.h
+.\drawscreen.o: Player.h
 .\drawscreen.o: SystemInfo.h
