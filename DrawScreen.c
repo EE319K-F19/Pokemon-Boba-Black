@@ -1,6 +1,7 @@
 
-#include "DrawScreen.h"
+#include <stdint.h>
 #include "ST7735.h"
+#include "Random.h"
 
 #include "ADC_Joystick.h"
 #include "Field.h"
@@ -9,6 +10,7 @@
 
 #include "TextSprites.h"
 #include "ImagesPokemon2.h"
+#include "DrawScreen.h"
 
 PokemonType BulbasaurT;
 PokemonType SquirtleT;
@@ -20,8 +22,8 @@ void InitPokemon(){
 	SpriteType bulbasaurS = {bulbasaur, 40, 40};
 	SpriteType squirtleS = {squirtle, 40, 40};
 	SpriteType charmanderS = {charmander, 40, 40};
-	SpriteType pidgeyS = {squirtle, 40, 40};
-	SpriteType pikachuS = {charmander, 40, 40};
+	SpriteType pidgeyS = {pidgey, 40, 40};
+	SpriteType pikachuS = {pikachu, 40, 40};
 	
 	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45};
 	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43};
@@ -30,10 +32,13 @@ void InitPokemon(){
 	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90};
 }
 
-void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+void DrawBattleScreen(PokemonType* pokeLeft, PokemonType* pokeRight){
 	ST7735_FillScreen(0xFFFF);
-	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
-	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->species.sprite};
+	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->sprite};
+	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};
+	
+	PokemonInstType pokemonLeft = {2, 90, pokeLeft->mhealth, *pokeLeft};
+	PokemonInstType pokemonRight = {86, 90, pokeRight->mhealth, *pokeRight};
 	
 	DrawSpriteImg(leftInst);
 	DrawSpriteImg(rightInst);
@@ -54,11 +59,11 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	SpriteSelectType battleScreen = {battleCommands, 4, 0};
 	DrawAllSprites(battleScreen);
 	
-	ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-	ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
+	ST7735_FillRect(pokemonLeft.xPos+5, 45, 30, 2, 0x0000);
+	ST7735_FillRect(pokemonRight.xPos+5, 45, 30, 2, 0x0000);
 	
-	ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
-	ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokemonLeft.xPos+5, 45, pokemonLeft.chealth*30/pokemonLeft.species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokemonRight.xPos+5, 45, pokemonRight.chealth*30/pokemonRight.species.mhealth, 2, 0x00FF);
 	
 	//while(1){
 		
@@ -83,7 +88,18 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
   //}
 }
 
-void DrawTitleScreen(SpriteSelectType starterScreen){
+void DrawTitleScreen(){
+	PokemonInstType BulbasaurStart = {2, 130, BulbasaurT.mhealth, BulbasaurT};
+	PokemonInstType SquirtleStart = {44, 130, SquirtleT.mhealth, SquirtleT};
+	PokemonInstType CharmanderStart = {86, 130, CharmanderT.mhealth, CharmanderT};
+	
+	const SpriteInstType starterInsts[3] = {
+		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos, BulbasaurStart.species.sprite},
+		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos, SquirtleStart.species.sprite},
+		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos, CharmanderStart.species.sprite}
+	};
+	SpriteSelectType starterScreen = {starterInsts, 3, 0};
+	
 	ST7735_FillScreen(0xFFFF);
 	
 	DrawAllSprites(starterScreen);
@@ -116,6 +132,8 @@ void DrawTitleScreen(SpriteSelectType starterScreen){
 
 void DrawWorld(PlayerType p1, FieldType mainField){
 	//draws black border around the edges of the screen
+	
+	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 
 	while(1){
@@ -125,16 +143,25 @@ void DrawWorld(PlayerType p1, FieldType mainField){
 		uint8_t yDir = getJoystickY();
 		ADCStatus = 0;
 		
+		bool moved = false;
 		if(xDir == 0){
-			MoveLeft(&p1);
+			moved = MoveLeft(&p1);
 		}else if(xDir == 2){
-			MoveRight(&p1);
+			moved = MoveRight(&p1);
 		}else if(yDir == 0){
-			MoveUp(&p1);
+			moved = MoveUp(&p1);
 		}else if(yDir == 2){
-			MoveDown(&p1);
+			moved = MoveDown(&p1);
 		}
 		
+		uint8_t encounter = Random()%10;
+		if(moved && encounter == 0){
+			ST7735_FillScreen(0xFFFF);
+			uint8_t pokemonRan = Random()%5;
+			PokemonType selected = allPokemon[pokemonRan];
+			DrawBattleScreen(&allPokemon[0], &selected);
+			Delay100ms(20);
+		}
 		DrawField(p1, mainField);
 	}
 }
