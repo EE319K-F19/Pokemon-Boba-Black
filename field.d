@@ -4,7 +4,11 @@
 .\field.o: Field.h
 .\field.o: Player.h
 .\field.o: SpaceInvaders.h
+<<<<<<< HEAD
 .\field.o: Draw.h
+=======
+>>>>>>> master
 .\field.o: Shop.h
 .\field.o: Player.h
+.\field.o: Draw.h
 .\field.o: SystemInfo.h

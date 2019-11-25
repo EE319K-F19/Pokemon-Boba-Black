@@ -1,5 +1,6 @@
 
 #include "Player.h"
+#include "Field.h"
 
 void DrawSpriteImgPlayer(PlayerType player){
 	ST7735_DrawBitmap(player.XPos*16, player.YPos*16+player.sprite->height, player.sprite->image, player.sprite->width, player.sprite->height);
@@ -7,20 +8,28 @@ void DrawSpriteImgPlayer(PlayerType player){
 
 void MoveUp(PlayerType *player){
 	player->sprite = player->spriteBack;
-	player->YPos --;
+	if(IsWalkable(player->YPos-1, player->XPos)){
+		player->YPos --;
+	}
 }
 
 void MoveDown(PlayerType *player){
 	player->sprite = player->spriteFront;
-	player->YPos ++;
+	if(IsWalkable(player->YPos+1, player->XPos)){
+		player->YPos ++;
+	}
 }
 
 void MoveLeft(PlayerType *player){
 	player->sprite = player->spriteLeft;
-	player->XPos --;
+	if(IsWalkable(player->YPos, player->XPos-1)){
+		player->XPos --;
+	}
 }
 
 void MoveRight(PlayerType *player){
 	player->sprite = player->spriteSide;
-	player->XPos ++;
+	if(IsWalkable(player->YPos-1, player->XPos)){
+		player->XPos ++;
+	}
 }

@@ -32,7 +32,7 @@ struct itemInst {
 };
 
 	
-void Shop_Init();
+void Shop_Init(void);
 // void makePurchase(PlayerType* player, ItemType item);
 void DrawShopScreen(SpriteSelectType itemSprites, const ItemInstType shopItems[3]);
 

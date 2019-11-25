@@ -14,16 +14,16 @@ typedef struct ItemInventory ItemInventoryType;
 struct Player {
 	uint32_t XPos;
 	uint32_t YPos;
-	//PokemonInstType *PokemonTeam;
 	
 	SpriteType *sprite;
 	SpriteType *spriteFront;
 	SpriteType *spriteBack;
 	SpriteType *spriteSide;
 	SpriteType *spriteLeft;
-	uint8_t spriteFlip;
 	uint32_t coins;
 	uint32_t happiness;
+	
+	//PokemonInstType *PokemonTeam;
 	// ItemInventoryType playerInventory[3];
 };
 

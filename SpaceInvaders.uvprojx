@@ -463,6 +463,11 @@
               <FilePath>.\Draw.c</FilePath>
             </File>
             <File>
+              <FileName>DrawScreen.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DrawScreen.c</FilePath>
+            </File>
+            <File>
               <FileName>Field.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Field.h</FilePath>
@@ -513,11 +518,6 @@
               <FilePath>.\Shop.c</FilePath>
             </File>
             <File>
-              <FileName>ImagesOther.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ImagesOther.h</FilePath>
-            </File>
-            <File>
               <FileName>ADC_Joystick.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\ADC_Joystick.c</FilePath>
@@ -528,9 +528,14 @@
               <FilePath>.\ADC_Joystick.h</FilePath>
             </File>
             <File>
-              <FileName>ImagesPokemon2.h</FileName>
+              <FileName>ImagesOther.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\ImagesPokemon2.h</FilePath>
+              <FilePath>.\ImagesOther.h</FilePath>
+            </File>
+            <File>
+              <FileName>ImagesOther.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ImagesOther.c</FilePath>
             </File>
             <File>
               <FileName>TextSprites.h</FileName>
@@ -538,9 +543,19 @@
               <FilePath>.\TextSprites.h</FilePath>
             </File>
             <File>
-              <FileName>DrawScreen.c</FileName>
+              <FileName>TextSprites.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\DrawScreen.c</FilePath>
+              <FilePath>.\TextSprites.c</FilePath>
+            </File>
+            <File>
+              <FileName>ImagesPokemon2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ImagesPokemon2.h</FilePath>
+            </File>
+            <File>
+              <FileName>ImagesPokemon2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ImagesPokemon2.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,5 +1,6 @@
 
 #include "Draw.h"
+#include "Field.h"
 typedef struct Pokemon PokemonType;
 typedef struct PokemonInst PokemonInstType;
 
@@ -25,7 +26,10 @@ struct PokemonInst {
 extern PokemonType BulbasaurT;
 extern PokemonType SquirtleT;
 extern PokemonType CharmanderT;
+extern PokemonType PidgeyT;
+extern PokemonType PikachuT;
 
+void InitPokemon(void);
 void DrawTitleScreen(SpriteSelectType starterScreen);
 void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
-void DrawWorld();
+void DrawWorld(PlayerType p1, FieldType mainField);
