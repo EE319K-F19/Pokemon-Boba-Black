@@ -37,10 +37,16 @@ void DrawField(PlayerType player, FieldType field){
 			if(fieldType == N) fieldColor = 0x4A5A;
 			else if(fieldType == W) fieldColor = 0xEFC7;
 			else if(fieldType == G) fieldColor = 0x9F8F;
+			else if(fieldType == R) fieldColor = 0x0000;
 			DrawGridFill(j, i, fieldColor);
 			
 		}
 	}
+}
+
+uint8_t IsWalkable(uint8_t row, uint8_t col){
+	if(GetFieldGrid(row, col) != R) return 1;
+	return 0;
 }
 
 uint8_t GetFieldGrid(uint8_t row, uint8_t col){

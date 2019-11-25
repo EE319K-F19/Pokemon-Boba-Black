@@ -23,6 +23,7 @@ struct Field {
 
 void InitFieldArray(void);
 void DrawField(PlayerType player, FieldType field);
+uint8_t IsWalkable(uint8_t row, uint8_t col);
 uint8_t GetFieldGrid(uint8_t row, uint8_t col);
 void SetFieldGrid(uint8_t row, uint8_t col, uint8_t fieldType);
 

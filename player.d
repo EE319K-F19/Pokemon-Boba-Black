@@ -6,3 +6,4 @@
 .\player.o: Shop.h
 .\player.o: Player.h
 .\player.o: Draw.h
+.\player.o: Field.h
