@@ -22,7 +22,9 @@ struct Field {
 	const uint32_t FieldHeight;
 };
 
+void ClearScreenGrid(void);
 void InitFieldArray(void);
+void InitBackgroundTypes(void);
 void DrawField(PlayerType player, FieldType field);
 bool IsWalkable(uint8_t row, uint8_t col);
 uint8_t GetFieldGrid(uint8_t row, uint8_t col);

@@ -10,6 +10,7 @@
 
 #include "TextSprites.h"
 #include "ImagesPokemon2.h"
+#include "ImagesOther.h"
 #include "DrawScreen.h"
 
 PokemonType BulbasaurT;
@@ -33,6 +34,7 @@ void InitPokemon(){
 }
 
 void DrawBattleScreen(PokemonType* pokeLeft, PokemonType* pokeRight){
+	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->sprite};
 	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};
@@ -135,7 +137,7 @@ void DrawWorld(PlayerType p1, FieldType mainField){
 	
 	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
-
+	
 	while(1){
 		while(ADCStatus == 0){}
 			
