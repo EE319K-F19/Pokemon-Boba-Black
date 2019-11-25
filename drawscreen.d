@@ -14,4 +14,5 @@
 .\drawscreen.o: SystemInfo.h
 .\drawscreen.o: TextSprites.h
 .\drawscreen.o: ImagesPokemon2.h
+.\drawscreen.o: ImagesOther.h
 .\drawscreen.o: DrawScreen.h

@@ -4,11 +4,13 @@
 #include "Field.h"
 #include "SystemInfo.h"
 #include "Draw.h"
+#include "ImagesOther.h"
 
 const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
 const uint8_t R = 3;
+const uint8_t A = 4;
 const uint8_t fieldCols = 64;
 const uint8_t fieldRows = 40;
 
@@ -23,23 +25,30 @@ void InitFieldArray(){
 }
 
 void DrawField(PlayerType player, FieldType field){
-	
+	SpriteType groundS = {ground, 16, 16};
+	SpriteType grassS = {grass, 16, 16};
+	SpriteType waterS = {water, 16, 16};
+	SpriteType rockS = {rock, 16, 16};
+	SpriteType background[] = {groundS, grassS, waterS, rockS};
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
 			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
 			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
+			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
 			if(player.XPos == screenCol && player.YPos == screenRow){
-				DrawGridSprite(j, i, player.sprite);
+				uint16_t combinedSprite[16*16];
+				for(int i=0; i<16*16; i++){
+					if(player.sprite.image[i] == 0xFFFF){
+						combinedSprite[i] = background[fieldType].image[i];
+					}else {
+						combinedSprite[i] = player.sprite.image[i];
+					}
+				}
+				SpriteType combined = {combinedSprite, 16, 16};
+				DrawGridSprite(j, i, combined);
 				continue;
 			}
-			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
-			uint16_t fieldColor = ST7735_WHITE;
-			if(fieldType == N) fieldColor = 0x4A5A;
-			else if(fieldType == W) fieldColor = 0xEFC7;
-			else if(fieldType == G) fieldColor = 0x9F8F;
-			else if(fieldType == R) fieldColor = 0x0000;
-			DrawGridFill(j, i, fieldColor);
-			
+			DrawGridSprite(j, i, background[fieldType]);
 		}
 	}
 }

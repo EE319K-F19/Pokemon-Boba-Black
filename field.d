@@ -9,3 +9,4 @@
 .\field.o: Player.h
 .\field.o: Draw.h
 .\field.o: SystemInfo.h
+.\field.o: ImagesOther.h

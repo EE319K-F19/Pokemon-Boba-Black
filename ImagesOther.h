@@ -11,5 +11,9 @@ extern const unsigned short playerSideFlipped[];
 extern const unsigned short pokeball[];
 extern const unsigned short healthPotion[];
 extern const unsigned short boba[];
+extern const unsigned short grass[];
+extern const unsigned short water[];
+extern const unsigned short ground[];
+extern const unsigned short rock[];
 
 #endif
