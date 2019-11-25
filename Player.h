@@ -3,6 +3,7 @@
 #define _PLAYERH_
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "ST7735.h"
 
 #include "SpaceInvaders.h"
@@ -15,11 +16,11 @@ struct Player {
 	uint32_t XPos;
 	uint32_t YPos;
 	
-	SpriteType *sprite;
-	SpriteType *spriteFront;
-	SpriteType *spriteBack;
-	SpriteType *spriteSide;
-	SpriteType *spriteLeft;
+	SpriteType sprite;
+	SpriteType spriteFront;
+	SpriteType spriteBack;
+	SpriteType spriteSide;
+	SpriteType spriteLeft;
 	uint32_t coins;
 	uint32_t happiness;
 	
@@ -30,9 +31,9 @@ struct Player {
 
 void DrawSpriteImgPlayer(PlayerType player);
 
-void MoveUp(PlayerType *player);
-void MoveDown(PlayerType *player);
-void MoveLeft(PlayerType *player);
-void MoveRight(PlayerType *player);
+bool MoveUp(PlayerType *player);
+bool MoveDown(PlayerType *player);
+bool MoveLeft(PlayerType *player);
+bool MoveRight(PlayerType *player);
 
 #endif

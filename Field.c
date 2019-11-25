@@ -29,7 +29,7 @@ void DrawField(PlayerType player, FieldType field){
 			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
 			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
 			if(player.XPos == screenCol && player.YPos == screenRow){
-				DrawGridSprite(j, i, *player.sprite);
+				DrawGridSprite(j, i, player.sprite);
 				continue;
 			}
 			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
@@ -44,9 +44,8 @@ void DrawField(PlayerType player, FieldType field){
 	}
 }
 
-uint8_t IsWalkable(uint8_t row, uint8_t col){
-	if(GetFieldGrid(row, col) != R) return 1;
-	return 0;
+bool IsWalkable(uint8_t row, uint8_t col){
+	return GetFieldGrid(row, col) != R;
 }
 
 uint8_t GetFieldGrid(uint8_t row, uint8_t col){
