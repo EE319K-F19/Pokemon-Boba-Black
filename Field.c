@@ -4,13 +4,25 @@
 #include "Field.h"
 #include "SystemInfo.h"
 #include "Draw.h"
+#include "ImagesOther.h"
 
 const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
 const uint8_t R = 3;
+const uint8_t E = 4;
 const uint8_t fieldCols = 64;
 const uint8_t fieldRows = 40;
+
+SpriteType background[4]; 
+
+uint8_t screenGrid[63];
+
+void ClearScreenGrid(){
+	for(int i=0; i<63; i++){
+		screenGrid[i] = E;
+	}
+}
 
 void InitFieldArray(){
 	for(int i=0; i<fieldRows; i++){
@@ -22,31 +34,42 @@ void InitFieldArray(){
 	}
 }
 
+void InitBackgroundTypes(){
+	background[0] = (SpriteType) {ground, 16, 16};
+	background[1] = (SpriteType) {grass, 16, 16};
+	background[2] = (SpriteType) {water, 16, 16};
+	background[3] = (SpriteType) {rock, 16, 16};
+}
+
 void DrawField(PlayerType player, FieldType field){
 	
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
 			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
 			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
-			if(player.XPos == screenCol && player.YPos == screenRow){
-				DrawGridSprite(j, i, *player.sprite);
-				continue;
-			}
 			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
-			uint16_t fieldColor = ST7735_WHITE;
-			if(fieldType == N) fieldColor = 0x4A5A;
-			else if(fieldType == W) fieldColor = 0xEFC7;
-			else if(fieldType == G) fieldColor = 0x9F8F;
-			else if(fieldType == R) fieldColor = 0x0000;
-			DrawGridFill(j, i, fieldColor);
 			
+			if(player.XPos == screenCol && player.YPos == screenRow){
+				uint16_t combinedSprite[16*16];
+				for(int i=0; i<16*16; i++){
+					if(player.sprite.image[i] == 0xFFFF){
+						combinedSprite[i] = background[fieldType].image[i];
+					}else {
+						combinedSprite[i] = player.sprite.image[i];
+					}
+				}
+				SpriteType combined = {combinedSprite, 16, 16};
+				DrawGridSprite(j, i, combined);
+			}else if(screenGrid[i*SCREEN_COLUMNS+j] != fieldType){
+				DrawGridSprite(j, i, background[fieldType]);
+				screenGrid[i*SCREEN_COLUMNS+j] = fieldType;
+			}
 		}
 	}
 }
 
-uint8_t IsWalkable(uint8_t row, uint8_t col){
-	if(GetFieldGrid(row, col) != R) return 1;
-	return 0;
+bool IsWalkable(uint8_t row, uint8_t col){
+	return GetFieldGrid(row, col) != R;
 }
 
 uint8_t GetFieldGrid(uint8_t row, uint8_t col){

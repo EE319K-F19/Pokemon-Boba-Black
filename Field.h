@@ -3,6 +3,7 @@
 #define _FIELDH_
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "Player.h"
 
 extern const uint8_t N; //normal
@@ -21,9 +22,11 @@ struct Field {
 	const uint32_t FieldHeight;
 };
 
+void ClearScreenGrid(void);
 void InitFieldArray(void);
+void InitBackgroundTypes(void);
 void DrawField(PlayerType player, FieldType field);
-uint8_t IsWalkable(uint8_t row, uint8_t col);
+bool IsWalkable(uint8_t row, uint8_t col);
 uint8_t GetFieldGrid(uint8_t row, uint8_t col);
 void SetFieldGrid(uint8_t row, uint8_t col, uint8_t fieldType);
 

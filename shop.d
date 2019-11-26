@@ -1,6 +1,7 @@
 .\shop.o: Shop.c
 .\shop.o: Player.h
 .\shop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\shop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\shop.o: ST7735.h
 .\shop.o: SpaceInvaders.h
 .\shop.o: Shop.h

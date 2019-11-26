@@ -52,12 +52,12 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "ST7735.h"
-#include "Random.h"
 #include "PLL.h"
 #include "ADC.h"
 #include "Sound.h"
 #include "Timer0.h"
 #include "Timer1.h"
+#include "Random.h"
 
 #include "ADC_Joystick.h"
 #include "Battle.h"
@@ -107,63 +107,20 @@ int main1(void){
 	SysTick_Init();
   EnableInterrupts();
 	
+	ClearScreenGrid();
+	InitBackgroundTypes();
 	InitFieldArray();
 	InitPokemon();
 	InitPlayer();
 	
-	//PokemonInstType BulbasaurStart = {2, 130, BulbasaurT.mhealth, BulbasaurT};
-	//PokemonInstType SquirtleStart = {44, 130, SquirtleT.mhealth, SquirtleT};
-	PokemonInstType CharmanderStart = {86, 130, CharmanderT.mhealth, CharmanderT};
-	PokemonInstType BulbasaurStart = {2, 90, BulbasaurT.mhealth, BulbasaurT};
-	PokemonInstType SquirtleStart = {86, 90, SquirtleT.mhealth, SquirtleT};
-	           
-	const SpriteInstType starterInsts[3] = {
-		(SpriteInstType) {BulbasaurStart.xPos, BulbasaurStart.yPos, BulbasaurStart.species.sprite},
-		(SpriteInstType) {SquirtleStart.xPos, SquirtleStart.yPos, SquirtleStart.species.sprite},
-		(SpriteInstType) {CharmanderStart.xPos, CharmanderStart.yPos, CharmanderStart.species.sprite}
-	};
-	
-	const PokemonInstType pokemons[3] = {CharmanderStart, SquirtleStart, BulbasaurStart};
-	
-	SpriteSelectType starterScreen = {starterInsts, 3, 0};
-	
-	Shop_Init();
-	
-	//DrawWorld(p1, mainField);
-	while(1){
-	//ST7735_SetCursor(5, 1);
-//	ST7735_FillScreen(0xFFFF);
-//	uint32_t rannum = Random()%3;
-//	
-//	//char num = rannum + 0x30;
-//	//ST7735_OutString(&num);
-//	PokemonInstType selected = pokemons[rannum];
-//	DrawBattleScreen(&BulbasaurStart, &selected);
-//	Delay100ms(15);
-		SpriteSelectType shopScreen = {itemInsts, 3, 0};
-	DrawShopScreen(shopScreen, shopItems);
-	}
-	
-		// SHOP STUFF
-  
-	
-	// END OF SHOP STUFF
-	
-	//DrawTitleScreen(starterScreen);
-	
-	//DrawWorld();
-	
-	//battle screen
-	//ST7735_FillScreen(0xFFFF);
-	
-	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
-	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
-	
+	//DrawTitleScreen();
+	DrawWorld(p1, mainField);
 }
 
 void InitPlayer(){
 	SpriteType PlayerFront = {playerFront, 16, 16};
 	SpriteType PlayerBack = {playerBack, 16, 16};
 	SpriteType PlayerSide = {playerSide, 16, 16};
-	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0, 25};
+	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
+	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
 }
