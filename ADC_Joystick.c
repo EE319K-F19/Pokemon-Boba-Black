@@ -25,6 +25,7 @@
 #include "ADC_Joystick.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "ST7735.h"
+#include <stdbool.h>
 
 uint32_t joystickData[2];
 
@@ -65,10 +66,10 @@ void ADC_Init89(void){
   delay = SYSCTL_RCGCGPIO_R;
 	delay++;
 	delay++;
-  GPIO_PORTE_DIR_R &= ~0x30;      // 3) make PE4 PE5 input (also make PE2 and PE3 inputs)
+  GPIO_PORTE_DIR_R &= ~0x3C;      // 3) make PE4 PE5 input (also make PE2 and PE3 inputs)
   GPIO_PORTE_AFSEL_R |= 0x30;     // 4) enable alternate function on PE4 PE5
   GPIO_PORTE_DEN_R &= ~0x30;      // 5) disable digital I/O on PE4 PE5
-	// GPIO_PORTE_DEN_R |= 0x0C;				// enable digital I/O on PE2 and PE3
+	GPIO_PORTE_DEN_R |= 0x0C;				// enable digital I/O on PE2 and PE3
 
   GPIO_PORTE_DIR_R &= ~0x30;      // 3) make PE4 PE5 input
   GPIO_PORTE_AFSEL_R |= 0x30;     // 4) enable alternate function on PE4 PE5
@@ -139,5 +140,23 @@ uint32_t getJoystickY(void){
 	}
 	else{
 		return 1; // center
+	}
+}
+
+bool isPE2Pressed(void){
+	if((GPIO_PORTE_DATA_R & 0x04) == 0){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+bool isPE3Pressed(void){
+	if((GPIO_PORTE_DATA_R & 0x08) == 0){
+		return false;
+	}
+	else{
+		return true;
 	}
 }

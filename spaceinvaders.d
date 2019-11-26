@@ -9,6 +9,7 @@
 .\spaceinvaders.o: Timer1.h
 .\spaceinvaders.o: Random.h
 .\spaceinvaders.o: ADC_Joystick.h
+.\spaceinvaders.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\spaceinvaders.o: Battle.h
 .\spaceinvaders.o: TextSprites.h
 .\spaceinvaders.o: DrawScreen.h
@@ -19,5 +20,7 @@
 .\spaceinvaders.o: SpaceInvaders.h
 .\spaceinvaders.o: Shop.h
 .\spaceinvaders.o: Player.h
-.\spaceinvaders.o: SystemInfo.h
 .\spaceinvaders.o: ImagesOther.h
+.\spaceinvaders.o: PokemonType.h
+.\spaceinvaders.o: ImagesPokemon2.h
+.\spaceinvaders.o: SystemInfo.h

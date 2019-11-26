@@ -9,6 +9,8 @@
 .\drawscreen.o: SpaceInvaders.h
 .\drawscreen.o: Shop.h
 .\drawscreen.o: Player.h
+.\drawscreen.o: ADC_Joystick.h
+.\drawscreen.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\drawscreen.o: Draw.h
 .\drawscreen.o: PokemonType.h
 .\drawscreen.o: SystemInfo.h

@@ -104,12 +104,27 @@ const uint8_t highpitch[1802] = {
   63, 52};
 
 	uint32_t idx = 0;
+	uint8_t* sound;
+	uint32_t len;
 
 void Sound_Init(void){
 // write this
-	//DAC_Init();
-	Timer0_Init(Sound_Highpitch, 7272);
+	DAC_Init();
+	Timer0_Init(Play_Sound, 7256);
 };
+
+void Play_Sound(void){
+	DAC_Out(sound[idx]);
+	idx = (idx + 1) % len;
+};
+
+void Sound_Highpitch(void){
+// write this
+	sound = (uint8_t*)highpitch;
+	len = 1802;
+	Play_Sound();
+};
+
 void Sound_Play(const uint8_t *pt, uint32_t count){
 // write this
 };
@@ -135,14 +150,6 @@ void Sound_Fastinvader3(void){
 void Sound_Fastinvader4(void){
 // write this
 };
-void Sound_Highpitch(void){
-// write this
-	if((GPIO_PORTE_DATA_R & 0x08) == 0){
-		return;
-	}
-	//DAC_Out(highpitch[idx]);
-	idx = (idx + 1) % 1802;
-};
 
 uint32_t portEDataPE3;
 int sound_main(void){
@@ -161,6 +168,20 @@ int sound_main(void){
 	while(1){
 		portEDataPE3 = GPIO_PORTE_DATA_R & 0x08;;
 		// Sound_Highpitch();
+		//ST7735_SetCursor(0,0);
+		//ST7735_OutString("SW: ");
+		//LCD_OutDec(portEDataPE3);
+		// ST7735_OutString("\n");
+	}
+}
+
+int sound_main2(void){
+	//PLL_Init(Bus80MHz);
+	Sound_Init();
+	//ADC_Init89();
+	//EnableInterrupts();
+	while(1){
+		Sound_Highpitch();
 		//ST7735_SetCursor(0,0);
 		//ST7735_OutString("SW: ");
 		//LCD_OutDec(portEDataPE3);

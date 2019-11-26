@@ -7,5 +7,7 @@
 .\shop.o: Shop.h
 .\shop.o: Player.h
 .\shop.o: Draw.h
+.\shop.o: ImagesOther.h
 .\shop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\shop.o: ADC_Joystick.h
+.\shop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h

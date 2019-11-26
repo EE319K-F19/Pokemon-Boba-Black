@@ -63,19 +63,41 @@
 #include "Battle.h"
 #include "DrawScreen.h"
 #include "Field.h"
+#include "ImagesOther.h"
+#include "PokemonType.h"
+#include "ImagesPokemon2.h"
+
+#include "SpaceInvaders.h"
+
 #include "Shop.h"
 #include "SystemInfo.h"
 #include "Player.h"
 
-#include "SpaceInvaders.h"
-#include "ImagesOther.h"
+
 
 uint8_t ADCStatus;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
 
+ItemInstType shopItems[3];
+  SpriteInstType itemInsts[3];
+
 int main(void){
+	PLL_Init(Bus80MHz);
+	Sound_Init();
+	ADC_Init89();
+	EnableInterrupts();
+	while(1){
+		Sound_Highpitch();
+		//ST7735_SetCursor(0,0);
+		//ST7735_OutString("SW: ");
+		//LCD_OutDec(portEDataPE3);
+		//ST7735_OutString("\n");
+	}
+}
+
+int main1(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();

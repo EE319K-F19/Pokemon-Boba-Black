@@ -1,6 +1,6 @@
-
 #ifndef _IMAGESPOKEMON2H_
 #define _IMAGESPOKEMON2H_
+#include <stdint.h>
 
 extern const unsigned short bulbasaur[];
 extern const unsigned short bulbasaurFlipped[];
@@ -14,3 +14,4 @@ extern const unsigned short pikachu[];
 extern const unsigned short pikachuFlipped[];
 
 #endif
+
