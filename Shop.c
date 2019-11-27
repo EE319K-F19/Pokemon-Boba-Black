@@ -77,6 +77,7 @@ void DrawShopScreen(SpriteSelectType shopScreen, const ItemInstType shopItems[3]
 		}
 			
 		DrawSelection(&shopScreen, 0x0000, 0xFFFF, 1);
+		if(isPE2Pressed()) break;
   }
 }
 

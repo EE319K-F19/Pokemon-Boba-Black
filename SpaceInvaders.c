@@ -131,11 +131,7 @@ int main(void){
 	//PokemonInstType poke = {0, 0, BulbasaurT.mhealth, BulbasaurT};
 	//PokemonInstType poke2 = {0, 0, BulbasaurT.mhealth, BulbasaurT};
 	//DrawMoveCommands(&poke, &poke2);
-	//while(1){
-		//SpriteSelectType shopScreen = {itemInsts, 3, 0};
-		
-		//DrawShopScreen(shopScreen, shopItems);
-	//}
+	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
 	PokemonType starterT = DrawTitleScreen(starterScreen);
 
@@ -239,7 +235,7 @@ void DrawWorld(PlayerType p1){
 		}else if(yDir == 2){
 			moved = MoveDown(&p1);
 		}
-		
+		DrawField(p1);
 		uint8_t encounter = Random()%10;
 		if(moved && encounter == 0){
 			ST7735_FillScreen(0xFFFF);
@@ -248,7 +244,6 @@ void DrawWorld(PlayerType p1){
 			DrawBattleScreen(&p1, &team[0], &selected);
 			//Delay100ms(20);
 		}
-		DrawField(p1);
 		
 		if(isPE2Pressed()){
 			ClearScreenGrid();
@@ -272,6 +267,12 @@ void DrawWorld(PlayerType p1){
 			
 			while(1){
 				if(isPE2Pressed()) break;
+			}
+		}else if(isPE3Pressed()){
+			if(GetFieldGrid(p1.YPos-1, p1.XPos) == S){
+				ClearScreenGrid();
+				SpriteSelectType shopScreen = {itemInsts, 3, 0};
+				DrawShopScreen(shopScreen, shopItems);
 			}
 		}
 	}
