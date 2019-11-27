@@ -61,43 +61,45 @@
 
 #include "ADC_Joystick.h"
 #include "Battle.h"
-#include "DrawScreen.h"
 #include "Field.h"
 #include "ImagesOther.h"
 #include "PokemonType.h"
 #include "ImagesPokemon2.h"
-
+#include "DrawScreen.h"
 #include "SpaceInvaders.h"
 
 #include "Shop.h"
 #include "SystemInfo.h"
 #include "Player.h"
 
-
-
 uint8_t ADCStatus;
 
 static PlayerType p1;
 static FieldType mainField = {fieldArray, 64, 40};
 
-ItemInstType shopItems[3];
-  SpriteInstType itemInsts[3];
+PokemonType starters[3];
+SpriteInstType starterInsts[3];
 
-int main(void){
+ItemInstType shopItems[3];
+SpriteInstType itemInsts[3];
+
+int main1(void){
 	PLL_Init(Bus80MHz);
 	Sound_Init();
 	ADC_Init89();
+	Shop_Init();
 	EnableInterrupts();
 	while(1){
-		Sound_Highpitch();
+		//Sound_Highpitch();
 		//ST7735_SetCursor(0,0);
 		//ST7735_OutString("SW: ");
 		//LCD_OutDec(portEDataPE3);
 		//ST7735_OutString("\n");
+		
 	}
 }
 
-int main1(void){
+int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
@@ -106,21 +108,28 @@ int main1(void){
 	ST7735_InitR(INITR_REDTAB);
 	SysTick_Init();
   EnableInterrupts();
-	
+	Shop_Init();
 	ClearScreenGrid();
 	InitBackgroundTypes();
 	InitFieldArray();
 	InitPokemon();
-	InitPlayer();
 	
-	//DrawTitleScreen();
+	//while(1){
+		//SpriteSelectType shopScreen = {itemInsts, 3, 0};
+		
+		//DrawShopScreen(shopScreen, shopItems);
+	//}
+	SpriteSelectType starterScreen = {starterInsts, 3, 0};
+	PokemonType starter = DrawTitleScreen(starterScreen);
+	PokemonTeamType pokemonTeam = {{0, 0, starter.mhealth, starter}, {0, 0, 0, NullT}, {0, 0, 0, NullT}, {0, 0, 0, NullT}, {0, 0, 0, NullT}, {0, 0, 0, NullT}};
+	InitPlayer(starter);
 	DrawWorld(p1, mainField);
 }
 
-void InitPlayer(){
+void InitPlayer(PokemonType starter){
 	SpriteType PlayerFront = {playerFront, 16, 16};
 	SpriteType PlayerBack = {playerBack, 16, 16};
 	SpriteType PlayerSide = {playerSide, 16, 16};
-	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
+	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};;
 	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
 }

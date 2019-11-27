@@ -443,6 +443,11 @@
               <FilePath>.\SpaceInvaders.c</FilePath>
             </File>
             <File>
+              <FileName>StructDec.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\StructDec.h</FilePath>
+            </File>
+            <File>
               <FileName>SystemInfo.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\SystemInfo.h</FilePath>
@@ -461,6 +466,11 @@
               <FileName>Draw.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Draw.c</FilePath>
+            </File>
+            <File>
+              <FileName>DrawScreen.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DrawScreen.h</FilePath>
             </File>
             <File>
               <FileName>DrawScreen.c</FileName>
@@ -486,16 +496,6 @@
               <FileName>PokemonType.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\PokemonType.c</FilePath>
-            </File>
-            <File>
-              <FileName>Battle.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Battle.h</FilePath>
-            </File>
-            <File>
-              <FileName>Battle.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Battle.c</FilePath>
             </File>
             <File>
               <FileName>Player.h</FileName>

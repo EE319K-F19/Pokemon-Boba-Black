@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "Player.h"
+#include "StructDec.h"
 
 extern const uint8_t N; //normal
 extern const uint8_t G; //grass
@@ -14,13 +14,6 @@ extern uint8_t fieldArray[];
 extern const uint8_t fieldCols;
 extern const uint8_t fieldRows;
 
-typedef struct Field FieldType;
-
-struct Field {
-	uint8_t *FieldArray;
-	const uint32_t FieldWidth;
-	const uint32_t FieldHeight;
-};
 
 void ClearScreenGrid(void);
 void InitFieldArray(void);

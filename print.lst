@@ -279,13 +279,8 @@ ARM Macro Assembler    Page 5
               000F4240 
               000186A0 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
-<<<<<<< HEAD
-ork --depend=.\print.d -o.\print.o -I.\RTE\_SpaceInvaders -IC:\Users\zhang\AppD
-ata\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include -IC:\Users\zhang\AppData
-=======
 ork --depend=.\print.d -o.\print.o -I.\RTE\_SpaceInvaders -IC:\Users\nakuk\AppD
 ata\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include -IC:\Users\nakuk\AppData
->>>>>>> master
 \Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123 --predefine="__UVIS
 ION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA
  1" --list=.\print.lst Print.s

@@ -1,9 +1,8 @@
 
 #include <stdint.h>
+#include "Draw.h"
 #include "ST7735.h"
 #include "SystemInfo.h"
-#include "Draw.h"
-#include "SpaceInvaders.h"
 
 void DrawBorder(uint16_t itemX, uint16_t itemY, uint16_t itemW, uint16_t itemH, uint8_t borderW, uint16_t borderColor){
 	uint16_t borderXStart = itemX - borderW;

@@ -1,10 +1,11 @@
 
-#include "Player.h"
-#include "ImagesOther.h"
-#include "Draw.h"
-#include <stdlib.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include "ADC_Joystick.h"
+#include "Draw.h"
+#include "ImagesOther.h"
+#include "Shop.h"
+#include "StructDec.h"
 
 //void makePurchase(PlayerType* player, ItemType item){
 //	if(player->coins < item.price){
@@ -14,9 +15,6 @@
 //	player->coins -= item.price;
 //	player->playerInventory[item.index].count++;
 //}
-
-extern ItemInstType shopItems[3];
-extern SpriteInstType itemInsts[3];
 
 void Shop_Init(void){
 	
@@ -79,7 +77,6 @@ void DrawShopScreen(SpriteSelectType shopScreen, const ItemInstType shopItems[3]
 		}
 			
 		DrawSelection(&shopScreen, 0x0000, 0xFFFF, 1);
-		Delay100ms(2);
   }
 }
 
