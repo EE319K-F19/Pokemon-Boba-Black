@@ -97,7 +97,7 @@ void DrawShopScreen(PlayerType* p1, SpriteSelectType shopScreen, const ItemInstT
 		else if(isPE3Pressed()){
 			if(p1->coins >= shopItems[shopScreen.currentIndex].item.price){
 				p1->coins -= shopItems[shopScreen.currentIndex].item.price;
-				ST7735_SetCursor(1, 15);
+				ST7735_SetCursor(1, 14);
 				ST7735_OutString("You purchased a\n ");
 				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
 			}else {
