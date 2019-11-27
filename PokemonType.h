@@ -30,7 +30,7 @@ extern const uint8_t C; //Not very effective
 extern const uint8_t D; //No Effect
 
 
-extern TypeType TypesArray[18];
+extern uint8_t TypesArray[18][18];
 void InitTyping(void);
 
 #endif

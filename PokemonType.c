@@ -26,7 +26,7 @@ const uint8_t B = 2; //Normal effectiveness
 const uint8_t C = 1; //Not very effective
 const uint8_t D = 0; //No Effect
 
-TypeType Typings[] = {
+uint8_t TypesArray[18][18] = {
 	// NorFirWatEleGraIceFigPoiGroFlyPsyBugRocGhoDraDarSteFai
 		{B,	B, B, B, B, B, B, B, B, B, B, B, C, D, B, B, C, B}, //Normal
 		{B, C, C, B, A, A, B, B, B, B, B, A, C, B, C, B, A, B}, //Fire

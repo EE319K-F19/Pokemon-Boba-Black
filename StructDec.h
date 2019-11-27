@@ -36,25 +36,6 @@ struct SpriteSelect {
 	int16_t currentIndex;
 };
 
-struct Pokemon {
-	char *name;
-	uint8_t type;
-	SpriteType sprite;
-	uint32_t mhealth;
-	uint32_t attack;
-	uint32_t defense;
-	uint32_t spattack;
-	uint32_t spdefense;
-	uint32_t speed;
-};
-
-struct PokemonInst {
-	uint16_t xPos;
-	uint16_t yPos;
-	uint32_t chealth;
-	const PokemonType species;
-};
-
 struct Types {
 	const uint8_t Normal; 
 	const uint8_t Fire; 
@@ -76,17 +57,31 @@ struct Types {
 	const uint8_t Fairy;
 };
 
-struct Field {
-	uint8_t *FieldArray;
-	const uint32_t FieldWidth;
-	const uint32_t FieldHeight;
-};
-
 struct Move{
 	char* name;
 	uint8_t type;
 	uint8_t category;
 	uint8_t power;
+};
+
+struct Pokemon {
+	char *name;
+	uint8_t type;
+	SpriteType sprite;
+	uint32_t mhealth;
+	uint32_t attack;
+	uint32_t defense;
+	uint32_t spattack;
+	uint32_t spdefense;
+	uint32_t speed;
+	uint8_t moveSet;
+};
+
+struct PokemonInst {
+	uint16_t xPos;
+	uint16_t yPos;
+	uint32_t chealth;
+	const PokemonType species;
 };
 
 struct PokemonTeam {

@@ -12,6 +12,8 @@ const uint8_t R = 3;
 const uint8_t E = 4;
 const uint8_t fieldCols = 64;
 const uint8_t fieldRows = 40;
+const uint8_t FIELD_WIDTH = 64;
+const uint8_t FIELD_HEIGHT = 40;
 
 SpriteType background[4]; 
 
@@ -40,13 +42,13 @@ void InitBackgroundTypes(){
 	background[3] = (SpriteType) {rock, 16, 16};
 }
 
-void DrawField(PlayerType player, FieldType field){
+void DrawField(PlayerType player){
 	
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
 			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
 			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
-			uint8_t fieldType = field.FieldArray[screenRow*field.FieldWidth+screenCol];
+			uint8_t fieldType = fieldArray[screenRow*FIELD_WIDTH+screenCol];
 			
 			if(player.XPos == screenCol && player.YPos == screenRow){
 				uint16_t combinedSprite[16*16];
