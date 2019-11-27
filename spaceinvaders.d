@@ -1,4 +1,6 @@
 .\spaceinvaders.o: SpaceInvaders.c
+.\spaceinvaders.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\spaceinvaders.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\spaceinvaders.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\spaceinvaders.o: ../inc/tm4c123gh6pm.h
 .\spaceinvaders.o: ST7735.h
@@ -23,3 +25,4 @@
 .\spaceinvaders.o: Player.h
 .\spaceinvaders.o: Battle.h
 .\spaceinvaders.o: TextSprites.h
+.\spaceinvaders.o: Battle.h

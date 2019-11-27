@@ -16,7 +16,7 @@ void InitMoves(){
 	NormalMoves[1] = (MoveType) {"Water Gun", Water, CAT_SPECIAL, 40};
 	SignatureMoves[1] = (MoveType) {"Water Sprout", Water, CAT_SPECIAL, 150};
 	
-	NormalMoves[2] = (MoveType) {"Dragon Breath", Dragon, CAT_PHYSICAL, 60};
+	NormalMoves[2] = (MoveType) {"Ember", Fire, CAT_SPECIAL, 40};
 	SignatureMoves[2] = (MoveType) {"Inferno", Fire, CAT_SPECIAL, 100};
 	
 	NormalMoves[3] = (MoveType) {"Gust", Flying, CAT_SPECIAL, 40};

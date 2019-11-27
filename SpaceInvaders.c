@@ -49,6 +49,8 @@
 // VCC (pin 2) connected to +3.3 V
 // Gnd (pin 1) connected to ground
 
+#include <stdlib.h>
+#include <string.h>
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "ST7735.h"
@@ -73,11 +75,12 @@
 #include "Player.h"
 #include "Battle.h"
 #include "TextSprites.h"
+#include "Battle.h"
+#include "PokemonType.h"
 
 uint8_t ADCStatus;
 
 static PlayerType p1;
-static FieldType mainField = {fieldArray, 64, 40};
 
 PokemonType starters[3];
 SpriteInstType starterInsts[3];
@@ -85,6 +88,13 @@ SpriteInstType starterInsts[3];
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
 PokemonInstType* team;
+
+PokemonType NullT;
+PokemonType BulbasaurT;
+PokemonType SquirtleT;
+PokemonType CharmanderT;
+PokemonType PidgeyT;
+PokemonType PikachuT;
 
 int main1(void){
 	PLL_Init(Bus80MHz);
@@ -117,19 +127,18 @@ int main(void){
 	InitBackgroundTypes();
 	InitFieldArray();
 	InitPokemon();
+	InitMoves();
+	//PokemonInstType poke = {0, 0, BulbasaurT.mhealth, BulbasaurT};
+	//PokemonInstType poke2 = {0, 0, BulbasaurT.mhealth, BulbasaurT};
+	//DrawMoveCommands(&poke, &poke2);
 	
-	//while(1){
-		//SpriteSelectType shopScreen = {itemInsts, 3, 0};
-		
-		//DrawShopScreen(shopScreen, shopItems);
-	//}
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
 	PokemonType starterT = DrawTitleScreen(starterScreen);
 
 	PokemonInstType startteam[1] = {{0, 0, starterT.mhealth, starterT}};
 	team = startteam;
 	InitPlayer();
-	DrawWorld(p1, mainField);
+	DrawWorld(p1);
 }
 
 void InitPlayer(){
@@ -140,28 +149,22 @@ void InitPlayer(){
 	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
 }
 
-PokemonType NullT;
-PokemonType BulbasaurT;
-PokemonType SquirtleT;
-PokemonType CharmanderT;
-PokemonType PidgeyT;
-PokemonType PikachuT;
 
 void InitPokemon(){
-	uint16_t nullSprite[1] = {0x0000};
-	SpriteType nullS = {nullSprite, 1, 1};
+	//uint16_t nullSprite[1] = {0x0000};
+	//SpriteType nullS = {nullSprite, 1, 1};
 	SpriteType bulbasaurS = {bulbasaur, 40, 40};
 	SpriteType squirtleS = {squirtle, 40, 40};
 	SpriteType charmanderS = {charmander, 40, 40};
 	SpriteType pidgeyS = {pidgey, 40, 40};
 	SpriteType pikachuS = {pikachu, 40, 40};
 	
-	NullT = (PokemonType) {"Null", Grass, nullS, 0, 0, 0, 0, 0, 0};
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65};
-	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56};
-	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90};
+	//NullT = (PokemonType) {"Null", Grass, nullS, 0, 0, 0, 0, 0, 0};
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45, 0};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43, 1};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65, 2};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56, 3};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90, 4};
 	
 	starters[0] = BulbasaurT;
 	starters[1] = SquirtleT;
@@ -208,13 +211,14 @@ PokemonType DrawTitleScreen(SpriteSelectType starterScreen){
   }
 }
 
-void DrawWorld(PlayerType p1, FieldType mainField){
+void DrawWorld(PlayerType p1){
 	//draws black border around the edges of the screen
 	
 	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	while(1){
+		
 		while(ADCStatus == 0){}
 			
 		uint8_t xDir = getJoystickX();
@@ -231,20 +235,50 @@ void DrawWorld(PlayerType p1, FieldType mainField){
 		}else if(yDir == 2){
 			moved = MoveDown(&p1);
 		}
-		
+		DrawField(p1);
 		uint8_t encounter = Random()%10;
 		if(moved && encounter == 0){
 			ST7735_FillScreen(0xFFFF);
 			uint8_t pokemonRan = Random()%5;
 			PokemonType selected = allPokemon[pokemonRan];
-			DrawBattleScreen(&team[0], &selected);
-			Delay100ms(20);
+			DrawBattleScreen(&p1, &team[0], &selected);
+			//Delay100ms(20);
 		}
-		DrawField(p1, mainField);
+		
+		if(isPE2Pressed()){
+			ClearScreenGrid();
+			ST7735_FillScreen(0xFFFF);
+			
+			ST7735_SetCursor(3, 5);
+			ST7735_OutString("Coins: ");
+			//uint32_t coinsC = p1.coins;
+			if(p1.coins > 999) ST7735_OutChar((char) (p1.coins/1000) + 0x30);
+			if(p1.coins > 99) ST7735_OutChar((char) (p1.coins/100) + 0x30);
+			if(p1.coins > 9) ST7735_OutChar((char) (p1.coins/10) + 0x30);
+			ST7735_OutChar((char) (p1.coins%10) + 0x30);
+			ST7735_OutString("C");
+			
+			ST7735_SetCursor(3, 6);
+			ST7735_OutString("Happiness: ");
+			if(p1.happiness > 99) ST7735_OutChar((char) (p1.happiness/100) + 0x30);
+			if(p1.happiness > 9) ST7735_OutChar((char) (p1.happiness/10) + 0x30);
+			ST7735_OutChar((char) (p1.happiness%10) + 0x30);
+			ST7735_OutString("/100");
+			
+			while(1){
+				if(isPE2Pressed()) break;
+			}
+		}else if(isPE3Pressed()){
+			if(GetFieldGrid(p1.YPos-1, p1.XPos) == S){
+				ClearScreenGrid();
+				SpriteSelectType shopScreen = {itemInsts, 3, 0};
+				DrawShopScreen(&p1, shopScreen, shopItems);
+			}
+		}
 	}
 }
 
-void DrawBattleScreen(const PokemonInstType* pokeLeft, PokemonType* pokeRight){
+void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonType* pokeRight){
 	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
@@ -296,8 +330,184 @@ void DrawBattleScreen(const PokemonInstType* pokeLeft, PokemonType* pokeRight){
 		}
 		
 		DrawSelection(&battleScreen, 0x0000, 0xFFFF, 1);
-		if(isPE3Pressed() && battleScreen.currentIndex == 3){
-			break;
+		if(isPE3Pressed()){
+			if(battleScreen.currentIndex == 3){
+				break;
+			}else if(battleScreen.currentIndex == 0){
+				int results = DrawMoveCommands(pokeLeft, &pokemonRight);
+				if(results == 0) DrawAllSprites(battleScreen);
+				else{
+					if(results == 1){
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("Wild ");
+						ST7735_OutString(pokeRight->name);
+						ST7735_OutString("\n fainted.");
+						while(1) if(isPE3Pressed()) break;
+						ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+						
+						uint8_t coinsGained = Random()%15 + 20;
+						p1->coins += coinsGained;
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("You gained ");
+						ST7735_OutChar((char) (coinsGained/10)+0x30);
+						ST7735_OutChar((char) (coinsGained%10)+0x30);
+						ST7735_OutString("C.");
+						while(1) if(isPE3Pressed()) break;
+						
+						
+						break;
+					}else {
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("Your ");
+						ST7735_OutString(pokeLeft->species.name);
+						ST7735_OutString("\n fainted.");
+						pokeLeft->chealth = 1;
+						while(1) if(isPE3Pressed()) break;
+						break;
+					}
+				}
+			}
 		}
   }
+}
+
+uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	
+	ST7735_FillRect(10, 104, 106, 46, 0xFFFF);
+	MoveType normal = NormalMoves[pokeLeft->species.moveSet];
+	MoveType signature = SignatureMoves[pokeLeft->species.moveSet];
+	uint8_t selected = 0;
+	char *a[3];
+	a[0] = normal.name;
+	a[1] = signature.name;
+	a[2] = "back";
+	
+	for(int i=0; i<3; i++){
+			ST7735_SetCursor(3, 12+i);
+			ST7735_OutString(a[i]);
+	}
+	while(1){
+		while(ADCStatus == 0){}
+			
+		uint8_t yDir = getJoystickY();
+		ADCStatus = 0;
+		
+		if(yDir == 2 && selected < 2){
+			selected++;
+		}else if(yDir == 0 && selected > 0){
+			selected--;
+		}
+		
+		for(int i=0; i<3; i++){
+			ST7735_SetCursor(1, 12+i);
+			if(i==selected) ST7735_OutString("*");
+			else ST7735_OutString(" ");
+		}
+		
+		if(isPE3Pressed()){
+			MoveType selectedMove;
+			if(selected == 0){
+				selectedMove = normal;
+			}else if(selected == 1){
+				selectedMove = signature;
+			}else{
+				ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+				return 0;
+			}
+			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			ST7735_SetCursor(1, 12);
+			ST7735_OutString(pokeLeft->species.name);
+			ST7735_OutString(" used \n ");
+			ST7735_OutString(selectedMove.name);
+			while(1) {if(isPE3Pressed()) break;}
+			
+			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			uint8_t effectiveness = TypesArray[selectedMove.type][pokeRight->species.type];
+			ST7735_SetCursor(1, 12);
+			if(effectiveness == A){
+				ST7735_OutString("Very effective!");
+			}else if(effectiveness == C){
+				ST7735_OutString("Not very effective.");
+			}else if(effectiveness == D){
+				ST7735_OutString("No effect...");
+			}
+			uint8_t attack;
+			uint8_t defense;
+			if(selectedMove.category == CAT_PHYSICAL){
+				attack = pokeLeft->species.attack;
+				defense = pokeRight->species.defense;
+			}else {
+				attack = pokeLeft->species.spattack;
+				defense = pokeRight->species.spdefense;
+			}
+			
+			uint8_t randomDamMul = Random()%25;
+			uint32_t damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
+			if(damage > pokeRight->chealth) damage = pokeRight->chealth;
+			pokeRight->chealth = pokeRight->chealth - damage;
+			
+			ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
+			ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
+			
+			while(1) {if(isPE3Pressed()) break;}
+			
+			if(pokeRight->chealth == 0) {
+				ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+				return 1;
+			}
+			
+			bool useNormal = Random()%2 == 0;
+			if(useNormal){
+				selectedMove = NormalMoves[pokeRight->species.moveSet];
+			}else {
+				selectedMove = SignatureMoves[pokeRight->species.moveSet];
+			}
+			
+			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			ST7735_SetCursor(1, 12);
+			ST7735_OutString(pokeRight->species.name);
+			ST7735_OutString(" used \n ");
+			ST7735_OutString(selectedMove.name);
+			while(1) {if(isPE3Pressed()) break;}
+			
+			bool effectiveText = true;
+			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			effectiveness = TypesArray[selectedMove.type][pokeLeft->species.type];
+			ST7735_SetCursor(1, 12);
+			if(effectiveness == A){
+				ST7735_OutString("Very effective!");
+			}else if(effectiveness == C){
+				ST7735_OutString("Not very effective.");
+			}else if(effectiveness == D){
+				ST7735_OutString("No effect...");
+			}else {
+				effectiveText = false;
+			}
+			
+			if(selectedMove.category == CAT_PHYSICAL){
+				attack = pokeRight->species.attack;
+				defense = pokeLeft->species.defense;
+			}else {
+				attack = pokeRight->species.spattack;
+				defense = pokeLeft->species.spdefense;
+			}
+			
+			randomDamMul = Random()%25;
+			damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
+			if(damage > pokeLeft->chealth) damage = pokeLeft->chealth;
+			pokeLeft->chealth = pokeLeft->chealth - damage;
+			
+			ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
+			ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+			
+			while(1) if(isPE3Pressed()) break;
+			
+			if(pokeLeft->chealth == 0) {
+				ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+				return 2;
+			}
+			ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+			return 0;
+		}
+	}
 }

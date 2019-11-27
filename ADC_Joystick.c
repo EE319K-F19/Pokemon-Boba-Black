@@ -29,34 +29,10 @@
 
 uint32_t joystickData[2];
 
-// There are many choices to make when using the ADC, and many
-// different combinations of settings will all do basically the
-// same thing.  For simplicity, this function makes some choices
-// for you.  When calling this function, be sure that it does
-// not conflict with any other software that may be running on
-// the microcontroller.  Particularly, ADC0 sample sequencer 2
-// is used here because it takes up to four samples, and two
-// samples are needed.  Sample sequencer 2 generates a raw
-// interrupt when the second conversion is complete, but it is
-// not promoted to a controller interrupt.  Software triggers
-// the ADC0 conversion and waits for the conversion to finish.
-// If somewhat precise periodic measurements are required, the
-// software trigger can occur in a periodic interrupt.  This
-// approach has the advantage of being simple.  However, it does
-// not guarantee real-time.
-//
-// A better approach would be to use a hardware timer to trigger
-// the ADC conversion independently from software and generate
-// an interrupt when the conversion is finished.  Then, the
-// software can transfer the conversion result to memory and
-// process it after all measurements are complete.
+bool PE3_Debounced = true;
+bool PE2_Debounced = true;
 
-// Initializes ADC8 and ADC9 sampling
-// 125k max sampling
-// SS2 triggering event: software trigger, busy-wait sampling
-// SS2 1st sample source: Ain9 (PE4)
-// SS2 2nd sample source: Ain8 (PE5)
-// SS2 interrupts: enabled after 2nd sample but not promoted to controller
+
 void ADC_Init89(void){ 
   volatile uint32_t delay;                         
 //  SYSCTL_RCGC0_R |= 0x00010000; // 1) activate ADC0 (legacy code)
@@ -145,18 +121,24 @@ uint32_t getJoystickY(void){
 
 bool isPE2Pressed(void){
 	if((GPIO_PORTE_DATA_R & 0x04) == 0){
+		PE2_Debounced = true;
 		return false;
 	}
 	else{
+		if(!PE2_Debounced) return false;
+		PE2_Debounced = false;
 		return true;
 	}
 }
 
 bool isPE3Pressed(void){
 	if((GPIO_PORTE_DATA_R & 0x08) == 0){
+		PE3_Debounced = true;
 		return false;
 	}
 	else{
+		if(!PE3_Debounced) return false;
+		PE3_Debounced = false;
 		return true;
 	}
 }

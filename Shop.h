@@ -9,6 +9,6 @@ extern SpriteInstType itemInsts[3];
 
 void Shop_Init(void);
 // void makePurchase(PlayerType* player, ItemType item);
-void DrawShopScreen(SpriteSelectType itemSprites, const ItemInstType shopItems[3]);
+void DrawShopScreen(PlayerType* p1, SpriteSelectType itemSprites, const ItemInstType shopItems[3]);
 
 #endif
