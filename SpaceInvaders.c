@@ -71,6 +71,8 @@
 #include "Shop.h"
 #include "SystemInfo.h"
 #include "Player.h"
+#include "Battle.h"
+#include "TextSprites.h"
 
 uint8_t ADCStatus;
 
@@ -89,6 +91,7 @@ int main1(void){
 	Sound_Init();
 	ADC_Init89();
 	Shop_Init();
+	InitMoves();
 	EnableInterrupts();
 	while(1){
 		//Sound_Highpitch();

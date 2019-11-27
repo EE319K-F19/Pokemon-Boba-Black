@@ -458,6 +458,16 @@
               <FilePath>.\SystemInfo.c</FilePath>
             </File>
             <File>
+              <FileName>Battle.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Battle.h</FilePath>
+            </File>
+            <File>
+              <FileName>Battle.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Battle.c</FilePath>
+            </File>
+            <File>
               <FileName>Draw.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Draw.h</FilePath>

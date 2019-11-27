@@ -16,6 +16,7 @@ typedef struct Player PlayerType;
 typedef struct Item ItemType;
 typedef struct ItemInventory ItemInventoryType;
 typedef struct itemInst ItemInstType;
+typedef struct Move MoveType;
 
 struct Sprite {
 	const uint16_t* image;	
@@ -79,6 +80,13 @@ struct Field {
 	uint8_t *FieldArray;
 	const uint32_t FieldWidth;
 	const uint32_t FieldHeight;
+};
+
+struct Move{
+	char* name;
+	uint8_t type;
+	uint8_t category;
+	uint8_t power;
 };
 
 struct PokemonTeam {

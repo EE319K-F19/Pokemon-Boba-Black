@@ -12,6 +12,7 @@
 ".\print.o"
 ".\spaceinvaders.o"
 ".\systeminfo.o"
+".\battle.o"
 ".\draw.o"
 ".\drawscreen.o"
 ".\field.o"
