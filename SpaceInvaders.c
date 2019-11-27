@@ -222,6 +222,7 @@ void DrawWorld(PlayerType p1){
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	while(1){
+		
 		while(ADCStatus == 0){}
 			
 		uint8_t xDir = getJoystickX();
@@ -248,6 +249,31 @@ void DrawWorld(PlayerType p1){
 			//Delay100ms(20);
 		}
 		DrawField(p1);
+		
+		if(isPE2Pressed()){
+			ClearScreenGrid();
+			ST7735_FillScreen(0xFFFF);
+			
+			ST7735_SetCursor(3, 5);
+			ST7735_OutString("Coins: ");
+			//uint32_t coinsC = p1.coins;
+			if(p1.coins > 999) ST7735_OutChar((char) (p1.coins/1000) + 0x30);
+			if(p1.coins > 99) ST7735_OutChar((char) (p1.coins/100) + 0x30);
+			if(p1.coins > 9) ST7735_OutChar((char) (p1.coins/10) + 0x30);
+			ST7735_OutChar((char) (p1.coins%10) + 0x30);
+			ST7735_OutString("C");
+			
+			ST7735_SetCursor(3, 6);
+			ST7735_OutString("Happiness: ");
+			if(p1.happiness > 99) ST7735_OutChar((char) (p1.happiness/100) + 0x30);
+			if(p1.happiness > 9) ST7735_OutChar((char) (p1.happiness/10) + 0x30);
+			ST7735_OutChar((char) (p1.happiness%10) + 0x30);
+			ST7735_OutString("/100");
+			
+			while(1){
+				if(isPE2Pressed()) break;
+			}
+		}
 	}
 }
 
@@ -334,6 +360,7 @@ void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonTy
 						ST7735_OutString("Your ");
 						ST7735_OutString(pokeLeft->species.name);
 						ST7735_OutString("\n fainted.");
+						pokeLeft->chealth = 1;
 						while(1) if(isPE3Pressed()) break;
 						break;
 					}
