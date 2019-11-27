@@ -52,12 +52,12 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "ST7735.h"
-#include "Random.h"
 #include "PLL.h"
 #include "ADC.h"
 #include "Sound.h"
 #include "Timer0.h"
 #include "Timer1.h"
+#include "Random.h"
 
 #include "ADC_Joystick.h"
 #include "Battle.h"
@@ -107,6 +107,8 @@ int main(void){
 	SysTick_Init();
   EnableInterrupts();
 	
+	ClearScreenGrid();
+	InitBackgroundTypes();
 	InitFieldArray();
 	InitPokemon();
 	InitPlayer();
@@ -159,11 +161,14 @@ int main(void){
 	//PokemonInstType pokeleft = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	//PokemonInstType pokeright = {2, 100, Bulbasaur, 100, 100, 10, 10, 10, 10, 10};
 	
+	//DrawTitleScreen();
+	DrawWorld(p1, mainField);
 }
 
 void InitPlayer(){
 	SpriteType PlayerFront = {playerFront, 16, 16};
 	SpriteType PlayerBack = {playerBack, 16, 16};
 	SpriteType PlayerSide = {playerSide, 16, 16};
-	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, &PlayerFront, &PlayerFront, &PlayerBack, &PlayerSide, &PlayerSide, 0, 25};
+	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
+	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
 }
