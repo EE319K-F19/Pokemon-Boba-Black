@@ -412,10 +412,10 @@ Removing Unused input sections from the image.
     Removing sound.o(.data), (16 bytes).
     Removing print.o(.text), (384 bytes).
     Removing spaceinvaders.o(i.main1), (30 bytes).
-    Removing battle.o(i.InitMoves), (132 bytes).
+    Removing battle.o(i.InitMoves), (316 bytes).
     Removing battle.o(.bss), (1600 bytes).
-    Removing battle.o(.constdata), (36 bytes).
-    Removing battle.o(.conststring), (49 bytes).
+    Removing battle.o(.constdata), (84 bytes).
+    Removing battle.o(.conststring), (120 bytes).
     Removing draw.o(i.Delay10ms), (36 bytes).
     Removing draw.o(i.DrawGridFill), (52 bytes).
     Removing draw.o(i.DrawSpriteInstSelection), (52 bytes).
@@ -424,7 +424,7 @@ Removing Unused input sections from the image.
     Removing shop.o(i.DrawShopScreen), (264 bytes).
     Removing adc_joystick.o(i.isPE2Pressed), (24 bytes).
 
-60 unused section(s) (total 7675 bytes) removed from the image.
+60 unused section(s) (total 7978 bytes) removed from the image.
 
 ==============================================================================
 
