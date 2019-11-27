@@ -9,8 +9,8 @@ void EnableInterrupts(void);  // Enable interrupts
 void InitPlayer(void);
 void InitPokemon(void);
 PokemonType DrawTitleScreen(SpriteSelectType starterScreen);
-void DrawBattleScreen(const PokemonInstType* pokeLeft, const PokemonType* pokeRight);
+void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight);
 void DrawWorld(PlayerType p1);
-void DrawMoveCommands(const PokemonInstType* pokeLeft, const PokemonInstType* pokeRight);
+uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
 
 #endif

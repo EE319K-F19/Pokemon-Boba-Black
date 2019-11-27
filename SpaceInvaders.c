@@ -251,7 +251,7 @@ void DrawWorld(PlayerType p1){
 	}
 }
 
-void DrawBattleScreen(const PokemonInstType* pokeLeft, const PokemonType* pokeRight){
+void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight){
 	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
@@ -307,14 +307,31 @@ void DrawBattleScreen(const PokemonInstType* pokeLeft, const PokemonType* pokeRi
 			if(battleScreen.currentIndex == 3){
 				break;
 			}else if(battleScreen.currentIndex == 0){
-				DrawMoveCommands(pokeLeft, &pokemonRight);
-				DrawAllSprites(battleScreen);
+				int results = DrawMoveCommands(pokeLeft, &pokemonRight);
+				if(results == 0) DrawAllSprites(battleScreen);
+				else{
+					if(results == 1){
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("Wild ");
+						ST7735_OutString(pokeRight->name);
+						ST7735_OutString("\n fainted.");
+						while(1) if(isPE3Pressed()) break;
+						break;
+					}else {
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("Your ");
+						ST7735_OutString(pokeLeft->species.name);
+						ST7735_OutString("\n fainted.");
+						while(1) if(isPE3Pressed()) break;
+						break;
+					}
+				}
 			}
 		}
   }
 }
 
-void DrawMoveCommands(const PokemonInstType* pokeLeft, const PokemonInstType* pokeRight){
+uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	
 	ST7735_FillRect(10, 104, 106, 46, 0xFFFF);
 	MoveType normal = NormalMoves[pokeLeft->species.moveSet];
@@ -355,7 +372,7 @@ void DrawMoveCommands(const PokemonInstType* pokeLeft, const PokemonInstType* po
 				selectedMove = signature;
 			}else{
 				ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
-				break;
+				return 0;
 			}
 			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
 			ST7735_SetCursor(1, 12);
@@ -374,12 +391,78 @@ void DrawMoveCommands(const PokemonInstType* pokeLeft, const PokemonInstType* po
 			}else if(effectiveness == D){
 				ST7735_OutString("No effect...");
 			}
+			uint8_t attack;
+			uint8_t defense;
+			if(selectedMove.category == CAT_PHYSICAL){
+				attack = pokeLeft->species.attack;
+				defense = pokeRight->species.defense;
+			}else {
+				attack = pokeLeft->species.spattack;
+				defense = pokeRight->species.spdefense;
+			}
+			
+			uint8_t randomDamMul = Random()%25;
+			uint32_t damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
+			if(damage > pokeRight->chealth) damage = pokeRight->chealth;
+			pokeRight->chealth = pokeRight->chealth - damage;
+			
+			ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
+			ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
 			
 			while(1) {if(isPE3Pressed()) break;}
 			
+			if(pokeRight->chealth == 0) return 1;
+			
+			bool useNormal = Random()%2 == 0;
+			if(useNormal){
+				selectedMove = NormalMoves[pokeRight->species.moveSet];
+			}else {
+				selectedMove = SignatureMoves[pokeRight->species.moveSet];
+			}
+			
 			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
-		
-			break;
+			ST7735_SetCursor(1, 12);
+			ST7735_OutString(pokeRight->species.name);
+			ST7735_OutString(" used \n ");
+			ST7735_OutString(selectedMove.name);
+			while(1) {if(isPE3Pressed()) break;}
+			
+			bool effectiveText = true;
+			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			effectiveness = TypesArray[selectedMove.type][pokeLeft->species.type];
+			ST7735_SetCursor(1, 12);
+			if(effectiveness == A){
+				ST7735_OutString("Very effective!");
+			}else if(effectiveness == C){
+				ST7735_OutString("Not very effective.");
+			}else if(effectiveness == D){
+				ST7735_OutString("No effect...");
+			}else {
+				effectiveText = false;
+			}
+			
+			if(selectedMove.category == CAT_PHYSICAL){
+				attack = pokeRight->species.attack;
+				defense = pokeLeft->species.defense;
+			}else {
+				attack = pokeRight->species.spattack;
+				defense = pokeLeft->species.spdefense;
+			}
+			
+			randomDamMul = Random()%25;
+			damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
+			if(damage > pokeLeft->chealth) damage = pokeLeft->chealth;
+			pokeLeft->chealth = pokeLeft->chealth - damage;
+			
+			ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
+			ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+			
+			while(1) if(isPE3Pressed()) break;
+			
+			if(pokeLeft->chealth == 0) return 2;
+			
+			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			return 0;
 		}
 	}
 }
