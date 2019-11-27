@@ -156,9 +156,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>63</LineNumber>
+          <LineNumber>46</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>2112</Address>
+          <Address>1962</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -167,7 +167,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\Field.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\Field.c\63</Expression>
+          <Expression>\\\Field.c\46</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>64</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>2130</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\Field.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\\Field.c\64</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>

@@ -102,7 +102,7 @@ struct Player {
 	uint32_t coins;
 	uint32_t happiness;
 	
-	//PokemonTeamType pokemonTeam;
+	//PokemonTeamType team;
 	// ItemInventoryType playerInventory[3];
 };
 
