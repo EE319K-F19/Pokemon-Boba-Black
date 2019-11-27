@@ -109,7 +109,7 @@ void ADC_In89(uint32_t data[2]){
 
 void SysTick_Init(void){
 	NVIC_ST_CTRL_R = 0; // disable systick during setup
-	NVIC_ST_RELOAD_R = 0x00FFFFFF; // set reload to max value
+	NVIC_ST_RELOAD_R = 0x00DFFFFF; // set reload to max value
 	NVIC_ST_CURRENT_R = 0; // clears current
 	NVIC_ST_CTRL_R = 0x07; // enable systick with core clock
 }

@@ -3,28 +3,7 @@
 #define _DRAWH_
 
 #include <stdint.h>
-
-typedef struct Sprite SpriteType;
-typedef struct SpriteInst SpriteInstType;
-typedef struct SpriteSelect SpriteSelectType;
-
-struct Sprite {
-	const uint16_t* image;	
-	int16_t width; 
-	int16_t height;
-};
-
-struct SpriteInst {
-	int16_t x_left; 
-	int16_t y_bottom;
-	SpriteType sprite;
-};
-
-struct SpriteSelect {
-	const SpriteInstType* spriteInsts;
-	const uint16_t spriteArrayLength;
-	int16_t currentIndex;
-};
+#include "StructDec.h"
 
 void DrawBorder(uint16_t itemX, uint16_t itemY, uint16_t itemW, uint16_t itemH, uint8_t borderW, uint16_t borderColor);
 void DrawSelection(SpriteSelectType *starterSelect, uint16_t selectColor, uint16_t deselectColor, uint8_t selectWidth);

@@ -4,30 +4,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include "ST7735.h"
-
-#include "SpaceInvaders.h"
-#include "Shop.h"
-
-typedef struct Player PlayerType;
-typedef struct ItemInventory ItemInventoryType;
-
-struct Player {
-	uint32_t XPos;
-	uint32_t YPos;
-	
-	SpriteType sprite;
-	SpriteType spriteFront;
-	SpriteType spriteBack;
-	SpriteType spriteSide;
-	SpriteType spriteLeft;
-	uint32_t coins;
-	uint32_t happiness;
-	
-	//PokemonInstType *PokemonTeam;
-	// ItemInventoryType playerInventory[3];
-};
-
+#include "StructDec.h"
 
 void DrawSpriteImgPlayer(PlayerType player);
 

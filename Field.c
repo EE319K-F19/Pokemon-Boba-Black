@@ -1,10 +1,9 @@
 
 #include <stdint.h>
-#include "ST7735.h"
-#include "Field.h"
-#include "SystemInfo.h"
 #include "Draw.h"
+#include "Field.h"
 #include "ImagesOther.h"
+#include "SystemInfo.h"
 
 const uint8_t N = 0;
 const uint8_t G = 1;
