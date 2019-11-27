@@ -23,8 +23,8 @@ void Shop_Init(void){
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
 	ItemType bobaItem = {"boba", bobaSprite, 70, "70 C", 2};
-	ItemType potionItem = {"health potion", potionSprite, 30, "30 C", 1};
-	ItemType pokeballItem = {"pokeball", pokeballSprite, 20, "20 C", 0};
+	ItemType potionItem = {"health potion", potionSprite, 15, "15 C", 1};
+	ItemType pokeballItem = {"pokeball", pokeballSprite, 10, "10 C", 0};
 	
 	ItemInstType bobaShop = {86, 80, bobaItem};
 	ItemInstType potionShop = {44, 80, potionItem};
@@ -44,7 +44,7 @@ void Shop_Init(void){
 	
 }
 
-void DrawShopScreen(SpriteSelectType shopScreen, const ItemInstType shopItems[3]){
+void DrawShopScreen(PlayerType* p1, SpriteSelectType shopScreen, const ItemInstType shopItems[3]){
 	ST7735_FillScreen(0xFFFF);
 	
 	DrawAllSprites(shopScreen);
@@ -63,21 +63,48 @@ void DrawShopScreen(SpriteSelectType shopScreen, const ItemInstType shopItems[3]
 	ST7735_SetCursor(16, 13);
 	ST7735_OutString(shopItems[2].item.price_string);
 	
+	ST7735_SetCursor(1, 15);
+	ST7735_OutString(shopItems[0].item.name);
+	
 	while(1){
+		
+		ST7735_SetCursor(1, 5);
+		ST7735_OutString("You have: ");
+		if(p1->coins > 999) ST7735_OutChar((char) (p1->coins/1000) + 0x30);
+		if(p1->coins > 99) ST7735_OutChar((char) (p1->coins/100) + 0x30);
+		if(p1->coins > 9) ST7735_OutChar((char) (p1->coins/10) + 0x30);
+		ST7735_OutChar((char) (p1->coins%10) + 0x30);
+		ST7735_OutString("C  ");
 		while(ADCStatus == 0){}
 		uint8_t xDir = getJoystickX();
 		uint8_t yDir = getJoystickY();
 		ADCStatus = 0;
 		
-		if(xDir == 2){
-			shopScreen.currentIndex = (shopScreen.currentIndex + 1)%3;
-		}else if(xDir == 0){
-			shopScreen.currentIndex = shopScreen.currentIndex - 1;
-			if(shopScreen.currentIndex < 0) shopScreen.currentIndex = 2;
+		if(xDir == 0 || xDir == 2){
+			if(xDir == 2){
+				shopScreen.currentIndex = (shopScreen.currentIndex + 1)%3;
+			}else if(xDir == 0){
+				shopScreen.currentIndex = shopScreen.currentIndex - 1;
+				if(shopScreen.currentIndex < 0) shopScreen.currentIndex = 2;
+			}
+			ST7735_FillRect(0, 140, 128, 20, 0xFFFF);
+			ST7735_SetCursor(1, 15);
+			ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
 		}
 			
 		DrawSelection(&shopScreen, 0x0000, 0xFFFF, 1);
 		if(isPE2Pressed()) break;
+		else if(isPE3Pressed()){
+			if(p1->coins >= shopItems[shopScreen.currentIndex].item.price){
+				p1->coins -= shopItems[shopScreen.currentIndex].item.price;
+				ST7735_SetCursor(1, 15);
+				ST7735_OutString("You purchased a\n ");
+				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
+			}else {
+				ST7735_SetCursor(1, 14);
+				ST7735_OutString("Oops! You don't\n have enough coins");
+			}
+		}
   }
 }
 

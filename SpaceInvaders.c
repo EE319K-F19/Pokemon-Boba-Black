@@ -272,7 +272,7 @@ void DrawWorld(PlayerType p1){
 			if(GetFieldGrid(p1.YPos-1, p1.XPos) == S){
 				ClearScreenGrid();
 				SpriteSelectType shopScreen = {itemInsts, 3, 0};
-				DrawShopScreen(shopScreen, shopItems);
+				DrawShopScreen(&p1, shopScreen, shopItems);
 			}
 		}
 	}
