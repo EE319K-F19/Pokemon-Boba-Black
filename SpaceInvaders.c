@@ -244,14 +244,14 @@ void DrawWorld(PlayerType p1){
 			ST7735_FillScreen(0xFFFF);
 			uint8_t pokemonRan = Random()%5;
 			PokemonType selected = allPokemon[pokemonRan];
-			DrawBattleScreen(&team[0], &selected);
+			DrawBattleScreen(&p1, &team[0], &selected);
 			//Delay100ms(20);
 		}
 		DrawField(p1);
 	}
 }
 
-void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight){
+void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonType* pokeRight){
 	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
@@ -316,6 +316,18 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight){
 						ST7735_OutString(pokeRight->name);
 						ST7735_OutString("\n fainted.");
 						while(1) if(isPE3Pressed()) break;
+						ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+						
+						uint8_t coinsGained = Random()%15 + 20;
+						p1->coins += coinsGained;
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("You gained ");
+						ST7735_OutChar((char) (coinsGained/10)+0x30);
+						ST7735_OutChar((char) (coinsGained%10)+0x30);
+						ST7735_OutString("C.");
+						while(1) if(isPE3Pressed()) break;
+						
+						
 						break;
 					}else {
 						ST7735_SetCursor(1, 12);
@@ -411,7 +423,10 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 			
 			while(1) {if(isPE3Pressed()) break;}
 			
-			if(pokeRight->chealth == 0) return 1;
+			if(pokeRight->chealth == 0) {
+				ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+				return 1;
+			}
 			
 			bool useNormal = Random()%2 == 0;
 			if(useNormal){
@@ -459,9 +474,11 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 			
 			while(1) if(isPE3Pressed()) break;
 			
-			if(pokeLeft->chealth == 0) return 2;
-			
-			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+			if(pokeLeft->chealth == 0) {
+				ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+				return 2;
+			}
+			ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
 			return 0;
 		}
 	}

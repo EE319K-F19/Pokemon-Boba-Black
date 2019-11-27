@@ -22,7 +22,7 @@ void Shop_Init(void){
 	SpriteType potionSprite = {healthPotion, 40, 40};
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
-	ItemType bobaItem = {"boba", bobaSprite, 60, "60 C", 2};
+	ItemType bobaItem = {"boba", bobaSprite, 70, "70 C", 2};
 	ItemType potionItem = {"health potion", potionSprite, 30, "30 C", 1};
 	ItemType pokeballItem = {"pokeball", pokeballSprite, 20, "20 C", 0};
 	

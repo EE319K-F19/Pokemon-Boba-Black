@@ -3606,9 +3606,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>.\SpaceInvaders.c</Name>
-        <ColumnNumber>34</ColumnNumber>
-        <TopLine>298</TopLine>
-        <CurrentLine>321</CurrentLine>
+        <ColumnNumber>32</ColumnNumber>
+        <TopLine>309</TopLine>
+        <CurrentLine>327</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3642,9 +3642,9 @@
       </Doc>
       <Doc>
         <Name>SpaceInvaders.h</Name>
-        <ColumnNumber>7</ColumnNumber>
+        <ColumnNumber>38</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>14</CurrentLine>
+        <CurrentLine>12</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3705,9 +3705,9 @@
       </Doc>
       <Doc>
         <Name>.\Shop.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>1</TopLine>
-        <CurrentLine>1</CurrentLine>
+        <ColumnNumber>44</ColumnNumber>
+        <TopLine>10</TopLine>
+        <CurrentLine>25</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
