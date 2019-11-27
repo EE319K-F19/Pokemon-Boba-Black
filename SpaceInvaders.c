@@ -83,7 +83,7 @@ static FieldType mainField = {fieldArray, 64, 40};
 ItemInstType shopItems[3];
   SpriteInstType itemInsts[3];
 
-int main(void){
+int main1(void){
 	PLL_Init(Bus80MHz);
 	Sound_Init();
 	ADC_Init89();
@@ -97,7 +97,7 @@ int main(void){
 	}
 }
 
-int main1(void){
+int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
@@ -128,7 +128,7 @@ int main1(void){
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
 	
 	Shop_Init();
-	
+	SpriteSelectType shopScreen = {itemInsts, 3, 0};
 	//DrawWorld(p1, mainField);
 	while(1){
 	//ST7735_SetCursor(5, 1);
@@ -140,7 +140,7 @@ int main1(void){
 //	PokemonInstType selected = pokemons[rannum];
 //	DrawBattleScreen(&BulbasaurStart, &selected);
 //	Delay100ms(15);
-		SpriteSelectType shopScreen = {itemInsts, 3, 0};
+		
 	DrawShopScreen(shopScreen, shopItems);
 	}
 	
