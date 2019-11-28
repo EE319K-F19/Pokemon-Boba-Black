@@ -16,6 +16,10 @@
 //	player->playerInventory[item.index].count++;
 //}
 
+ItemType bobaItem;
+ItemType potionItem;
+ItemType pokeballItem;
+
 void Shop_Init(void){
 	
 	SpriteType bobaSprite = {boba, 40, 40};
@@ -41,10 +45,9 @@ void Shop_Init(void){
 	itemInsts[0] = pokeballInst;
 	itemInsts[1] = potionInst;
 	itemInsts[2] = bobaInst;
-	
 }
 
-void DrawShopScreen(PlayerType* p1, SpriteSelectType shopScreen, const ItemInstType shopItems[3]){
+void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectType shopScreen, const ItemInstType shopItems[3]){
 	ST7735_FillScreen(0xFFFF);
 	
 	DrawAllSprites(shopScreen);
@@ -63,8 +66,11 @@ void DrawShopScreen(PlayerType* p1, SpriteSelectType shopScreen, const ItemInstT
 	ST7735_SetCursor(16, 13);
 	ST7735_OutString(shopItems[2].item.price_string);
 	
-	ST7735_SetCursor(1, 15);
-	ST7735_OutString(shopItems[0].item.name);
+	ST7735_SetCursor(1, 14);
+	ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
+	ST7735_OutString("\n (Have: ");
+	ST7735_OutChar((char) (inventory[shopScreen.currentIndex].count + 0x30));
+	ST7735_OutString(")");
 	
 	while(1){
 		
@@ -88,8 +94,11 @@ void DrawShopScreen(PlayerType* p1, SpriteSelectType shopScreen, const ItemInstT
 				if(shopScreen.currentIndex < 0) shopScreen.currentIndex = 2;
 			}
 			ST7735_FillRect(0, 140, 128, 20, 0xFFFF);
-			ST7735_SetCursor(1, 15);
+			ST7735_SetCursor(1, 14);
 			ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
+			ST7735_OutString("\n (Have: ");
+			ST7735_OutChar((char) (inventory[shopScreen.currentIndex].count + 0x30));
+			ST7735_OutString(")");
 		}
 			
 		DrawSelection(&shopScreen, 0x0000, 0xFFFF, 1);
@@ -100,6 +109,7 @@ void DrawShopScreen(PlayerType* p1, SpriteSelectType shopScreen, const ItemInstT
 				ST7735_SetCursor(1, 14);
 				ST7735_OutString("You purchased a\n ");
 				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
+				inventory[shopScreen.currentIndex].count ++;
 			}else {
 				ST7735_SetCursor(1, 14);
 				ST7735_OutString("Oops! You don't\n have enough coins");

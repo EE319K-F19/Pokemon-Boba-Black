@@ -88,6 +88,7 @@ SpriteInstType starterInsts[3];
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
 PokemonInstType* team;
+ItemInventoryType playerInventory[3];
 
 PokemonType NullT;
 PokemonType BulbasaurT;
@@ -128,9 +129,12 @@ int main(void){
 	InitFieldArray();
 	InitPokemon();
 	InitMoves();
+	InitInventory();
 	//PokemonInstType poke = {0, 0, BulbasaurT.mhealth, BulbasaurT};
 	//PokemonInstType poke2 = {0, 0, BulbasaurT.mhealth, BulbasaurT};
 	//DrawMoveCommands(&poke, &poke2);
+
+	//ItemInventoryType starterInventory[3] = {pokeStart, potionStart, bobaStart};
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
 	PokemonType starterT = DrawTitleScreen(starterScreen);
@@ -139,6 +143,12 @@ int main(void){
 	team = startteam;
 	InitPlayer();
 	DrawWorld(p1);
+}
+
+void InitInventory(){
+	playerInventory[0] = (ItemInventoryType) {pokeballItem, 0};
+	playerInventory[1] = (ItemInventoryType) {potionItem, 0};
+	playerInventory[2] = (ItemInventoryType) {bobaItem, 0};
 }
 
 void InitPlayer(){
@@ -272,7 +282,7 @@ void DrawWorld(PlayerType p1){
 			if(GetFieldGrid(p1.YPos-1, p1.XPos) == S){
 				ClearScreenGrid();
 				SpriteSelectType shopScreen = {itemInsts, 3, 0};
-				DrawShopScreen(&p1, shopScreen, shopItems);
+				DrawShopScreen(&p1, playerInventory, shopScreen, shopItems);
 			}
 		}
 	}
