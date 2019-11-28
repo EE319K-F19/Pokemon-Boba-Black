@@ -430,6 +430,26 @@ void DrawBattleInventory(){
 			if(selected == 3){
 				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
 				break;
+			}else {
+				ST7735_SetCursor(1, 12);
+				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+				if(playerInventory[selected].count > 0){
+					ST7735_OutString("You used a\n ");
+					ST7735_OutString(a[selected]);
+					playerInventory[selected].count --;
+					while(1){if(isPE3Pressed()) break;};
+				}else {
+					ST7735_OutString("You don't have any\n ");
+					ST7735_OutString(a[selected]);
+					while(1){if(isPE3Pressed()) break;};
+				}
+				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+				for(int i=0; i<4; i++){
+					ST7735_SetCursor(3, 12+i);
+					ST7735_OutString(a[i]);
+					if(i!=3) ST7735_OutString(" x");
+					if(i!=3) ST7735_OutChar((char) (playerInventory[i].count + 0x30));
+				}
 			}
 		}
 	}
