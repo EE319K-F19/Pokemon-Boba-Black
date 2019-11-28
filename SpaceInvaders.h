@@ -13,5 +13,6 @@ void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonTy
 void DrawWorld(PlayerType p1);
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
 void InitInventory(void);
+void DrawBattleInventory(void);
 
 #endif

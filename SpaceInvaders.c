@@ -87,6 +87,7 @@ SpriteInstType starterInsts[3];
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
+SpriteInstType itemInvInsts[3];
 PokemonInstType* team;
 ItemInventoryType playerInventory[3];
 
@@ -157,6 +158,14 @@ void InitPlayer(){
 	SpriteType PlayerSide = {playerSide, 16, 16};
 	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
 	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
+	
+	SpriteInstType pokeballInst = (SpriteInstType) {2, 142, pokeball};
+	SpriteInstType potionInst = (SpriteInstType) {44, 142, healthPotion};
+	SpriteInstType bobaInst = (SpriteInstType) {86, 142, boba};
+
+	itemInvInsts[0] = pokeballInst;
+	itemInvInsts[1] = potionInst;
+	itemInvInsts[2] = bobaInst;
 }
 
 
@@ -330,19 +339,22 @@ void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonTy
 		ADCStatus = 0;
 		
 		if(xDir == 2){
-			if(battleScreen.currentIndex < 3) battleScreen.currentIndex = battleScreen.currentIndex + 1;
+			if(battleScreen.currentIndex == 0 || battleScreen.currentIndex == 2) battleScreen.currentIndex = battleScreen.currentIndex + 1;
 		}else if(xDir == 0){
-			if(battleScreen.currentIndex > 0) battleScreen.currentIndex = battleScreen.currentIndex - 1;
+			if(battleScreen.currentIndex == 1 || battleScreen.currentIndex == 3) battleScreen.currentIndex = battleScreen.currentIndex - 1;
 		}else if(yDir == 2){
-			if(battleScreen.currentIndex < 2) battleScreen.currentIndex = battleScreen.currentIndex + 2;
+			if(battleScreen.currentIndex == 0 || battleScreen.currentIndex == 1) battleScreen.currentIndex = battleScreen.currentIndex + 2;
 		}else if(yDir == 0){
-			if(battleScreen.currentIndex > 1) battleScreen.currentIndex = battleScreen.currentIndex - 2;
+			if(battleScreen.currentIndex == 2 || battleScreen.currentIndex == 3) battleScreen.currentIndex = battleScreen.currentIndex - 2;
 		}
 		
 		DrawSelection(&battleScreen, 0x0000, 0xFFFF, 1);
 		if(isPE3Pressed()){
 			if(battleScreen.currentIndex == 3){
 				break;
+			}else if(battleScreen.currentIndex == 1){
+				DrawBattleInventory();
+				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){
 				int results = DrawMoveCommands(pokeLeft, &pokemonRight);
 				if(results == 0) DrawAllSprites(battleScreen);
@@ -379,6 +391,48 @@ void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonTy
 			}
 		}
   }
+}
+
+void DrawBattleInventory(){
+	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+	char *a[4];
+	int selected = 0;
+	for(int i=0; i<3; i++){
+		a[i] = shopItems[i].item.name;
+	}
+	a[3] = "back";
+	
+	for(int i=0; i<4; i++){
+			ST7735_SetCursor(3, 12+i);
+			ST7735_OutString(a[i]);
+			if(i!=3) ST7735_OutString(" x");
+			if(i!=3) ST7735_OutChar((char) (playerInventory[i].count + 0x30));
+	}
+	while(1){
+		while(ADCStatus == 0){}
+			
+		uint8_t yDir = getJoystickY();
+		ADCStatus = 0;
+		
+		if(yDir == 2 && selected < 3){
+			selected++;
+		}else if(yDir == 0 && selected > 0){
+			selected--;
+		}
+		
+		for(int i=0; i<4; i++){
+			ST7735_SetCursor(1, 12+i);
+			if(i==selected) ST7735_OutString("*");
+			else ST7735_OutString(" ");
+		}
+		
+		if(isPE3Pressed()){
+			if(selected == 3){
+				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+				break;
+			}
+		}
+	}
 }
 
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
