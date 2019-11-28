@@ -93,22 +93,6 @@ struct PokemonTeam {
 	PokemonInstType pokemon6;
 };
 
-struct Player {
-	uint32_t XPos;
-	uint32_t YPos;
-	
-	SpriteType sprite;
-	SpriteType spriteFront;
-	SpriteType spriteBack;
-	SpriteType spriteSide;
-	SpriteType spriteLeft;
-	uint32_t coins;
-	uint32_t happiness;
-	
-	//PokemonTeamType team;
-	// ItemInventoryType playerInventory[3];
-};
-
 struct Item {
 	char* name;
 	SpriteType sprite;
@@ -127,6 +111,22 @@ struct itemInst {
 	uint16_t xPos;
 	uint16_t yPos;
 	ItemType item;
+};
+
+struct Player {
+	uint32_t XPos;
+	uint32_t YPos;
+	
+	SpriteType sprite;
+	SpriteType spriteFront;
+	SpriteType spriteBack;
+	SpriteType spriteSide;
+	SpriteType spriteLeft;
+	uint32_t coins;
+	uint32_t happiness;
+	
+	//PokemonTeamType team;
+	//ItemInventoryType playerInventory[3];
 };
 
 #endif
