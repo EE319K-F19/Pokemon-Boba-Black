@@ -87,6 +87,7 @@ SpriteInstType starterInsts[3];
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
+SpriteInstType itemInvInsts[3];
 PokemonInstType* team;
 ItemInventoryType playerInventory[3];
 
@@ -142,7 +143,11 @@ int main(void){
 	PokemonInstType startteam[1] = {{0, 0, starterT.mhealth, starterT}};
 	team = startteam;
 	InitPlayer();
-	DrawWorld(p1);
+	bool win = DrawWorld(p1);
+	ST7735_FillScreen(0xFFFF);
+	ST7735_SetCursor(2, 5);
+	if(win) ST7735_OutString("Your character\n  has reached max\n  happiness!\n\n  You have beaten \n  the game!");
+	else ST7735_OutString("Your character is\n  sad.\n  He dropped out of \n  his major.");
 }
 
 void InitInventory(){
@@ -157,6 +162,14 @@ void InitPlayer(){
 	SpriteType PlayerSide = {playerSide, 16, 16};
 	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
 	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
+	
+	SpriteInstType pokeballInst = (SpriteInstType) {2, 142, pokeball};
+	SpriteInstType potionInst = (SpriteInstType) {44, 142, healthPotion};
+	SpriteInstType bobaInst = (SpriteInstType) {86, 142, boba};
+
+	itemInvInsts[0] = pokeballInst;
+	itemInvInsts[1] = potionInst;
+	itemInvInsts[2] = bobaInst;
 }
 
 
@@ -221,13 +234,19 @@ PokemonType DrawTitleScreen(SpriteSelectType starterScreen){
   }
 }
 
-void DrawWorld(PlayerType p1){
+bool DrawWorld(PlayerType p1){
 	//draws black border around the edges of the screen
 	
 	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	while(1){
+		
+		if(p1.happiness >= 100){
+			return true;
+		}else if(p1.happiness <= 0){
+			return false;
+		}
 		
 		while(ADCStatus == 0){}
 			
@@ -330,19 +349,22 @@ void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonTy
 		ADCStatus = 0;
 		
 		if(xDir == 2){
-			if(battleScreen.currentIndex < 3) battleScreen.currentIndex = battleScreen.currentIndex + 1;
+			if(battleScreen.currentIndex == 0 || battleScreen.currentIndex == 2) battleScreen.currentIndex = battleScreen.currentIndex + 1;
 		}else if(xDir == 0){
-			if(battleScreen.currentIndex > 0) battleScreen.currentIndex = battleScreen.currentIndex - 1;
+			if(battleScreen.currentIndex == 1 || battleScreen.currentIndex == 3) battleScreen.currentIndex = battleScreen.currentIndex - 1;
 		}else if(yDir == 2){
-			if(battleScreen.currentIndex < 2) battleScreen.currentIndex = battleScreen.currentIndex + 2;
+			if(battleScreen.currentIndex == 0 || battleScreen.currentIndex == 1) battleScreen.currentIndex = battleScreen.currentIndex + 2;
 		}else if(yDir == 0){
-			if(battleScreen.currentIndex > 1) battleScreen.currentIndex = battleScreen.currentIndex - 2;
+			if(battleScreen.currentIndex == 2 || battleScreen.currentIndex == 3) battleScreen.currentIndex = battleScreen.currentIndex - 2;
 		}
 		
 		DrawSelection(&battleScreen, 0x0000, 0xFFFF, 1);
 		if(isPE3Pressed()){
 			if(battleScreen.currentIndex == 3){
 				break;
+			}else if(battleScreen.currentIndex == 1){
+				DrawBattleInventory(p1, pokeLeft, &pokemonRight);
+				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){
 				int results = DrawMoveCommands(pokeLeft, &pokemonRight);
 				if(results == 0) DrawAllSprites(battleScreen);
@@ -373,12 +395,98 @@ void DrawBattleScreen(PlayerType* p1, PokemonInstType* pokeLeft, const PokemonTy
 						ST7735_OutString("\n fainted.");
 						pokeLeft->chealth = 1;
 						while(1) if(isPE3Pressed()) break;
+						ST7735_SetCursor(1, 12);
+						ST7735_OutString("Your happiness\n dropped by 10.");
+						uint8_t drop = 10;
+						if(p1->happiness < 10) drop = p1->happiness;
+						p1->happiness -= drop;
+						while(1) if(isPE3Pressed()) break;
 						break;
 					}
 				}
 			}
 		}
   }
+}
+
+void DrawBattleInventory(PlayerType *p1, PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+	char *a[4];
+	int selected = 0;
+	for(int i=0; i<3; i++){
+		a[i] = shopItems[i].item.name;
+	}
+	a[3] = "back";
+	
+	for(int i=0; i<4; i++){
+			ST7735_SetCursor(3, 12+i);
+			ST7735_OutString(a[i]);
+			if(i!=3) ST7735_OutString(" x");
+			if(i!=3) ST7735_OutChar((char) (playerInventory[i].count + 0x30));
+	}
+	while(1){
+		while(ADCStatus == 0){}
+			
+		uint8_t yDir = getJoystickY();
+		ADCStatus = 0;
+		
+		if(yDir == 2 && selected < 3){
+			selected++;
+		}else if(yDir == 0 && selected > 0){
+			selected--;
+		}
+		
+		for(int i=0; i<4; i++){
+			ST7735_SetCursor(1, 12+i);
+			if(i==selected) ST7735_OutString("*");
+			else ST7735_OutString(" ");
+		}
+		
+		if(isPE3Pressed()){
+			if(selected == 3){
+				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+				break;
+			}else {
+				ST7735_SetCursor(1, 12);
+				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+				if(playerInventory[selected].count > 0){
+					ST7735_OutString("You used a\n ");
+					ST7735_OutString(a[selected]);
+					playerInventory[selected].count --;
+					while(1){if(isPE3Pressed()) break;};
+					
+					if(selected == 1){
+						ST7735_SetCursor(1, 12);
+						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+						ST7735_OutString(pokeLeft->species.name);
+						ST7735_OutString(" has been \n healed.");
+						pokeLeft->chealth = pokeLeft->species.mhealth;
+						ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
+						ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+						while(1){if(isPE3Pressed()) break;};
+					}else if(selected == 2){
+						ST7735_SetCursor(1, 12);
+						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+						ST7735_OutString("Your happiness\n increased by 25!");
+						p1->happiness += 25;
+						if(p1->happiness > 100) p1->happiness = 100;
+						while(1){if(isPE3Pressed()) break;};
+					}
+				}else {
+					ST7735_OutString("You don't have any\n ");
+					ST7735_OutString(a[selected]);
+					while(1){if(isPE3Pressed()) break;};
+				}
+				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+				for(int i=0; i<4; i++){
+					ST7735_SetCursor(3, 12+i);
+					ST7735_OutString(a[i]);
+					if(i!=3) ST7735_OutString(" x");
+					if(i!=3) ST7735_OutChar((char) (playerInventory[i].count + 0x30));
+				}
+			}
+		}
+	}
 }
 
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){

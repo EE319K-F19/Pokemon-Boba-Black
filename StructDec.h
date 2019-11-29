@@ -122,7 +122,7 @@ struct Player {
 	SpriteType spriteSide;
 	SpriteType spriteLeft;
 	uint32_t coins;
-	uint32_t happiness;
+	int32_t happiness;
 	
 	//PokemonTeamType team;
 	//ItemInventoryType playerInventory[3];
