@@ -15,7 +15,6 @@
 .\spaceinvaders.o: Battle.h
 .\spaceinvaders.o: StructDec.h
 .\spaceinvaders.o: Field.h
-.\spaceinvaders.o: ImagesOther.h
 .\spaceinvaders.o: PokemonType.h
 .\spaceinvaders.o: ImagesPokemon2.h
 .\spaceinvaders.o: Draw.h

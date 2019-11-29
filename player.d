@@ -5,3 +5,5 @@
 .\player.o: StructDec.h
 .\player.o: Player.h
 .\player.o: ST7735.h
+.\player.o: ImagesOther.h
+.\player.o: SystemInfo.h

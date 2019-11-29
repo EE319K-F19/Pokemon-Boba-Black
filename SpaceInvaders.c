@@ -64,7 +64,6 @@
 #include "ADC_Joystick.h"
 #include "Battle.h"
 #include "Field.h"
-#include "ImagesOther.h"
 #include "PokemonType.h"
 #include "ImagesPokemon2.h"
 #include "Draw.h"
@@ -79,8 +78,6 @@
 #include "PokemonType.h"
 
 uint8_t ADCStatus;
-
-static PlayerType p1;
 
 PokemonType starters[3];
 SpriteInstType starterInsts[3];
@@ -131,11 +128,6 @@ int main(void){
 	InitPokemon();
 	InitMoves();
 	InitInventory();
-	//PokemonInstType poke = {0, 0, BulbasaurT.mhealth, BulbasaurT};
-	//PokemonInstType poke2 = {0, 0, BulbasaurT.mhealth, BulbasaurT};
-	//DrawMoveCommands(&poke, &poke2);
-
-	//ItemInventoryType starterInventory[3] = {pokeStart, potionStart, bobaStart};
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
 	PokemonType starterT = DrawTitleScreen(starterScreen);
@@ -154,22 +146,6 @@ void InitInventory(){
 	playerInventory[0] = (ItemInventoryType) {pokeballItem, 0};
 	playerInventory[1] = (ItemInventoryType) {potionItem, 0};
 	playerInventory[2] = (ItemInventoryType) {bobaItem, 0};
-}
-
-void InitPlayer(){
-	SpriteType PlayerFront = {playerFront, 16, 16};
-	SpriteType PlayerBack = {playerBack, 16, 16};
-	SpriteType PlayerSide = {playerSide, 16, 16};
-	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
-	p1 = (PlayerType) {SCREEN_MID_COL+5, SCREEN_MID_ROW+5, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
-	
-	SpriteInstType pokeballInst = (SpriteInstType) {2, 142, pokeball};
-	SpriteInstType potionInst = (SpriteInstType) {44, 142, healthPotion};
-	SpriteInstType bobaInst = (SpriteInstType) {86, 142, boba};
-
-	itemInvInsts[0] = pokeballInst;
-	itemInvInsts[1] = potionInst;
-	itemInvInsts[2] = bobaInst;
 }
 
 

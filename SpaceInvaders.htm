@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Nov 27 21:32:02 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 29 08:11:00 2019
 <BR><P>
 <H3>Maximum Stack Usage =       1128 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -756,9 +756,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Shop_Init
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPlayer
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPokemon
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPlayer
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitInventory
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTitleScreen
@@ -1083,7 +1083,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b9]"></a>InitPlayer</STRONG> (Thumb, 228 bytes, Stack size 168 bytes, spaceinvaders.o(i.InitPlayer))
+<P><STRONG><a name="[b9]"></a>InitPlayer</STRONG> (Thumb, 200 bytes, Stack size 168 bytes, player.o(i.InitPlayer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = InitPlayer &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
@@ -1359,13 +1359,13 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
 <LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Shop_Init
+<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPlayer
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitMoves
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitFieldArray
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitBackgroundTypes
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearScreenGrid
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_Init89
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPokemon
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitPlayer
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitInventory
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawTitleScreen
