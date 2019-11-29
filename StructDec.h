@@ -106,7 +106,6 @@ struct ItemInventory {
 	uint32_t count;
 };
 
-
 struct itemInst {
 	uint16_t xPos;
 	uint16_t yPos;
