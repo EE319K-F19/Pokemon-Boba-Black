@@ -12,8 +12,6 @@ const uint8_t W = 2;
 const uint8_t R = 3;
 const uint8_t E = 4;
 const uint8_t S = 5;
-const uint8_t fieldCols = 30;
-const uint8_t fieldRows = 20;
 const uint8_t FIELD_WIDTH = 30;
 const uint8_t FIELD_HEIGHT = 20;
 
@@ -80,11 +78,11 @@ bool IsWalkable(uint8_t row, uint8_t col){
 }
 
 uint8_t GetFieldGrid(uint8_t row, uint8_t col){
-	return fieldArray[row*fieldCols + col];
+	return fieldArray[row*FIELD_WIDTH + col];
 }
 
 void SetFieldGrid(uint8_t row, uint8_t col, uint8_t fieldType){
-	fieldArray[row*fieldCols + col] = fieldType;
+	fieldArray[row*FIELD_WIDTH + col] = fieldType;
 }
 
 uint8_t fieldArray[] = {
