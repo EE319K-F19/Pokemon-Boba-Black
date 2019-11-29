@@ -7,13 +7,17 @@
 #include "StructDec.h"
 
 extern PlayerType p1;
-
-void DrawSpriteImgPlayer(PlayerType player);
+extern ItemInventoryType playerInventory[3];
+extern PokemonInstType* playerTeam;
 
 void InitPlayer(void);
-bool MoveUp(PlayerType *player);
-bool MoveDown(PlayerType *player);
-bool MoveLeft(PlayerType *player);
-bool MoveRight(PlayerType *player);
+void InitInventory(void);
+void InitTeam(PokemonInstType* starterTeam);
+void DrinkBoba(void);
+void LoseBattle(void);
+bool MoveUp(void);
+bool MoveDown(void);
+bool MoveLeft(void);
+bool MoveRight(void);
 
 #endif

@@ -7,3 +7,4 @@
 .\player.o: ST7735.h
 .\player.o: ImagesOther.h
 .\player.o: SystemInfo.h
+.\player.o: Shop.h

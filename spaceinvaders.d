@@ -25,3 +25,4 @@
 .\spaceinvaders.o: Battle.h
 .\spaceinvaders.o: TextSprites.h
 .\spaceinvaders.o: Battle.h
+.\spaceinvaders.o: DrawScreen.h

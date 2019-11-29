@@ -3,6 +3,7 @@
 #include "Draw.h"
 #include "Field.h"
 #include "ImagesOther.h"
+#include "Player.h"
 #include "SystemInfo.h"
 
 const uint8_t N = 0;
@@ -43,21 +44,21 @@ void InitBackgroundTypes(){
 	background[3] = (SpriteType) {rock, 16, 16};
 }
 
-void DrawField(PlayerType player){
+void DrawField(){
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
-			uint8_t screenCol = j + player.XPos - SCREEN_MID_COL;
-			uint8_t screenRow = i + player.YPos - SCREEN_MID_ROW;
+			uint8_t screenCol = j + p1.XPos - SCREEN_MID_COL;
+			uint8_t screenRow = i + p1.YPos - SCREEN_MID_ROW;
 			uint8_t fieldType = fieldArray[screenRow*FIELD_WIDTH+screenCol];
 			
-			if(player.XPos == screenCol && player.YPos == screenRow){
+			if(p1.XPos == screenCol && p1.YPos == screenRow){
 				uint16_t combinedSprite[16*16];
 				for(int i=0; i<16*16; i++){
-					if(player.sprite.image[i] == 0xFFFF){
+					if(p1.sprite.image[i] == 0xFFFF){
 						combinedSprite[i] = background[fieldType].image[i];
 					}else {
-						combinedSprite[i] = player.sprite.image[i];
+						combinedSprite[i] = p1.sprite.image[i];
 					}
 				}
 				SpriteType combined = {combinedSprite, 16, 16};
@@ -65,10 +66,10 @@ void DrawField(PlayerType player){
 			}else if(fieldType == S){
 				uint16_t combinedSprite[16*16];
 				for(int i=0; i<16*16; i++){
-					if(player.spriteFront.image[i] == 0xFFFF){
+					if(p1.spriteFront.image[i] == 0xFFFF){
 						combinedSprite[i] = background[N].image[i];
 					}else {
-						combinedSprite[i] = player.spriteFront.image[i];
+						combinedSprite[i] = p1.spriteFront.image[i];
 					}
 				}
 				SpriteType combined = {combinedSprite, 16, 16};

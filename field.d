@@ -5,4 +5,5 @@
 .\field.o: Field.h
 .\field.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\field.o: ImagesOther.h
+.\field.o: Player.h
 .\field.o: SystemInfo.h

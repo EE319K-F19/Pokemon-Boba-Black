@@ -4,8 +4,9 @@
 .\drawscreen.o: Random.h
 .\drawscreen.o: ADC_Joystick.h
 .\drawscreen.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\drawscreen.o: Draw.h
+.\drawscreen.o: Battle.h
 .\drawscreen.o: StructDec.h
+.\drawscreen.o: Draw.h
 .\drawscreen.o: DrawScreen.h
 .\drawscreen.o: Field.h
 .\drawscreen.o: ImagesPokemon2.h
@@ -13,3 +14,4 @@
 .\drawscreen.o: PokemonType.h
 .\drawscreen.o: SystemInfo.h
 .\drawscreen.o: TextSprites.h
+.\drawscreen.o: Shop.h
