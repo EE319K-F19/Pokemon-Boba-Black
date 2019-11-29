@@ -95,6 +95,7 @@ bool DrawWorld(){
 	//draws black border around the edges of the screen
 	
 	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
+	uint8_t numPokemon = 5;
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	while(1){
@@ -123,6 +124,7 @@ bool DrawWorld(){
 		}
 		DrawField();
 		uint8_t encounter = Random()%10;
+		encounter = 1; //testing map
 		if(moved && encounter == 0){
 			ST7735_FillScreen(0xFFFF);
 			uint8_t pokemonRan = Random()%5;
