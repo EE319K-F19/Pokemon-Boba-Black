@@ -12,4 +12,8 @@ extern const unsigned short item[];
 //32x16
 extern const unsigned short run[];
 
+extern const unsigned short lucha[];
+
+extern const unsigned short correr[];
+
 #endif
