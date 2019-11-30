@@ -289,7 +289,7 @@ Section Cross References
     drawscreen.o(.constdata) refers to imagespokemon2.o(.constdata) for bulbasaur
     drawscreen.o(.constdata) refers to drawscreen.o(.conststring) for .conststring
     drawscreen.o(.constdata) refers to drawscreen.o(.bss) for starterInsts
-    drawscreen.o(.constdata) refers to textsprites.o(.constdata) for fight
+    drawscreen.o(.constdata) refers to textsprites.o(.constdata) for lucha
     field.o(i.ClearScreenGrid) refers to field.o(.bss) for screenGrid
     field.o(i.DrawField) refers to draw.o(i.DrawBorder) for DrawBorder
     field.o(i.DrawField) refers to draw.o(i.DrawGridSprite) for DrawGridSprite
@@ -517,14 +517,14 @@ Removing Unused input sections from the image.
     Removing draw.o(i.GetGridX), (28 bytes).
     Removing draw.o(i.GetGridY), (28 bytes).
     Removing drawscreen.o(i.DrawBattleInventory), (916 bytes).
-    Removing drawscreen.o(i.DrawBattleScreen), (1056 bytes).
-    Removing drawscreen.o(i.DrawLanguageSelection), (184 bytes).
+    Removing drawscreen.o(i.DrawBattleScreen), (1256 bytes).
+    Removing drawscreen.o(i.DrawLanguageSelection), (228 bytes).
     Removing drawscreen.o(i.DrawMoveCommands), (1394 bytes).
-    Removing drawscreen.o(i.DrawTitleScreen), (416 bytes).
+    Removing drawscreen.o(i.DrawTitleScreen), (400 bytes).
     Removing drawscreen.o(i.DrawWorld), (796 bytes).
     Removing drawscreen.o(i.InitPokemon), (532 bytes).
     Removing drawscreen.o(.bss), (564 bytes).
-    Removing drawscreen.o(.constdata), (596 bytes).
+    Removing drawscreen.o(.constdata), (612 bytes).
     Removing drawscreen.o(.conststring), (52 bytes).
     Removing field.o(i.ClearScreenGrid), (24 bytes).
     Removing field.o(i.DrawField), (440 bytes).
@@ -553,10 +553,10 @@ Removing Unused input sections from the image.
     Removing adc_joystick.o(i.isPE2Pressed), (48 bytes).
     Removing adc_joystick.o(i.isPE3Pressed), (48 bytes).
     Removing imagesother.o(.constdata), (14208 bytes).
-    Removing textsprites.o(.constdata), (4096 bytes).
+    Removing textsprites.o(.constdata), (6144 bytes).
     Removing imagespokemon2.o(.constdata), (32000 bytes).
 
-126 unused section(s) (total 73469 bytes) removed from the image.
+126 unused section(s) (total 75761 bytes) removed from the image.
 
 ==============================================================================
 

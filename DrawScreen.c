@@ -105,10 +105,10 @@ PokemonType DrawTitleScreen(uint8_t language){
 	if(language) ST7735_OutString("Pokemon Boba Negro");
 	else ST7735_OutString("Pokemon Boba Black");
 	ST7735_SetCursor(1, 2);
-	if(language) ST7735_OutString("Hecho por Andy y Iris");
+	if(language) ST7735_OutString("Hecho por Andy/Iris");
 	else ST7735_OutString("Made by Andy & Iris");
 	ST7735_SetCursor(1, 3);
-	if(language) ST7735_OutString("Por favor seleccione\n su entrante");
+	if(language) ST7735_OutString("Seleccione\n su entrante");
 	else ST7735_OutString("Please select your\n starter.");
 	
 	while(1){
@@ -219,7 +219,13 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 	DrawSpriteImg(leftInst);
 	DrawSpriteImg(rightInst);
 	
-	SpriteType fightText = {fight, 32, 16};
+	SpriteType fightText;
+	if(language) {
+		fightText = (SpriteType){lucha, 32, 16};
+	}
+	else{
+		fightText = (SpriteType){fight, 32, 16};
+	}
 	SpriteInstType fightInst = {14, 120, fightText};
 	
 	SpriteType pokeText = {pokemon, 32, 16};
@@ -228,7 +234,13 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 	SpriteType itemText = {item, 32, 16};
 	SpriteInstType itemInst = {84, 120, itemText};
 	
-	SpriteType runText = {run, 32, 16};
+	SpriteType runText;
+	if(language) {
+		runText = (SpriteType){correr, 32, 16};
+	}
+	else{
+		runText = (SpriteType){run, 32, 16};
+	}
 	SpriteInstType runInst = {84, 150, runText};
 	
 	SpriteInstType battleCommands[4] = {fightInst, itemInst, pokeInst, runInst};
