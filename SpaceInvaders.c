@@ -82,7 +82,7 @@ uint8_t ADCStatus;
 uint8_t language; // 0 for English, 1 for Spanish
 
 //for debugging purposes
-int main(void){
+int main1(void){
 	DisableInterrupts();
 	PLL_Init(Bus80MHz);
 	Sound_Init();
@@ -98,7 +98,7 @@ int main(void){
 	}
 }
 
-int main1(void){
+int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
