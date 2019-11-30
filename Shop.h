@@ -11,7 +11,7 @@ extern ItemType bobaItem;
 extern ItemType potionItem;
 extern ItemType pokeballItem;
 
-void Shop_Init(void);
+void InitShop(void);
 // void makePurchase(PlayerType* player, ItemType item);
 void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectType itemSprites, const ItemInstType shopItems[3], uint8_t language);
 

@@ -15,5 +15,6 @@ extern const unsigned short grass[];
 extern const unsigned short water[];
 extern const unsigned short ground[];
 extern const unsigned short rock[];
+extern const unsigned short bush[];
 
 #endif
