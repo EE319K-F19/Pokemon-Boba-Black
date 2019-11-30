@@ -79,7 +79,8 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 	while(1){
 		
 		ST7735_SetCursor(1, 5);
-		ST7735_OutString("You have: ");
+		if(language) ST7735_OutString("Tienes: ");
+		else ST7735_OutString("You have: ");
 		if(p1->coins > 999) ST7735_OutChar((char) (p1->coins/1000) + 0x30);
 		if(p1->coins > 99) ST7735_OutChar((char) (p1->coins/100) + 0x30);
 		if(p1->coins > 9) ST7735_OutChar((char) (p1->coins/10) + 0x30);
@@ -100,7 +101,8 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 			ST7735_FillRect(0, 140, 128, 20, 0xFFFF);
 			ST7735_SetCursor(1, 14);
 			ST7735_OutString(shopItems[shopScreen.currentIndex].item.name[language]);
-			ST7735_OutString("\n (Have: ");
+			if(language) ST7735_OutString("\n (Tener: ");
+		  else ST7735_OutString("\n (Have: ");
 			ST7735_OutChar((char) (inventory[shopScreen.currentIndex].count + 0x30));
 			ST7735_OutString(")");
 		}
@@ -111,12 +113,14 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 			if(p1->coins >= shopItems[shopScreen.currentIndex].item.price){
 				p1->coins -= shopItems[shopScreen.currentIndex].item.price;
 				ST7735_SetCursor(1, 14);
-				ST7735_OutString("You purchased a\n ");
+				if(language) ST7735_OutString("Compraste un\n ");
+				else ST7735_OutString("You purchased a\n ");
 				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name[language]);
 				inventory[shopScreen.currentIndex].count ++;
 			}else {
 				ST7735_SetCursor(1, 14);
-				ST7735_OutString("Oops! You don't\n have enough coins");
+				if(language) ST7735_OutString("¡Uy! No tienes\n suficientes monedas");
+				else ST7735_OutString("Oops! You don't\n have enough coins");
 			}
 		}
   }

@@ -58,7 +58,7 @@ struct Types {
 };
 
 struct Move{
-	char* name;
+	char* name[2];
 	uint8_t type;
 	uint8_t category;
 	uint8_t power;

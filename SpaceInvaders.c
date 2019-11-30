@@ -118,11 +118,12 @@ int main1(void){
 	InitPokemon();
 	InitMoves();
 	
-	PokemonType starterT = DrawTitleScreen();
+	language = DrawLanguageSelection();
+	PokemonType starterT = DrawTitleScreen(language);
 	PokemonInstType starterTeam[1] = {{0, 0, starterT.mhealth, starterT}};
 	InitTeam(starterTeam);
 	
-	bool win = DrawWorld();
+	bool win = DrawWorld(language);
 	PrintWinLoseScreen(win);
 }
 
