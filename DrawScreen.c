@@ -28,7 +28,6 @@ PokemonType PikachuT;
 
 PokemonType starters[3];
 SpriteInstType starterInsts[3];
-// uint8_t language;
 
 void InitPokemon(){
 	//uint16_t nullSprite[1] = {0x0000};
@@ -65,7 +64,8 @@ uint8_t DrawLanguageSelection(void){
 	int selected = 0;
 	a[0] = "English";
 	a[1] = "Espanol";
-	
+	ST7735_SetCursor(1, 5);
+	ST7735_OutString("Please select a language.");
 	for(int i=0; i<2; i++){
 			ST7735_SetCursor(3, 12+i);
 			ST7735_OutString(a[i]);
@@ -272,16 +272,19 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 				else{
 					if(results == 1){
 						ST7735_SetCursor(1, 12);
-						ST7735_OutString("Wild ");
+						if(language) ST7735_OutString("Salvaje ");
+						else ST7735_OutString("Wild ");
 						ST7735_OutString(pokeRight->name);
-						ST7735_OutString("\n fainted.");
+						if(language) ST7735_OutString("\n desmayado.");
+						else ST7735_OutString("\n fainted.");
 						while(1) if(isPE3Pressed()) break;
 						ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
 						
 						uint8_t coinsGained = Random()%15 + 20;
 						p1.coins += coinsGained;
 						ST7735_SetCursor(1, 12);
-						ST7735_OutString("You gained ");
+						if(language) ST7735_OutString("Ganaste ");
+						else ST7735_OutString("You gained ");
 						ST7735_OutChar((char) (coinsGained/10)+0x30);
 						ST7735_OutChar((char) (coinsGained%10)+0x30);
 						ST7735_OutString("C.");
@@ -291,13 +294,16 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 						break;
 					}else {
 						ST7735_SetCursor(1, 12);
-						ST7735_OutString("Your ");
+						if(language) ST7735_OutString("Tu ");
+						else ST7735_OutString("Your ");
 						ST7735_OutString(pokeLeft->species.name);
-						ST7735_OutString("\n fainted.");
+						if(language) ST7735_OutString("\n desmayado.");
+						else ST7735_OutString("\n fainted.");
 						pokeLeft->chealth = 1;
 						while(1) if(isPE3Pressed()) break;
 						ST7735_SetCursor(1, 12);
-						ST7735_OutString("Your happiness\n dropped by 10.");
+						if(language) ST7735_OutString("Tu felicidad\n cayó por 10.");
+						else ST7735_OutString("Your happiness\n dropped by 10.");
 						uint8_t drop = 10;
 						if(p1.happiness < 10) drop = p1.happiness;
 						p1.happiness -= drop;
