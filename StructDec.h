@@ -94,7 +94,7 @@ struct PokemonTeam {
 };
 
 struct Item {
-	char* name;
+	char* name[2];
 	SpriteType sprite;
 	uint32_t price;
 	char* price_string;

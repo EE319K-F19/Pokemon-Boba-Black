@@ -79,6 +79,7 @@
 #include "PokemonType.h"
 
 uint8_t ADCStatus;
+uint8_t language; // 0 for English, 1 for Spanish
 
 static PlayerType p1;
 
@@ -98,23 +99,6 @@ PokemonType CharmanderT;
 PokemonType PidgeyT;
 PokemonType PikachuT;
 
-int main1(void){
-	PLL_Init(Bus80MHz);
-	Sound_Init();
-	ADC_Init89();
-	Shop_Init();
-	InitMoves();
-	EnableInterrupts();
-	while(1){
-		//Sound_Highpitch();
-		//ST7735_SetCursor(0,0);
-		//ST7735_OutString("SW: ");
-		//LCD_OutDec(portEDataPE3);
-		//ST7735_OutString("\n");
-		
-	}
-}
-
 int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
@@ -131,11 +115,13 @@ int main(void){
 	InitPokemon();
 	InitMoves();
 	InitInventory();
+	
 	//PokemonInstType poke = {0, 0, BulbasaurT.mhealth, BulbasaurT};
 	//PokemonInstType poke2 = {0, 0, BulbasaurT.mhealth, BulbasaurT};
 	//DrawMoveCommands(&poke, &poke2);
 
 	//ItemInventoryType starterInventory[3] = {pokeStart, potionStart, bobaStart};
+	language = DrawLanguageSelection();
 	
 	SpriteSelectType starterScreen = {starterInsts, 3, 0};
 	PokemonType starterT = DrawTitleScreen(starterScreen);
@@ -301,7 +287,7 @@ bool DrawWorld(PlayerType p1){
 			if(GetFieldGrid(p1.YPos-1, p1.XPos) == S){
 				ClearScreenGrid();
 				SpriteSelectType shopScreen = {itemInsts, 3, 0};
-				DrawShopScreen(&p1, playerInventory, shopScreen, shopItems);
+				DrawShopScreen(&p1, playerInventory, shopScreen, shopItems, language);
 			}
 		}
 	}
@@ -626,6 +612,42 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 			}
 			ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
 			return 0;
+		}
+	}
+}
+
+uint8_t DrawLanguageSelection(void){
+	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+	char *a[2];
+	int selected = 0;
+	a[0] = "English";
+	a[1] = "Espanol";
+	
+	for(int i=0; i<2; i++){
+			ST7735_SetCursor(3, 12+i);
+			ST7735_OutString(a[i]);
+	}
+	
+	while(1){
+		while(ADCStatus == 0){}
+			
+		uint8_t yDir = getJoystickY();
+		ADCStatus = 0;
+		
+		if(yDir == 2 && selected < 1){
+			selected++;
+		}else if(yDir == 0 && selected > 0){
+			selected--;
+		}
+		
+		for(int i=0; i<2; i++){
+			ST7735_SetCursor(1, 12+i);
+			if(i==selected) ST7735_OutString("*");
+			else ST7735_OutString(" ");
+		}
+		
+		if(isPE3Pressed()){
+			return selected;
 		}
 	}
 }

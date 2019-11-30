@@ -120,7 +120,14 @@ void Sound_Task(void){
 	else{
 		NVIC_DIS0_R = 1<<19; // disable IRQ 19 in NVIC
 	}
-}
+};
+
+void Sound_Play(const uint8_t *pt, uint32_t count){
+// write this
+	len = count;
+	soundPt = pt;
+	NVIC_EN0_R = 1<<19;
+};
 
 void Sound_Init(void){
 // write this
@@ -153,13 +160,6 @@ void Sound_Rumble(void){
 
 void Sound_Stomp(void){
 	Sound_Play(stomp, 10015);
-};
-
-void Sound_Play(const uint8_t *pt, uint32_t count){
-// write this
-	len = count;
-	soundPt = pt;
-	NVIC_EN0_R = 1<<19;
 };
 
 int sound_main(void){
