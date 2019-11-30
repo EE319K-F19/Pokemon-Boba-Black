@@ -7,11 +7,12 @@
 #include "StructDec.h"
 
 void InitPokemon(void);
-PokemonType DrawTitleScreen(void);
-void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight);
-bool DrawWorld(void);
-uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
+PokemonType DrawTitleScreen(uint8_t language);
+void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, uint8_t language);
+bool DrawWorld(uint8_t language);
+uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language);
 void InitInventory(void);
-void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
-
+void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language);
+extern uint8_t language;
+uint8_t DrawLanguageSelection(void);
 #endif

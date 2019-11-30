@@ -26,9 +26,9 @@ void InitShop(void){
 	SpriteType potionSprite = {healthPotion, 40, 40};
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
-	ItemType bobaItem = {"boba", bobaSprite, 70, "70 C", 2};
-	ItemType potionItem = {"health potion", potionSprite, 20, "20 C", 1};
-	ItemType pokeballItem = {"pokeball", pokeballSprite, 10, "10 C", 0};
+	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 70, "70 C", 2};
+	ItemType potionItem = {{"health potion", "poción de salud"}, potionSprite, 20, "20 C", 1};
+	ItemType pokeballItem = {{"pokeball", "pokeball"}, pokeballSprite, 10, "10 C", 0};
 	
 	ItemInstType bobaShop = {86, 80, bobaItem};
 	ItemInstType potionShop = {44, 80, potionItem};
@@ -47,17 +47,20 @@ void InitShop(void){
 	itemInsts[2] = bobaInst;
 }
 
-void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectType shopScreen, const ItemInstType shopItems[3]){
+void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectType shopScreen, const ItemInstType shopItems[3], uint8_t language){
 	ST7735_FillScreen(0xFFFF);
 	
 	DrawAllSprites(shopScreen);
 	ST7735_SetTextColor(ST7735_BLACK);
 	ST7735_SetCursor(1, 2);
-	ST7735_OutString("Pokeboba Shop");
+	if(language) ST7735_OutString("Tienda de Pokeboba");
+	else ST7735_OutString("Pokeboba Shop");
 	ST7735_SetCursor(1, 3);
-	ST7735_OutString("What would you like");
+	if(language) ST7735_OutString("¿Que le gustaria");
+	else ST7735_OutString("What would you like");
 	ST7735_SetCursor(1, 4);
-	ST7735_OutString("to buy?");
+	if (language) ST7735_OutString("comprar?");
+	else ST7735_OutString("to buy?");
 	
 	ST7735_SetCursor(2, 13);
 	ST7735_OutString(shopItems[0].item.price_string);
@@ -67,15 +70,17 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 	ST7735_OutString(shopItems[2].item.price_string);
 	
 	ST7735_SetCursor(1, 14);
-	ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
-	ST7735_OutString("\n (Have: ");
+	ST7735_OutString(shopItems[shopScreen.currentIndex].item.name[language]);
+	if(language) ST7735_OutString("\n (Tener: ");
+	else ST7735_OutString("\n (Have: ");
 	ST7735_OutChar((char) (inventory[shopScreen.currentIndex].count + 0x30));
 	ST7735_OutString(")");
 	
 	while(1){
 		
 		ST7735_SetCursor(1, 5);
-		ST7735_OutString("You have: ");
+		if(language) ST7735_OutString("Tienes: ");
+		else ST7735_OutString("You have: ");
 		if(p1->coins > 999) ST7735_OutChar((char) (p1->coins/1000) + 0x30);
 		if(p1->coins > 99) ST7735_OutChar((char) (p1->coins/100) + 0x30);
 		if(p1->coins > 9) ST7735_OutChar((char) (p1->coins/10) + 0x30);
@@ -95,8 +100,9 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 			}
 			ST7735_FillRect(0, 140, 128, 20, 0xFFFF);
 			ST7735_SetCursor(1, 14);
-			ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
-			ST7735_OutString("\n (Have: ");
+			ST7735_OutString(shopItems[shopScreen.currentIndex].item.name[language]);
+			if(language) ST7735_OutString("\n (Tener: ");
+		  else ST7735_OutString("\n (Have: ");
 			ST7735_OutChar((char) (inventory[shopScreen.currentIndex].count + 0x30));
 			ST7735_OutString(")");
 		}
@@ -107,12 +113,14 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 			if(p1->coins >= shopItems[shopScreen.currentIndex].item.price){
 				p1->coins -= shopItems[shopScreen.currentIndex].item.price;
 				ST7735_SetCursor(1, 14);
-				ST7735_OutString("You purchased a\n ");
-				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name);
+				if(language) ST7735_OutString("Compraste un\n ");
+				else ST7735_OutString("You purchased a\n ");
+				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name[language]);
 				inventory[shopScreen.currentIndex].count ++;
 			}else {
 				ST7735_SetCursor(1, 14);
-				ST7735_OutString("Oops! You don't\n have enough coins");
+				if(language) ST7735_OutString("¡Uy! No tienes\n suficientes monedas");
+				else ST7735_OutString("Oops! You don't\n have enough coins");
 			}
 		}
   }

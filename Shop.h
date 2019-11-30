@@ -13,6 +13,6 @@ extern ItemType pokeballItem;
 
 void InitShop(void);
 // void makePurchase(PlayerType* player, ItemType item);
-void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectType itemSprites, const ItemInstType shopItems[3]);
+void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectType itemSprites, const ItemInstType shopItems[3], uint8_t language);
 
 #endif
