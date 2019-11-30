@@ -81,24 +81,23 @@
 uint8_t ADCStatus;
 
 //for debugging purposes
-int main1(void){
+int main(void){
+	DisableInterrupts();
 	PLL_Init(Bus80MHz);
 	Sound_Init();
 	ADC_Init89();
-	InitShop();
-	InitMoves();
 	EnableInterrupts();
 	while(1){
-		//Sound_Highpitch();
-		//ST7735_SetCursor(0,0);
-		//ST7735_OutString("SW: ");
-		//LCD_OutDec(portEDataPE3);
-		//ST7735_OutString("\n");
-		
+		Sound_Highpitch();
+		//Sound_Alarm();
+		//Sound_Buzz();
+		//Sound_Laser();
+		//Sound_Rumble();
+		//Sound_Stomp();
 	}
 }
 
-int main(void){
+int main1(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();

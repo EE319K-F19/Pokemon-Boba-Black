@@ -6,17 +6,22 @@
 #include "Player.h"
 #include "SystemInfo.h"
 
+//field types
 const uint8_t N = 0;
 const uint8_t G = 1;
 const uint8_t W = 2;
-const uint8_t R = 3;
-const uint8_t E = 4;
-const uint8_t S = 5;
+const uint8_t E = 3;
+
+//field objects
+const uint8_t R = 0;
+const uint8_t T = 1;
+const uint8_t S = 2;
+
 const uint8_t FIELD_WIDTH = 30;
-const uint8_t FIELD_HEIGHT = 20;
+const uint8_t FIELD_HEIGHT = 30;
 
-SpriteType background[4]; 
-
+SpriteType background[3];
+SpriteType fieldObj[3];
 uint8_t screenGrid[63];
 
 void ClearScreenGrid(){
@@ -32,7 +37,6 @@ void InitBackgroundTypes(){
 	background[0] = (SpriteType) {ground, 16, 16};
 	background[1] = (SpriteType) {grass, 16, 16};
 	background[2] = (SpriteType) {water, 16, 16};
-	background[3] = (SpriteType) {rock, 16, 16};
 }
 
 void DrawField(){
@@ -89,22 +93,66 @@ uint8_t fieldArray[] = {
 //0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
 	N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, //0
 	N, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, //1
-	N, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, R, N, W, W, N, N, N, //2
-	N, G, W, W, W, W, N, N, R, N, N, N, G, N, N, N, N, N, N, R, N, N, R, R, W, W, W, W, N, N, //3
-	N, G, G, R, W, W, R, R, R, R, N, N, G, G, R, R, N, N, R, R, R, R, R, R, N, W, W, W, N, N, //4
-	N, G, G, R, R, R, R, N, N, R, R, R, R, R, R, R, R, R, R, R, W, W, W, R, W, W, W, W, N, N, //5
-	N, G, N, N, R, W, W, N, N, R, R, G, G, G, G, N, N, N, N, W, W, W, N, R, W, N, N, N, N, N, //6
-	G, G, G, N, R, W, N, N, N, W, W, G, G, N, N, N, N, N, N, W, W, N, N, R, W, W, W, G, N, N, //7
-	G, G, G, N, R, W, N, N, N, W, W, W, G, N, N, S, N, N, N, W, W, N, N, N, R, R, R, G, N, N, //8
-	N, G, G, R, R, W, N, N, N, W, W, W, G, N, N, N, N, N, N, N, N, N, N, N, W, W, R, R, N, N, //9
-	N, G, G, R, R, W, N, N, N, N, G, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, R, R, G, G, //10
-	N, G, G, R, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, R, R, G, G, //11
-	N, G, G, R, R, N, R, R, N, N, R, R, N, N, N, N, N, N, N, N, R, N, N, N, N, N, R, R, G, G, //12
-	N, N, N, R, R, N, R, R, N, N, R, N, R, N, N, N, N, N, N, R, N, R, N, N, N, N, R, R, G, N, //13
-	N, N, N, N, R, N, R, R, R, R, R, N, R, R, R, R, N, G, R, G, N, R, N, N, N, N, R, R, N, N, //14
-	N, N, N, N, R, R, R, N, N, N, N, N, N, N, N, R, R, R, R, G, N, R, R, R, R, R, R, R, N, N, //15
-	N, N, N, N, R, N, N, N, N, N, N, N, N, N, N, N, W, G, G, G, N, R, N, N, N, N, N, N, N, N, //16
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //17
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //18
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //19
+	N, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, N, N, W, W, N, N, N, //2
+	N, G, W, W, W, W, W, N, N, N, N, N, G, N, N, N, N, N, N, N, N, W, W, N, W, W, W, W, N, N, //3
+	N, G, G, G, W, W, W, N, N, N, W, N, G, G, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, //4
+	N, G, G, G, W, W, W, N, N, N, W, N, G, G, G, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
+	N, G, G, G, W, W, W, N, N, W, W, G, G, G, G, N, N, N, N, W, W, W, N, N, W, N, N, N, N, N, //6
+	G, G, G, G, W, W, W, N, W, W, W, G, G, N, G, N, N, N, N, W, W, N, N, N, W, W, W, G, N, N, //7
+	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, N, N, N, N, G, N, N, //8
+	N, G, G, G, G, G, N, W, W, W, W, W, G, W, N, N, N, N, N, N, N, N, N, N, W, W, G, G, N, N, //9
+	N, G, G, N, G, G, N, N, W, W, G, G, G, W, W, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //10
+	N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //11
+	N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, G, G, G, G, G, //12
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, W, G, N, N, N, N, N, N, N, N, N, N, //14
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, N, N, N, N, N, //15
+	N, N, G, G, G, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, W, W, W, N, N, //16
+	N, N, G, G, G, N, N, N, N, N, G, G, N, N, N, G, G, W, W, W, N, N, N, N, N, N, W, W, N, N, //17
+	N, N, G, N, G, G, G, W, W, N, G, G, N, N, N, G, G, W, W, W, W, W, N, W, N, N, W, W, N, N, //18
+	N, N, N, N, G, G, G, W, W, G, G, G, N, N, N, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
+	N, N, N, N, N, N, G, W, W, N, G, G, G, N, N, N, N, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
+	N, N, N, N, N, G, G, G, N, N, N, W, G, N, N, N, N, G, N, G, N, N, N, N, N, G, G, G, G, N, //21
+	N, N, N, N, N, G, G, N, N, N, N, W, G, N, N, N, N, N, N, G, N, N, N, N, G, G, G, G, N, N, //22
+	N, N, N, N, N, N, N, N, N, N, W, W, G, W, W, N, W, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
+	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, N, W, W, W, W, N, N, N, N, N, G, G, G, N, N, //24
+	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //25
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //26
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //27
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, W, W, W, N, N, N, N, N, N, //28
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //29
+};
+
+uint8_t fieldObjArray[] = {
+//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
+	N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, //0
+	N, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, //1
+	N, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, N, N, W, W, N, N, N, //2
+	N, G, W, W, W, W, W, N, N, N, N, N, G, N, N, N, N, N, N, N, N, W, W, N, W, W, W, W, N, N, //3
+	N, G, G, G, W, W, W, N, N, N, W, N, G, G, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, //4
+	N, G, G, G, W, W, W, N, N, N, W, N, G, G, G, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
+	N, G, G, G, W, W, W, N, N, W, W, G, G, G, G, N, N, N, N, W, W, W, N, N, W, N, N, N, N, N, //6
+	G, G, G, G, W, W, W, N, W, W, W, G, G, N, G, N, N, N, N, W, W, N, N, N, W, W, W, G, N, N, //7
+	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, N, N, N, N, G, N, N, //8
+	N, G, G, G, G, G, N, W, W, W, W, W, G, W, N, N, N, N, N, N, N, N, N, N, W, W, G, G, N, N, //9
+	N, G, G, N, G, G, N, N, W, W, G, G, G, W, W, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //10
+	N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //11
+	N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, G, G, G, G, G, //12
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, W, G, N, N, N, N, N, N, N, N, N, N, //14
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, N, N, N, N, N, //15
+	N, N, G, G, G, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, W, W, W, N, N, //16
+	N, N, G, G, G, N, N, N, N, N, G, G, N, N, N, G, G, W, W, W, N, N, N, N, N, N, W, W, N, N, //17
+	N, N, G, N, G, G, G, W, W, N, G, G, N, N, N, G, G, W, W, W, W, W, N, W, N, N, W, W, N, N, //18
+	N, N, N, N, G, G, G, W, W, G, G, G, N, N, N, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
+	N, N, N, N, N, N, G, W, W, N, G, G, G, N, N, N, N, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
+	N, N, N, N, N, G, G, G, N, N, N, W, G, N, N, N, N, G, N, G, N, N, N, N, N, G, G, G, G, N, //21
+	N, N, N, N, N, G, G, N, N, N, N, W, G, N, N, N, N, N, N, G, N, N, N, N, G, G, G, G, N, N, //22
+	N, N, N, N, N, N, N, N, N, N, W, W, G, W, W, N, W, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
+	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, N, W, W, W, W, N, N, N, N, N, G, G, G, N, N, //24
+	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //25
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //26
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //27
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, W, W, W, N, N, N, N, N, N, //28
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //29
 };
