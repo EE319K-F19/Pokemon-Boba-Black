@@ -13,5 +13,6 @@ bool DrawWorld(void);
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
 void InitInventory(void);
 void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
+void TakeDamage(SpriteInstType dmgPokemon, bool moveLeft);
 
 #endif

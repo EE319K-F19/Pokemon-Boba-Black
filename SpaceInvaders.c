@@ -81,7 +81,7 @@
 uint8_t ADCStatus;
 
 //for debugging purposes
-int main(void){
+int main1(void){
 	DisableInterrupts();
 	PLL_Init(Bus80MHz);
 	Sound_Init();
@@ -97,7 +97,7 @@ int main(void){
 	}
 }
 
-int main1(void){
+int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();

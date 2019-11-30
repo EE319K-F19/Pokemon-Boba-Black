@@ -17,7 +17,7 @@ void InitPlayer(){
 	SpriteType PlayerBack = {playerBack, 16, 16};
 	SpriteType PlayerSide = {playerSide, 16, 16};
 	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
-	p1 = (PlayerType) {10, 10, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
+	p1 = (PlayerType) {6, 6, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
 }
 
 void InitInventory(){
