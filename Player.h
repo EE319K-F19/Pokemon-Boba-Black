@@ -6,11 +6,18 @@
 #include <stdbool.h>
 #include "StructDec.h"
 
-void DrawSpriteImgPlayer(PlayerType player);
+extern PlayerType p1;
+extern ItemInventoryType playerInventory[3];
+extern PokemonInstType* playerTeam;
 
-bool MoveUp(PlayerType *player);
-bool MoveDown(PlayerType *player);
-bool MoveLeft(PlayerType *player);
-bool MoveRight(PlayerType *player);
+void InitPlayer(void);
+void InitInventory(void);
+void InitTeam(PokemonInstType* starterTeam);
+void DrinkBoba(void);
+void LoseBattle(void);
+bool MoveUp(void);
+bool MoveDown(void);
+bool MoveLeft(void);
+bool MoveRight(void);
 
 #endif

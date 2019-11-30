@@ -20,7 +20,7 @@ ItemType bobaItem;
 ItemType potionItem;
 ItemType pokeballItem;
 
-void Shop_Init(void){
+void InitShop(void){
 	
 	SpriteType bobaSprite = {boba, 40, 40};
 	SpriteType potionSprite = {healthPotion, 40, 40};
