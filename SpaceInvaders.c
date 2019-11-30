@@ -79,6 +79,7 @@
 #include "PokemonType.h"
 
 uint8_t ADCStatus;
+uint8_t language; // 0 for English, 1 for Spanish
 
 //for debugging purposes
 int main1(void){
@@ -117,11 +118,12 @@ int main(void){
 	InitPokemon();
 	InitMoves();
 	
-	PokemonType starterT = DrawTitleScreen();
+	language = DrawLanguageSelection();
+	PokemonType starterT = DrawTitleScreen(language);
 	PokemonInstType starterTeam[1] = {{0, 0, starterT.mhealth, starterT}};
 	InitTeam(starterTeam);
 	
-	bool win = DrawWorld();
+	bool win = DrawWorld(language);
 	PrintWinLoseScreen(win);
 }
 

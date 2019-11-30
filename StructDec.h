@@ -58,7 +58,7 @@ struct Types {
 };
 
 struct Move{
-	char* name;
+	char* name[2];
 	uint8_t type;
 	uint8_t category;
 	uint8_t power;
@@ -94,7 +94,7 @@ struct PokemonTeam {
 };
 
 struct Item {
-	char* name;
+	char* name[2];
 	SpriteType sprite;
 	uint32_t price;
 	char* price_string;
