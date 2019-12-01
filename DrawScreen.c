@@ -21,6 +21,8 @@
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
 
+SpriteInstType BulbasaurWorld;
+
 PokemonType BulbasaurT;
 PokemonType SquirtleT;
 PokemonType CharmanderT;
@@ -38,6 +40,9 @@ void InitPokemon(){
 	SpriteType charmanderS = {charmander, 40, 40};
 	SpriteType pidgeyS = {pidgey, 40, 40};
 	SpriteType pikachuS = {pikachu, 40, 40};
+	
+	SpriteType bulbasaurW = {bulbWorldFront, 16, 16};
+	BulbasaurWorld = (SpriteInstType) {20, 20, bulbasaurW};
 	
 	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45, 0};
 	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43, 1};
@@ -57,6 +62,12 @@ uint8_t DrawLanguageSelection(){
 	
 	int8_t output = DrawSimpleMenu(langs, 2, false);
 	if(output >= 0) return output;
+}
+
+void MoveWorldPokemon(){
+	ST7735_FillRect(BulbasaurWorld.x_left, BulbasaurWorld.y_bottom-BulbasaurWorld.sprite.height, BulbasaurWorld.sprite.width,BulbasaurWorld.sprite.height, 0xFFFF);
+	BulbasaurWorld.x_left ++;
+	DrawSpriteImg(BulbasaurWorld);
 }
 
 PokemonType DrawTitleScreen(uint8_t language){
@@ -107,6 +118,8 @@ PokemonType DrawTitleScreen(uint8_t language){
 }
 
 bool DrawWorld(uint8_t language){
+	Timer1_Init(MoveWorldPokemon, 1000000);
+	
 	//draws black border around the edges of the screen
 	uint8_t numPokemon = 5;
 	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
