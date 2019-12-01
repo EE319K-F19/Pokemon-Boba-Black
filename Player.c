@@ -16,7 +16,12 @@ void InitPlayer(){
 	SpriteType PlayerFront = {playerFront, 16, 16};
 	SpriteType PlayerBack = {playerBack, 16, 16};
 	SpriteType PlayerSide = {playerSide, 16, 16};
-	p1 = (PlayerType) {6, 6, PlayerFront, PlayerFront, PlayerBack, PlayerSide, 25, 25, false};
+	
+	SpriteType PlayerSwimFront = {playerSwimFront, 16, 16};
+	SpriteType PlayerSwimBack = {playerSwimBack, 16, 16};
+	SpriteType PlayerSwimSide = {playerSwimSide, 16, 16};
+	
+	p1 = (PlayerType) {6, 6, PlayerSwimFront, PlayerFront, PlayerBack, PlayerSide, PlayerSwimFront, PlayerSwimBack, PlayerSwimSide, 25, 25, false};
 }
 
 void InitInventory(){
@@ -38,7 +43,11 @@ void LoseBattle(){
 }
 
 bool MoveUp(){
-	p1.sprite = p1.spriteBack;
+	if(GetFieldGrid(p1.YPos-1, p1.XPos) == W){
+		p1.sprite = p1.spriteSwimBack;
+	}else{
+		p1.sprite = p1.spriteBack;
+	}
 	p1.flipped = false;
 	if(IsWalkable(p1.YPos-1, p1.XPos)){
 		p1.YPos --;
@@ -48,7 +57,11 @@ bool MoveUp(){
 }
 
 bool MoveDown(){
-	p1.sprite = p1.spriteFront;
+	if(GetFieldGrid(p1.YPos+1, p1.XPos) == W){
+		p1.sprite = p1.spriteSwimFront;
+	}else{
+		p1.sprite = p1.spriteFront;
+	}
 	p1.flipped = false;
 	if(IsWalkable(p1.YPos+1, p1.XPos)){
 		p1.YPos ++;
@@ -58,7 +71,11 @@ bool MoveDown(){
 }
 
 bool MoveLeft(){
-	p1.sprite = p1.spriteSide;
+	if(GetFieldGrid(p1.YPos, p1.XPos-1) == W){
+		p1.sprite = p1.spriteSwimSide;
+	}else{
+		p1.sprite = p1.spriteSide;
+	}
 	p1.flipped = false;
 	if(IsWalkable(p1.YPos, p1.XPos-1)){
 		p1.XPos --;
@@ -68,7 +85,11 @@ bool MoveLeft(){
 }
 
 bool MoveRight(){
-	p1.sprite = p1.spriteSide;
+	if(GetFieldGrid(p1.YPos, p1.XPos+1) == W){
+		p1.sprite = p1.spriteSwimSide;
+	}else{
+		p1.sprite = p1.spriteSide;
+	}
 	p1.flipped = true;
 	if(IsWalkable(p1.YPos, p1.XPos+1)){
 		p1.XPos ++;

@@ -121,6 +121,10 @@ struct Player {
 	SpriteType spriteFront;
 	SpriteType spriteBack;
 	SpriteType spriteSide;
+	
+	SpriteType spriteSwimFront;
+	SpriteType spriteSwimBack;
+	SpriteType spriteSwimSide;
 	uint32_t coins;
 	int32_t happiness;
 	

@@ -138,7 +138,7 @@ bool DrawWorld(uint8_t language){
 		DrawField();
 		uint8_t encounter = Random()%10;
 		if(moved && encounter == 0){
-			ST7735_FillScreen(0xFFFF);
+			ClearScreenGrid();
 			uint8_t pokemonRan = Random()%5;
 			PokemonType selected = allPokemon[pokemonRan];
 			DrawBattleScreen(&playerTeam[0], &selected, language);
@@ -184,7 +184,7 @@ void DrawStatusScreen(uint8_t language){
 }
 
 void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, uint8_t language){
-	ClearScreenGrid();
+	
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};

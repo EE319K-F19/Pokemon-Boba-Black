@@ -55,24 +55,19 @@ void DrawField(){
 			bool flipped = false;
 			if(objType == R || objType == T || (p1.XPos == screenCol && p1.YPos == screenRow)){
 				
-				uint16_t flippedImage[16*16];
-				if(flipped){
-					uint8_t row = 0;
-					uint8_t col = 0;
-					flippedImage[row*16+col] = fieldObj[objType].image[row*16+15-col];
-				}
-				
 				if(p1.XPos == screenCol && p1.YPos == screenRow) {
 					objType = 2;
 					if(p1.flipped) flipped = true;
 				}else objType -= 4;
 				uint16_t combinedSprite[16*16];
-				for(int i=0; i<16*16; i++){
-					if(fieldObj[objType].image[i] == 0xFFFF){
-						combinedSprite[i] = background[fieldType].image[i];
-					}else {
-						if(flipped) combinedSprite[i] = flippedImage[i];
-						else combinedSprite[i] = fieldObj[objType].image[i];
+				for(int row=0; row<16; row++){
+					for(int col=0; col<16; col++){
+						if((fieldObj[objType].image[row*16+col] == 0xFFFF && !flipped) || (fieldObj[objType].image[row*16+15-col] == 0xFFFF && flipped)){
+							combinedSprite[row*16+col] = background[fieldType].image[row*16+col];
+						}else {
+							if(flipped) combinedSprite[row*16+col] = fieldObj[objType].image[row*16+15-col];
+							else combinedSprite[row*16+col] = fieldObj[objType].image[row*16+col];
+						}
 					}
 				}
 				SpriteType combined = {combinedSprite, 16, 16};
