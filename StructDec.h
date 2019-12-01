@@ -2,6 +2,7 @@
 #ifndef _STRUCTDECH_
 #define _STRUCTDECH_
 
+#include <stdbool.h>
 #include <stdint.h>
 
 typedef struct Sprite SpriteType;
@@ -120,12 +121,10 @@ struct Player {
 	SpriteType spriteFront;
 	SpriteType spriteBack;
 	SpriteType spriteSide;
-	SpriteType spriteLeft;
 	uint32_t coins;
 	int32_t happiness;
 	
-	//PokemonTeamType team;
-	//ItemInventoryType playerInventory[3];
+	bool flipped;
 };
 
 #endif

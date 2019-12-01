@@ -16,8 +16,7 @@ void InitPlayer(){
 	SpriteType PlayerFront = {playerFront, 16, 16};
 	SpriteType PlayerBack = {playerBack, 16, 16};
 	SpriteType PlayerSide = {playerSide, 16, 16};
-	SpriteType PlayerSideFlipped = {playerSideFlipped, 16, 16};
-	p1 = (PlayerType) {6, 6, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSideFlipped, 0, 25};
+	p1 = (PlayerType) {6, 6, PlayerFront, PlayerFront, PlayerBack, PlayerSide, 25, 25, false};
 }
 
 void InitInventory(){
@@ -40,6 +39,7 @@ void LoseBattle(){
 
 bool MoveUp(){
 	p1.sprite = p1.spriteBack;
+	p1.flipped = false;
 	if(IsWalkable(p1.YPos-1, p1.XPos)){
 		p1.YPos --;
 		return true;
@@ -49,6 +49,7 @@ bool MoveUp(){
 
 bool MoveDown(){
 	p1.sprite = p1.spriteFront;
+	p1.flipped = false;
 	if(IsWalkable(p1.YPos+1, p1.XPos)){
 		p1.YPos ++;
 		return true;
@@ -57,7 +58,8 @@ bool MoveDown(){
 }
 
 bool MoveLeft(){
-	p1.sprite = p1.spriteLeft;
+	p1.sprite = p1.spriteSide;
+	p1.flipped = false;
 	if(IsWalkable(p1.YPos, p1.XPos-1)){
 		p1.XPos --;
 		return true;
@@ -67,6 +69,7 @@ bool MoveLeft(){
 
 bool MoveRight(){
 	p1.sprite = p1.spriteSide;
+	p1.flipped = true;
 	if(IsWalkable(p1.YPos, p1.XPos+1)){
 		p1.XPos ++;
 		return true;

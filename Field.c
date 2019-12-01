@@ -32,9 +32,6 @@ void ClearScreenGrid(){
 	}
 }
 
-void InitFieldArray(){
-}
-
 void InitBackgroundTypes(){
 	background[0] = (SpriteType) {ground, 16, 16};
 	background[1] = (SpriteType) {grass, 16, 16};
@@ -55,17 +52,27 @@ void DrawField(){
 			uint8_t screenRow = i + p1.YPos - SCREEN_MID_ROW;
 			uint8_t fieldType = fieldArray[screenRow*FIELD_WIDTH+screenCol];
 			uint8_t objType = fieldObjArray[screenRow*FIELD_WIDTH+screenCol];
-			
+			bool flipped = false;
 			if(objType == R || objType == T || (p1.XPos == screenCol && p1.YPos == screenRow)){
 				
-				if(p1.XPos == screenCol && p1.YPos == screenRow) objType = 2;
-				else objType -= 4;
+				uint16_t flippedImage[16*16];
+				if(flipped){
+					uint8_t row = 0;
+					uint8_t col = 0;
+					flippedImage[row*16+col] = fieldObj[objType].image[row*16+15-col];
+				}
+				
+				if(p1.XPos == screenCol && p1.YPos == screenRow) {
+					objType = 2;
+					if(p1.flipped) flipped = true;
+				}else objType -= 4;
 				uint16_t combinedSprite[16*16];
 				for(int i=0; i<16*16; i++){
 					if(fieldObj[objType].image[i] == 0xFFFF){
 						combinedSprite[i] = background[fieldType].image[i];
 					}else {
-						combinedSprite[i] = fieldObj[objType].image[i];
+						if(flipped) combinedSprite[i] = flippedImage[i];
+						else combinedSprite[i] = fieldObj[objType].image[i];
 					}
 				}
 				SpriteType combined = {combinedSprite, 16, 16};
