@@ -60,12 +60,12 @@ void InitPokemon(){
 
 uint8_t DrawLanguageSelection(void){
 	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+	ST7735_FillScreen(0xFFFF);
 	char *a[2];
 	int selected = 0;
 	a[0] = "English";
 	a[1] = "Espanol";
 	ST7735_SetCursor(1, 5);
-	ST7735_OutString("Please select a language.");
 	for(int i=0; i<2; i++){
 			ST7735_SetCursor(3, 12+i);
 			ST7735_OutString(a[i]);
@@ -314,7 +314,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 						pokeLeft->chealth = 1;
 						while(1) if(isPE3Pressed()) break;
 						ST7735_SetCursor(1, 12);
-						if(language) ST7735_OutString("Tu felicidad\n cayó por 10.");
+						if(language) ST7735_OutString("Tu felicidad\n cayo por 10.");
 						else ST7735_OutString("Your happiness\n dropped by 10.");
 						uint8_t drop = 10;
 						if(p1.happiness < 10) drop = p1.happiness;
@@ -389,7 +389,7 @@ void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 					}else if(selected == 2){
 						ST7735_SetCursor(1, 12);
 						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-						if(language) ST7735_OutString("¡Tu felicidad\n aumentó en 25!");
+						if(language) ST7735_OutString("Tu felicidad\n aumento en 25!");
 						else ST7735_OutString("Your happiness\n increased by 25!");
 						p1.happiness += 25;
 						if(p1.happiness > 100) p1.happiness = 100;

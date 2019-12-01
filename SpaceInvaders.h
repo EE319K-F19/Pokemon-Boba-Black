@@ -7,6 +7,6 @@
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
-void PrintWinLoseScreen(bool win);
+void PrintWinLoseScreen(bool win, uint8_t language);
 
 #endif

@@ -124,12 +124,18 @@ int main(void){
 	InitTeam(starterTeam);
 	
 	bool win = DrawWorld(language);
-	PrintWinLoseScreen(win);
+	PrintWinLoseScreen(win, language);
 }
 
-void PrintWinLoseScreen(bool win){
+void PrintWinLoseScreen(bool win, uint8_t language){
 	ST7735_FillScreen(0xFFFF);
 	ST7735_SetCursor(2, 5);
-	if(win) ST7735_OutString("Your character\n  has reached max\n  happiness!\n\n  You have beaten \n  the game!");
-	else ST7735_OutString("Your character is\n  sad.\n  He dropped out of \n  his major.");
+	if(win) {
+		if(language) ST7735_OutString("Tu personaje\n es muy feliz!\n Tu ganas!");
+		else ST7735_OutString("Your character\n is very happy!\n You win!");
+	}
+	else {
+		if(language) ST7735_OutString("Tu personaje\n esta muy\n triste.\n Tu pierdes!");
+		else ST7735_OutString("Your character is\n  sad.\n  He dropped out of \n  his major.");
+	}
 }

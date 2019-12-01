@@ -27,7 +27,7 @@ void InitShop(void){
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
 	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 70, "70 C", 2};
-	ItemType potionItem = {{"health potion", "poción de salud"}, potionSprite, 20, "20 C", 1};
+	ItemType potionItem = {{"health potion", "pocion"}, potionSprite, 20, "20 C", 1};
 	ItemType pokeballItem = {{"pokeball", "pokeball"}, pokeballSprite, 10, "10 C", 0};
 	
 	ItemInstType bobaShop = {86, 80, bobaItem};
@@ -56,7 +56,7 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 	if(language) ST7735_OutString("Tienda de Pokeboba");
 	else ST7735_OutString("Pokeboba Shop");
 	ST7735_SetCursor(1, 3);
-	if(language) ST7735_OutString("¿Que le gustaria");
+	if(language) ST7735_OutString("Que le gustaria");
 	else ST7735_OutString("What would you like");
 	ST7735_SetCursor(1, 4);
 	if (language) ST7735_OutString("comprar?");
@@ -119,7 +119,7 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 				inventory[shopScreen.currentIndex].count ++;
 			}else {
 				ST7735_SetCursor(1, 14);
-				if(language) ST7735_OutString("¡Uy! No tienes\n suficientes monedas");
+				if(language) ST7735_OutString("Uy! No tienes\n suficientes monedas");
 				else ST7735_OutString("Oops! You don't\n have enough coins");
 			}
 		}
