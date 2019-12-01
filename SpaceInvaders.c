@@ -111,7 +111,6 @@ int main(void){
 	
 	ClearScreenGrid();
 	InitBackgroundTypes();
-	InitFieldArray();
 	InitShop();
 	InitPlayer();
 	InitInventory();

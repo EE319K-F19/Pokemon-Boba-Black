@@ -2,6 +2,7 @@
 #define _IMAGESPOKEMON2H_
 #include <stdint.h>
 
+extern const unsigned short bulbWorldFront[];
 extern const unsigned short bulbasaur[];
 extern const unsigned short bulbasaurFlipped[];
 extern const unsigned short charmander[];

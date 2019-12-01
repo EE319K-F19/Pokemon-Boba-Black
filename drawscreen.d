@@ -15,3 +15,5 @@
 .\drawscreen.o: SystemInfo.h
 .\drawscreen.o: TextSprites.h
 .\drawscreen.o: Shop.h
+.\drawscreen.o: Timer1.h
+.\drawscreen.o: ../inc/tm4c123gh6pm.h

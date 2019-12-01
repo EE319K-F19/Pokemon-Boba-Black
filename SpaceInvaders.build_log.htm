@@ -1,11 +1,11 @@
 <html>
 <body>
 <pre>
-<h1>ï¿½Vision Build Log</h1>
+<h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ï¿½Vision V5.28.0.0
+IDE-Version: µVision V5.28.0.0
 Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Iris Zhang, The University of Texas at Austin, LIC=----
+License Information: Andy Ni, University of Texas - Austin, LIC=6XJEV-879G3-NUMJ3-ASN36-VUYX7-ST4RH
  
 Tool Versions:
 Toolchain:       MDK-ARM Professional  Version: 5.28.0.0
@@ -22,26 +22,24 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Keil_v5\EE319KwareFall2019\Lab10_EE319K\SpaceInvaders.uvprojx
-Project File Date:  11/27/2019
+Project File Date:  11/26/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SpaceInvaders'
-compiling Battle.c...
-compiling Shop.c...
 compiling DrawScreen.c...
-DrawScreen.c(138): warning:  #177-D: variable "numPokemon"  was declared but never referenced
-  	uint8_t numPokemon = 5;
-DrawScreen.c(521): warning:  #550-D: variable "effectiveText"  was set but never used
-  			bool effectiveText = true;
-DrawScreen.c: 2 warnings, 0 errors
-compiling SpaceInvaders.c...
-SpaceInvaders.c(128): warning:  #940-D: missing return statement at end of non-void function "main1" 
+DrawScreen.c(65): warning:  #940-D: missing return statement at end of non-void function "DrawLanguageSelection" 
   }
-SpaceInvaders.c: 1 warning, 0 errors
+DrawScreen.c(58): warning:  #177-D: variable "selected"  was declared but never referenced
+  	int selected = 0;
+DrawScreen.c(124): warning:  #177-D: variable "numPokemon"  was declared but never referenced
+  	uint8_t numPokemon = 5;
+DrawScreen.c(572): warning:  #550-D: variable "effectiveText"  was set but never used
+  			bool effectiveText = true;
+DrawScreen.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=1874 RO-data=45846 RW-data=32 ZI-data=1120  
-".\SpaceInvaders.axf" - 0 Error(s), 3 Warning(s).
+Program Size: Code=14396 RO-data=57876 RW-data=2208 ZI-data=4336  
+".\SpaceInvaders.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,13 +56,13 @@ Package Vendor: Keil
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_SpaceInvaders
-  C:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include
-  C:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
+  C:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include
+  C:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.2.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
