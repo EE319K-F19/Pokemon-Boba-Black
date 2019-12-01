@@ -79,7 +79,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 I (ST7735.h)(0x5DDD8199)
 I (SystemInfo.h)(0x5DDD8199)
 F (.\DrawScreen.h)(0x5DE33CD1)()
-F (.\DrawScreen.c)(0x5DE33CCD)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\drawscreen.o --omf_browse .\drawscreen.crf --depend .\drawscreen.d)
+F (.\DrawScreen.c)(0x5DE3CC62)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\drawscreen.o --omf_browse .\drawscreen.crf --depend .\drawscreen.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (ST7735.h)(0x5DDD8199)
 I (Random.h)(0x5BF4770A)
@@ -97,13 +97,13 @@ I (SystemInfo.h)(0x5DDD8199)
 I (TextSprites.h)(0x5DE306DC)
 I (Shop.h)(0x5DE2E92A)
 F (.\Field.h)(0x5DE2DA8A)()
-F (.\Field.c)(0x5DE3C2B8)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\field.o --omf_browse .\field.crf --depend .\field.d)
+F (.\Field.c)(0x5DE3CDA7)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\field.o --omf_browse .\field.crf --depend .\field.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (Draw.h)(0x5DDDD644)
 I (StructDec.h)(0x5DE3C41B)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 I (Field.h)(0x5DE2DA8A)
-I (ImagesOther.h)(0x5DE3C41B)
+I (ImagesOther.h)(0x5DE3CB50)
 I (Player.h)(0x5DE2CCBD)
 I (SystemInfo.h)(0x5DDD8199)
 F (.\PokemonType.h)(0x5DDEA5EA)()
@@ -113,12 +113,12 @@ I (PokemonType.h)(0x5DDEA5EA)
 I (StructDec.h)(0x5DE3C41B)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 F (.\Player.h)(0x5DE2CCBD)()
-F (.\Player.c)(0x5DE3C44F)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\player.o --omf_browse .\player.crf --depend .\player.d)
+F (.\Player.c)(0x5DE3CE07)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\player.o --omf_browse .\player.crf --depend .\player.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 I (Field.h)(0x5DE2DA8A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (StructDec.h)(0x5DE3C41B)
-I (ImagesOther.h)(0x5DE3C41B)
+I (ImagesOther.h)(0x5DE3CB50)
 I (Player.h)(0x5DE2CCBD)
 I (Shop.h)(0x5DE2E92A)
 I (ST7735.h)(0x5DDD8199)
@@ -132,7 +132,7 @@ I (ST7735.h)(0x5DDD8199)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 I (Draw.h)(0x5DDDD644)
 I (StructDec.h)(0x5DE3C41B)
-I (ImagesOther.h)(0x5DE3C41B)
+I (ImagesOther.h)(0x5DE3CB50)
 I (Shop.h)(0x5DE2E92A)
 F (.\ADC_Joystick.c)(0x5DDEAB0C)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\adc_joystick.o --omf_browse .\adc_joystick.crf --depend .\adc_joystick.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
@@ -141,8 +141,8 @@ I (ST7735.h)(0x5DDD8199)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
 F (.\ADC_Joystick.h)(0x5DDD8A5F)()
-F (.\ImagesOther.h)(0x5DE3C41B)()
-F (.\ImagesOther.c)(0x5DE3C330)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\imagesother.o --omf_browse .\imagesother.crf --depend .\imagesother.d)
+F (.\ImagesOther.h)(0x5DE3CB50)()
+F (.\ImagesOther.c)(0x5DE3CB50)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\imagesother.o --omf_browse .\imagesother.crf --depend .\imagesother.d)
 F (.\TextSprites.h)(0x5DE306DC)()
 F (.\TextSprites.c)(0x5DE306DC)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\nakuk\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\nakuk\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\textsprites.o --omf_browse .\textsprites.crf --depend .\textsprites.d)
 F (.\ImagesPokemon2.h)(0x5DDD8199)()

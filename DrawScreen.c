@@ -147,7 +147,7 @@ bool DrawWorld(uint8_t language){
 		if(isPE2Pressed()){
 			DrawStatusScreen(language);
 		}else if(isPE3Pressed()){
-			if(GetFieldGrid(p1.YPos-1, p1.XPos) == S){
+			if(GetObjGrid(p1.YPos-1, p1.XPos) == S){
 				ClearScreenGrid();
 				SpriteSelectType shopScreen = {itemInsts, 3, 0};
 				DrawShopScreen(&p1, playerInventory, shopScreen, shopItems, language);

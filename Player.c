@@ -21,7 +21,7 @@ void InitPlayer(){
 	SpriteType PlayerSwimBack = {playerSwimBack, 16, 16};
 	SpriteType PlayerSwimSide = {playerSwimSide, 16, 16};
 	
-	p1 = (PlayerType) {6, 6, PlayerSwimFront, PlayerFront, PlayerBack, PlayerSide, PlayerSwimFront, PlayerSwimBack, PlayerSwimSide, 25, 25, false};
+	p1 = (PlayerType) {14, 7, PlayerFront, PlayerFront, PlayerBack, PlayerSide, PlayerSwimFront, PlayerSwimBack, PlayerSwimSide, 25, 25, false};
 }
 
 void InitInventory(){
