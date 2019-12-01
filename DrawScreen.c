@@ -156,7 +156,7 @@ bool DrawWorld(uint8_t language){
 			ClearScreenGrid();
 			uint8_t pokemonRan = Random()%5;
 			PokemonType selected = allPokemon[pokemonRan];
-			DrawBattleScreen(&playerTeam[0], &selected, language);
+			DrawBattleScreen(&pokeTeam->pokemon[0], &selected, language);
 		}
 		
 		if(isPE2Pressed()){
@@ -200,15 +200,15 @@ void DrawStatusScreen(uint8_t language){
 
 void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, uint8_t language){
 	
+	// Initialize and draw pokemon sprites
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};
-	
 	PokemonInstType pokemonRight = {86, 90, pokeRight->mhealth, *pokeRight};
-	
 	DrawSpriteImg(leftInst);
 	DrawSpriteImg(rightInst);
 	
+	// Initialize and draw text sprites
 	SpriteType fightText;
 	if(language) {
 		fightText = (SpriteType){lucha, 32, 16};
@@ -237,16 +237,16 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 	SpriteSelectType battleScreen = {battleCommands, 4, 0};
 	DrawAllSprites(battleScreen);
 	
+	// Draw HP bars for pokemon
 	ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
 	ST7735_FillRect(pokemonRight.xPos+5, 45, 30, 2, 0x0000);
-	
 	ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
 	ST7735_FillRect(pokemonRight.xPos+5, 45, pokemonRight.chealth*30/pokemonRight.species.mhealth, 2, 0x00FF);
 	
 	while(1){
 		
 		while(ADCStatus == 0){}
-			
+		// Get input from joystick
 		uint8_t xDir = getJoystickX();
 		uint8_t yDir = getJoystickY();
 		ADCStatus = 0;
@@ -263,12 +263,15 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 		
 		DrawSelection(&battleScreen, 0x0000, 0xFFFF, 1);
 		if(isPE3Pressed()){
-			if(battleScreen.currentIndex == 3){
+			if(battleScreen.currentIndex == 3){ // Run
 				break;
-			}else if(battleScreen.currentIndex == 1){
-				DrawBattleInventory(pokeLeft, &pokemonRight, language);
+			}else if(battleScreen.currentIndex == 1){ // Item
+				if(DrawBattleInventory(pokeLeft, &pokemonRight, language)){
+					pokeTeam->currIndex = 0;
+					break;
+				}
 				DrawAllSprites(battleScreen);
-			}else if(battleScreen.currentIndex == 0){
+			}else if(battleScreen.currentIndex == 0){ // Fight
 				int results = DrawMoveCommands(pokeLeft, &pokemonRight, language);
 				if(results == 0) DrawAllSprites(battleScreen);
 				else{
@@ -281,7 +284,6 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 						else ST7735_OutString("\n fainted.");
 						while(1) if(isPE3Pressed()) break;
 						ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
-						
 						uint8_t coinsGained = Random()%15 + 20;
 						p1.coins += coinsGained;
 						ST7735_SetCursor(1, 12);
@@ -290,9 +292,8 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 						ST7735_OutChar((char) (coinsGained/10)+0x30);
 						ST7735_OutChar((char) (coinsGained%10)+0x30);
 						ST7735_OutString("C.");
+						pokeTeam->currIndex = 0;
 						while(1) if(isPE3Pressed()) break;
-						
-						
 						break;
 					}else {
 						ST7735_SetCursor(1, 12);
@@ -302,15 +303,25 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 						if(language) ST7735_OutString("\n desmayado.");
 						else ST7735_OutString("\n fainted.");
 						pokeLeft->chealth = 1;
+						pokeTeam->currIndex++;
 						while(1) if(isPE3Pressed()) break;
-						ST7735_SetCursor(1, 12);
-						if(language) ST7735_OutString("Tu felicidad\n cayo por 10.");
-						else ST7735_OutString("Your happiness\n dropped by 10.");
-						uint8_t drop = 10;
-						if(p1.happiness < 10) drop = p1.happiness;
-						p1.happiness -= drop;
-						while(1) if(isPE3Pressed()) break;
-						break;
+						if(pokeTeam->currIndex == pokeTeam->size){ // Ran out of pokemon (lost game)
+							ST7735_SetCursor(1, 12);
+							if(language) ST7735_OutString("Tu felicidad\n cayo por 10.");
+							else ST7735_OutString("Your happiness\n dropped by 10.");
+							uint8_t drop = 10;
+							if(p1.happiness < 10) drop = p1.happiness;
+							p1.happiness -= drop;
+							pokeTeam->currIndex = 0;
+							while(1) if(isPE3Pressed()) break;
+							break;
+						} // otherwise, game continues with next pokemon in team
+						pokeLeft = &pokeTeam->pokemon[pokeTeam->currIndex];
+						leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
+						DrawSpriteImg(leftInst);
+						ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
+						ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+						DrawAllSprites(battleScreen);
 					}
 				}
 			}
@@ -318,7 +329,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
   }
 }
 
-void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
+uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
 	char *a[4];
 	int selected = 0;
@@ -356,7 +367,7 @@ void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		if(isPE3Pressed()){
 			if(selected == 3){
 				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-				break;
+				return 0;
 			}else {
 				ST7735_SetCursor(1, 12);
 				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
@@ -385,8 +396,25 @@ void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 						p1.happiness += 25;
 						if(p1.happiness > 100) p1.happiness = 100;
 						while(1){if(isPE3Pressed()) break;};
+					}else if(selected == 0){ // Using pokeball
+						ST7735_SetCursor(1, 12);
+						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+						if(pokeRight->chealth > pokeRight->species.mhealth/2){ // Failed catch
+							if(language) ST7735_OutString("Pokebola no\n pudo atrapar\n");
+							else ST7735_OutString("Pokeball failed\n to catch\n");
+							ST7735_OutString(pokeRight->species.name);
+							while(1){if(isPE3Pressed()) break;};
+						}
+						else{ // Successful catch
+							if(language) ST7735_OutString("Has atrapado\n");
+						  else ST7735_OutString("You have caught\n");
+						  ST7735_OutString(pokeRight->species.name);
+						  addPokemon(pokeRight);
+							while(1){if(isPE3Pressed()) break;};
+							return 1;
+						}
 					}
-				}else {
+				}else { // Don't have selected item
 					if(language) ST7735_OutString("No tienes ninguno\n ");
 					else ST7735_OutString("You don't have any\n ");
 					ST7735_OutString(a[selected]);
@@ -448,6 +476,7 @@ void moveShakeBack(){
 
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
+	// Initialize moves for both pokemon
 	ST7735_FillRect(10, 104, 106, 46, 0xFFFF);
 	MoveType normal = NormalMoves[pokeLeft->species.moveSet];
 	MoveType signature = SignatureMoves[pokeLeft->species.moveSet];
@@ -485,6 +514,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		}
 		
 		if(isPE3Pressed()){
+			// Execute move
 			MoveType selectedMove;
 			if(selected == 0){
 				selectedMove = normal;
@@ -525,6 +555,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 				defense = pokeRight->species.spdefense;
 			}
 			
+			// Calculate damage
 			uint8_t randomDamMul = Random()%25;
 			uint32_t damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
 			if(damage > pokeRight->chealth) damage = pokeRight->chealth;
@@ -535,6 +566,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			
 			pokeShakeInst = rightInst;
 	
+	// Battle animations
 	for(int i=0; i<3; i++){
 		timerOn = true;
 		Timer1_Init(moveShakeLeft, 20000);
@@ -549,6 +581,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		DrawSpriteImg(pokeShakeInst);
 			while(1) {if(isPE3Pressed()) break;}
 			
+			//Opponent pokemon attack
 			if(pokeRight->chealth == 0) {
 				ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
 				return 1;

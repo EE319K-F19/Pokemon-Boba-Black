@@ -7,15 +7,6 @@
 #include "Shop.h"
 #include "StructDec.h"
 
-//void makePurchase(PlayerType* player, ItemType item){
-//	if(player->coins < item.price){
-//		// throw error that says you are too broke to buy
-//		return;
-//	}
-//	player->coins -= item.price;
-//	player->playerInventory[item.index].count++;
-//}
-
 ItemType bobaItem;
 ItemType potionItem;
 ItemType pokeballItem;
@@ -28,7 +19,7 @@ void InitShop(void){
 	
 	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 70, "70 C", 2};
 	ItemType potionItem = {{"health potion", "pocion"}, potionSprite, 20, "20 C", 1};
-	ItemType pokeballItem = {{"pokeball", "pokeball"}, pokeballSprite, 10, "10 C", 0};
+	ItemType pokeballItem = {{"pokeball", "pokebola"}, pokeballSprite, 10, "10 C", 0};
 	
 	ItemInstType bobaShop = {86, 80, bobaItem};
 	ItemInstType potionShop = {44, 80, potionItem};
