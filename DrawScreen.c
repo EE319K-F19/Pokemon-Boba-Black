@@ -118,7 +118,7 @@ PokemonType DrawTitleScreen(uint8_t language){
 }
 
 bool DrawWorld(uint8_t language){
-	Timer1_Init(MoveWorldPokemon, 1000000);
+	//Timer1_Init(MoveWorldPokemon, 1000000);
 	
 	//draws black border around the edges of the screen
 	uint8_t numPokemon = 5;
@@ -151,8 +151,8 @@ bool DrawWorld(uint8_t language){
 		}
 		
 		DrawField();
-		uint8_t encounter = Random()%10;
-		if(moved && encounter == 0){
+		uint8_t encounter = Random()%5;
+		if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
 			ClearScreenGrid();
 			uint8_t pokemonRan = Random()%5;
 			PokemonType selected = allPokemon[pokemonRan];
