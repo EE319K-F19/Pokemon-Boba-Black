@@ -15,6 +15,8 @@
 #include "SystemInfo.h"
 #include "TextSprites.h"
 #include "Shop.h"
+#include "Timer1.h"
+#include "../inc/tm4c123gh6pm.h"
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
@@ -319,6 +321,7 @@ void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			if(i!=3) ST7735_OutString(" x");
 			if(i!=3) ST7735_OutChar((char) (playerInventory[i].count + 0x30));
 	}
+	
 	while(1){
 		while(ADCStatus == 0){}
 			
@@ -388,6 +391,48 @@ void DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 	}
 }
 
+SpriteInstType pokeShakeInst;
+
+int8_t curX = 0;
+
+bool timerOn = false;
+void moveShakeLeft(){
+	if(curX >= -10){
+		pokeShakeInst.x_left --;
+		DrawSpriteImg(pokeShakeInst);
+		curX--;
+	}else {
+		NVIC_DIS1_R = 1<<19; 
+		timerOn = false;
+	}
+}
+
+void moveShakeRight(){
+	if(curX <= 10){
+		pokeShakeInst.x_left ++;
+		DrawSpriteImg(pokeShakeInst);
+		curX++;
+	}else {
+		NVIC_DIS1_R = 1<<19; 
+		timerOn = false;
+	}
+}
+
+void moveShakeBack(){
+	if(curX > 0){
+		pokeShakeInst.x_left --;
+		DrawSpriteImg(pokeShakeInst);
+		curX--;
+	}else if(curX < 0){
+		pokeShakeInst.x_left ++;
+		DrawSpriteImg(pokeShakeInst);
+		curX++;
+	}else {
+		NVIC_DIS1_R = 1<<19; 
+		timerOn = false;
+	}
+}
+
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
 	ST7735_FillRect(10, 104, 106, 46, 0xFFFF);
@@ -404,6 +449,10 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			ST7735_SetCursor(3, 12+i);
 			ST7735_OutString(a[i]);
 	}
+	
+	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
+	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->species.sprite};
+	
 	while(1){
 		while(ADCStatus == 0){}
 			
@@ -471,6 +520,20 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
 			ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
 			
+			pokeShakeInst = rightInst;
+	
+	for(int i=0; i<3; i++){
+		timerOn = true;
+		Timer1_Init(moveShakeLeft, 20000);
+		while(timerOn){}
+		timerOn = true;
+		Timer1_Init(moveShakeRight, 20000);	
+		while(timerOn){}
+	}
+	timerOn = true;
+	Timer1_Init(moveShakeBack, 20000);	
+	while(timerOn){}
+		DrawSpriteImg(pokeShakeInst);
 			while(1) {if(isPE3Pressed()) break;}
 			
 			if(pokeRight->chealth == 0) {
@@ -526,6 +589,21 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
 			ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
 			
+			pokeShakeInst = leftInst;
+	
+	for(int i=0; i<3; i++){
+		timerOn = true;
+		Timer1_Init(moveShakeLeft, 20000);
+		while(timerOn){}
+		timerOn = true;
+		Timer1_Init(moveShakeRight, 20000);	
+		while(timerOn){}
+	}
+	timerOn = true;
+	Timer1_Init(moveShakeBack, 20000);	
+	while(timerOn){}
+			
+		DrawSpriteImg(pokeShakeInst);
 			while(1) if(isPE3Pressed()) break;
 			
 			if(pokeLeft->chealth == 0) {
