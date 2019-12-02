@@ -47,9 +47,6 @@ void LoseBattle(){
 }
 
 void addPokemon(PokemonInstType* newPokemon){
-	if(pokeTeam->size >= 6) {
-		return;
-	}
 	pokeTeam->pokemon[pokeTeam->size].xPos = 0;
 	pokeTeam->pokemon[pokeTeam->size].yPos = 0;
 	pokeTeam->pokemon[pokeTeam->size].chealth = newPokemon->species.mhealth;

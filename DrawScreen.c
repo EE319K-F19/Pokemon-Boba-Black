@@ -28,6 +28,12 @@ PokemonType SquirtleT;
 PokemonType CharmanderT;
 PokemonType PidgeyT;
 PokemonType PikachuT;
+PokemonType PsyduckT;
+PokemonType PonytaT;
+PokemonType DratiniT;
+PokemonType EeveeT;
+PokemonType JigglypuffT;
+PokemonType VulpixT;
 
 uint8_t simpleMenuY = 90;
 uint16_t simpleMenuColor = 0xFFFF;
@@ -40,6 +46,12 @@ void InitPokemon(){
 	SpriteType charmanderS = {charmander, 40, 40};
 	SpriteType pidgeyS = {pidgey, 40, 40};
 	SpriteType pikachuS = {pikachu, 40, 40};
+	SpriteType psyduckS = {psyduck, 40, 40};
+	SpriteType ponytaS = {ponyta, 40, 40};
+	SpriteType dratiniS = {dratini, 40, 40};
+	SpriteType jigglypuffS = {jigglypuff, 40, 40};
+	SpriteType vulpixS = {vulpix, 40, 40};
+	SpriteType eeveeS = {eevee, 40, 40};
 	
 	SpriteType bulbasaurW = {bulbWorldFront, 16, 16};
 	BulbasaurWorld = (SpriteInstType) {20, 20, bulbasaurW};
@@ -49,6 +61,12 @@ void InitPokemon(){
 	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65, 2};
 	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56, 3};
 	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90, 4};
+	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, 50, 52, 48, 65, 50, 55, 5};
+	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, 50, 85, 55, 65, 65, 90, 6};
+	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, 41, 64, 45, 50, 50, 50, 7};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, 115, 45, 20, 45, 25, 20, 8};
+	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, 38, 41, 40, 50, 65, 65, 9};
+	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, 55, 55, 50, 45, 65, 55, 10};
 }
 
 uint8_t DrawLanguageSelection(){
@@ -58,7 +76,7 @@ uint8_t DrawLanguageSelection(){
 	int selected = 0;
 	
 	langs[0] = "English";
-	langs[1] = "Espanol";
+	langs[1] = "Espa\xA4ol";
 	
 	int8_t output = DrawSimpleMenu(langs, 2, false);
 	if(output >= 0) return output;
@@ -122,7 +140,8 @@ bool DrawWorld(uint8_t language){
 	
 	//draws black border around the edges of the screen
 	uint8_t numPokemon = 5;
-	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT};
+	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT,
+		PsyduckT, PonytaT, DratiniT, JigglypuffT, VulpixT, EeveeT};
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	while(1){
@@ -151,10 +170,10 @@ bool DrawWorld(uint8_t language){
 		}
 		
 		DrawField();
-		uint8_t encounter = Random()%5;
+		uint8_t encounter = Random()%11;
 		if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
 			ClearScreenGrid();
-			uint8_t pokemonRan = Random()%5;
+			uint8_t pokemonRan = Random()%11;
 			PokemonType selected = allPokemon[pokemonRan];
 			DrawBattleScreen(&pokeTeam->pokemon[0], &selected, language);
 		}
@@ -307,7 +326,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 						while(1) if(isPE3Pressed()) break;
 						if(pokeTeam->currIndex == pokeTeam->size){ // Ran out of pokemon (lost game)
 							ST7735_SetCursor(1, 12);
-							if(language) ST7735_OutString("Tu felicidad\n cayo por 10.");
+							if(language) ST7735_OutString("Tu felicidad\n cay\xA2 por 10.");
 							else ST7735_OutString("Your happiness\n dropped by 10.");
 							uint8_t drop = 10;
 							if(p1.happiness < 10) drop = p1.happiness;
@@ -391,7 +410,7 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 					}else if(selected == 2){
 						ST7735_SetCursor(1, 12);
 						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-						if(language) ST7735_OutString("Tu felicidad\n aumento en 25!");
+						if(language) ST7735_OutString("Tu felicidad\n aument\xA2 en 25!");
 						else ST7735_OutString("Your happiness\n increased by 25!");
 						p1.happiness += 25;
 						if(p1.happiness > 100) p1.happiness = 100;
@@ -399,6 +418,11 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 					}else if(selected == 0){ // Using pokeball
 						ST7735_SetCursor(1, 12);
 						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+						if(pokeTeam->size >= 6){
+							if(language) ST7735_OutString("Tu equipo de\n pokemon est\xA0\n lleno.");
+							else ST7735_OutString("Your pokemon\n team is full.\n");
+							while(1){if(isPE3Pressed()) break;};
+						}
 						if(pokeRight->chealth > pokeRight->species.mhealth/2){ // Failed catch
 							if(language) ST7735_OutString("Pokebola no\n pudo atrapar\n");
 							else ST7735_OutString("Pokeball failed\n to catch\n");

@@ -4,15 +4,16 @@
 
 extern const unsigned short bulbWorldFront[];
 extern const unsigned short bulbasaur[];
-extern const unsigned short bulbasaurFlipped[];
 extern const unsigned short charmander[];
-extern const unsigned short charmanderFlipped[];
 extern const unsigned short squirtle[];
-extern const unsigned short squirtleFlipped[];
 extern const unsigned short pidgey[];
-extern const unsigned short pidgeyFlipped[];
 extern const unsigned short pikachu[];
-extern const unsigned short pikachuFlipped[];
+extern const unsigned short eevee[];
+extern const unsigned short psyduck[];
+extern const unsigned short ponyta[];
+extern const unsigned short dratini[];
+extern const unsigned short jigglypuff[];
+extern const unsigned short vulpix[];
 
 #endif
 
