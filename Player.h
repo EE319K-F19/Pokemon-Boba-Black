@@ -9,10 +9,12 @@
 extern PlayerType p1;
 extern ItemInventoryType playerInventory[3];
 extern PokemonInstType* playerTeam;
+extern PokemonTeamType* pokeTeam;
 
 void InitPlayer(void);
 void InitInventory(void);
-void InitTeam(PokemonInstType* starterTeam);
+void InitTeam(void);
+void addPokemon(PokemonInstType* newPokemon);
 void DrinkBoba(void);
 void LoseBattle(void);
 bool MoveUp(void);

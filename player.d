@@ -8,3 +8,4 @@
 .\player.o: Shop.h
 .\player.o: ST7735.h
 .\player.o: SystemInfo.h
+.\player.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

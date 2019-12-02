@@ -13,4 +13,14 @@ void Sound_Highpitch(void);
 void Sound_Alarm(void);
 int sound_main(void);
 
+extern const uint8_t highpitch[];
+extern const uint8_t alarm[];
+extern const uint8_t buzz[];
+extern const uint8_t laser[];
+extern const uint8_t rumble[];
+extern const uint8_t stomp[];
+
+extern const uint8_t* soundPt;
+extern uint32_t len;
+
 
