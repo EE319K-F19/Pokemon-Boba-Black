@@ -263,6 +263,7 @@ bool DrawWorld(uint8_t language){
 			ClearScreenGrid();
 			DrawBattleScreen(&pokeTeam.pokemon[0], &WorldPokemons[encounter], language);
 			WorldPokemons[encounter] = GenerateRandomPokemon(encounter);
+			Timer1_Init(MoveWorldPokemon, 80000000);
 		}
 		//uint8_t encounter = Random()%6;
 		//if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
