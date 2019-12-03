@@ -126,8 +126,9 @@ int main(void){
 	language = DrawLanguageSelection();
 	PokemonType starterT = DrawTitleScreen(language);
 	PokemonInstType starterPokemon = {0, 0, starterT.mhealth, starterT};
-	InitTeam();
-	addPokemon(&starterPokemon);
+	//InitTeam();
+	//addPokemon(&starterPokemon, pokeTeam.size);
+	StartTeam();
 	bool win = DrawWorld(language);
 	PrintWinLoseScreen(win, language);
 }
