@@ -103,14 +103,17 @@ int main1(void){
 }
 
 int main(void){
+	DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
   
 	//interrupt initializations
+	Sound_Init();
 	ADC_Init89();
 	ST7735_InitR(INITR_REDTAB);
 	SysTick_Init();
+	
   EnableInterrupts();
 	
 	ClearScreenGrid();
