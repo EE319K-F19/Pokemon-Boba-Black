@@ -77,7 +77,7 @@ void InitPokemon(){
 	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile};
 	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile};
 	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, grassTile};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, bothTile};
 	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile};
 	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile};
 	
@@ -167,8 +167,17 @@ PokemonType DrawTitleScreen(uint8_t language){
 }
 
 void MoveWorldPokemon(){
+	const uint8_t waitCooldown = 5;
+	
 	for(uint8_t i=0; i<numWorldPokemon; i++){
-		uint8_t moveDir = Random()%7;
+		uint8_t moveDir = Random()%40;
+		bool moved = true;
+		
+		if(WorldPokemons[i].numWait > 0){
+			WorldPokemons[i].numWait--;
+			continue;
+		}
+		
 		if(moveDir == 0){ //up
 			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].yPos --;
@@ -189,7 +198,12 @@ void MoveWorldPokemon(){
 				WorldPokemons[i].xPos ++;
 				WorldPokemons[i].flip = true;
 			}
+		}else {
+			moved = false;
+			if(WorldPokemons[i].numWait > 0) WorldPokemons[i].numWait--;
 		}
+		
+		if(moved) WorldPokemons[i].numWait = waitCooldown;
 	}
 }
 
@@ -208,7 +222,7 @@ PokemonInstType GenerateRandomPokemonInit(uint8_t index){
 		xPos = Random()%(FIELD_WIDTH-8) + 4;
 		yPos = Random()%(FIELD_HEIGHT-10) + 5;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
 }
 
 GridCoordinateType GetPokemonGrid(uint8_t gridType){
@@ -247,12 +261,12 @@ PokemonInstType GenerateRandomPokemon(uint8_t index){
 		xPos = randomCoordinate.col;
 		yPos = randomCoordinate.row;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
 }
 
 bool DrawWorld(uint8_t language){
 	
-	const uint32_t movePokemonTime = 25000000;
+	const uint32_t movePokemonTime = 6666666;
 	for(uint8_t i=0; i<numWorldPokemon; i++){
 		WorldPokemons[i] = GenerateRandomPokemonInit(i);
 		numWorldInstantiated ++;
