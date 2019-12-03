@@ -114,7 +114,7 @@ uint8_t DrawLanguageSelection(){
 	
 	int8_t output = DrawSimpleMenu(langs, 2, false);
 	
-	randomSeed = false;
+	seedTimer = false;
 	Random_Init(randomSeed);
 	if(output >= 0) return output;
 	return 0;
@@ -168,25 +168,25 @@ PokemonType DrawTitleScreen(uint8_t language){
 }
 
 void MoveWorldPokemon(){
-	for(uint8_t i=0; i<30; i++){
+	for(uint8_t i=0; i<numWorldPokemon; i++){
 		uint8_t moveDir = Random()%4;
 		if(moveDir == 0){ //up
-			if(IsWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].yPos --;
 				WorldPokemons[i].flip = false;
 			}
 		}else if(moveDir == 1){ //down
-			if(IsWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].yPos ++;
 				WorldPokemons[i].flip = true;
 			}
 		}else if(moveDir == 2){ //left
-			if(IsWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1, i)){
 				WorldPokemons[i].xPos --;
 				WorldPokemons[i].flip = false;
 			}
 		}else if(moveDir == 3){ //right
-			if(IsWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1, i)){
 				WorldPokemons[i].xPos ++;
 				WorldPokemons[i].flip = true;
 			}
@@ -195,7 +195,7 @@ void MoveWorldPokemon(){
 }
 
 bool DrawWorld(uint8_t language){
-	for(uint8_t i=0; i<30; i++){
+	for(uint8_t i=0; i<numWorldPokemon; i++){
 		uint8_t pokemon = Random()%11;
 		uint8_t xPos = Random()%(FIELD_WIDTH-8);
 		uint8_t yPos = Random()%(FIELD_HEIGHT-10);
@@ -232,13 +232,22 @@ bool DrawWorld(uint8_t language){
 		}
 		
 		DrawField();
-		uint8_t encounter = Random()%6;
-		if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
+		int8_t encounter = BumpedIntoWorldPokemon();
+		if(encounter > -1){
 			ClearScreenGrid();
-			uint8_t pokemonRan = Random()%11;
-			PokemonType selected = allPokemon[pokemonRan];
-			DrawBattleScreen(&playerTeam[0], &selected, language);
+			DrawBattleScreen(&playerTeam[0], &WorldPokemons[encounter], language);
+			uint8_t pokemon = Random()%11;
+			uint8_t xPos = Random()%(FIELD_WIDTH-8);
+			uint8_t yPos = Random()%(FIELD_HEIGHT-10);
+			WorldPokemons[encounter] = (PokemonInstType) {xPos + 4, yPos + 5, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
 		}
+		//uint8_t encounter = Random()%6;
+		//if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
+			//ClearScreenGrid();
+			//uint8_t pokemonRan = Random()%11;
+			//PokemonType selected = allPokemon[pokemonRan];
+			//DrawBattleScreen(&playerTeam[0], &selected, language);
+		//}
 		
 		if(isPE2Pressed()){
 			DrawStatusScreen(language);
@@ -279,13 +288,11 @@ void DrawStatusScreen(uint8_t language){
 	}
 }
 
-void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, uint8_t language){
+void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
-	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};
-	
-	PokemonInstType pokemonRight = {86, 90, pokeRight->mhealth, *pokeRight};
+	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->species.sprite};
 	
 	DrawSpriteImg(leftInst);
 	DrawSpriteImg(rightInst);
@@ -319,10 +326,10 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 	DrawAllSprites(battleScreen);
 	
 	ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-	ST7735_FillRect(pokemonRight.xPos+5, 45, 30, 2, 0x0000);
+	ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
 	
 	ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
-	ST7735_FillRect(pokemonRight.xPos+5, 45, pokemonRight.chealth*30/pokemonRight.species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
 	
 	while(1){
 		
@@ -347,17 +354,17 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 			if(battleScreen.currentIndex == 3){
 				break;
 			}else if(battleScreen.currentIndex == 1){
-				DrawBattleInventory(pokeLeft, &pokemonRight, language);
+				DrawBattleInventory(pokeLeft, pokeRight, language);
 				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){
-				int results = DrawMoveCommands(pokeLeft, &pokemonRight, language);
+				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
 				if(results == 0) DrawAllSprites(battleScreen);
 				else{
 					if(results == 1){
 						ST7735_SetCursor(1, 12);
 						if(language) ST7735_OutString("Salvaje ");
 						else ST7735_OutString("Wild ");
-						ST7735_OutString(pokeRight->name);
+						ST7735_OutString(pokeRight->species.name);
 						if(language) ST7735_OutString("\n desmayado.");
 						else ST7735_OutString("\n fainted.");
 						while(1) if(isPE3Pressed()) break;
