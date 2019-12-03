@@ -1,1 +1,0 @@
-.\imagespokemonworld.o: ImagesPokemonWorld.c

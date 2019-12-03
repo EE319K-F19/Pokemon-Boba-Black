@@ -183,7 +183,6 @@ int sound_main(void){
 //			soundStatus = 0;
 //			}
 //	}
-	return 1;
 }
 
 
