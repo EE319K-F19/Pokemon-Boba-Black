@@ -83,13 +83,11 @@ uint8_t language; // 0 for English, 1 for Spanish
 
 //for debugging purposes
 int main1(void){
-	bool last, now;
 	DisableInterrupts();
 	PLL_Init(Bus80MHz);
 	Sound_Init();
 	ADC_Init89();
 	EnableInterrupts();
-	last = isPE3Pressed();
 	while(1){
 		if(isPE3Pressed()){
 			Sound_Highpitch();
