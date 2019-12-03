@@ -17,11 +17,10 @@
 #include "Shop.h"
 #include "Timer1.h"
 #include "../inc/tm4c123gh6pm.h"
+#include "ImagesPokemonWorld.h"
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
-
-SpriteInstType BulbasaurWorld;
 
 PokemonType BulbasaurT;
 PokemonType SquirtleT;
@@ -41,6 +40,8 @@ uint32_t numPokemon = 11;
 PokemonType allPokemon[11];
 
 int8_t backReturn = -1;
+bool seedTimer = true;
+uint32_t randomSeed = 1;
 
 void InitPokemon(){
 	SpriteType bulbasaurS = {bulbasaur, 40, 40};
@@ -54,21 +55,30 @@ void InitPokemon(){
 	SpriteType jigglypuffS = {jigglypuff, 40, 40};
 	SpriteType vulpixS = {vulpix, 40, 40};
 	SpriteType eeveeS = {eevee, 40, 40};
+
+	SpriteType bulbasaurW = {bulbasaurWorldFront, 16, 16};
+	SpriteType squirtleW = {squirtleWorldFront, 16, 16};
+	SpriteType charmanderW = {charmanderWorldFront, 16, 16};
+	SpriteType pidgeyW = {pidgeyWorldFront, 16, 16};
+	SpriteType pikachuW = {pikachuWorldFront, 16, 16};
+	SpriteType psyduckW = {psyduckWorldFront, 16, 16};
+	SpriteType ponytaW = {ponytaWorldFront, 16, 16};
+	SpriteType dratiniW = {dratiniWorldFront, 16, 16};
+	SpriteType jigglypuffW = {jigglypuffWorldFront, 16, 16};
+	SpriteType vulpixW = {vulpixWorldFront, 16, 16};
+	SpriteType eeveeW = {eeveeWorldFront, 16, 16};
 	
-	SpriteType bulbasaurW = {bulbWorldFront, 16, 16};
-	BulbasaurWorld = (SpriteInstType) {20, 20, bulbasaurW};
-	
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45, 0};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43, 1};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65, 2};
-	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56, 3};
-	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90, 4};
-	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, 50, 52, 48, 65, 50, 55, 5};
-	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, 50, 85, 55, 65, 65, 90, 6};
-	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, 41, 64, 45, 50, 50, 50, 7};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, 115, 45, 20, 45, 25, 20, 8};
-	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, 38, 41, 40, 50, 65, 65, 9};
-	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, 55, 55, 50, 45, 65, 55, 10};
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4};
+	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5};
+	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6};
+	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8};
+	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9};
+	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -83,23 +93,29 @@ void InitPokemon(){
 	allPokemon[10] = EeveeT;
 }
 
+void IncSeed(){
+	if(seedTimer){
+		randomSeed ++;
+	}else {
+		if(randomSeed == 0) randomSeed = 1;
+		NVIC_DIS1_R = 1<<19; // disable IRQ 19 in NVIC
+	}
+}
+
 uint8_t DrawLanguageSelection(){
+	Timer1_Init(IncSeed, 1000);
 	ST7735_FillScreen(0x0000);
 	
 	char *langs[2];
-	int selected = 0;
-	
 	langs[0] = "English";
 	langs[1] = "Espa\xA4ol";
 	
 	int8_t output = DrawSimpleMenu(langs, 2, false);
+	
+	seedTimer = false;
+	Random_Init(randomSeed);
 	if(output >= 0) return output;
-}
-
-void MoveWorldPokemon(){
-	ST7735_FillRect(BulbasaurWorld.x_left, BulbasaurWorld.y_bottom-BulbasaurWorld.sprite.height, BulbasaurWorld.sprite.width,BulbasaurWorld.sprite.height, 0xFFFF);
-	BulbasaurWorld.x_left ++;
-	DrawSpriteImg(BulbasaurWorld);
+	return 0;
 }
 
 PokemonType DrawTitleScreen(uint8_t language){
@@ -149,8 +165,41 @@ PokemonType DrawTitleScreen(uint8_t language){
   }
 }
 
+void MoveWorldPokemon(){
+	for(uint8_t i=0; i<numWorldPokemon; i++){
+		uint8_t moveDir = Random()%4;
+		if(moveDir == 0){ //up
+			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, i)){
+				WorldPokemons[i].yPos --;
+				WorldPokemons[i].flip = false;
+			}
+		}else if(moveDir == 1){ //down
+			if(IsPokemonWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos, i)){
+				WorldPokemons[i].yPos ++;
+				WorldPokemons[i].flip = true;
+			}
+		}else if(moveDir == 2){ //left
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1, i)){
+				WorldPokemons[i].xPos --;
+				WorldPokemons[i].flip = false;
+			}
+		}else if(moveDir == 3){ //right
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1, i)){
+				WorldPokemons[i].xPos ++;
+				WorldPokemons[i].flip = true;
+			}
+		}
+	}
+}
+
 bool DrawWorld(uint8_t language){
-	//Timer1_Init(MoveWorldPokemon, 1000000);
+	for(uint8_t i=0; i<numWorldPokemon; i++){
+		uint8_t pokemon = Random()%11;
+		uint8_t xPos = Random()%(FIELD_WIDTH-8);
+		uint8_t yPos = Random()%(FIELD_HEIGHT-10);
+		WorldPokemons[i] = (PokemonInstType) {xPos + 4, yPos + 5, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+	}
+	Timer1_Init(MoveWorldPokemon, 80000000);
 	
 	//draws black border around the edges of the screen
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
@@ -181,13 +230,22 @@ bool DrawWorld(uint8_t language){
 		}
 		
 		DrawField();
-		uint8_t encounter = Random()%5;
-		if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
+		int8_t encounter = BumpedIntoWorldPokemon();
+		if(encounter > -1){
 			ClearScreenGrid();
-			uint8_t pokemonRan = Random()%11;
-			PokemonType selected = allPokemon[pokemonRan];
-			DrawBattleScreen(&pokeTeam.pokemon[0], &selected, language);
+			DrawBattleScreen(&playerTeam[0], &WorldPokemons[encounter], language);
+			uint8_t pokemon = Random()%11;
+			uint8_t xPos = Random()%(FIELD_WIDTH-8);
+			uint8_t yPos = Random()%(FIELD_HEIGHT-10);
+			WorldPokemons[encounter] = (PokemonInstType) {xPos + 4, yPos + 5, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
 		}
+		//uint8_t encounter = Random()%6;
+		//if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
+			//ClearScreenGrid();
+			//uint8_t pokemonRan = Random()%11;
+			//PokemonType selected = allPokemon[pokemonRan];
+			//DrawBattleScreen(&playerTeam[0], &selected, language);
+		//}
 		
 		if(isPE2Pressed()){
 			DrawStatusScreen(language);
@@ -245,13 +303,13 @@ void RestoreDeadPokemon(void){
 	}
 }
 
-void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, uint8_t language){
+void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
 	// Initialize and draw pokemon sprites
 	ST7735_FillScreen(0xFFFF);
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
-	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->sprite};
-	PokemonInstType pokemonRight = {86, 90, pokeRight->mhealth, *pokeRight};
+	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->species.sprite};
+	
 	DrawSpriteImg(leftInst);
 	DrawSpriteImg(rightInst);
 	
@@ -286,9 +344,10 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 	
 	// Draw HP bars for pokemon
 	ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-	ST7735_FillRect(pokemonRight.xPos+5, 45, 30, 2, 0x0000);
+	ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
+	
 	ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
-	ST7735_FillRect(pokemonRight.xPos+5, 45, pokemonRight.chealth*30/pokemonRight.species.mhealth, 2, 0x00FF);
+	ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
 	
 	while(1){
 		
@@ -312,8 +371,9 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 		if(isPE3Pressed()){
 			if(battleScreen.currentIndex == 3){ // Run
 				break;
+			}
 			}else if(battleScreen.currentIndex == 1){ // Item
-				if(DrawBattleInventory(pokeLeft, &pokemonRight, language)){
+				if(DrawBattleInventory(pokeLeft, pokeRight, language)){
 					pokeTeam.currIndex = 0;
 					RestoreDeadPokemon();
 					break;
@@ -328,14 +388,14 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, const PokemonType* pokeRight, u
 				ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
 				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){ // Fight
-				int results = DrawMoveCommands(pokeLeft, &pokemonRight, language);
+				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
 				if(results == 0) DrawAllSprites(battleScreen);
 				else{
 					if(results == 1){
 						ST7735_SetCursor(1, 12);
 						if(language) ST7735_OutString("Salvaje ");
 						else ST7735_OutString("Wild ");
-						ST7735_OutString(pokeRight->name);
+						ST7735_OutString(pokeRight->species.name);
 						if(language) ST7735_OutString("\n desmayado.");
 						else ST7735_OutString("\n fainted.");
 						while(1) if(isPE3Pressed()) break;
@@ -780,7 +840,6 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			ST7735_OutString(selectedMove.name[language]);
 			while(1) {if(isPE3Pressed()) break;}
 			
-			bool effectiveText = true;
 			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
 			effectiveness = TypesArray[selectedMove.type][pokeLeft->species.type];
 			ST7735_SetCursor(1, 12);
@@ -793,8 +852,6 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			}else if(effectiveness == D){
 				if(language) ST7735_OutString("Sin efecto...");
 				else ST7735_OutString("No effect...");
-			}else{
-				effectiveText = false;
 			}
 			
 			if(selectedMove.category == CAT_PHYSICAL){

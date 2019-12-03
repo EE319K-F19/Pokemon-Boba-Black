@@ -19,9 +19,11 @@ const uint8_t S = 6;
 
 const uint8_t FIELD_WIDTH = 30;
 const uint8_t FIELD_HEIGHT = 30;
+PokemonInstType WorldPokemons[10];
+uint8_t numWorldPokemon = 10;
 
 SpriteType background[3];
-SpriteType fieldObj[4];
+SpriteType fieldObj[11];
 uint8_t screenGrid[63];
 uint8_t screenObj[63];
 
@@ -54,12 +56,17 @@ void DrawField(){
 			uint8_t fieldType = fieldArray[screenRow*FIELD_WIDTH+screenCol];
 			uint8_t objType = fieldObjArray[screenRow*FIELD_WIDTH+screenCol];
 			bool flipped = false;
-			if(objType == R || objType == T || objType == S || (p1.XPos == screenCol && p1.YPos == screenRow)){
-				
+			int8_t worldIndex = IsWorldPokemon(screenRow, screenCol);
+			
+			if((p1.XPos == screenCol && p1.YPos == screenRow) || worldIndex > -1 || IsGridObject(objType)){
 				if(p1.XPos == screenCol && p1.YPos == screenRow) {
 					objType = 3;
 					if(p1.flipped) flipped = true;
-				}else objType -= 4;
+				}else if(worldIndex > -1){
+					fieldObj[10] = (SpriteType) {WorldPokemons[worldIndex].species.worldSprite.image, 16, 16};
+					objType = 10;
+					if(WorldPokemons[worldIndex].flip) flipped = true;
+				}else objType -= 3;
 				uint16_t combinedSprite[16*16];
 				for(int row=0; row<16; row++){
 					for(int col=0; col<16; col++){
@@ -86,6 +93,24 @@ bool IsWalkable(uint8_t row, uint8_t col){
 	return GetObjGrid(row, col) != R && GetObjGrid(row, col) != T && GetObjGrid(row, col) != S;
 }
 
+bool IsPokemonWalkable(uint8_t row, uint8_t col, uint8_t index){
+	bool rWalkable = IsWalkable(row, col);
+	if(!rWalkable) return false;
+	
+	for(int i=0; i<numWorldPokemon; i++){
+		if(i == index) continue;
+		if(WorldPokemons[index].xPos == WorldPokemons[i].xPos && WorldPokemons[index].yPos == WorldPokemons[i].yPos) return false;
+	}
+	return true;
+}
+
+int8_t BumpedIntoWorldPokemon(){
+	for(int i=0; i<numWorldPokemon; i++){
+		if(p1.XPos == WorldPokemons[i].xPos && p1.YPos == WorldPokemons[i].yPos) return i;
+	}
+	return -1;
+}
+
 uint8_t GetFieldGrid(uint8_t row, uint8_t col){
 	return fieldArray[row*FIELD_WIDTH + col];
 }
@@ -96,6 +121,21 @@ uint8_t GetObjGrid(uint8_t row, uint8_t col){
 
 void SetFieldGrid(uint8_t row, uint8_t col, uint8_t fieldType){
 	fieldArray[row*FIELD_WIDTH + col] = fieldType;
+}
+
+bool IsGridObject(uint8_t objType){
+	uint8_t gridObjects[9] = {R, T, S, SS, ST, SO, SR, SE, SA};
+	for(int i=0; i<9; i++) {
+		if(objType == gridObjects[i]) return true;
+	}
+	return false;
+}
+
+int8_t IsWorldPokemon(uint8_t row, uint8_t col){
+	for(int i=0; i<numWorldPokemon; i++){
+		if(WorldPokemons[i].yPos == row && WorldPokemons[i].xPos == col) return i;
+	}
+	return -1;
 }
 
 uint8_t fieldArray[] = {
@@ -111,22 +151,22 @@ uint8_t fieldArray[] = {
 	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, N, N, N, N, G, N, N, //8
 	N, G, G, G, G, G, N, W, W, W, W, W, G, W, N, N, N, N, N, N, N, N, N, N, W, W, G, G, N, N, //9
 	N, G, G, N, G, G, N, N, W, W, G, G, G, W, W, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //10
-	N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //11
-	N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, G, G, G, G, G, //12
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
+	N, G, G, N, N, N, N, N, N, N, N, N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //11
+	N, G, G, N, N, N, N, N, N, N, N, N, G, G, N, N, N, N, W, W, N, N, N, N, N, G, G, G, G, G, //12
+	N, N, N, N, N, N, N, N, N, N, N, N, G, N, N, N, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, W, G, N, N, N, N, N, N, N, N, N, N, //14
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, N, N, N, N, N, //15
 	N, N, G, G, G, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, W, W, W, N, N, //16
 	N, N, G, G, G, N, N, N, N, N, G, G, N, N, N, G, G, W, W, W, N, N, N, N, N, N, W, W, N, N, //17
 	N, N, G, N, G, G, G, W, W, N, G, G, N, N, N, G, G, W, W, W, W, W, N, W, N, N, W, W, N, N, //18
-	N, N, N, N, G, G, G, W, W, G, G, G, N, N, N, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
-	N, N, N, W, W, W, G, W, W, N, G, G, G, N, N, N, N, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
-	N, N, N, W, W, G, G, G, N, N, N, W, G, N, N, N, N, G, N, G, N, N, N, N, N, G, G, G, G, N, //21
-	N, N, N, W, W, G, G, N, N, N, N, W, G, N, N, N, N, N, N, G, N, N, N, N, G, G, G, G, N, N, //22
-	N, N, N, W, W, N, N, N, N, N, W, W, G, W, W, N, W, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
-	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, N, W, W, W, W, N, N, N, N, N, G, G, G, N, N, //24
-	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //25
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //26
+	N, N, N, N, G, G, G, W, W, G, G, G, N, N, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
+	N, N, N, W, W, W, G, W, W, N, G, G, G, N, G, G, N, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
+	N, N, N, W, W, G, G, G, N, N, N, W, G, N, G, G, N, G, N, G, N, N, N, N, N, G, G, G, G, N, //21
+	N, N, N, W, W, G, G, N, N, N, N, W, G, N, G, G, N, N, N, G, N, N, N, N, G, G, G, G, N, N, //22
+	N, N, N, W, W, N, N, N, N, N, W, W, G, W, G, N, G, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
+	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, N, G, G, G, G, N, N, N, N, N, G, G, G, N, N, //24
+	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, G, G, W, G, N, N, N, N, N, N, N, N, N, N, //25
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, G, W, G, W, W, W, W, W, N, N, N, N, N, //26
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //27
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, W, W, W, N, N, N, N, N, N, //28
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //29
