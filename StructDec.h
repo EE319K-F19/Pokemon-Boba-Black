@@ -69,7 +69,6 @@ struct Pokemon {
 	char *name;
 	uint8_t type;
 	SpriteType sprite;
-	SpriteType worldSprite;
 	uint32_t mhealth;
 	uint32_t attack;
 	uint32_t defense;
@@ -84,7 +83,6 @@ struct PokemonInst {
 	uint16_t yPos;
 	uint32_t chealth;
 	PokemonType species;
-	bool flip;
 };
 
 struct PokemonTeam {
