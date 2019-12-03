@@ -588,13 +588,14 @@ void DrawSwapPokemon(uint8_t language, PokemonInstType* pokeRight){
 
 uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-	char *a[3];
+	uint8_t numItems = 2;
+	char *a[2];
 	int selected = 0;
-	for(int i=0; i<3; i++){
+	for(int i=0; i<numItems; i++){
 		a[i] = shopItems[i].item.name[language];
 	}
 	
-	for(int i=0; i<3; i++){
+	for(int i=0; i<numItems; i++){
 			ST7735_SetCursor(3, 12+i);
 			ST7735_OutString(a[i]);
 			if(i!=3) ST7735_OutString(" x");
@@ -607,13 +608,13 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 		uint8_t yDir = getJoystickY();
 		ADCStatus = 0;
 		
-		if(yDir == 2 && selected < 2){
+		if(yDir == 2 && selected < numItems - 1){
 			selected++;
 		}else if(yDir == 0 && selected > 0){
 			selected--;
 		}
 		
-		for(int i=0; i<3; i++){
+		for(int i=0; i<numItems; i++){
 			ST7735_SetCursor(1, 12+i);
 			if(i==selected) ST7735_OutString("*");
 			else ST7735_OutString(" ");
@@ -642,14 +643,6 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 						else ST7735_OutString(" has been \n healed.");
 						pokeLeft->chealth = pokeLeft->species.mhealth;
 						DrawHPBars(pokeLeft, pokeRight);
-						while(1){if(isPE3Pressed()) break;};
-					}else if(selected == 2){
-						ST7735_SetCursor(1, 12);
-						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-						if(language) ST7735_OutString("Tu felicidad\n aument\xA2 en 25!");
-						else ST7735_OutString("Your happiness\n increased by 25!");
-						p1.happiness += 25;
-						if(p1.happiness > 100) p1.happiness = 100;
 						while(1){if(isPE3Pressed()) break;};
 					}else if(selected == 0){ // Using pokeball
 						ST7735_SetCursor(1, 12);
@@ -687,7 +680,7 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 					while(1){if(isPE3Pressed()) break;};
 				}
 				ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-				for(int i=0; i<4; i++){
+				for(int i=0; i<numItems; i++){
 					ST7735_SetCursor(3, 12+i);
 					ST7735_OutString(a[i]);
 					if(i!=3) ST7735_OutString(" x");
