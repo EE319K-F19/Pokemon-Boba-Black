@@ -119,6 +119,11 @@
       <TargetDriverDllRegistry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>DLGUARM</Key>
+          <Name>ÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÌÈ`÷öóÍšÔîS</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>DLGDARM</Key>
           <Name>(1010=-1,-1,-1,-1,0)(1007=-1,-1,-1,-1,0)(1008=-1,-1,-1,-1,0)(1009=-1,-1,-1,-1,0)(1012=-1,-1,-1,-1,0)(9108=1132,365,1307,597,1)(9106=-1,-1,-1,-1,0)(9104=-1,-1,-1,-1,0)(9107=-1,-1,-1,-1,0)(9109=-1,-1,-1,-1,0)(9102=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
@@ -152,45 +157,51 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>25</LineNumber>
+          <LineNumber>170</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>922</Address>
+          <Address>14678</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\random.s</Filename>
+          <Filename>.\DrawScreen.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\random.s\25</Expression>
+          <Expression>\\SpaceInvaders\DrawScreen.c\170</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>118</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>14092</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\Field.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SpaceInvaders\Field.c\118</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>screenGrid</ItemText>
+          <ItemText>WorldPokemons</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>i*SCREEN_COLUMNS+j</ItemText>
+          <ItemText>row</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>p1</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>WorldPokemons</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>M</ItemText>
+          <ItemText>col</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

@@ -193,12 +193,39 @@ void MoveWorldPokemon(){
 	}
 }
 
+bool PokemonLocationTaken(uint8_t xPos, uint8_t yPos, uint8_t index){
+	for(int i=0; i<index; i++){
+		if(WorldPokemons[i].xPos == xPos && WorldPokemons[i].yPos == yPos) return true;
+	}
+	return false;
+}
+
+PokemonInstType GenerateRandomPokemonInit(uint8_t index){
+	uint8_t pokemon = Random()%11;
+	uint8_t xPos = 0;
+	uint8_t yPos = 0;
+	while(!IsWalkable(yPos, xPos) || (xPos == p1.XPos && yPos == p1.YPos) || PokemonLocationTaken(xPos, yPos, index)){
+		xPos = Random()%(FIELD_WIDTH-8) + 4;
+		yPos = Random()%(FIELD_HEIGHT-10) + 5;
+	}
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+}
+
+PokemonInstType GenerateRandomPokemon(uint8_t index){
+	uint8_t pokemon = Random()%11;
+	uint8_t xPos = 0;
+	uint8_t yPos = 0;
+	while(!IsPokemonWalkable(yPos, xPos, index) || (xPos == p1.XPos && yPos == p1.YPos)){
+		xPos = Random()%(FIELD_WIDTH-8) + 4;
+		yPos = Random()%(FIELD_HEIGHT-10) + 5;
+	}
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+}
+
 bool DrawWorld(uint8_t language){
 	for(uint8_t i=0; i<numWorldPokemon; i++){
-		uint8_t pokemon = Random()%11;
-		uint8_t xPos = Random()%(FIELD_WIDTH-8);
-		uint8_t yPos = Random()%(FIELD_HEIGHT-10);
-		WorldPokemons[i] = (PokemonInstType) {xPos + 4, yPos + 5, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+		WorldPokemons[i] = GenerateRandomPokemonInit(i);
+		numWorldInstantiated ++;
 	}
 	Timer1_Init(MoveWorldPokemon, 80000000);
 	
@@ -235,10 +262,8 @@ bool DrawWorld(uint8_t language){
 		if(encounter > -1){
 			ClearScreenGrid();
 			DrawBattleScreen(&pokeTeam.pokemon[0], &WorldPokemons[encounter], language);
-			uint8_t pokemon = Random()%11;
-			uint8_t xPos = Random()%(FIELD_WIDTH-8);
-			uint8_t yPos = Random()%(FIELD_HEIGHT-10);
-			WorldPokemons[encounter] = (PokemonInstType) {xPos + 4, yPos + 5, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+			WorldPokemons[encounter] = GenerateRandomPokemon(encounter);
+			Timer1_Init(MoveWorldPokemon, 80000000);
 		}
 		//uint8_t encounter = Random()%6;
 		//if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){

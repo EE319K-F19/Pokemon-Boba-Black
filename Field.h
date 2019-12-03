@@ -13,8 +13,9 @@ extern const uint8_t R; //rock (cannot pass)
 extern const uint8_t S; //shop (cannot pass)
 extern uint8_t fieldArray[];
 extern uint8_t fieldObjArray[];
-extern PokemonInstType WorldPokemons[10];
+extern PokemonInstType WorldPokemons[40];
 extern uint8_t numWorldPokemon;
+extern uint8_t numWorldInstantiated;
 extern const uint8_t FIELD_WIDTH;
 extern const uint8_t FIELD_HEIGHT;
 

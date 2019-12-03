@@ -10,6 +10,7 @@ extern const unsigned short playerSide[];
 extern const unsigned short playerSwimFront[];
 extern const unsigned short playerSwimBack[];
 extern const unsigned short playerSwimSide[];
+extern const unsigned short shopnpc[];
 extern const unsigned short torchic[];
 extern const unsigned short pokeball[];
 extern const unsigned short healthPotion[];
