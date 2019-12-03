@@ -292,11 +292,7 @@ void DrawStatusScreen(uint8_t language){
 	ST7735_SetCursor(1, 5);
 	if(language) ST7735_OutString("Monedas: ");
 	else ST7735_OutString("Coins: ");
-	
-	if(p1.coins > 999) ST7735_OutChar((char) (p1.coins/1000) + 0x30);
-	if(p1.coins > 99) ST7735_OutChar((char) (p1.coins/100) + 0x30);
-	if(p1.coins > 9) ST7735_OutChar((char) (p1.coins/10) + 0x30);
-	ST7735_OutChar((char) (p1.coins%10) + 0x30);
+	LCD_OutDec(p1.coins);
 	ST7735_OutString("C");
 			
 	ST7735_SetCursor(1, 6);
