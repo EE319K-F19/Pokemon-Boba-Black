@@ -156,7 +156,7 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>437</LineNumber>
+          <LineNumber>130</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -165,16 +165,32 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>.\DrawScreen.c</Filename>
+          <Filename>.\SpaceInvaders.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>431</LineNumber>
+          <LineNumber>132</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>13974</Address>
+          <Address>16694</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\SpaceInvaders.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SpaceInvaders\SpaceInvaders.c\132</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>592</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>2578</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -183,7 +199,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\DrawScreen.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\DrawScreen.c\431</Expression>
+          <Expression>\\SpaceInvaders\DrawScreen.c\592</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -200,17 +216,17 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>p1</ItemText>
+          <ItemText>len</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NVIC_EN1_R</ItemText>
+          <ItemText>isPE3Pressed</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NVIC_DIS1_R</ItemText>
+          <ItemText>pokeTeam</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -352,7 +368,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>8</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Timer1.c</PathWithFileName>
@@ -364,7 +380,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Sound.c</PathWithFileName>
@@ -460,7 +476,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>17</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Battle.c</PathWithFileName>
