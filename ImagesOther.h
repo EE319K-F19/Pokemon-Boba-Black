@@ -19,11 +19,5 @@ extern const unsigned short water[];
 extern const unsigned short ground[];
 extern const unsigned short rock[];
 extern const unsigned short bush[];
-extern const unsigned short storeS[];
-extern const unsigned short storeT[];
-extern const unsigned short storeO[];
-extern const unsigned short storeR[];
-extern const unsigned short storeE[];
-extern const unsigned short storeArrow[];
 
 #endif
