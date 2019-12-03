@@ -365,11 +365,20 @@ bool PokemonAllDead(void){
 	uint8_t pokeBattleY = 90;
 
 void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
-	ST7735_FillRect(pokeBattleLeftX+5, 45, 30, 2, 0x0000);
-	ST7735_FillRect(pokeBattleRightX+5, 45, 30, 2, 0x0000);
+	uint32_t lowColor = 0x00FF;
+	uint32_t highColor = 0x0FF0;
 	
-	ST7735_FillRect(pokeBattleLeftX+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
-	ST7735_FillRect(pokeBattleRightX+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
+	uint32_t lColor = highColor;
+	uint32_t rColor = highColor;
+	
+	if(pokeLeft->chealth <= pokeLeft->species.mhealth/2) lColor = lowColor;
+	if(pokeRight->chealth <= pokeRight->species.mhealth/2) rColor = lowColor;
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 35, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 35, 30, 2, 0x0000);
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 35, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, lColor);
+	ST7735_FillRect(pokeBattleRightX+5, 35, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
 }
 
 void RestoreDeadPokemon(void){
@@ -461,8 +470,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 				pokeLeft = DrawPokemonInventory(language);
 				leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 				DrawSpriteImg(leftInst);
-				ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-				ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+				DrawHPBars(pokeLeft, pokeRight);
 				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){ // Fight
 				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
