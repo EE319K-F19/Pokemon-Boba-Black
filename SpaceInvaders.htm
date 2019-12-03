@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 03 12:55:28 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 03 13:24:34 2019
 <BR><P>
 <H3>Maximum Stack Usage =       1096 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -993,8 +993,8 @@ Global Symbols
 <LI>Call Chain = DrawMoveCommands &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE3Pressed
-<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Stomp
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Highpitch
+<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Buzz
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Alarm
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer1_Init
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SetCursor
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_OutString
@@ -1490,8 +1490,16 @@ Global Symbols
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawShopScreen
 </UL>
 
-<P><STRONG><a name="[bc]"></a>Sound_Highpitch</STRONG> (Thumb, 14 bytes, Stack size 4 bytes, sound.o(i.Sound_Highpitch))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Sound_Highpitch
+<P><STRONG><a name="[bb]"></a>Sound_Alarm</STRONG> (Thumb, 14 bytes, Stack size 4 bytes, sound.o(i.Sound_Alarm))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Sound_Alarm
+</UL>
+<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Play
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
+</UL>
+
+<P><STRONG><a name="[bc]"></a>Sound_Buzz</STRONG> (Thumb, 14 bytes, Stack size 4 bytes, sound.o(i.Sound_Buzz))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Sound_Buzz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Play
 </UL>
@@ -1508,16 +1516,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[de]"></a>Sound_Play</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, sound.o(i.Sound_Play))
-<BR><BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Stomp
-<LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Highpitch
-</UL>
-
-<P><STRONG><a name="[bb]"></a>Sound_Stomp</STRONG> (Thumb, 14 bytes, Stack size 4 bytes, sound.o(i.Sound_Stomp))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Sound_Stomp
-</UL>
-<BR>[Calls]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Play
-</UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
+<BR><BR>[Called By]<UL><LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Buzz
+<LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Alarm
 </UL>
 
 <P><STRONG><a name="[84]"></a>Sound_Task</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, sound.o(i.Sound_Task))

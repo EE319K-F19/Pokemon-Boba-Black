@@ -11,7 +11,7 @@ F (.\PLL.c)(0x5DCB197A)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_secti
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (PLL.h)(0x5DCB197A)
 I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
-F (.\DAC.c)(0x5DE2DDED)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\dac.o --omf_browse .\dac.crf --depend .\dac.d)
+F (.\DAC.c)(0x5DE6B65D)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\dac.o --omf_browse .\dac.crf --depend .\dac.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
 F (.\ADC.c)(0x5DD85E74)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\adc.o --omf_browse .\adc.crf --depend .\adc.d)
@@ -23,7 +23,7 @@ I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
 F (.\Timer1.c)(0x5DCB197A)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\timer1.o --omf_browse .\timer1.crf --depend .\timer1.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
-F (.\Sound.c)(0x5DE63ECD)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\sound.o --omf_browse .\sound.crf --depend .\sound.d)
+F (.\Sound.c)(0x5DE6B66F)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\sound.o --omf_browse .\sound.crf --depend .\sound.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (Sound.h)(0x5DE5C4C0)
 I (DAC.h)(0x5DDC237F)
@@ -79,7 +79,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5CEC30AE)
 I (ST7735.h)(0x5DD9FA55)
 I (SystemInfo.h)(0x5DD8893C)
 F (.\DrawScreen.h)(0x5DE63ECD)()
-F (.\DrawScreen.c)(0x5DE6AEA6)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\drawscreen.o --omf_browse .\drawscreen.crf --depend .\drawscreen.d)
+F (.\DrawScreen.c)(0x5DE6B26D)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_SpaceInvaders-IC:\Users\zhang\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include-IC:\Users\zhang\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="528" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\drawscreen.o --omf_browse .\drawscreen.crf --depend .\drawscreen.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5CEC30B2)
 I (ST7735.h)(0x5DD9FA55)
 I (Random.h)(0x5DCB197A)

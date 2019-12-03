@@ -808,9 +808,9 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		
 			//play sound
 			if(selectedMove.category == CAT_PHYSICAL){
-				Sound_Stomp();
+				Sound_Alarm();
 			}else{
-				Sound_Highpitch();
+				Sound_Buzz();
 			}
 			//Sound_Highpitch();
 			//Sound_Alarm();
@@ -894,9 +894,9 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			
 			//play sound
 			if(selectedMove.category == CAT_PHYSICAL){
-				Sound_Stomp();
+				Sound_Alarm();
 			}else{
-				Sound_Highpitch();
+				Sound_Buzz();
 			}
 			//Sound_Highpitch();
 			//Sound_Alarm();
