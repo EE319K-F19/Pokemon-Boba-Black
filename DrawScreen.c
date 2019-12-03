@@ -17,11 +17,10 @@
 #include "Shop.h"
 #include "Timer1.h"
 #include "../inc/tm4c123gh6pm.h"
+#include "ImagesPokemonWorld.h"
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
-
-SpriteInstType BulbasaurWorld;
 
 PokemonType BulbasaurT;
 PokemonType SquirtleT;
@@ -42,8 +41,6 @@ PokemonType allPokemon[11];
 
 int8_t backReturn = -1;
 
-
-uint8_t numPokemon = 5;
 PokemonType allPokemon[11];
 
 void InitPokemon(){
@@ -59,20 +56,19 @@ void InitPokemon(){
 	SpriteType vulpixS = {vulpix, 40, 40};
 	SpriteType eeveeS = {eevee, 40, 40};
 
-	SpriteType bulbasaurW = {bulbWorldFront, 16, 16};
-	BulbasaurWorld = (SpriteInstType) {20, 20, bulbasaurW};
-
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, 45, 49, 49, 65, 65, 45, 0};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, 44, 48, 65, 50, 64, 43, 1};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, 39, 52, 43, 60, 50, 65, 2};
-	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, 40, 45, 40, 35, 35, 56, 3};
-	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, 35, 55, 40, 50, 50, 90, 4};
-	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, 50, 52, 48, 65, 50, 55, 5};
-	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, 50, 85, 55, 65, 65, 90, 6};
-	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, 41, 64, 45, 50, 50, 50, 7};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, 115, 45, 20, 45, 25, 20, 8};
-	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, 38, 41, 40, 50, 65, 65, 9};
-	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, 55, 55, 50, 45, 65, 55, 10};
+	SpriteType jigglypuffW = {jigglypuffWorldFront, 16, 16};
+	
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurS, 45, 49, 49, 65, 65, 45, 0};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleS, 44, 48, 65, 50, 64, 43, 1};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderS, 39, 52, 43, 60, 50, 65, 2};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyS, 40, 45, 40, 35, 35, 56, 3};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuS, 35, 55, 40, 50, 50, 90, 4};
+	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckS, 50, 52, 48, 65, 50, 55, 5};
+	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaS, 50, 85, 55, 65, 65, 90, 6};
+	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniS, 41, 64, 45, 50, 50, 50, 7};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8};
+	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixS, 38, 41, 40, 50, 65, 65, 9};
+	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeS, 55, 55, 50, 45, 65, 55, 10};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -90,19 +86,12 @@ uint8_t DrawLanguageSelection(){
 	ST7735_FillScreen(0x0000);
 	
 	char *langs[2];
-	int selected = 0;
-	
 	langs[0] = "English";
 	langs[1] = "Espanol";
 	
 	int8_t output = DrawSimpleMenu(langs, 2, false);
 	if(output >= 0) return output;
-}
-
-void MoveWorldPokemon(){
-	ST7735_FillRect(BulbasaurWorld.x_left, BulbasaurWorld.y_bottom-BulbasaurWorld.sprite.height, BulbasaurWorld.sprite.width,BulbasaurWorld.sprite.height, 0xFFFF);
-	BulbasaurWorld.x_left ++;
-	DrawSpriteImg(BulbasaurWorld);
+	return 0;
 }
 
 PokemonType DrawTitleScreen(uint8_t language){
@@ -152,8 +141,30 @@ PokemonType DrawTitleScreen(uint8_t language){
   }
 }
 
+void MoveWorldPokemon(){
+	uint8_t moveDir = Random()%4;
+	if(moveDir == 0){ //up
+		if(IsWalkable(WorldPokemon.yPos-1, WorldPokemon.xPos)){
+			WorldPokemon.yPos --;
+		}
+	}else if(moveDir == 1){ //down
+		if(IsWalkable(WorldPokemon.yPos+1, WorldPokemon.xPos)){
+			WorldPokemon.yPos ++;
+		}
+	}else if(moveDir == 2){ //left
+		if(IsWalkable(WorldPokemon.yPos, WorldPokemon.xPos-1)){
+			WorldPokemon.xPos --;
+		}
+	}else if(moveDir == 3){ //right
+		if(IsWalkable(WorldPokemon.yPos, WorldPokemon.xPos+1)){
+			WorldPokemon.xPos ++;
+		}
+	}
+}
+
 bool DrawWorld(uint8_t language){
-	//Timer1_Init(MoveWorldPokemon, 1000000);
+	WorldPokemon = (PokemonInstType) {10, 10, JigglypuffT.mhealth, JigglypuffT};
+	Timer1_Init(MoveWorldPokemon, 80000000);
 	
 	//draws black border around the edges of the screen
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
@@ -602,7 +613,6 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			ST7735_OutString(selectedMove.name[language]);
 			while(1) {if(isPE3Pressed()) break;}
 			
-			bool effectiveText = true;
 			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
 			effectiveness = TypesArray[selectedMove.type][pokeLeft->species.type];
 			ST7735_SetCursor(1, 12);
@@ -615,8 +625,6 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			}else if(effectiveness == D){
 				if(language) ST7735_OutString("Sin efecto...");
 				else ST7735_OutString("No effect...");
-			}else{
-				effectiveText = false;
 			}
 			
 			if(selectedMove.category == CAT_PHYSICAL){

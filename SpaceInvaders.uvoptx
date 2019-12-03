@@ -156,25 +156,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>437</LineNumber>
+          <LineNumber>146</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>.\DrawScreen.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>431</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>13974</Address>
+          <Address>12346</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -183,7 +167,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\DrawScreen.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\SpaceInvaders\DrawScreen.c\431</Expression>
+          <Expression>\\SpaceInvaders\DrawScreen.c\146</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -211,6 +195,11 @@
           <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>NVIC_DIS1_R</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>WorldPokemon</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -580,7 +569,7 @@
       <GroupNumber>1</GroupNumber>
       <FileNumber>27</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Player.c</PathWithFileName>
@@ -705,6 +694,30 @@
       <bDave2>0</bDave2>
       <PathWithFileName>.\ImagesPokemon2.c</PathWithFileName>
       <FilenameWithoutPath>ImagesPokemon2.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>38</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\ImagesPokemonWorld.h</PathWithFileName>
+      <FilenameWithoutPath>ImagesPokemonWorld.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>39</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\ImagesPokemonWorld.c</PathWithFileName>
+      <FilenameWithoutPath>ImagesPokemonWorld.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

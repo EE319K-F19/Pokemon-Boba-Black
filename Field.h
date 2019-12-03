@@ -13,6 +13,7 @@ extern const uint8_t R; //rock (cannot pass)
 extern const uint8_t S; //shop (cannot pass)
 extern uint8_t fieldArray[];
 extern uint8_t fieldObjArray[];
+extern PokemonInstType WorldPokemon;
 
 void ClearScreenGrid(void);
 void InitFieldArray(void);
