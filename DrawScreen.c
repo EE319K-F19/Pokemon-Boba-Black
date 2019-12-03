@@ -16,6 +16,7 @@
 #include "TextSprites.h"
 #include "Shop.h"
 #include "Timer1.h"
+#include "Sound.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "ImagesPokemonWorld.h"
 
@@ -804,7 +805,22 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			pokeRight->chealth = pokeRight->chealth - damage;
 			
 			DrawHPBars(pokeLeft, pokeRight);
-			
+		
+			//play sound
+			if(selectedMove.category == CAT_PHYSICAL){
+				Sound_Alarm();
+			}else{
+				Sound_Buzz();
+			}
+			//Sound_Highpitch();
+			//Sound_Alarm();
+			//Sound_Buzz();
+			//Sound_Laser();
+			//Sound_Rumble();
+			//Sound_Stomp();
+			while(soundStatus == 0){}
+			soundStatus = 0;
+				
 			pokeShakeInst = rightInst;
 	
 	// Battle animations
@@ -875,6 +891,21 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			
 			ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
 			ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+			
+			//play sound
+			if(selectedMove.category == CAT_PHYSICAL){
+				Sound_Alarm();
+			}else{
+				Sound_Buzz();
+			}
+			//Sound_Highpitch();
+			//Sound_Alarm();
+			//Sound_Buzz();
+			//Sound_Laser();
+			//Sound_Rumble();
+			//Sound_Stomp();
+			while(soundStatus == 0){}
+			soundStatus = 0;
 			
 			pokeShakeInst = leftInst;
 	
