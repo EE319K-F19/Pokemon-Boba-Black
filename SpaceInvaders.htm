@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Dec 02 18:18:04 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon Dec 02 19:33:34 2019
 <BR><P>
-<H3>Maximum Stack Usage =       1072 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        848 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; DrawWorld &rArr; DrawField &rArr; DrawBorder &rArr; ST7735_FillRect &rArr; setAddrWindow
 <P>
@@ -686,7 +686,7 @@ Global Symbols
 <P><STRONG><a name="[fb]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[8b]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1072 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 848 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; DrawWorld &rArr; DrawField &rArr; DrawBorder &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1060,8 +1060,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b7]"></a>DrawWorld</STRONG> (Thumb, 414 bytes, Stack size 296 bytes, drawscreen.o(i.DrawWorld))
-<BR><BR>[Stack]<UL><LI>Max Depth = 968 + Unknown Stack Size
+<P><STRONG><a name="[b7]"></a>DrawWorld</STRONG> (Thumb, 360 bytes, Stack size 72 bytes, drawscreen.o(i.DrawWorld))
+<BR><BR>[Stack]<UL><LI>Max Depth = 744 + Unknown Stack Size
 <LI>Call Chain = DrawWorld &rArr; DrawField &rArr; DrawBorder &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearScreenGrid
@@ -1122,8 +1122,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d7]"></a>InitMoves</STRONG> (Thumb, 304 bytes, Stack size 120 bytes, battle.o(i.InitMoves))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = InitMoves
+<P><STRONG><a name="[d7]"></a>InitMoves</STRONG> (Thumb, 664 bytes, Stack size 264 bytes, battle.o(i.InitMoves))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = InitMoves
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1136,8 +1136,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c1]"></a>InitPokemon</STRONG> (Thumb, 282 bytes, Stack size 288 bytes, drawscreen.o(i.InitPokemon))
-<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = InitPokemon &rArr; __aeabi_memcpy4
+<P><STRONG><a name="[c1]"></a>InitPokemon</STRONG> (Thumb, 698 bytes, Stack size 600 bytes, drawscreen.o(i.InitPokemon))
+<BR><BR>[Stack]<UL><LI>Max Depth = 608<LI>Call Chain = InitPokemon &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
@@ -1430,7 +1430,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8c]"></a>main</STRONG> (Thumb, 138 bytes, Stack size 104 bytes, spaceinvaders.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1072 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 848 + Unknown Stack Size
 <LI>Call Chain = main &rArr; DrawWorld &rArr; DrawField &rArr; DrawBorder &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init
