@@ -7,15 +7,6 @@
 #include "Shop.h"
 #include "StructDec.h"
 
-//void makePurchase(PlayerType* player, ItemType item){
-//	if(player->coins < item.price){
-//		// throw error that says you are too broke to buy
-//		return;
-//	}
-//	player->coins -= item.price;
-//	player->playerInventory[item.index].count++;
-//}
-
 ItemType bobaItem;
 ItemType potionItem;
 ItemType pokeballItem;
@@ -27,8 +18,8 @@ void InitShop(void){
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
 	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 70, "70 C", 2};
-	ItemType potionItem = {{"health potion", "pocion"}, potionSprite, 20, "20 C", 1};
-	ItemType pokeballItem = {{"pokeball", "pokeball"}, pokeballSprite, 10, "10 C", 0};
+	ItemType potionItem = {{"potion", "poci\xA2n"}, potionSprite, 20, "20 C", 1};
+	ItemType pokeballItem = {{"pokeball", "pokebola"}, pokeballSprite, 10, "10 C", 0};
 	
 	ItemInstType bobaShop = {86, 80, bobaItem};
 	ItemInstType potionShop = {44, 80, potionItem};
@@ -53,10 +44,10 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 	DrawAllSprites(shopScreen);
 	ST7735_SetTextColor(ST7735_BLACK);
 	ST7735_SetCursor(1, 2);
-	if(language) ST7735_OutString("Tienda de Pokeboba");
+	if(language) ST7735_OutString("Tienda Pokebola");
 	else ST7735_OutString("Pokeboba Shop");
 	ST7735_SetCursor(1, 3);
-	if(language) ST7735_OutString("Que le gustaria");
+	if(language) ST7735_OutString("\xA8Que le gustaria");
 	else ST7735_OutString("What would you like");
 	ST7735_SetCursor(1, 4);
 	if (language) ST7735_OutString("comprar?");
@@ -119,7 +110,7 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 				inventory[shopScreen.currentIndex].count ++;
 			}else {
 				ST7735_SetCursor(1, 14);
-				if(language) ST7735_OutString("Uy! No tienes\n suficientes monedas");
+				if(language) ST7735_OutString("\xADUy! No tienes\n suficientes monedas");
 				else ST7735_OutString("Oops! You don't\n have enough coins");
 			}
 		}
