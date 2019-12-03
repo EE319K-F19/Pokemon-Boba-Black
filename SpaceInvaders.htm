@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 03 15:45:43 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 03 16:19:56 2019
 <BR><P>
-<H3>Maximum Stack Usage =       1080 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1088 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; DrawWorld &rArr; DrawBattleScreen &rArr; DrawPokemonInventory &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 <P>
@@ -691,7 +691,7 @@ Global Symbols
 <P><STRONG><a name="[119]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[8e]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1080 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1088 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; DrawWorld &rArr; DrawBattleScreen &rArr; DrawPokemonInventory &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -927,8 +927,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
 
-<P><STRONG><a name="[a8]"></a>DrawBattleScreen</STRONG> (Thumb, 1314 bytes, Stack size 240 bytes, drawscreen.o(i.DrawBattleScreen))
-<BR><BR>[Stack]<UL><LI>Max Depth = 864 + Unknown Stack Size
+<P><STRONG><a name="[a8]"></a>DrawBattleScreen</STRONG> (Thumb, 1318 bytes, Stack size 248 bytes, drawscreen.o(i.DrawBattleScreen))
+<BR><BR>[Stack]<UL><LI>Max Depth = 872 + Unknown Stack Size
 <LI>Call Chain = DrawBattleScreen &rArr; DrawPokemonInventory &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE3Pressed
@@ -1010,8 +1010,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ae]"></a>DrawMoveCommands</STRONG> (Thumb, 1810 bytes, Stack size 152 bytes, drawscreen.o(i.DrawMoveCommands))
-<BR><BR>[Stack]<UL><LI>Max Depth = 312 + Unknown Stack Size
+<P><STRONG><a name="[ae]"></a>DrawMoveCommands</STRONG> (Thumb, 1764 bytes, Stack size 144 bytes, drawscreen.o(i.DrawMoveCommands))
+<BR><BR>[Stack]<UL><LI>Max Depth = 304 + Unknown Stack Size
 <LI>Call Chain = DrawMoveCommands &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE3Pressed
@@ -1163,7 +1163,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c6]"></a>DrawWorld</STRONG> (Thumb, 356 bytes, Stack size 88 bytes, drawscreen.o(i.DrawWorld))
-<BR><BR>[Stack]<UL><LI>Max Depth = 952 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 960 + Unknown Stack Size
 <LI>Call Chain = DrawWorld &rArr; DrawBattleScreen &rArr; DrawPokemonInventory &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE3Pressed
@@ -1480,6 +1480,9 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawCharS
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawShopScreen
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;moveShakeRight
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;moveShakeLeft
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;moveShakeBack
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSwapPokemon
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSimpleMenu
 <LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonInventory
@@ -1704,7 +1707,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8f]"></a>main</STRONG> (Thumb, 164 bytes, Stack size 128 bytes, spaceinvaders.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1080 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 1088 + Unknown Stack Size
 <LI>Call Chain = main &rArr; DrawWorld &rArr; DrawBattleScreen &rArr; DrawPokemonInventory &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;addPokemon
@@ -1737,27 +1740,30 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[82]"></a>moveShakeBack</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, drawscreen.o(i.moveShakeBack))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
+<P><STRONG><a name="[82]"></a>moveShakeBack</STRONG> (Thumb, 178 bytes, Stack size 16 bytes, drawscreen.o(i.moveShakeBack))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = moveShakeBack &rArr; DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> drawscreen.o(i.DrawMoveCommands)
 </UL>
-<P><STRONG><a name="[80]"></a>moveShakeLeft</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, drawscreen.o(i.moveShakeLeft))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
+<P><STRONG><a name="[80]"></a>moveShakeLeft</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, drawscreen.o(i.moveShakeLeft))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = moveShakeLeft &rArr; DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> drawscreen.o(i.DrawMoveCommands)
 </UL>
-<P><STRONG><a name="[81]"></a>moveShakeRight</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, drawscreen.o(i.moveShakeRight))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
+<P><STRONG><a name="[81]"></a>moveShakeRight</STRONG> (Thumb, 98 bytes, Stack size 16 bytes, drawscreen.o(i.moveShakeRight))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = moveShakeRight &rArr; DrawSpriteImg &rArr; ST7735_DrawBitmap &rArr; setAddrWindow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillRect
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> drawscreen.o(i.DrawMoveCommands)
 </UL><P>
