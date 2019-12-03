@@ -18,6 +18,7 @@ typedef struct Item ItemType;
 typedef struct ItemInventory ItemInventoryType;
 typedef struct itemInst ItemInstType;
 typedef struct Move MoveType;
+typedef struct GridCoordinate GridCoordinateType;
 
 struct Sprite {
 	const uint16_t* image;	
@@ -65,6 +66,11 @@ struct Move{
 	uint8_t power;
 };
 
+struct GridCoordinate {
+	uint8_t row;
+	uint8_t col;
+};
+
 struct Pokemon {
 	char *name;
 	uint8_t type;
@@ -77,6 +83,7 @@ struct Pokemon {
 	uint32_t spdefense;
 	uint32_t speed;
 	uint8_t moveSet;
+	uint8_t tileType;
 };
 
 struct PokemonInst {
