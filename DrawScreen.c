@@ -37,6 +37,8 @@ PokemonType VulpixT;
 
 uint8_t simpleMenuY = 90;
 uint16_t simpleMenuColor = 0xFFFF;
+uint32_t numPokemon = 11;
+PokemonType allPokemon[11];
 
 int8_t backReturn = -1;
 
@@ -67,6 +69,18 @@ void InitPokemon(){
 	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, 115, 45, 20, 45, 25, 20, 8};
 	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, 38, 41, 40, 50, 65, 65, 9};
 	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, 55, 55, 50, 45, 65, 55, 10};
+	
+	allPokemon[0] = BulbasaurT;
+	allPokemon[1] = SquirtleT;
+	allPokemon[2] = CharmanderT;
+	allPokemon[3] = PidgeyT;
+	allPokemon[4] = PikachuT;
+	allPokemon[5] = PsyduckT;
+	allPokemon[6] = PonytaT;
+	allPokemon[7] = DratiniT;
+	allPokemon[8] = JigglypuffT;
+	allPokemon[9] = VulpixT;
+	allPokemon[10] = EeveeT;
 }
 
 uint8_t DrawLanguageSelection(){
@@ -139,9 +153,6 @@ bool DrawWorld(uint8_t language){
 	//Timer1_Init(MoveWorldPokemon, 1000000);
 	
 	//draws black border around the edges of the screen
-	uint8_t numPokemon = 5;
-	PokemonType allPokemon[] = {BulbasaurT, SquirtleT, CharmanderT, PidgeyT, PikachuT,
-		PsyduckT, PonytaT, DratiniT, JigglypuffT, VulpixT, EeveeT};
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	while(1){

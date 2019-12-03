@@ -22,19 +22,22 @@ Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Keil_v5\EE319KwareFall2019\Lab10_EE319K\SpaceInvaders.uvprojx
-Project File Date:  12/01/2019
+Project File Date:  12/02/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'SpaceInvaders'
-compiling SpaceInvaders.c...
-SpaceInvaders.c(127): warning:  #940-D: missing return statement at end of non-void function "main1" 
+compiling DrawScreen.c...
+DrawScreen.c(97): warning:  #940-D: missing return statement at end of non-void function "DrawLanguageSelection" 
   }
-SpaceInvaders.c: 1 warning, 0 errors
-compiling Sound.c...
+DrawScreen.c(90): warning:  #177-D: variable "selected"  was declared but never referenced
+  	int selected = 0;
+DrawScreen.c(640): warning:  #550-D: variable "effectiveText"  was set but never used
+  			bool effectiveText = true;
+DrawScreen.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=1874 RO-data=45846 RW-data=32 ZI-data=1120  
-".\SpaceInvaders.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=15836 RO-data=64512 RW-data=2216 ZI-data=5088  
+".\SpaceInvaders.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 

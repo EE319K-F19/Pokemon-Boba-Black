@@ -82,23 +82,29 @@ uint8_t ADCStatus;
 uint8_t language; // 0 for English, 1 for Spanish
 
 //for debugging purposes
-int main(void){
+int main1(void){
+	bool last, now;
 	DisableInterrupts();
 	PLL_Init(Bus80MHz);
 	Sound_Init();
 	ADC_Init89();
 	EnableInterrupts();
+	last = isPE3Pressed();
 	while(1){
-		Sound_Highpitch();
-		//Sound_Alarm();
-		//Sound_Buzz();
-		//Sound_Laser();
-		//Sound_Rumble();
-		//Sound_Stomp();
+		if(isPE3Pressed()){
+			Sound_Highpitch();
+			//Sound_Alarm();
+			//Sound_Buzz();
+			//Sound_Laser();
+			//Sound_Rumble();
+			//Sound_Stomp();
+			while(soundStatus == 0){}
+			soundStatus = 0;
+			}
 	}
 }
 
-int main1(void){
+int main(void){
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 
   Random_Init(1);
   Output_Init();
@@ -130,11 +136,11 @@ void PrintWinLoseScreen(bool win, uint8_t language){
 	ST7735_FillScreen(0xFFFF);
 	ST7735_SetCursor(2, 5);
 	if(win) {
-		if(language) ST7735_OutString("Tu personaje\n es muy feliz!\n Tu ganas!");
+		if(language) ST7735_OutString("\xADTu personaje\n es muy feliz!\n \xADT\xA3 ganas!");
 		else ST7735_OutString("Your character\n is very happy!\n You win!");
 	}
-	else {
-		if(language) ST7735_OutString("Tu personaje\n esta muy\n triste.\n Tu pierdes!");
+	else{
+		if(language) ST7735_OutString("Tu personaje\n esta muy\n triste.\n \xADT\xA3	 pierdes!");
 		else ST7735_OutString("Your character is\n  sad.\n  He dropped out of \n  his major.");
 	}
 }
