@@ -84,6 +84,7 @@ struct PokemonInst {
 	uint16_t yPos;
 	uint32_t chealth;
 	PokemonType species;
+	bool flip;
 };
 
 struct PokemonTeam {

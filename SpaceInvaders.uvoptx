@@ -158,7 +158,7 @@
           <Type>0</Type>
           <LineNumber>146</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>12346</Address>
+          <Address>8602</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -168,6 +168,38 @@
           <Filename>.\DrawScreen.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\SpaceInvaders\DrawScreen.c\146</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>188</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>8980</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\DrawScreen.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\\DrawScreen.c\188</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>184</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>8854</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\DrawScreen.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\SpaceInvaders\DrawScreen.c\184</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -189,17 +221,7 @@
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NVIC_EN1_R</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>NVIC_DIS1_R</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>WorldPokemon</ItemText>
+          <ItemText>WorldPokemons</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

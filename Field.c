@@ -26,7 +26,7 @@ const uint8_t SA = 12;
 
 const uint8_t FIELD_WIDTH = 30;
 const uint8_t FIELD_HEIGHT = 30;
-PokemonInstType WorldPokemon;
+PokemonInstType WorldPokemons[30];
 
 SpriteType background[3];
 SpriteType fieldObj[11];
@@ -60,7 +60,6 @@ void DrawField(){
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
 	fieldObj[0] = (SpriteType) {p1.sprite.image, 16, 16};
-	fieldObj[10] = (SpriteType) {WorldPokemon.species.worldSprite.image, 16, 16};
 	
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
@@ -69,13 +68,16 @@ void DrawField(){
 			uint8_t fieldType = fieldArray[screenRow*FIELD_WIDTH+screenCol];
 			uint8_t objType = fieldObjArray[screenRow*FIELD_WIDTH+screenCol];
 			bool flipped = false;
-			if((p1.XPos == screenCol && p1.YPos == screenRow) || (WorldPokemon.xPos == screenCol && WorldPokemon.yPos == screenRow) || IsGridObject(objType)){
-				
+			int8_t worldIndex = IsWorldPokemon(screenRow, screenCol);
+			
+			if((p1.XPos == screenCol && p1.YPos == screenRow) || worldIndex > -1 || IsGridObject(objType)){
 				if(p1.XPos == screenCol && p1.YPos == screenRow) {
 					objType = 0;
 					if(p1.flipped) flipped = true;
-				}else if(WorldPokemon.xPos == screenCol && WorldPokemon.yPos == screenRow){
+				}else if(worldIndex > -1){
+					fieldObj[10] = (SpriteType) {WorldPokemons[worldIndex].species.worldSprite.image, 16, 16};
 					objType = 10;
+					if(WorldPokemons[worldIndex].flip) flipped = true;
 				}else objType -= 3;
 				uint16_t combinedSprite[16*16];
 				for(int row=0; row<16; row++){
@@ -121,6 +123,13 @@ bool IsGridObject(uint8_t objType){
 		if(objType == gridObjects[i]) return true;
 	}
 	return false;
+}
+
+int8_t IsWorldPokemon(uint8_t row, uint8_t col){
+	for(int i=0; i<10; i++){
+		if(WorldPokemons[i].yPos == row && WorldPokemons[i].xPos == col) return i;
+	}
+	return -1;
 }
 
 uint8_t fieldArray[] = {
