@@ -40,6 +40,8 @@ uint32_t numPokemon = 11;
 PokemonType allPokemon[11];
 
 int8_t backReturn = -1;
+bool seedTimer = true;
+uint32_t randomSeed = 1;
 
 PokemonType allPokemon[11];
 
@@ -92,7 +94,18 @@ void InitPokemon(){
 	allPokemon[9] = VulpixT;
 	allPokemon[10] = EeveeT;
 }
+
+void IncSeed(){
+	if(seedTimer){
+		randomSeed ++;
+	}else {
+		if(randomSeed == 0) randomSeed = 1;
+		NVIC_DIS1_R = 1<<19; // disable IRQ 19 in NVIC
+	}
+}
+
 uint8_t DrawLanguageSelection(){
+	Timer1_Init(IncSeed, 1000);
 	ST7735_FillScreen(0x0000);
 	
 	char *langs[2];
@@ -100,6 +113,9 @@ uint8_t DrawLanguageSelection(){
 	langs[1] = "Espanol";
 	
 	int8_t output = DrawSimpleMenu(langs, 2, false);
+	
+	randomSeed = false;
+	Random_Init(randomSeed);
 	if(output >= 0) return output;
 	return 0;
 }
@@ -180,9 +196,9 @@ void MoveWorldPokemon(){
 
 bool DrawWorld(uint8_t language){
 	for(uint8_t i=0; i<30; i++){
-		uint8_t pokemon = Random32()%11;
-		uint8_t xPos = Random32()%(FIELD_WIDTH-8);
-		uint8_t yPos = Random32()%(FIELD_HEIGHT-10);
+		uint8_t pokemon = Random()%11;
+		uint8_t xPos = Random()%(FIELD_WIDTH-8);
+		uint8_t yPos = Random()%(FIELD_HEIGHT-10);
 		WorldPokemons[i] = (PokemonInstType) {xPos + 4, yPos + 5, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
 	}
 	Timer1_Init(MoveWorldPokemon, 80000000);
@@ -216,10 +232,10 @@ bool DrawWorld(uint8_t language){
 		}
 		
 		DrawField();
-		uint8_t encounter = Random32()%6;
+		uint8_t encounter = Random()%6;
 		if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
 			ClearScreenGrid();
-			uint8_t pokemonRan = Random32()%11;
+			uint8_t pokemonRan = Random()%11;
 			PokemonType selected = allPokemon[pokemonRan];
 			DrawBattleScreen(&playerTeam[0], &selected, language);
 		}
