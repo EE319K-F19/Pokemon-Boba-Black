@@ -3603,7 +3603,7 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>0</ActiveTab>
+      <ActiveTab>5</ActiveTab>
       <Doc>
         <Name>.\SpaceInvaders.c</Name>
         <ColumnNumber>0</ColumnNumber>
@@ -3725,7 +3725,7 @@
         <Name>.\DrawScreen.h</Name>
         <ColumnNumber>49</ColumnNumber>
         <TopLine>1</TopLine>
-        <CurrentLine>2</CurrentLine>
+        <CurrentLine>16</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

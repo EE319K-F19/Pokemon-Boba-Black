@@ -88,9 +88,12 @@ struct PokemonInst {
 };
 
 struct PokemonTeam {
-	PokemonInstType pokemon[6];
-	uint8_t size;
-	uint8_t currIndex;
+	PokemonInstType pokemon1;
+	PokemonInstType pokemon2;
+	PokemonInstType pokemon3;
+	PokemonInstType pokemon4;
+	PokemonInstType pokemon5;
+	PokemonInstType pokemon6;
 };
 
 struct Item {
