@@ -1526,11 +1526,6 @@ Image component sizes
      15312       2790      67620        608       5136      76193   ELF Image Totals (compressed)
      15312       2790      67620        608          0          0   ROM Totals
 
-==============================================================================
-
-    Total RO  Size (Code + RO Data)                82932 (  80.99kB)
-    Total RW  Size (RW Data + ZI Data)              7344 (   7.17kB)
-    Total ROM Size (Code + RO Data + RW Data)      83540 (  81.58kB)
 
 ==============================================================================
 

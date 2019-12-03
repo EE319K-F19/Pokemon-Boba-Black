@@ -37,6 +37,8 @@ PokemonType VulpixT;
 
 uint8_t simpleMenuY = 90;
 uint16_t simpleMenuColor = 0xFFFF;
+uint32_t numPokemon = 11;
+PokemonType allPokemon[11];
 
 int8_t backReturn = -1;
 
