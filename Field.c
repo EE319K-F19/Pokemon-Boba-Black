@@ -17,13 +17,6 @@ const uint8_t R = 4;
 const uint8_t T = 5;
 const uint8_t S = 6;
 
-const uint8_t SS = 7;
-const uint8_t ST = 8;
-const uint8_t SO = 9;
-const uint8_t SR = 10;
-const uint8_t SE = 11;
-const uint8_t SA = 12;
-
 const uint8_t FIELD_WIDTH = 30;
 const uint8_t FIELD_HEIGHT = 30;
 PokemonInstType WorldPokemons[10];
@@ -46,21 +39,15 @@ void InitBackgroundTypes(){
 	background[1] = (SpriteType) {grass, 16, 16};
 	background[2] = (SpriteType) {water, 16, 16};
 	
-	fieldObj[1] = (SpriteType) {rock, 16, 16};
-	fieldObj[2] = (SpriteType) {bush, 16, 16};
-	fieldObj[3] = (SpriteType) {torchic, 16, 16};
-	fieldObj[4] = (SpriteType) {storeS, 16, 16};
-	fieldObj[5] = (SpriteType) {storeT, 16, 16};
-	fieldObj[6] = (SpriteType) {storeO, 16, 16};
-	fieldObj[7] = (SpriteType) {storeR, 16, 16};
-	fieldObj[8] = (SpriteType) {storeE, 16, 16};
-	fieldObj[9] = (SpriteType) {storeArrow, 16, 16};
+	fieldObj[0] = (SpriteType) {rock, 16, 16};
+	fieldObj[1] = (SpriteType) {bush, 16, 16};
+	fieldObj[2] = (SpriteType) {torchic, 16, 16};
 }
 
 void DrawField(){
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
 	
-	fieldObj[0] = (SpriteType) {p1.sprite.image, 16, 16};
+	fieldObj[3] = (SpriteType) {p1.sprite.image, 16, 16};
 	
 	for(int i=0; i<SCREEN_ROWS; i++){
 		for(int j=0; j<SCREEN_COLUMNS; j++){
@@ -73,7 +60,7 @@ void DrawField(){
 			
 			if((p1.XPos == screenCol && p1.YPos == screenRow) || worldIndex > -1 || IsGridObject(objType)){
 				if(p1.XPos == screenCol && p1.YPos == screenRow) {
-					objType = 0;
+					objType = 3;
 					if(p1.flipped) flipped = true;
 				}else if(worldIndex > -1){
 					fieldObj[10] = (SpriteType) {WorldPokemons[worldIndex].species.worldSprite.image, 16, 16};
@@ -93,7 +80,7 @@ void DrawField(){
 				}
 				SpriteType combined = {combinedSprite, 16, 16};
 				DrawGridSprite(j, i, combined);
-			}else if(screenGrid[i*SCREEN_COLUMNS+j] != fieldType || !IsGridObject(objType)){
+			}else if(screenGrid[i*SCREEN_COLUMNS+j] != fieldType || (screenObj[i*SCREEN_COLUMNS+j] != R && screenObj[i*SCREEN_COLUMNS+j] != T)){
 				DrawGridSprite(j, i, background[fieldType]);
 			}
 			screenGrid[i*SCREEN_COLUMNS+j] = fieldType;
@@ -156,11 +143,11 @@ uint8_t fieldArray[] = {
 	N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, //0
 	N, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, //1
 	N, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, N, N, W, W, N, N, N, //2
-	N, G, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, W, W, W, W, N, N, //3
-	N, G, G, G, W, W, W, N, N, N, W, N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, //4
-	N, G, G, G, W, W, W, N, N, N, W, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
-	N, G, G, G, W, W, W, N, N, W, W, N, N, N, N, N, N, N, N, W, W, W, N, N, W, N, N, N, N, N, //6
-	G, G, G, G, W, W, W, N, W, W, W, N, N, N, N, N, N, N, N, W, W, N, N, N, W, W, W, G, N, N, //7
+	N, G, W, W, W, W, W, N, N, N, N, N, G, N, N, N, N, N, N, N, N, W, W, N, W, W, W, W, N, N, //3
+	N, G, G, G, W, W, W, N, N, N, W, N, G, G, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, //4
+	N, G, G, G, W, W, W, N, N, N, W, N, G, G, G, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
+	N, G, G, G, W, W, W, N, N, W, W, G, G, G, G, N, N, N, N, W, W, W, N, N, W, N, N, N, N, N, //6
+	G, G, G, G, W, W, W, N, W, W, W, G, G, N, G, N, N, N, N, W, W, N, N, N, W, W, W, G, N, N, //7
 	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, N, N, N, N, G, N, N, //8
 	N, G, G, G, G, G, N, W, W, W, W, W, G, W, N, N, N, N, N, N, N, N, N, N, W, W, G, G, N, N, //9
 	N, G, G, N, G, G, N, N, W, W, G, G, G, W, W, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //10
@@ -191,10 +178,10 @@ uint8_t fieldObjArray[] = {
 	T, W, W, W, T, T, T, N, T, T, T, R, N, N, N, N, N, R, T, N, T, T, T, T, T, R, R, T, T, T, //1
 	T, W, R, W, W, W, T, T, T, T, N, R, N, T, T, T, N, R, N, N, T, T, T, T, T, W, W, T, T, T, //2
 	T, T, R, R, R, R, R, T, T, T, T, R, N, T, S, T, N, R, T, T, T, R, R, T, R, R, R, R, T, T, //3
-	T, T, T, G, W, W, W, N, N, N, W, N, R, T,SA, T, R, N, N, N, N, W, W, W, N, W, W, R, R, R, //4
-	T, T, T, G, W, W, W, N, N, N, W, N, G, R,SA, R, N, N, N, N, W, W, W, W, W, W, W, R, R, R, //5
-	T, T, T, G, W, W, W, N, N, W, W, G, G, R,SA, R, N, N, N, W, W, W, N, N, W, N, N, T, R, R, //6
-	T, T, T, G, W, W, W, N, W, W, W, G,SS,ST,SO,SR,SE, N, N, W, W, N, N, N, W, W, W, T, R, R, //7
+	T, T, T, G, W, W, W, N, N, N, W, N, R, T, N, T, R, N, N, N, N, W, W, W, N, W, W, R, R, R, //4
+	T, T, T, G, W, W, W, N, N, N, W, N, G, R, G, R, N, N, N, N, W, W, W, W, W, W, W, R, R, R, //5
+	T, T, T, G, W, W, W, N, N, W, W, G, G, R, G, R, N, N, N, W, W, W, N, N, W, N, N, T, R, R, //6
+	T, T, T, G, W, W, W, N, W, W, W, G, G, N, G, N, N, N, N, W, W, N, N, N, W, W, W, T, R, R, //7
 	T, T, T, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, N, N, N, N, T, R, R, //8
 	T, T, T, G, G, G, N, W, W, W, W, W, G, W, N, N, N, N, N, N, N, N, N, N, W, W, G, R, T, R, //9
 	T, T, T, N, G, G, N, N, W, W, G, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, T, T, T, //10

@@ -150,7 +150,7 @@ Section Cross References
     spaceinvaders.o(i.main) refers to drawscreen.o(i.DrawTitleScreen) for DrawTitleScreen
     spaceinvaders.o(i.main) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
     spaceinvaders.o(i.main) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
-    spaceinvaders.o(i.main) refers to player.o(i.InitTeam) for InitTeam
+    spaceinvaders.o(i.main) refers to player.o(i.StartTeam) for StartTeam
     spaceinvaders.o(i.main) refers to drawscreen.o(i.DrawWorld) for DrawWorld
     spaceinvaders.o(i.main) refers to spaceinvaders.o(i.PrintWinLoseScreen) for PrintWinLoseScreen
     spaceinvaders.o(i.main) refers to spaceinvaders.o(.data) for language
@@ -185,10 +185,14 @@ Section Cross References
     drawscreen.o(i.DrawBattleInventory) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
     drawscreen.o(i.DrawBattleInventory) refers to st7735.o(i.ST7735_OutChar) for ST7735_OutChar
     drawscreen.o(i.DrawBattleInventory) refers to adc_joystick.o(i.getJoystickY) for getJoystickY
+    drawscreen.o(i.DrawBattleInventory) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
     drawscreen.o(i.DrawBattleInventory) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
+    drawscreen.o(i.DrawBattleInventory) refers to player.o(i.addPokemon) for addPokemon
+    drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(i.DrawSwapPokemon) for DrawSwapPokemon
     drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(.bss) for shopItems
     drawscreen.o(i.DrawBattleInventory) refers to player.o(.bss) for playerInventory
     drawscreen.o(i.DrawBattleInventory) refers to spaceinvaders.o(.data) for ADCStatus
+    drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(.conststring) for .conststring
     drawscreen.o(i.DrawBattleScreen) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawSpriteImg) for DrawSpriteImg
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawAllSprites) for DrawAllSprites
@@ -198,11 +202,12 @@ Section Cross References
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawSelection) for DrawSelection
     drawscreen.o(i.DrawBattleScreen) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawBattleInventory) for DrawBattleInventory
+    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.RestoreDeadPokemon) for RestoreDeadPokemon
+    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawPokemonInventory) for DrawPokemonInventory
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawMoveCommands) for DrawMoveCommands
     drawscreen.o(i.DrawBattleScreen) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
     drawscreen.o(i.DrawBattleScreen) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
     drawscreen.o(i.DrawBattleScreen) refers to random.o(.text) for Random
-    drawscreen.o(i.DrawBattleScreen) refers to st7735.o(i.ST7735_OutChar) for ST7735_OutChar
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(.constdata) for .constdata
     drawscreen.o(i.DrawBattleScreen) refers to spaceinvaders.o(.data) for ADCStatus
     drawscreen.o(i.DrawBattleScreen) refers to player.o(.bss) for p1
@@ -216,6 +221,7 @@ Section Cross References
     drawscreen.o(i.DrawMoveCommands) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
     drawscreen.o(i.DrawMoveCommands) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
     drawscreen.o(i.DrawMoveCommands) refers to adc_joystick.o(i.getJoystickY) for getJoystickY
+    drawscreen.o(i.DrawMoveCommands) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
     drawscreen.o(i.DrawMoveCommands) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
     drawscreen.o(i.DrawMoveCommands) refers to random.o(.text) for Random
     drawscreen.o(i.DrawMoveCommands) refers to timer1.o(i.Timer1_Init) for Timer1_Init
@@ -231,6 +237,15 @@ Section Cross References
     drawscreen.o(i.DrawMoveCommands) refers to drawscreen.o(i.moveShakeLeft) for moveShakeLeft
     drawscreen.o(i.DrawMoveCommands) refers to drawscreen.o(i.moveShakeRight) for moveShakeRight
     drawscreen.o(i.DrawMoveCommands) refers to drawscreen.o(i.moveShakeBack) for moveShakeBack
+    drawscreen.o(i.DrawPokemonInventory) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
+    drawscreen.o(i.DrawPokemonInventory) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    drawscreen.o(i.DrawPokemonInventory) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    drawscreen.o(i.DrawPokemonInventory) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
+    drawscreen.o(i.DrawPokemonInventory) refers to adc_joystick.o(i.getJoystickY) for getJoystickY
+    drawscreen.o(i.DrawPokemonInventory) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
+    drawscreen.o(i.DrawPokemonInventory) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
+    drawscreen.o(i.DrawPokemonInventory) refers to player.o(.bss) for pokeTeam
+    drawscreen.o(i.DrawPokemonInventory) refers to spaceinvaders.o(.data) for ADCStatus
     drawscreen.o(i.DrawSimpleMenu) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
     drawscreen.o(i.DrawSimpleMenu) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
     drawscreen.o(i.DrawSimpleMenu) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
@@ -248,6 +263,15 @@ Section Cross References
     drawscreen.o(i.DrawStatusScreen) refers to st7735.o(i.ST7735_OutChar) for ST7735_OutChar
     drawscreen.o(i.DrawStatusScreen) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
     drawscreen.o(i.DrawStatusScreen) refers to player.o(.bss) for p1
+    drawscreen.o(i.DrawSwapPokemon) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
+    drawscreen.o(i.DrawSwapPokemon) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    drawscreen.o(i.DrawSwapPokemon) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
+    drawscreen.o(i.DrawSwapPokemon) refers to adc_joystick.o(i.getJoystickY) for getJoystickY
+    drawscreen.o(i.DrawSwapPokemon) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
+    drawscreen.o(i.DrawSwapPokemon) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
+    drawscreen.o(i.DrawSwapPokemon) refers to player.o(i.addPokemon) for addPokemon
+    drawscreen.o(i.DrawSwapPokemon) refers to player.o(.bss) for pokeTeam
+    drawscreen.o(i.DrawSwapPokemon) refers to spaceinvaders.o(.data) for ADCStatus
     drawscreen.o(i.DrawTitleScreen) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     drawscreen.o(i.DrawTitleScreen) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     drawscreen.o(i.DrawTitleScreen) refers to draw.o(i.DrawAllSprites) for DrawAllSprites
@@ -348,7 +372,7 @@ Section Cross References
     player.o(i.InitPlayer) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     player.o(i.InitPlayer) refers to player.o(.constdata) for .constdata
     player.o(i.InitPlayer) refers to player.o(.bss) for p1
-    player.o(i.InitTeam) refers to player.o(.data) for playerTeam
+    player.o(i.InitTeam) refers to player.o(.bss) for pokeTeam
     player.o(i.LoseBattle) refers to player.o(.bss) for p1
     player.o(i.MoveDown) refers to field.o(i.GetFieldGrid) for GetFieldGrid
     player.o(i.MoveDown) refers to field.o(i.IsWalkable) for IsWalkable
@@ -366,6 +390,12 @@ Section Cross References
     player.o(i.MoveUp) refers to field.o(i.IsWalkable) for IsWalkable
     player.o(i.MoveUp) refers to player.o(.bss) for p1
     player.o(i.MoveUp) refers to field.o(.constdata) for W
+    player.o(i.StartTeam) refers to rt_memclr_w.o(.text) for __aeabi_memclr4
+    player.o(i.StartTeam) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    player.o(i.StartTeam) refers to player.o(.bss) for pokeTeam
+    player.o(i.StartTeam) refers to drawscreen.o(.bss) for allPokemon
+    player.o(i.addPokemon) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
+    player.o(i.addPokemon) refers to player.o(.bss) for pokeTeam
     player.o(.constdata) refers to imagesother.o(.constdata) for playerFront
     shop.o(i.DrawShopScreen) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     shop.o(i.DrawShopScreen) refers to draw.o(i.DrawAllSprites) for DrawAllSprites
@@ -548,7 +578,9 @@ Removing Unused input sections from the image.
     Removing draw.o(i.DrawSpriteInstSelection), (52 bytes).
     Removing field.o(i.SetFieldGrid), (20 bytes).
     Removing player.o(i.DrinkBoba), (16 bytes).
+    Removing player.o(i.InitTeam), (20 bytes).
     Removing player.o(i.LoseBattle), (16 bytes).
+    Removing player.o(.data), (4 bytes).
 
 52 unused section(s) (total 49253 bytes) removed from the image.
 
@@ -1558,8 +1590,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       528         16          0          0        100        744   Library Totals
-         4          0          0          0          4          0   (incl. Padding)
+       528         16          0          0         96        744   Library Totals
+         4          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1568,7 +1600,7 @@ Image component sizes
        524         16          0          0         96        744   c_w.l
 
     ----------------------------------------------------------------------
-       528         16          0          0        100        744   Library Totals
+       528         16          0          0         96        744   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1581,11 +1613,6 @@ Image component sizes
      16332       2868      73364        644       5948      80628   ELF Image Totals (compressed)
      16332       2868      73364        644          0          0   ROM Totals
 
-==============================================================================
-
-    Total RO  Size (Code + RO Data)                89696 (  87.59kB)
-    Total RW  Size (RW Data + ZI Data)              8168 (   7.98kB)
-    Total ROM Size (Code + RO Data + RW Data)      90340 (  88.22kB)
 
 ==============================================================================
 
