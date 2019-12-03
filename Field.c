@@ -26,8 +26,9 @@ const uint8_t SA = 12;
 
 const uint8_t FIELD_WIDTH = 30;
 const uint8_t FIELD_HEIGHT = 30;
-PokemonInstType WorldPokemons[10];
-uint8_t numWorldPokemon = 10;
+PokemonInstType WorldPokemons[40];
+uint8_t numWorldPokemon = 40;
+uint8_t numWorldInstantiated = 0;
 
 SpriteType background[3];
 SpriteType fieldObj[11];
@@ -48,7 +49,7 @@ void InitBackgroundTypes(){
 	
 	fieldObj[1] = (SpriteType) {rock, 16, 16};
 	fieldObj[2] = (SpriteType) {bush, 16, 16};
-	fieldObj[3] = (SpriteType) {torchic, 16, 16};
+	fieldObj[3] = (SpriteType) {shopnpc, 16, 16};
 	fieldObj[4] = (SpriteType) {storeS, 16, 16};
 	fieldObj[5] = (SpriteType) {storeT, 16, 16};
 	fieldObj[6] = (SpriteType) {storeO, 16, 16};
@@ -102,6 +103,10 @@ void DrawField(){
 	}
 }
 
+void ClearGrid(uint8_t row, uint8_t col){
+	
+}
+
 bool IsWalkable(uint8_t row, uint8_t col){
 	return GetObjGrid(row, col) != R && GetObjGrid(row, col) != T && GetObjGrid(row, col) != S;
 }
@@ -112,7 +117,7 @@ bool IsPokemonWalkable(uint8_t row, uint8_t col, uint8_t index){
 	
 	for(int i=0; i<numWorldPokemon; i++){
 		if(i == index) continue;
-		if(WorldPokemons[index].xPos == WorldPokemons[i].xPos && WorldPokemons[index].yPos == WorldPokemons[i].yPos) return false;
+		if(col == WorldPokemons[i].xPos && row == WorldPokemons[i].yPos) return false;
 	}
 	return true;
 }
@@ -156,27 +161,27 @@ uint8_t fieldArray[] = {
 	N, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, //0
 	N, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, N, N, //1
 	N, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, N, N, W, W, N, N, N, //2
-	N, G, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, N, W, W, W, W, N, N, //3
+	N, G, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, N, N, //3
 	N, G, G, G, W, W, W, N, N, N, W, N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, //4
-	N, G, G, G, W, W, W, N, N, N, W, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
-	N, G, G, G, W, W, W, N, N, W, W, N, N, N, N, N, N, N, N, W, W, W, N, N, W, N, N, N, N, N, //6
-	G, G, G, G, W, W, W, N, W, W, W, N, N, N, N, N, N, N, N, W, W, N, N, N, W, W, W, G, N, N, //7
-	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, N, N, N, N, G, N, N, //8
-	N, G, G, G, G, G, N, W, W, W, W, W, G, W, N, N, N, N, N, N, N, N, N, N, W, W, G, G, N, N, //9
-	N, G, G, N, G, G, N, N, W, W, G, G, G, W, W, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //10
-	N, G, G, N, N, N, N, N, N, N, N, N, G, G, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, //11
-	N, G, G, N, N, N, N, N, N, N, N, N, G, G, N, N, N, N, W, W, N, N, N, N, N, G, G, G, G, G, //12
-	N, N, N, N, N, N, N, N, N, N, N, N, G, N, N, N, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, W, G, N, N, N, N, N, N, N, N, N, N, //14
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, N, N, N, N, N, //15
-	N, N, G, G, G, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, N, N, W, W, W, N, N, //16
+	N, G, G, G, W, W, W, N, W, W, W, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
+	N, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, N, N, //6
+	G, G, G, G, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, W, W, W, W, G, N, N, //7
+	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, W, W, W, N, G, N, N, //8
+	N, G, G, G, G, G, N, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, W, W, W, G, G, N, N, //9
+	N, G, G, N, G, G, N, N, W, W, W, G, G, G, G, N, N, N, W, W, W, N, N, N, N, N, G, G, G, G, //10
+	N, G, G, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, W, N, W, N, N, N, N, N, G, G, G, G, //11
+	N, G, G, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, W, W, W, N, N, N, N, G, G, G, G, G, //12
+	N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, G, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, N, G, W, G, N, N, N, N, N, N, N, N, N, N, //14
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, G, G, N, N, N, N, N, N, N, N, N, N, //15
+	N, N, G, G, G, N, N, N, N, N, N, N, N, N, G, G, G, G, G, G, N, N, N, N, N, W, W, W, N, N, //16
 	N, N, G, G, G, N, N, N, N, N, G, G, N, N, N, G, G, W, W, W, N, N, N, N, N, N, W, W, N, N, //17
 	N, N, G, N, G, G, G, W, W, N, G, G, N, N, N, G, G, W, W, W, W, W, N, W, N, N, W, W, N, N, //18
-	N, N, N, N, G, G, G, W, W, G, G, G, N, N, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
-	N, N, N, W, W, W, G, W, W, N, G, G, G, N, G, G, N, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
-	N, N, N, W, W, G, G, G, N, N, N, W, G, N, G, G, N, G, N, G, N, N, N, N, N, G, G, G, G, N, //21
-	N, N, N, W, W, G, G, N, N, N, N, W, G, N, G, G, N, N, N, G, N, N, N, N, G, G, G, G, N, N, //22
-	N, N, N, W, W, N, N, N, N, N, W, W, G, W, G, N, G, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
+	N, N, N, N, G, G, G, W, W, G, G, G, N, N, G, G, G, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
+	N, N, N, W, W, W, G, W, W, N, G, G, G, G, G, G, G, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
+	N, N, N, W, W, G, G, G, N, N, N, W, G, G, G, G, G, G, G, G, N, N, N, N, N, G, G, G, G, N, //21
+	N, N, N, W, W, G, G, N, N, N, N, W, G, G, G, G, G, G, N, G, N, N, N, N, G, G, G, G, N, N, //22
+	N, N, N, W, W, N, N, N, N, N, W, W, G, W, G, G, G, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
 	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, N, G, G, G, G, N, N, N, N, N, G, G, G, N, N, //24
 	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, G, G, W, G, N, N, N, N, N, N, N, N, N, N, //25
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, G, W, G, W, W, W, W, W, N, N, N, N, N, //26
