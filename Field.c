@@ -24,16 +24,40 @@ const uint8_t SR = 10;
 const uint8_t SE = 11;
 const uint8_t SA = 12;
 
+const uint8_t grassTile = 0;
+const uint8_t waterTile = 1;
+const uint8_t bothTile = 2;
+
 const uint8_t FIELD_WIDTH = 30;
 const uint8_t FIELD_HEIGHT = 30;
-PokemonInstType WorldPokemons[40];
-uint8_t numWorldPokemon = 40;
+PokemonInstType WorldPokemons[20];
+uint8_t numWorldPokemon = 20;
 uint8_t numWorldInstantiated = 0;
+
+GridCoordinateType grassGrids[900];
+uint32_t grassGridsLength = 0;
+GridCoordinateType waterGrids[900];
+uint32_t waterGridsLength = 0;
+
 
 SpriteType background[3];
 SpriteType fieldObj[11];
 uint8_t screenGrid[63];
 uint8_t screenObj[63];
+
+void InitGridCoordinates(){
+	for(int row=0; row<FIELD_HEIGHT; row++){
+		for(int col=0; col<FIELD_WIDTH; col++){
+			if(GetFieldGrid(row, col) == G){
+				grassGrids[grassGridsLength] = (GridCoordinateType) {row, col};
+				grassGridsLength++;
+			}else if(GetFieldGrid(row, col) == W){
+				waterGrids[waterGridsLength] = (GridCoordinateType) {row, col};
+				waterGridsLength++;
+			}
+		}
+	}
+}
 
 void ClearScreenGrid(){
 	for(int i=0; i<63; i++){
@@ -111,9 +135,14 @@ bool IsWalkable(uint8_t row, uint8_t col){
 	return GetObjGrid(row, col) != R && GetObjGrid(row, col) != T && GetObjGrid(row, col) != S;
 }
 
-bool IsPokemonWalkable(uint8_t row, uint8_t col, uint8_t index){
+bool IsPokemonWalkable(uint8_t row, uint8_t col, uint8_t preRow, uint8_t preCol, uint8_t index){
 	bool rWalkable = IsWalkable(row, col);
 	if(!rWalkable) return false;
+	uint8_t curGridType = GetFieldGrid(preRow, preCol);
+	uint8_t gridType = GetFieldGrid(row, col);
+	if(WorldPokemons[index].species.tileType == grassTile && gridType != G && curGridType == G) return false;
+	if(WorldPokemons[index].species.tileType == waterTile && gridType != W && curGridType == W) return false;
+	if(WorldPokemons[index].species.tileType == bothTile && gridType != G && gridType != W && (curGridType == G || curGridType == W)) return false;
 	
 	for(int i=0; i<numWorldPokemon; i++){
 		if(i == index) continue;

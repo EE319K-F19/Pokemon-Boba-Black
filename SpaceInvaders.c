@@ -116,6 +116,7 @@ int main(void){
 	
   EnableInterrupts();
 	
+	InitGridCoordinates();
 	ClearScreenGrid();
 	InitBackgroundTypes();
 	InitShop();

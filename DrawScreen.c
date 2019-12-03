@@ -69,17 +69,17 @@ void InitPokemon(){
 	SpriteType vulpixW = {vulpixWorldFront, 16, 16};
 	SpriteType eeveeW = {eeveeWorldFront, 16, 16};
 	
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2};
-	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3};
-	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4};
-	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5};
-	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6};
-	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8};
-	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9};
-	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10};
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2, grassTile};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3, bothTile};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4, grassTile};
+	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile};
+	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile};
+	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, grassTile};
+	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile};
+	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -104,7 +104,7 @@ void IncSeed(){
 }
 
 uint8_t DrawLanguageSelection(){
-	Timer1_Init(IncSeed, 1000);
+	Timer1_Init(IncSeed, 500);
 	ST7735_FillScreen(0x0000);
 	
 	char *langs[2];
@@ -168,24 +168,24 @@ PokemonType DrawTitleScreen(uint8_t language){
 
 void MoveWorldPokemon(){
 	for(uint8_t i=0; i<numWorldPokemon; i++){
-		uint8_t moveDir = Random()%4;
+		uint8_t moveDir = Random()%7;
 		if(moveDir == 0){ //up
-			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, i)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].yPos --;
 				WorldPokemons[i].flip = false;
 			}
 		}else if(moveDir == 1){ //down
-			if(IsPokemonWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos, i)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].yPos ++;
 				WorldPokemons[i].flip = true;
 			}
 		}else if(moveDir == 2){ //left
-			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1, i)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].xPos --;
 				WorldPokemons[i].flip = false;
 			}
 		}else if(moveDir == 3){ //right
-			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1, i)){
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].xPos ++;
 				WorldPokemons[i].flip = true;
 			}
@@ -211,23 +211,53 @@ PokemonInstType GenerateRandomPokemonInit(uint8_t index){
 	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
 }
 
+GridCoordinateType GetPokemonGrid(uint8_t gridType){
+	if(gridType == grassTile){
+		uint32_t count = grassGridsLength;
+		uint32_t gridIndex = Random32()%count;
+		return grassGrids[gridIndex];
+	}else if(gridType == waterTile){
+		uint32_t count = waterGridsLength;
+		uint32_t gridIndex = Random32()%count;
+		return waterGrids[gridIndex];
+	}else{
+		uint32_t count = waterGridsLength + grassGridsLength;
+		uint32_t gridIndex = Random32()%count;
+		if(gridIndex < grassGridsLength){
+			return grassGrids[gridIndex];
+		}else {
+			return waterGrids[gridIndex-grassGridsLength];
+		}
+	}
+}
+
+bool IsPokemonPosOnEdge(uint8_t xPos, uint8_t yPos){
+	if(xPos < 4 || xPos >= FIELD_WIDTH-4 || yPos < 5 || yPos >= FIELD_HEIGHT-5) return true;
+	return false;
+}
+
 PokemonInstType GenerateRandomPokemon(uint8_t index){
 	uint8_t pokemon = Random()%11;
+	PokemonType pokemonType = allPokemon[pokemon];
+	
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
-	while(!IsPokemonWalkable(yPos, xPos, index) || (xPos == p1.XPos && yPos == p1.YPos)){
-		xPos = Random()%(FIELD_WIDTH-8) + 4;
-		yPos = Random()%(FIELD_HEIGHT-10) + 5;
+	while(!IsPokemonWalkable(yPos, xPos, yPos, xPos, index) || (xPos == p1.XPos && yPos == p1.YPos) || IsPokemonPosOnEdge(xPos, yPos)){
+		GridCoordinateType randomCoordinate = GetPokemonGrid(pokemonType.tileType);
+		xPos = randomCoordinate.col;
+		yPos = randomCoordinate.row;
 	}
 	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
 }
 
 bool DrawWorld(uint8_t language){
+	
+	const uint32_t movePokemonTime = 25000000;
 	for(uint8_t i=0; i<numWorldPokemon; i++){
 		WorldPokemons[i] = GenerateRandomPokemonInit(i);
 		numWorldInstantiated ++;
 	}
-	Timer1_Init(MoveWorldPokemon, 80000000);
+	Timer1_Init(MoveWorldPokemon, movePokemonTime);
 	
 	//draws black border around the edges of the screen
 	DrawBorder(GAME_BORDER_W, GAME_BORDER_W, _width-2*GAME_BORDER_W, _height-2*GAME_BORDER_W, GAME_BORDER_W, GAME_BORDER_COLOR);
@@ -246,15 +276,14 @@ bool DrawWorld(uint8_t language){
 		uint8_t yDir = getJoystickY();
 		ADCStatus = 0;
 		
-		bool moved = false;
 		if(xDir == 0){
-			moved = MoveLeft();
+			MoveLeft();
 		}else if(xDir == 2){
-			moved = MoveRight();
+			MoveRight();
 		}else if(yDir == 0){
-			moved = MoveUp();
+			MoveUp();
 		}else if(yDir == 2){
-			moved = MoveDown();
+			MoveDown();
 		}
 		
 		DrawField();
@@ -263,7 +292,7 @@ bool DrawWorld(uint8_t language){
 			ClearScreenGrid();
 			DrawBattleScreen(&pokeTeam.pokemon[0], &WorldPokemons[encounter], language);
 			WorldPokemons[encounter] = GenerateRandomPokemon(encounter);
-			Timer1_Init(MoveWorldPokemon, 80000000);
+			Timer1_Init(MoveWorldPokemon, movePokemonTime);
 		}
 		//uint8_t encounter = Random()%6;
 		//if(moved && encounter == 0 && (GetFieldGrid(p1.YPos, p1.XPos) == W || GetFieldGrid(p1.YPos, p1.XPos) == G)){
