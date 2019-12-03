@@ -35,7 +35,7 @@ void InitInventory(){
 void InitTeam(){
 	pokeTeam->currIndex = 0;
 	pokeTeam->size = 0;
-	pokeTeam->pokemon = (PokemonInstType*)malloc(sizeof(PokemonInstType)*6);
+	//pokeTeam->pokemon = (PokemonInstType*)malloc(sizeof(PokemonInstType)*6);
 }
 
 void DrinkBoba(){

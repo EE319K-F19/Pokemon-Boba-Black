@@ -448,14 +448,14 @@
               <FilePath>.\StructDec.h</FilePath>
             </File>
             <File>
-              <FileName>SystemInfo.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SystemInfo.h</FilePath>
-            </File>
-            <File>
               <FileName>SystemInfo.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SystemInfo.c</FilePath>
+            </File>
+            <File>
+              <FileName>SystemInfo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SystemInfo.h</FilePath>
             </File>
             <File>
               <FileName>Battle.h</FileName>
