@@ -86,7 +86,7 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 		if(p1->coins > 9) ST7735_OutChar((char) (p1->coins/10) + 0x30);
 		ST7735_OutChar((char) (p1->coins%10) + 0x30);
 		ST7735_OutString("C  ");
-		while(ADCStatus == 0){}
+		while(ADCStatus == 0) {}
 		uint8_t xDir = getJoystickX();
 		uint8_t yDir = getJoystickY();
 		ADCStatus = 0;
@@ -117,6 +117,17 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 				else ST7735_OutString("You purchased a\n ");
 				ST7735_OutString(shopItems[shopScreen.currentIndex].item.name[language]);
 				inventory[shopScreen.currentIndex].count ++;
+				//while(1){if(isPE3Pressed()) break;};
+				if(shopScreen.currentIndex == 2){
+						ST7735_SetCursor(1, 14);
+						// ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+						inventory[shopScreen.currentIndex].count --;
+						if(language) ST7735_OutString("Tu felicidad\n aument\xA2 en 25!");
+						else ST7735_OutString("Your happiness \n increased by 25!");
+						p1->happiness += 25;
+						if(p1->happiness > 100) p1->happiness = 100;
+						while(1){if(isPE3Pressed()) break;};
+				}
 			}else {
 				ST7735_SetCursor(1, 14);
 				if(language) ST7735_OutString("Uy! No tienes\n suficientes monedas");
