@@ -17,6 +17,7 @@
 #include "Shop.h"
 #include "Timer1.h"
 #include "Sound.h"
+#include "ImagesOther.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "ImagesPokemonWorld.h"
 
@@ -123,7 +124,7 @@ PokemonType DrawTitleScreen(uint8_t language){
 	PokemonType starters[3] = {BulbasaurT, SquirtleT, CharmanderT};
 	SpriteInstType starterInsts[3];
 	
-	uint8_t starterYPos = 130;
+	uint8_t starterYPos = 145;
 	uint8_t starterXPos = 2;
 	uint8_t starterXSep = 42;
 	
@@ -136,17 +137,17 @@ PokemonType DrawTitleScreen(uint8_t language){
 	
 	DrawAllSprites(starterScreen);
 	
-	ST7735_SetTextColor(ST7735_BLACK);
-	ST7735_SetCursor(1, 1);
-	if(language) ST7735_OutString("Pokemon Boba Negro");
-	else ST7735_OutString("Pokemon Boba Black");
-	ST7735_SetCursor(1, 2);
-	if(language) ST7735_OutString("Hecho por Andy/Iris");
-	else ST7735_OutString("Made by Andy & Iris");
-	ST7735_SetCursor(1, 3);
-	if(language) ST7735_OutString("Seleccione\n su entrante");
-	else ST7735_OutString("Please select your\n starter.");
+	SpriteType pokemonTitleS; 
+	if(language) pokemonTitleS = (SpriteType) {pokemonnameSpanish, 128, 54};
+	else pokemonTitleS = (SpriteType) {pokemonname, 128, 54};
+	SpriteInstType pokemonTitle = {0, pokemonTitleS.height+10, pokemonTitleS};
+	DrawSpriteImg(pokemonTitle);
 	
+	ST7735_SetTextColor(ST7735_BLACK);
+	ST7735_SetCursor(1, 7);
+	if(language) ST7735_OutString("Seleccione su\n entrante");
+	else ST7735_OutString("Please select your\n starter.");
+	while(1){}
 	while(1){
 		
 		while(ADCStatus == 0){}
