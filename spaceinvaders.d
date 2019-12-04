@@ -18,6 +18,7 @@
 .\spaceinvaders.o: PokemonType.h
 .\spaceinvaders.o: ImagesPokemon2.h
 .\spaceinvaders.o: Draw.h
+.\spaceinvaders.o: ImagesOther.h
 .\spaceinvaders.o: SpaceInvaders.h
 .\spaceinvaders.o: Shop.h
 .\spaceinvaders.o: SystemInfo.h

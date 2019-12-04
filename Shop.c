@@ -27,7 +27,7 @@ void InitShop(void){
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
 	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 70, "70 C", 2};
-	ItemType potionItem = {{"health potion", "pocion"}, potionSprite, 20, "20 C", 1};
+	ItemType potionItem = {{"potion", "pocion"}, potionSprite, 15, "15 C", 1};
 	ItemType pokeballItem = {{"pokeball", "pokeball"}, pokeballSprite, 10, "10 C", 0};
 	
 	ItemInstType bobaShop = {86, 80, bobaItem};
@@ -123,7 +123,6 @@ void DrawShopScreen(PlayerType* p1, ItemInventoryType* inventory, SpriteSelectTy
 						else ST7735_OutString("Your happiness \n increased by 25!");
 						p1->happiness += 25;
 						if(p1->happiness > 100) p1->happiness = 100;
-						while(1){if(isPE3Pressed()) break;};
 				}
 			}else {
 				ST7735_SetCursor(1, 14);
