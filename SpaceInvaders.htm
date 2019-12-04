@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 03 21:36:51 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Dec 03 22:01:01 2019
 <BR><P>
 <H3>Maximum Stack Usage =       1088 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -41,6 +41,7 @@ Mutually Recursive functions
  <LI><a href="#[b]">PendSV_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[b]">PendSV_Handler</a><BR>
  <LI><a href="#[1b]">ADC0Seq0_Handler</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1b]">ADC0Seq0_Handler</a><BR>
  <LI><a href="#[95]">writedata</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[95]">writedata</a><BR>
+ <LI><a href="#[af]">DrawMoveCommands</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[af]">DrawMoveCommands</a><BR>
 </UL>
 <P>
 <H3>
@@ -1023,9 +1024,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[af]"></a>DrawMoveCommands</STRONG> (Thumb, 1780 bytes, Stack size 144 bytes, drawscreen.o(i.DrawMoveCommands))
-<BR><BR>[Stack]<UL><LI>Max Depth = 304 + Unknown Stack Size
-<LI>Call Chain = DrawMoveCommands &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
+<P><STRONG><a name="[af]"></a>DrawMoveCommands</STRONG> (Thumb, 1994 bytes, Stack size 152 bytes, drawscreen.o(i.DrawMoveCommands))
+<BR><BR>[Stack]<UL><LI>Max Depth = 312 + Unknown Stack Size
+ + In Cycle
+<LI>Call Chain = DrawMoveCommands &rArr;  DrawMoveCommands (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE3Pressed
 <LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sound_Buzz
@@ -1037,11 +1039,13 @@ Global Symbols
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Random
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE2Pressed
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getJoystickY
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawHPBars
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawEPBars
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
+<BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
 
 <P><STRONG><a name="[ae]"></a>DrawPokemonInventory</STRONG> (Thumb, 414 bytes, Stack size 464 bytes, drawscreen.o(i.DrawPokemonInventory))

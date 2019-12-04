@@ -867,6 +867,20 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			}else if(selected == 1){
 				selectedMove = signature;
 			}
+			
+			if(selected == 1 && pokeLeft->cenergy <= 0){
+				ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+				ST7735_SetCursor(1, 12);
+				ST7735_OutString(pokeLeft->species.name);
+				if(language) ST7735_OutString(" no le queda\n energía.");
+				else ST7735_OutString(" does not\n have any\n energy left.");
+				while(1) {if(isPE3Pressed()) break;}
+				ST7735_FillRect(0, 104, 128, 46, 0xFFFF);
+				return DrawMoveCommands(pokeLeft, pokeRight, language);
+			}else if(selected == 1) {
+				pokeLeft->cenergy --;
+			}
+			
 			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
 			ST7735_SetCursor(1, 12);
 			ST7735_OutString(pokeLeft->species.name);
@@ -948,11 +962,15 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			return 1;
 		}
 				
-		bool useNormal = Random()%2 == 0;
+		uint8_t movePool = 2;
+		
+		if(pokeRight->cenergy <= 0) movePool = 1;
+		bool useNormal = Random()%movePool == 0;
 		if(useNormal){
 			selectedMove = NormalMoves[pokeRight->species.moveSet];
 		}else {
 			selectedMove = SignatureMoves[pokeRight->species.moveSet];
+			pokeRight->cenergy --;
 		}
 				
 		ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
