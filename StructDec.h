@@ -84,6 +84,7 @@ struct Pokemon {
 	uint32_t speed;
 	uint8_t moveSet;
 	uint8_t tileType;
+	uint8_t menergy;
 };
 
 struct PokemonInst {
@@ -93,6 +94,7 @@ struct PokemonInst {
 	PokemonType species;
 	bool flip;
 	uint8_t numWait;
+	uint8_t cenergy;
 };
 
 struct PokemonTeam {

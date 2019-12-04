@@ -73,18 +73,18 @@ void InitPokemon(){
 	SpriteType eeveeW = {eeveeWorldFront, 16, 16};
 	SpriteType horseaW = {horsea, 16, 16};
 	
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2, grassTile};
-	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3, bothTile};
-	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4, grassTile};
-	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile};
-	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile};
-	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, bothTile};
-	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile};
-	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile};
-	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile};
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile, 3};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile, 2};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2, grassTile, 4};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3, bothTile, 5};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4, grassTile, 4};
+	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile, 3};
+	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile, 4};
+	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile, 3};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, bothTile, 3};
+	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile, 5};
+	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile, 5};
+	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile, 3};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -228,7 +228,7 @@ PokemonInstType GenerateRandomPokemonInit(uint8_t index){
 		xPos = Random()%(FIELD_WIDTH-8) + 4;
 		yPos = Random()%(FIELD_HEIGHT-10) + 5;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
 }
 
 GridCoordinateType GetPokemonGrid(uint8_t gridType){
@@ -267,7 +267,7 @@ PokemonInstType GenerateRandomPokemon(uint8_t index){
 		xPos = randomCoordinate.col;
 		yPos = randomCoordinate.row;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
 }
 
 bool DrawWorld(uint8_t language){
@@ -338,18 +338,16 @@ void DrawStatusScreen(uint8_t language){
 	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 			
-	ST7735_SetCursor(1, 5);
+	ST7735_SetCursor(1, 3);
 	if(language) ST7735_OutString("Monedas: ");
 	else ST7735_OutString("Coins: ");
 	LCD_OutDec(p1.coins);
 	ST7735_OutString("C");
 			
-	ST7735_SetCursor(1, 6);
+	ST7735_SetCursor(1, 4);
 	if(language) ST7735_OutString("Felicidad: ");
 	else ST7735_OutString("Happiness: ");
-	if(p1.happiness > 99) ST7735_OutChar((char) (p1.happiness/100) + 0x30);
-	if(p1.happiness > 9) ST7735_OutChar((char) (p1.happiness/10) + 0x30);
-	ST7735_OutChar((char) (p1.happiness%10) + 0x30);
+	LCD_OutDec(p1.happiness);
 	ST7735_OutString("/100");
 	
 	ST7735_SetCursor(1, 7);
@@ -394,6 +392,14 @@ void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	
 	ST7735_FillRect(pokeBattleLeftX+5, 35, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, lColor);
 	ST7735_FillRect(pokeBattleRightX+5, 35, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
+}
+
+void DrawEPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	ST7735_FillRect(pokeBattleLeftX+5, 40, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 40, 30, 2, 0x0000);
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 40, pokeLeft->cenergy*30/pokeLeft->species.menergy, 2, 0xFF00);
+	ST7735_FillRect(pokeBattleRightX+5, 40, pokeRight->cenergy*30/pokeRight->species.menergy, 2, 0xFF00);
 }
 
 void RestoreDeadPokemon(void){
@@ -450,6 +456,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 	DrawAllSprites(battleScreen);
 	
 	DrawHPBars(pokeLeft, pokeRight);
+	DrawEPBars(pokeLeft, pokeRight);
 	
 	while(1){
 		
@@ -486,6 +493,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 				leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 				DrawSpriteImg(leftInst);
 				DrawHPBars(pokeLeft, pokeRight);
+				DrawEPBars(pokeLeft, pokeRight);
 				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){ // Fight
 				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
@@ -537,6 +545,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 						leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 						DrawSpriteImg(leftInst);
 						DrawHPBars(pokeLeft, pokeRight);
+						DrawEPBars(pokeLeft, pokeRight);
 						DrawAllSprites(battleScreen);
 					}
 				}
@@ -718,6 +727,7 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 						else ST7735_OutString(" has been \n healed.");
 						pokeLeft->chealth = pokeLeft->species.mhealth;
 						DrawHPBars(pokeLeft, pokeRight);
+						DrawEPBars(pokeLeft, pokeRight);
 						while(1){if(isPE3Pressed()) break;};
 					}else if(selected == 0){ // Using pokeball
 						ST7735_SetCursor(1, 12);
@@ -861,6 +871,20 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			}else if(selected == 1){
 				selectedMove = signature;
 			}
+			
+			if(selected == 1 && pokeLeft->cenergy <= 0){
+				ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+				ST7735_SetCursor(1, 12);
+				ST7735_OutString(pokeLeft->species.name);
+				if(language) ST7735_OutString(" no le queda\n energía.");
+				else ST7735_OutString(" does not\n have any\n energy left.");
+				while(1) {if(isPE3Pressed()) break;}
+				ST7735_FillRect(0, 104, 128, 46, 0xFFFF);
+				return DrawMoveCommands(pokeLeft, pokeRight, language);
+			}else if(selected == 1) {
+				pokeLeft->cenergy --;
+			}
+			
 			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
 			ST7735_SetCursor(1, 12);
 			ST7735_OutString(pokeLeft->species.name);
@@ -902,6 +926,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			pokeRight->chealth = pokeRight->chealth - damage;
 			
 			DrawHPBars(pokeLeft, pokeRight);
+			DrawEPBars(pokeLeft, pokeRight);
 		
 			//play sound
 		if(selected == 0){
@@ -935,11 +960,15 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			return 1;
 		}
 				
-		bool useNormal = Random()%2 == 0;
+		uint8_t movePool = 2;
+		
+		if(pokeRight->cenergy <= 0) movePool = 1;
+		bool useNormal = Random()%movePool == 0;
 		if(useNormal){
 			selectedMove = NormalMoves[pokeRight->species.moveSet];
 		}else {
 			selectedMove = SignatureMoves[pokeRight->species.moveSet];
+			pokeRight->cenergy --;
 		}
 				
 		ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
@@ -981,6 +1010,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		pokeLeft->chealth = pokeLeft->chealth - damage;
 				
 		DrawHPBars(pokeLeft, pokeRight);
+		DrawEPBars(pokeLeft, pokeRight);
 				
 		//play sound
 		if(useNormal){
