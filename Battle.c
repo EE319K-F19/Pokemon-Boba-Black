@@ -42,5 +42,8 @@ void InitMoves(){
 
 	NormalMoves[10] = (MoveType) {{"Bite", "Mordedura"}, Dark, CAT_PHYSICAL, 60};
 	SignatureMoves[10] = (MoveType) {{"Take Down", "Derribar"}, Normal, CAT_PHYSICAL, 90};
+	
+	NormalMoves[11] = (MoveType) {{"Bubble", "Burbuja"}, Water, CAT_SPECIAL, 40};
+	SignatureMoves[11] = (MoveType) {{"Dragon Pulse", "Pulso de Dragon"}, Dragon, CAT_SPECIAL, 120};
 }
 
