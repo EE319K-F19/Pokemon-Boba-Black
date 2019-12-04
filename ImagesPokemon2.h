@@ -14,6 +14,7 @@ extern const unsigned short ponyta[];
 extern const unsigned short dratini[];
 extern const unsigned short jigglypuff[];
 extern const unsigned short vulpix[];
+extern const unsigned short horsea[];
 
 #endif
 

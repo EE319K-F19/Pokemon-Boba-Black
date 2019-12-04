@@ -34,11 +34,12 @@ PokemonType DratiniT;
 PokemonType EeveeT;
 PokemonType JigglypuffT;
 PokemonType VulpixT;
+PokemonType HorseaT;
 
 uint8_t simpleMenuY = 90;
 uint16_t simpleMenuColor = 0xFFFF;
-uint32_t numPokemon = 11;
-PokemonType allPokemon[11];
+uint32_t numPokemonSpecies = 12;
+PokemonType allPokemon[12];
 
 int8_t backReturn = -1;
 bool seedTimer = true;
@@ -56,6 +57,7 @@ void InitPokemon(){
 	SpriteType jigglypuffS = {jigglypuff, 40, 40};
 	SpriteType vulpixS = {vulpix, 40, 40};
 	SpriteType eeveeS = {eevee, 40, 40};
+	SpriteType horseaS = {horsea, 40, 40};
 
 	SpriteType bulbasaurW = {bulbasaurWorldFront, 16, 16};
 	SpriteType squirtleW = {squirtleWorldFront, 16, 16};
@@ -68,6 +70,7 @@ void InitPokemon(){
 	SpriteType jigglypuffW = {jigglypuffWorldFront, 16, 16};
 	SpriteType vulpixW = {vulpixWorldFront, 16, 16};
 	SpriteType eeveeW = {eeveeWorldFront, 16, 16};
+	SpriteType horseaW = {horsea, 16, 16};
 	
 	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile};
 	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile};
@@ -80,6 +83,7 @@ void InitPokemon(){
 	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, grassTile};
 	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile};
 	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile};
+	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -92,6 +96,7 @@ void InitPokemon(){
 	allPokemon[8] = JigglypuffT;
 	allPokemon[9] = VulpixT;
 	allPokemon[10] = EeveeT;
+	allPokemon[11] = HorseaT;
 }
 
 void IncSeed(){
@@ -331,6 +336,15 @@ void DrawStatusScreen(uint8_t language){
 	if(p1.happiness > 9) ST7735_OutChar((char) (p1.happiness/10) + 0x30);
 	ST7735_OutChar((char) (p1.happiness%10) + 0x30);
 	ST7735_OutString("/100");
+	
+	ST7735_SetCursor(1, 7);
+	ST7735_OutString("Pokemon Team: \n ");
+	for(int i = 0; i < pokeTeam.size; i++){
+		ST7735_OutString(pokeTeam.pokemon[i].species.name);
+		ST7735_OutString(" - ");
+		LCD_OutDec(pokeTeam.pokemon[i].chealth);
+		ST7735_OutString(" HP \n ");
+	}
 	
 	while(1){
 		if(isPE2Pressed()) break;
