@@ -15,6 +15,10 @@ extern const unsigned short dratini[];
 extern const unsigned short jigglypuff[];
 extern const unsigned short vulpix[];
 extern const unsigned short horsea[];
+extern const unsigned short meowth[];
+extern const unsigned short butterfree[];
+extern const unsigned short nidoran[];
+extern const unsigned short cubone[];
 
 #endif
 
