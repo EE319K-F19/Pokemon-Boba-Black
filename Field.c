@@ -193,27 +193,27 @@ uint8_t fieldArray[] = {
 	N, G, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, N, N, //3
 	N, G, G, G, W, W, W, N, N, N, W, N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, //4
 	N, G, G, G, W, W, W, N, W, W, W, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, N, N, //5
-	N, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, N, N, //6
-	G, G, G, G, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, W, W, W, W, G, N, N, //7
-	G, G, G, G, G, W, W, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, W, W, W, N, G, N, N, //8
-	N, G, G, G, G, G, N, W, W, W, W, W, W, W, N, N, N, N, N, W, W, N, N, W, W, W, G, G, N, N, //9
-	N, G, G, N, G, G, N, N, W, W, W, G, G, G, G, N, N, N, W, W, W, N, N, N, N, N, G, G, G, G, //10
-	N, G, G, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, W, N, W, N, N, N, N, N, G, G, G, G, //11
-	N, G, G, N, N, N, N, N, N, N, N, G, G, G, G, N, N, N, W, W, W, N, N, N, N, G, G, G, G, G, //12
-	N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, G, N, N, W, W, N, N, N, N, N, N, N, N, G, N, //13
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, N, G, W, G, N, N, N, N, N, N, N, N, N, N, //14
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, G, G, G, G, G, G, N, N, N, N, N, N, N, N, N, N, //15
+	N, G, G, G, W, W, W, W, W, W, W, W, N, N, N, N, N, N, N, W, W, W, N, W, W, W, N, N, N, N, //6
+	G, G, G, G, G, W, G, W, W, W, W, W, N, N, N, N, N, N, N, W, W, N, N, W, W, W, W, G, N, N, //7
+	G, G, G, G, G, G, G, W, W, W, W, W, N, N, N, N, N, N, N, W, W, N, N, W, W, W, N, G, N, N, //8
+	N, G, G, G, G, G, G, W, W, W, W, G, N, N, N, N, N, N, N, W, W, N, N, W, W, W, G, G, N, N, //9
+	N, G, G, G, G, G, N, N, W, W, W, G, G, G, G, N, N, N, W, W, W, N, N, N, G, G, G, G, G, G, //10
+	N, G, G, G, G, N, N, N, N, N, N, G, G, G, G, N, N, N, W, G, G, G, N, N, G, G, G, G, G, G, //11
+	N, G, G, G, G, N, N, N, N, N, N, G, G, G, G, N, N, N, W, G, G, G, G, G, G, G, G, G, G, G, //12
+	N, N, N, G, G, N, N, N, N, N, N, G, G, G, G, G, N, N, W, G, G, G, G, G, N, N, N, N, G, N, //13
+	N, N, N, G, G, N, N, N, N, N, N, N, N, N, G, G, N, G, W, G, G, G, G, G, N, N, N, N, N, N, //14
+	N, N, N, G, G, N, N, N, N, N, N, N, N, N, G, G, G, G, G, G, N, G, G, N, N, N, N, N, N, N, //15
 	N, N, G, G, G, N, N, N, N, N, N, N, N, N, G, G, G, G, G, G, N, N, N, N, N, W, W, W, N, N, //16
 	N, N, G, G, G, N, N, N, N, N, G, G, N, N, N, G, G, W, W, W, N, N, N, N, N, N, W, W, N, N, //17
 	N, N, G, N, G, G, G, W, W, N, G, G, N, N, N, G, G, W, W, W, W, W, N, W, N, N, W, W, N, N, //18
 	N, N, N, N, G, G, G, W, W, G, G, G, N, N, G, G, G, W, W, W, W, W, W, W, W, N, N, N, N, N, //19
-	N, N, N, W, W, W, G, W, W, N, G, G, G, G, G, G, G, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
-	N, N, N, W, W, G, G, G, N, N, N, W, G, G, G, G, G, G, G, G, N, N, N, N, N, G, G, G, G, N, //21
-	N, N, N, W, W, G, G, N, N, N, N, W, G, G, G, G, G, G, N, G, N, N, N, N, G, G, G, G, N, N, //22
-	N, N, N, W, W, N, N, N, N, N, W, W, G, W, G, G, G, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
-	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, N, G, G, G, G, N, N, N, N, N, G, G, G, N, N, //24
-	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, G, G, W, G, N, N, N, N, N, N, N, N, N, N, //25
-	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, G, W, G, W, W, W, W, W, N, N, N, N, N, //26
+	N, N, N, W, W, W, G, W, W, W, G, G, G, G, G, G, G, N, N, N, N, W, W, N, W, W, N, N, G, N, //20
+	N, N, N, W, W, G, G, W, W, W, W, W, G, G, G, G, G, G, G, G, N, N, N, N, N, G, G, G, G, N, //21
+	N, N, N, W, W, G, G, N, W, W, W, W, G, G, G, G, G, G, N, G, N, N, N, N, G, G, G, G, N, N, //22
+	N, N, N, W, W, N, N, N, W, W, W, W, G, W, G, W, W, G, G, G, N, N, N, N, G, G, G, G, N, N, //23
+	N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, G, N, N, N, N, N, G, G, G, N, N, //24
+	N, N, N, N, N, N, N, N, N, N, W, W, W, N, W, W, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //25
+	N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //26
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, W, W, W, W, W, W, N, N, N, N, N, //27
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, W, W, W, N, N, N, N, N, N, //28
 	N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, N, W, W, W, W, N, N, N, N, N, N, N, N, N, N, //29

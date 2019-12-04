@@ -19,6 +19,7 @@
 #include "Sound.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "ImagesPokemonWorld.h"
+#include "ImagesOther.h"
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
@@ -80,7 +81,7 @@ void InitPokemon(){
 	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile};
 	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile};
 	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, grassTile};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, bothTile};
 	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile};
 	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile};
 	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile};
@@ -128,7 +129,7 @@ PokemonType DrawTitleScreen(uint8_t language){
 	PokemonType starters[3] = {BulbasaurT, SquirtleT, CharmanderT};
 	SpriteInstType starterInsts[3];
 	
-	uint8_t starterYPos = 130;
+	uint8_t starterYPos = 145;
 	uint8_t starterXPos = 2;
 	uint8_t starterXSep = 42;
 	
@@ -141,15 +142,15 @@ PokemonType DrawTitleScreen(uint8_t language){
 	
 	DrawAllSprites(starterScreen);
 	
+	SpriteType pokemonTitleS; 
+	if(language) pokemonTitleS = (SpriteType) {pokemonnameSpanish, 128, 54};
+	else pokemonTitleS = (SpriteType) {pokemonname, 128, 54};
+	SpriteInstType pokemonTitle = {0, pokemonTitleS.height+10, pokemonTitleS};
+	DrawSpriteImg(pokemonTitle);
+	
 	ST7735_SetTextColor(ST7735_BLACK);
-	ST7735_SetCursor(1, 1);
-	if(language) ST7735_OutString("Pokemon Boba Negro");
-	else ST7735_OutString("Pokemon Boba Black");
-	ST7735_SetCursor(1, 2);
-	if(language) ST7735_OutString("Hecho por Andy/Iris");
-	else ST7735_OutString("Made by Andy & Iris");
-	ST7735_SetCursor(1, 3);
-	if(language) ST7735_OutString("Seleccione\n su entrante");
+	ST7735_SetCursor(1, 7);
+	if(language) ST7735_OutString("Seleccione su\n entrante");
 	else ST7735_OutString("Please select your\n starter.");
 	
 	while(1){
@@ -172,8 +173,17 @@ PokemonType DrawTitleScreen(uint8_t language){
 }
 
 void MoveWorldPokemon(){
+	const uint8_t waitCooldown = 5;
+	
 	for(uint8_t i=0; i<numWorldPokemon; i++){
-		uint8_t moveDir = Random()%7;
+		uint8_t moveDir = Random()%40;
+		bool moved = true;
+		
+		if(WorldPokemons[i].numWait > 0){
+			WorldPokemons[i].numWait--;
+			continue;
+		}
+		
 		if(moveDir == 0){ //up
 			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
 				WorldPokemons[i].yPos --;
@@ -194,7 +204,12 @@ void MoveWorldPokemon(){
 				WorldPokemons[i].xPos ++;
 				WorldPokemons[i].flip = true;
 			}
+		}else {
+			moved = false;
+			if(WorldPokemons[i].numWait > 0) WorldPokemons[i].numWait--;
 		}
+		
+		if(moved) WorldPokemons[i].numWait = waitCooldown;
 	}
 }
 
@@ -213,7 +228,7 @@ PokemonInstType GenerateRandomPokemonInit(uint8_t index){
 		xPos = Random()%(FIELD_WIDTH-8) + 4;
 		yPos = Random()%(FIELD_HEIGHT-10) + 5;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
 }
 
 GridCoordinateType GetPokemonGrid(uint8_t gridType){
@@ -252,12 +267,12 @@ PokemonInstType GenerateRandomPokemon(uint8_t index){
 		xPos = randomCoordinate.col;
 		yPos = randomCoordinate.row;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
 }
 
 bool DrawWorld(uint8_t language){
 	
-	const uint32_t movePokemonTime = 25000000;
+	const uint32_t movePokemonTime = 6666666;
 	for(uint8_t i=0; i<numWorldPokemon; i++){
 		WorldPokemons[i] = GenerateRandomPokemonInit(i);
 		numWorldInstantiated ++;
@@ -360,12 +375,25 @@ bool PokemonAllDead(void){
 	return true;
 }
 
+	uint8_t pokeBattleLeftX = 2;
+	uint8_t pokeBattleRightX = 86;
+	uint8_t pokeBattleY = 90;
+
 void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
-	ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-	ST7735_FillRect(pokeRight->xPos+5, 45, 30, 2, 0x0000);
+	uint32_t lowColor = 0x00FF;
+	uint32_t highColor = 0x0FF0;
 	
-	ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
-	ST7735_FillRect(pokeRight->xPos+5, 45, pokeRight->chealth*30/pokeRight->species.mhealth, 2, 0x00FF);
+	uint32_t lColor = highColor;
+	uint32_t rColor = highColor;
+	
+	if(pokeLeft->chealth <= pokeLeft->species.mhealth/2) lColor = lowColor;
+	if(pokeRight->chealth <= pokeRight->species.mhealth/2) rColor = lowColor;
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 35, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 35, 30, 2, 0x0000);
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 35, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, lColor);
+	ST7735_FillRect(pokeBattleRightX+5, 35, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
 }
 
 void RestoreDeadPokemon(void){
@@ -376,13 +404,18 @@ void RestoreDeadPokemon(void){
 	}
 }
 
+	
 void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
 	ST7735_FillScreen(0xFFFF);
-	pokeLeft->xPos = 2;
-	pokeLeft->yPos = 90;
-	pokeRight->xPos = 86;
-	pokeRight->yPos = 90;
+	uint8_t pokeBattleLeftX = 2;
+	uint8_t pokeBattleRightX = 86;
+	uint8_t pokeBattleY = 90;
+	
+	pokeLeft->xPos = pokeBattleLeftX;
+	pokeLeft->yPos = pokeBattleY;
+	pokeRight->xPos = pokeBattleRightX;
+	pokeRight->yPos = pokeBattleY;
 	SpriteInstType leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 	SpriteInstType rightInst = (SpriteInstType) {86, 90, pokeRight->species.sprite};
 	
@@ -452,8 +485,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 				pokeLeft = DrawPokemonInventory(language);
 				leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 				DrawSpriteImg(leftInst);
-				ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-				ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
+				DrawHPBars(pokeLeft, pokeRight);
 				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){ // Fight
 				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
@@ -563,7 +595,7 @@ PokemonInstType* DrawPokemonInventory(uint8_t language){
 			ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
 			ST7735_SetCursor(1, 12);
 			ST7735_OutString(pokeTeam.pokemon[pokeTeam.currIndex].species.name);
-			if(language) ST7735_OutString(" intercambiado\n por ");
+			if(language) ST7735_OutString("\n intercambiado\n por ");
 			else ST7735_OutString(" swapped\n for ");
 			ST7735_OutString(pokeTeam.pokemon[aliveIndex[selected]].species.name);
 			while(1){if(isPE3Pressed()) break;};
@@ -736,6 +768,7 @@ int8_t curX = 0;
 bool timerOn = false;
 void moveShakeLeft(){
 	if(curX >= -10){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
 		pokeShakeInst.x_left --;
 		DrawSpriteImg(pokeShakeInst);
 		curX--;
@@ -747,6 +780,7 @@ void moveShakeLeft(){
 
 void moveShakeRight(){
 	if(curX <= 10){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
 		pokeShakeInst.x_left ++;
 		DrawSpriteImg(pokeShakeInst);
 		curX++;
@@ -758,10 +792,12 @@ void moveShakeRight(){
 
 void moveShakeBack(){
 	if(curX > 0){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
 		pokeShakeInst.x_left --;
 		DrawSpriteImg(pokeShakeInst);
 		curX--;
 	}else if(curX < 0){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
 		pokeShakeInst.x_left ++;
 		DrawSpriteImg(pokeShakeInst);
 		curX++;
@@ -879,104 +915,103 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			soundStatus = 0;
 				
 			pokeShakeInst = rightInst;
-	
-	// Battle animations
-	for(int i=0; i<3; i++){
+		
+		// Battle animations
+		for(int i=0; i<3; i++){
+			timerOn = true;
+			Timer1_Init(moveShakeLeft, 20000);
+			while(timerOn){}
+			timerOn = true;
+			Timer1_Init(moveShakeRight, 20000);	
+			while(timerOn){}
+		}
 		timerOn = true;
-		Timer1_Init(moveShakeLeft, 20000);
+		Timer1_Init(moveShakeBack, 20000);	
 		while(timerOn){}
-		timerOn = true;
-		Timer1_Init(moveShakeRight, 20000);	
-		while(timerOn){}
-	}
-	timerOn = true;
-	Timer1_Init(moveShakeBack, 20000);	
-	while(timerOn){}
 		DrawSpriteImg(pokeShakeInst);
-			while(1) {if(isPE3Pressed()) break;}
-			
-			//Opponent pokemon attack
-			if(pokeRight->chealth == 0) {
-				ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
-				return 1;
-			}
-			
-			bool useNormal = Random()%2 == 0;
-			if(useNormal){
-				selectedMove = NormalMoves[pokeRight->species.moveSet];
-			}else {
-				selectedMove = SignatureMoves[pokeRight->species.moveSet];
-			}
-			
-			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
-			ST7735_SetCursor(1, 12);
-			ST7735_OutString(pokeRight->species.name);
-			if(language) ST7735_OutString(" usado \n ");
-			else ST7735_OutString(" used \n ");
-			ST7735_OutString(selectedMove.name[language]);
-			while(1) {if(isPE3Pressed()) break;}
-			
-			ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
-			effectiveness = TypesArray[selectedMove.type][pokeLeft->species.type];
-			ST7735_SetCursor(1, 12);
-			if(effectiveness == A){
-				if(language) ST7735_OutString("Muy efectivo!");
-				else ST7735_OutString("Very effective!");
-			}else if(effectiveness == C){
-				if(language) ST7735_OutString("Poco efectivo.");
-				else ST7735_OutString("Not very effective.");
-			}else if(effectiveness == D){
-				if(language) ST7735_OutString("Sin efecto...");
-				else ST7735_OutString("No effect...");
-			}else{
-				if(language) ST7735_OutString("Fue\n decentemente\n efectivo.");
-				else ST7735_OutString("It was\n decently effective.");
-			}
-			
-			if(selectedMove.category == CAT_PHYSICAL){
-				attack = pokeRight->species.attack;
-				defense = pokeLeft->species.defense;
-			}else {
-				attack = pokeRight->species.spattack;
-				defense = pokeLeft->species.spdefense;
-			}
-			
-			randomDamMul = Random()%25;
-			damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
-			if(damage > pokeLeft->chealth) damage = pokeLeft->chealth;
-			pokeLeft->chealth = pokeLeft->chealth - damage;
-			
-			ST7735_FillRect(pokeLeft->xPos+5, 45, 30, 2, 0x0000);
-			ST7735_FillRect(pokeLeft->xPos+5, 45, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, 0x00FF);
-			
-			//play sound
-			if(selectedMove.category == CAT_PHYSICAL){
-				Sound_Alarm();
-			}else{
-				Sound_Buzz();
-			}
-			//Sound_Highpitch();
-			//Sound_Alarm();
-			//Sound_Buzz();
-			//Sound_Laser();
-			//Sound_Rumble();
-			//Sound_Stomp();
-			while(soundStatus == 0){}
-			soundStatus = 0;
-			
-			pokeShakeInst = leftInst;
-	
-	for(int i=0; i<3; i++){
+		while(1) {if(isPE3Pressed()) break;}
+				
+		//Opponent pokemon attack
+		if(pokeRight->chealth == 0) {
+			ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
+			return 1;
+		}
+				
+		bool useNormal = Random()%2 == 0;
+		if(useNormal){
+			selectedMove = NormalMoves[pokeRight->species.moveSet];
+		}else {
+			selectedMove = SignatureMoves[pokeRight->species.moveSet];
+		}
+				
+		ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+		ST7735_SetCursor(1, 12);
+		ST7735_OutString(pokeRight->species.name);
+		if(language) ST7735_OutString(" usado \n ");
+		else ST7735_OutString(" used \n ");
+		ST7735_OutString(selectedMove.name[language]);
+		while(1) {if(isPE3Pressed()) break;}
+				
+		ST7735_FillRect(0, 104, 116, 46, 0xFFFF);
+		effectiveness = TypesArray[selectedMove.type][pokeLeft->species.type];
+		ST7735_SetCursor(1, 12);
+		if(effectiveness == A){
+			if(language) ST7735_OutString("Muy efectivo!");
+			else ST7735_OutString("Very effective!");
+		}else if(effectiveness == C){
+			if(language) ST7735_OutString("Poco efectivo.");
+			else ST7735_OutString("Not very effective.");
+		}else if(effectiveness == D){
+			if(language) ST7735_OutString("Sin efecto...");
+			else ST7735_OutString("No effect...");
+		}else{
+			if(language) ST7735_OutString("Fue\n decentemente\n efectivo.");
+			else ST7735_OutString("It was\n decently effective.");
+		}
+				
+		if(selectedMove.category == CAT_PHYSICAL){
+			attack = pokeRight->species.attack;
+			defense = pokeLeft->species.defense;
+		}else {
+			attack = pokeRight->species.spattack;
+			defense = pokeLeft->species.spdefense;
+		}
+				
+		randomDamMul = Random()%25;
+		damage = ((8*attack*selectedMove.power/defense)/20 + 2)*(effectiveness*(75+randomDamMul))/2/100 + 1;
+		if(damage > pokeLeft->chealth) damage = pokeLeft->chealth;
+		pokeLeft->chealth = pokeLeft->chealth - damage;
+				
+		DrawHPBars(pokeLeft, pokeRight);
+				
+		//play sound
+		if(selectedMove.category == CAT_PHYSICAL){
+			Sound_Alarm();
+		}else{
+			Sound_Buzz();
+		}
+		//Sound_Highpitch();
+		//Sound_Alarm();
+		//Sound_Buzz();
+		//Sound_Laser();
+		//Sound_Rumble();
+		//Sound_Stomp();
+		while(soundStatus == 0){}
+		soundStatus = 0;
+				
+		pokeShakeInst = leftInst;
+		
+		for(int i=0; i<3; i++){
+			timerOn = true;
+			Timer1_Init(moveShakeLeft, 20000);
+			while(timerOn){}
+			timerOn = true;
+			Timer1_Init(moveShakeRight, 20000);	
+			while(timerOn){}
+		}
 		timerOn = true;
-		Timer1_Init(moveShakeLeft, 20000);
+		Timer1_Init(moveShakeBack, 20000);	
 		while(timerOn){}
-		timerOn = true;
-		Timer1_Init(moveShakeRight, 20000);	
-		while(timerOn){}
-	}
-	timerOn = true;
-	Timer1_Init(moveShakeBack, 20000);	
-	while(timerOn){}
 			
 		DrawSpriteImg(pokeShakeInst);
 			while(1) if(isPE3Pressed()) break;

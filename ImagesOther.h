@@ -26,5 +26,7 @@ extern const unsigned short storeO[];
 extern const unsigned short storeR[];
 extern const unsigned short storeE[];
 extern const unsigned short storeArrow[];
+extern const unsigned short pokemonname[];
+extern const unsigned short pokemonnameSpanish[];
 
 #endif
