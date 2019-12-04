@@ -877,7 +877,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 				ST7735_SetCursor(1, 12);
 				ST7735_OutString(pokeLeft->species.name);
 				if(language) ST7735_OutString(" no le queda\n energía.");
-				else ST7735_OutString(" does not\n have any\n energy left.");
+				else ST7735_OutString(" does\n not have any\n energy left.");
 				while(1) {if(isPE3Pressed()) break;}
 				ST7735_FillRect(0, 104, 128, 46, 0xFFFF);
 				return DrawMoveCommands(pokeLeft, pokeRight, language);

@@ -67,6 +67,7 @@
 #include "PokemonType.h"
 #include "ImagesPokemon2.h"
 #include "Draw.h"
+#include "ImagesOther.h"
 #include "SpaceInvaders.h"
 
 #include "Shop.h"
@@ -115,7 +116,15 @@ int main(void){
 
 void PrintWinLoseScreen(bool win, uint8_t language){
 	ST7735_FillScreen(0xFFFF);
-	ST7735_SetCursor(2, 5);
+	
+	SpriteType pokemonTitleS; 
+	if(language) pokemonTitleS = (SpriteType) {pokemonnameSpanish, 128, 54};
+	else pokemonTitleS = (SpriteType) {pokemonname, 128, 54};
+	SpriteInstType pokemonTitle = {0, pokemonTitleS.height+10, pokemonTitleS};
+	DrawSpriteImg(pokemonTitle);
+	
+	ST7735_SetTextColor(ST7735_BLACK);
+	ST7735_SetCursor(1, 8);
 	if(win) {
 		if(language) ST7735_OutString("\xADTu personaje\n es muy feliz!\n \xADT\xA3 ganas!");
 		else ST7735_OutString("Your character\n is very happy!\n You win!");
