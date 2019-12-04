@@ -388,18 +388,18 @@ void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	if(pokeRight->chealth <= pokeRight->species.mhealth/2) rColor = lowColor;
 	
 	ST7735_FillRect(pokeBattleLeftX+5, 35, 30, 2, 0x0000);
-	ST7735_FillRect(pokeBattleRightX+5, 35, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 25, 30, 2, 0x0000);
 	
 	ST7735_FillRect(pokeBattleLeftX+5, 35, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, lColor);
-	ST7735_FillRect(pokeBattleRightX+5, 35, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
+	ST7735_FillRect(pokeBattleRightX+5, 25, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
 }
 
 void DrawEPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	ST7735_FillRect(pokeBattleLeftX+5, 40, 30, 2, 0x0000);
-	ST7735_FillRect(pokeBattleRightX+5, 40, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 30, 30, 2, 0x0000);
 	
 	ST7735_FillRect(pokeBattleLeftX+5, 40, pokeLeft->cenergy*30/pokeLeft->species.menergy, 2, 0xFF00);
-	ST7735_FillRect(pokeBattleRightX+5, 40, pokeRight->cenergy*30/pokeRight->species.menergy, 2, 0xFF00);
+	ST7735_FillRect(pokeBattleRightX+5, 30, pokeRight->cenergy*30/pokeRight->species.menergy, 2, 0xFF00);
 }
 
 void RestoreDeadPokemon(void){
@@ -410,6 +410,20 @@ void RestoreDeadPokemon(void){
 	}
 }
 
+void DrawPokemonNames(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	
+	ST7735_FillRect(0, 0, 72, 30, 0xFFFF);
+	ST7735_SetCursor(1, 2);
+	ST7735_OutString(pokeLeft->species.name);
+	
+	uint8_t length = 0;
+	while(pokeRight->species.name[length] != 0x0000){
+		length++;
+	}
+	
+	ST7735_SetCursor(20-length, 4);
+	ST7735_OutString(pokeRight->species.name);
+}
 	
 void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
@@ -457,6 +471,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 	
 	DrawHPBars(pokeLeft, pokeRight);
 	DrawEPBars(pokeLeft, pokeRight);
+	DrawPokemonNames(pokeLeft, pokeRight);
 	
 	while(1){
 		
@@ -495,6 +510,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 				DrawHPBars(pokeLeft, pokeRight);
 				DrawEPBars(pokeLeft, pokeRight);
 				DrawAllSprites(battleScreen);
+				DrawPokemonNames(pokeLeft, pokeRight);
 			}else if(battleScreen.currentIndex == 0){ // Fight
 				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
 				if(results == 0) DrawAllSprites(battleScreen);
@@ -547,6 +563,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 						DrawHPBars(pokeLeft, pokeRight);
 						DrawEPBars(pokeLeft, pokeRight);
 						DrawAllSprites(battleScreen);
+						DrawPokemonNames(pokeLeft, pokeRight);
 					}
 				}
 			}
@@ -726,6 +743,7 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 						if(language) ST7735_OutString("ha sido \n curado");
 						else ST7735_OutString(" has been \n healed.");
 						pokeLeft->chealth = pokeLeft->species.mhealth;
+						pokeLeft->cenergy = pokeLeft->species.menergy;
 						DrawHPBars(pokeLeft, pokeRight);
 						DrawEPBars(pokeLeft, pokeRight);
 						while(1){if(isPE3Pressed()) break;};
@@ -877,7 +895,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 				ST7735_SetCursor(1, 12);
 				ST7735_OutString(pokeLeft->species.name);
 				if(language) ST7735_OutString(" no le queda\n energía.");
-				else ST7735_OutString(" does not\n have any\n energy left.");
+				else ST7735_OutString(" does\n not have any\n energy left.");
 				while(1) {if(isPE3Pressed()) break;}
 				ST7735_FillRect(0, 104, 128, 46, 0xFFFF);
 				return DrawMoveCommands(pokeLeft, pokeRight, language);
