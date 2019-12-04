@@ -94,7 +94,7 @@ struct PokemonInst {
 	PokemonType species;
 	bool flip;
 	uint8_t numWait;
-	//uint8_t cenergy;
+	uint8_t cenergy;
 };
 
 struct PokemonTeam {

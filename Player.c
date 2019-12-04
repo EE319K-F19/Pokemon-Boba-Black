@@ -34,12 +34,12 @@ void InitTeam(){
 void StartTeam(){
 	pokeTeam.currIndex = 0;
 	pokeTeam.size = 6;
-	pokeTeam.pokemon[0] = (PokemonInstType){0, 0, allPokemon[0].mhealth, allPokemon[0], 0};
-	pokeTeam.pokemon[1] = (PokemonInstType){0, 0, allPokemon[1].mhealth, allPokemon[1], 0};
-	pokeTeam.pokemon[2] = (PokemonInstType){0, 0, allPokemon[2].mhealth, allPokemon[2], 0};
-	pokeTeam.pokemon[3] = (PokemonInstType){0, 0, allPokemon[3].mhealth, allPokemon[3], 0};
-	pokeTeam.pokemon[4] = (PokemonInstType){0, 0, allPokemon[4].mhealth, allPokemon[4], 0};
-	pokeTeam.pokemon[5] = (PokemonInstType){0, 0, allPokemon[5].mhealth, allPokemon[5], 0};
+	pokeTeam.pokemon[0] = (PokemonInstType){0, 0, allPokemon[0].mhealth, allPokemon[0], false, 0, allPokemon[0].menergy};
+	pokeTeam.pokemon[1] = (PokemonInstType){0, 0, allPokemon[1].mhealth, allPokemon[1], false, 0, allPokemon[1].menergy};
+	pokeTeam.pokemon[2] = (PokemonInstType){0, 0, allPokemon[2].mhealth, allPokemon[2], false, 0, allPokemon[2].menergy};
+	pokeTeam.pokemon[3] = (PokemonInstType){0, 0, allPokemon[3].mhealth, allPokemon[3], false, 0, allPokemon[3].menergy};
+	pokeTeam.pokemon[4] = (PokemonInstType){0, 0, allPokemon[4].mhealth, allPokemon[4], false, 0, allPokemon[4].menergy};
+	pokeTeam.pokemon[5] = (PokemonInstType){0, 0, allPokemon[5].mhealth, allPokemon[5], false, 0, allPokemon[5].menergy};
 }
 void DrinkBoba(){
 	p1.happiness += 25;
@@ -53,6 +53,7 @@ void addPokemon(PokemonInstType* newPokemon, uint32_t index){
 	pokeTeam.pokemon[index].chealth = newPokemon->chealth;
 	pokeTeam.pokemon[index].species = newPokemon->species;
 	pokeTeam.pokemon[index].numWait = 0;
+	pokeTeam.pokemon[index].cenergy = newPokemon->cenergy;
 	if(pokeTeam.size < 6){
 		pokeTeam.size++;
 	}

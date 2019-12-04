@@ -228,7 +228,7 @@ PokemonInstType GenerateRandomPokemonInit(uint8_t index){
 		xPos = Random()%(FIELD_WIDTH-8) + 4;
 		yPos = Random()%(FIELD_HEIGHT-10) + 5;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
 }
 
 GridCoordinateType GetPokemonGrid(uint8_t gridType){
@@ -267,7 +267,7 @@ PokemonInstType GenerateRandomPokemon(uint8_t index){
 		xPos = randomCoordinate.col;
 		yPos = randomCoordinate.row;
 	}
-	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0};
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
 }
 
 bool DrawWorld(uint8_t language){
@@ -394,6 +394,14 @@ void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
 	ST7735_FillRect(pokeBattleRightX+5, 35, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
 }
 
+void DrawEPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	ST7735_FillRect(pokeBattleLeftX+5, 40, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 40, 30, 2, 0x0000);
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 40, pokeLeft->cenergy*30/pokeLeft->species.menergy, 2, 0xFF00);
+	ST7735_FillRect(pokeBattleRightX+5, 40, pokeRight->cenergy*30/pokeRight->species.menergy, 2, 0xFF00);
+}
+
 void RestoreDeadPokemon(void){
 	for(int i = 0; i < pokeTeam.size; i++){
 		if(pokeTeam.pokemon[i].chealth == 0){
@@ -448,6 +456,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 	DrawAllSprites(battleScreen);
 	
 	DrawHPBars(pokeLeft, pokeRight);
+	DrawEPBars(pokeLeft, pokeRight);
 	
 	while(1){
 		
@@ -484,6 +493,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 				leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 				DrawSpriteImg(leftInst);
 				DrawHPBars(pokeLeft, pokeRight);
+				DrawEPBars(pokeLeft, pokeRight);
 				DrawAllSprites(battleScreen);
 			}else if(battleScreen.currentIndex == 0){ // Fight
 				int results = DrawMoveCommands(pokeLeft, pokeRight, language);
@@ -535,6 +545,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 						leftInst = (SpriteInstType) {2, 90, pokeLeft->species.sprite};
 						DrawSpriteImg(leftInst);
 						DrawHPBars(pokeLeft, pokeRight);
+						DrawEPBars(pokeLeft, pokeRight);
 						DrawAllSprites(battleScreen);
 					}
 				}
@@ -712,6 +723,7 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 						else ST7735_OutString(" has been \n healed.");
 						pokeLeft->chealth = pokeLeft->species.mhealth;
 						DrawHPBars(pokeLeft, pokeRight);
+						DrawEPBars(pokeLeft, pokeRight);
 						while(1){if(isPE3Pressed()) break;};
 					}else if(selected == 0){ // Using pokeball
 						ST7735_SetCursor(1, 12);
@@ -896,6 +908,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			pokeRight->chealth = pokeRight->chealth - damage;
 			
 			DrawHPBars(pokeLeft, pokeRight);
+			DrawEPBars(pokeLeft, pokeRight);
 		
 			//play sound
 			if(selectedMove.category == CAT_PHYSICAL){
@@ -981,6 +994,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		pokeLeft->chealth = pokeLeft->chealth - damage;
 				
 		DrawHPBars(pokeLeft, pokeRight);
+		DrawEPBars(pokeLeft, pokeRight);
 				
 		//play sound
 		if(selectedMove.category == CAT_PHYSICAL){
