@@ -73,18 +73,18 @@ void InitPokemon(){
 	SpriteType eeveeW = {eeveeWorldFront, 16, 16};
 	SpriteType horseaW = {horsea, 16, 16};
 	
-	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile};
-	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile};
-	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2, grassTile};
-	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3, bothTile};
-	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4, grassTile};
-	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile};
-	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile};
-	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile};
-	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, bothTile};
-	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile};
-	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile};
-	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile};
+	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile, 3};
+	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile, 2};
+	CharmanderT = (PokemonType) {"Charmander", Fire, charmanderS, charmanderW, 39, 52, 43, 60, 50, 65, 2, grassTile, 4};
+	PidgeyT = (PokemonType) {"Pidgey", Flying, pidgeyS, pidgeyW, 40, 45, 40, 35, 35, 56, 3, bothTile, 5};
+	PikachuT = (PokemonType) {"Pikachu", Electric, pikachuS, pikachuW, 35, 55, 40, 50, 50, 90, 4, grassTile, 4};
+	PsyduckT = (PokemonType) {"Psyduck", Water, psyduckS, psyduckW, 50, 52, 48, 65, 50, 55, 5, waterTile, 3};
+	PonytaT = (PokemonType) {"Ponyta", Fire, ponytaS, ponytaW, 50, 85, 55, 65, 65, 90, 6, grassTile, 4};
+	DratiniT = (PokemonType) {"Dratini", Dragon, dratiniS, dratiniW, 41, 64, 45, 50, 50, 50, 7, bothTile, 3};
+	JigglypuffT = (PokemonType) {"Jigglypuff", Fairy, jigglypuffS, jigglypuffW, 115, 45, 20, 45, 25, 20, 8, bothTile, 3};
+	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile, 5};
+	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile, 5};
+	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile, 3};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
