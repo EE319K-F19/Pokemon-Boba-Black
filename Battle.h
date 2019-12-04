@@ -5,7 +5,7 @@
 extern const uint8_t CAT_PHYSICAL;
 extern const uint8_t CAT_SPECIAL;
 
-extern MoveType NormalMoves[100];
-extern MoveType SignatureMoves[100];
+extern MoveType NormalMoves[20];
+extern MoveType SignatureMoves[20];
 
 void InitMoves(void);

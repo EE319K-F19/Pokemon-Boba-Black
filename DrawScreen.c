@@ -40,11 +40,15 @@ PokemonType ButterfreeT;
 PokemonType CuboneT;
 PokemonType MeowthT;
 PokemonType NidoranT;
+PokemonType AbraT;
+PokemonType GhastlyT;
+PokemonType MachampT;
+PokemonType GeodudeT;
 
 uint8_t simpleMenuY = 90;
 uint16_t simpleMenuColor = 0xFFFF;
-uint32_t numPokemonSpecies = 16;
-PokemonType allPokemon[16];
+uint32_t numPokemonSpecies = 20;
+PokemonType allPokemon[20];
 
 int8_t backReturn = -1;
 bool seedTimer = true;
@@ -67,6 +71,10 @@ void InitPokemon(){
 	SpriteType meowthS = {meowth, 40, 40};
 	SpriteType butterfreeS = {butterfree, 40, 40};
 	SpriteType nidoranS = {nidoran, 40, 40};
+	SpriteType abraS = {abra, 40, 40};
+	SpriteType ghastlyS = {ghastly, 40, 40};
+	SpriteType machampS = {machamp, 40, 40};
+	SpriteType geodudeS = {geodude, 40, 40};
 
 	SpriteType bulbasaurW = {bulbasaurWorldFront, 16, 16};
 	SpriteType squirtleW = {squirtleWorldFront, 16, 16};
@@ -84,6 +92,10 @@ void InitPokemon(){
 	SpriteType meowthW = {meowthWorldFront, 16, 16};
 	SpriteType butterfreeW = {butterfreeWorldFront, 16, 16};
 	SpriteType nidoranW = {nidoranWorldFront, 16, 16};
+	SpriteType abraW = {abraWorldFront, 16, 16};
+	SpriteType ghastlyW = {ghastlyWorldFront, 16, 16};
+	SpriteType machampW = {machampWorldFront, 16, 16};
+	SpriteType geodudeW = {geodudeWorldFront, 16, 16};
 	
 	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile, 3};
 	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile, 2};
@@ -101,6 +113,10 @@ void InitPokemon(){
 	ButterfreeT = (PokemonType) {"Butterfree", Bug, butterfreeS, butterfreeW, 60, 45, 50, 90, 80, 70, 13, bothTile, 5};
 	MeowthT = (PokemonType) {"Meowth", Normal, meowthS, meowthW, 40, 45, 35, 40, 40, 90, 14, grassTile, 5};
 	NidoranT = (PokemonType) {"Nidoran", Poison, nidoranS, nidoranW, 46, 57, 40, 40, 40, 50, 15, grassTile, 5};
+	AbraT = (PokemonType) {"Abra", Psychic, abraS, abraW, 25, 20, 15, 105, 55, 90, 16, waterTile, 4};
+	GhastlyT = (PokemonType) {"Gastly", Ghost, ghastlyS, ghastlyW, 30, 35, 30, 100, 35, 80, 17, waterTile, 5};
+	MachampT = (PokemonType) {"Machop", Fighting, machampS, machampW, 70, 80, 50, 35, 35, 35, 18, grassTile, 4};
+	GeodudeT = (PokemonType) {"Geodude", Rock, geodudeS, geodudeW, 40, 80, 100, 30, 30, 20, 19, grassTile, 4};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -118,6 +134,10 @@ void InitPokemon(){
 	allPokemon[13] = ButterfreeT;
 	allPokemon[14] = MeowthT;
 	allPokemon[15] = NidoranT;
+	allPokemon[16] = AbraT;
+	allPokemon[17] = GhastlyT;
+	allPokemon[18] = MachampT;
+	allPokemon[19] = GeodudeT;
 }
 
 void IncSeed(){

@@ -18,5 +18,9 @@ extern const unsigned short meowthWorldFront[];
 extern const unsigned short butterfreeWorldFront[];
 extern const unsigned short nidoranWorldFront[];
 extern const unsigned short cuboneWorldFront[];
+extern const unsigned short abraWorldFront[];
+extern const unsigned short ghastlyWorldFront[];
+extern const unsigned short machampWorldFront[];
+extern const unsigned short geodudeWorldFront[];
 
 #endif

@@ -107,7 +107,7 @@ int main(void){
 	language = DrawLanguageSelection();
 	PokemonType starterT = DrawTitleScreen(language);
 	PokemonInstType starterPokemon = {0, 0, starterT.mhealth, starterT, false, 0, starterT.menergy};
-	//InitTeam();
+	InitTeam();
 	addPokemon(&starterPokemon, pokeTeam.size);
 	//StartTeam();
 	bool win = DrawWorld(language);
@@ -127,7 +127,7 @@ void PrintWinLoseScreen(bool win, uint8_t language){
 	ST7735_SetCursor(1, 8);
 	if(win) {
 		if(language) ST7735_OutString("\xADTu personaje\n es muy feliz!\n \xADT\xA3 ganas!");
-		else ST7735_OutString("Your character\n is very happy!\n You win!");
+		else ST7735_OutString("Your character\n is very full\n on boba!\n You win!");
 	}
 	else{
 		if(language) ST7735_OutString("Tu personaje\n esta muy\n triste.\n \xADT\xA3 pierdes!");
