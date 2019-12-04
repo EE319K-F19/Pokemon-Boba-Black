@@ -338,18 +338,16 @@ void DrawStatusScreen(uint8_t language){
 	ClearScreenGrid();
 	ST7735_FillScreen(0xFFFF);
 			
-	ST7735_SetCursor(1, 5);
+	ST7735_SetCursor(1, 3);
 	if(language) ST7735_OutString("Monedas: ");
 	else ST7735_OutString("Coins: ");
 	LCD_OutDec(p1.coins);
 	ST7735_OutString("C");
 			
-	ST7735_SetCursor(1, 6);
+	ST7735_SetCursor(1, 4);
 	if(language) ST7735_OutString("Felicidad: ");
 	else ST7735_OutString("Happiness: ");
-	if(p1.happiness > 99) ST7735_OutChar((char) (p1.happiness/100) + 0x30);
-	if(p1.happiness > 9) ST7735_OutChar((char) (p1.happiness/10) + 0x30);
-	ST7735_OutChar((char) (p1.happiness%10) + 0x30);
+	LCD_OutDec(p1.happiness);
 	ST7735_OutString("/100");
 	
 	ST7735_SetCursor(1, 7);
