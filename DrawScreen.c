@@ -743,6 +743,7 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 						if(language) ST7735_OutString("ha sido \n curado");
 						else ST7735_OutString(" has been \n healed.");
 						pokeLeft->chealth = pokeLeft->species.mhealth;
+						pokeLeft->cenergy = pokeLeft->species.menergy;
 						DrawHPBars(pokeLeft, pokeRight);
 						DrawEPBars(pokeLeft, pokeRight);
 						while(1){if(isPE3Pressed()) break;};
