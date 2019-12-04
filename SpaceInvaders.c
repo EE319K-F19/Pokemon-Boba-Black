@@ -124,10 +124,9 @@ int main(void){
 	InitInventory();
 	InitPokemon();
 	InitMoves();
-	
 	language = DrawLanguageSelection();
 	PokemonType starterT = DrawTitleScreen(language);
-	PokemonInstType starterPokemon = {0, 0, starterT.mhealth, starterT};
+	PokemonInstType starterPokemon = {0, 0, starterT.mhealth, starterT, 0};
 	InitTeam();
 	addPokemon(&starterPokemon, pokeTeam.size);
 	StartTeam();
