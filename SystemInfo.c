@@ -8,7 +8,7 @@ int16_t _width = ST7735_TFTWIDTH;
 int16_t _height = ST7735_TFTHEIGHT;
 const uint8_t GRID_LENGTH = 16;
 const uint8_t GAME_BORDER_W = 8;
-const uint16_t GAME_BORDER_COLOR = 0xFFFF;
+const uint16_t GAME_BORDER_COLOR = 0x0000;
 
 const int16_t SCREEN_COLUMNS = (128-2*GAME_BORDER_W)/GRID_LENGTH;
 const int16_t SCREEN_ROWS = (160-2*GAME_BORDER_W)/GRID_LENGTH;

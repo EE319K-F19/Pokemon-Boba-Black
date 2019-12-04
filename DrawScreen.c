@@ -17,9 +17,9 @@
 #include "Shop.h"
 #include "Timer1.h"
 #include "Sound.h"
-#include "ImagesOther.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "ImagesPokemonWorld.h"
+#include "ImagesOther.h"
 
 ItemInstType shopItems[3];
 SpriteInstType itemInsts[3];
@@ -147,7 +147,7 @@ PokemonType DrawTitleScreen(uint8_t language){
 	ST7735_SetCursor(1, 7);
 	if(language) ST7735_OutString("Seleccione su\n entrante");
 	else ST7735_OutString("Please select your\n starter.");
-	while(1){}
+	
 	while(1){
 		
 		while(ADCStatus == 0){}
@@ -581,7 +581,7 @@ PokemonInstType* DrawPokemonInventory(uint8_t language){
 			ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
 			ST7735_SetCursor(1, 12);
 			ST7735_OutString(pokeTeam.pokemon[pokeTeam.currIndex].species.name);
-			if(language) ST7735_OutString(" intercambiado\n por ");
+			if(language) ST7735_OutString("\n intercambiado\n por ");
 			else ST7735_OutString(" swapped\n for ");
 			ST7735_OutString(pokeTeam.pokemon[aliveIndex[selected]].species.name);
 			while(1){if(isPE3Pressed()) break;};
