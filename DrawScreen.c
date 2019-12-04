@@ -36,11 +36,15 @@ PokemonType EeveeT;
 PokemonType JigglypuffT;
 PokemonType VulpixT;
 PokemonType HorseaT;
+PokemonType ButterfreeT;
+PokemonType CuboneT;
+PokemonType MeowthT;
+PokemonType NidoranT;
 
 uint8_t simpleMenuY = 90;
 uint16_t simpleMenuColor = 0xFFFF;
-uint32_t numPokemonSpecies = 12;
-PokemonType allPokemon[12];
+uint32_t numPokemonSpecies = 16;
+PokemonType allPokemon[16];
 
 int8_t backReturn = -1;
 bool seedTimer = true;
@@ -59,6 +63,10 @@ void InitPokemon(){
 	SpriteType vulpixS = {vulpix, 40, 40};
 	SpriteType eeveeS = {eevee, 40, 40};
 	SpriteType horseaS = {horsea, 40, 40};
+	SpriteType cuboneS = {cubone, 40, 40};
+	SpriteType meowthS = {meowth, 40, 40};
+	SpriteType butterfreeS = {butterfree, 40, 40};
+	SpriteType nidoranS = {nidoran, 40, 40};
 
 	SpriteType bulbasaurW = {bulbasaurWorldFront, 16, 16};
 	SpriteType squirtleW = {squirtleWorldFront, 16, 16};
@@ -71,7 +79,11 @@ void InitPokemon(){
 	SpriteType jigglypuffW = {jigglypuffWorldFront, 16, 16};
 	SpriteType vulpixW = {vulpixWorldFront, 16, 16};
 	SpriteType eeveeW = {eeveeWorldFront, 16, 16};
-	SpriteType horseaW = {horsea, 16, 16};
+	SpriteType horseaW = {horseaWorldFront, 16, 16};
+	SpriteType cuboneW = {cuboneWorldFront, 16, 16};
+	SpriteType meowthW = {meowthWorldFront, 16, 16};
+	SpriteType butterfreeW = {butterfreeWorldFront, 16, 16};
+	SpriteType nidoranW = {nidoranWorldFront, 16, 16};
 	
 	BulbasaurT = (PokemonType) {"Bulbasaur", Grass, bulbasaurS, bulbasaurW, 45, 49, 49, 65, 65, 45, 0, grassTile, 3};
 	SquirtleT = (PokemonType) {"Squirtle", Water, squirtleS, squirtleW, 44, 48, 65, 50, 64, 43, 1, waterTile, 2};
@@ -85,6 +97,10 @@ void InitPokemon(){
 	VulpixT = (PokemonType) {"Vulpix", Fire, vulpixS, vulpixW, 38, 41, 40, 50, 65, 65, 9, grassTile, 5};
 	EeveeT = (PokemonType) {"Eevee", Normal, eeveeS, eeveeW, 55, 55, 50, 45, 65, 55, 10, grassTile, 5};
 	HorseaT = (PokemonType) {"Horsea", Water, horseaS, horseaW, 30, 40, 70, 70, 25, 60, 11, waterTile, 3};
+	CuboneT = (PokemonType) {"Cubone", Ground, cuboneS, cuboneW, 50, 50, 95, 40, 50, 35, 12, grassTile, 5};
+	ButterfreeT = (PokemonType) {"Butterfree", Bug, butterfreeS, butterfreeW, 60, 45, 50, 90, 80, 70, 13, bothTile, 5};
+	MeowthT = (PokemonType) {"Meowth", Normal, meowthS, meowthW, 40, 45, 35, 40, 40, 90, 14, grassTile, 5};
+	NidoranT = (PokemonType) {"Nidoran", Poison, nidoranS, nidoranW, 46, 57, 40, 40, 40, 50, 15, grassTile, 5};
 	
 	allPokemon[0] = BulbasaurT;
 	allPokemon[1] = SquirtleT;
@@ -98,6 +114,10 @@ void InitPokemon(){
 	allPokemon[9] = VulpixT;
 	allPokemon[10] = EeveeT;
 	allPokemon[11] = HorseaT;
+	allPokemon[12] = CuboneT;
+	allPokemon[13] = ButterfreeT;
+	allPokemon[14] = MeowthT;
+	allPokemon[15] = NidoranT;
 }
 
 void IncSeed(){
@@ -221,7 +241,7 @@ bool PokemonLocationTaken(uint8_t xPos, uint8_t yPos, uint8_t index){
 }
 
 PokemonInstType GenerateRandomPokemonInit(uint8_t index){
-	uint8_t pokemon = Random()%11;
+	uint8_t pokemon = Random()%numPokemonSpecies;
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
 	while(!IsWalkable(yPos, xPos) || (xPos == p1.XPos && yPos == p1.YPos) || PokemonLocationTaken(xPos, yPos, index)){
@@ -257,7 +277,7 @@ bool IsPokemonPosOnEdge(uint8_t xPos, uint8_t yPos){
 }
 
 PokemonInstType GenerateRandomPokemon(uint8_t index){
-	uint8_t pokemon = Random()%11;
+	uint8_t pokemon = Random()%numPokemonSpecies;
 	PokemonType pokemonType = allPokemon[pokemon];
 	
 	uint8_t xPos = 0;
