@@ -6,8 +6,8 @@
 const uint8_t CAT_PHYSICAL = 1;
 const uint8_t CAT_SPECIAL = 2;
 
-MoveType NormalMoves[100];
-MoveType SignatureMoves[100];
+MoveType NormalMoves[20];
+MoveType SignatureMoves[20];
 
 void InitMoves(){
 	NormalMoves[0] = (MoveType) {{"Vine Whip", "L\xA0tigo Cepa"}, Grass, CAT_PHYSICAL, 45};
@@ -57,6 +57,18 @@ void InitMoves(){
 	
 	NormalMoves[15] = (MoveType) {{"Horn Attack", "Ataque de Cuerno"}, Normal, CAT_PHYSICAL, 65};
 	SignatureMoves[15] = (MoveType) {{"Poison Jab", "Pinchazo de Veneno"}, Poison, CAT_PHYSICAL, 80}; //5
+	
+	NormalMoves[16] = (MoveType) {{"Headbutt", "Cabezazo"}, Normal, CAT_PHYSICAL, 70};
+	SignatureMoves[16] = (MoveType) {{"Dream Eater", "Comedor de Sueños"}, Psychic, CAT_SPECIAL, 100}; //4
+	
+	NormalMoves[17] = (MoveType) {{"Lick", "Lamer"}, Ghost, CAT_PHYSICAL, 30};
+	SignatureMoves[17] = (MoveType) {{"Dark Pulse", "Pulso Oscuro"}, Dark, CAT_SPECIAL, 80};
+	
+	NormalMoves[18] = (MoveType) {{"Low Sweep", "Barrido Bajo"}, Fighting, CAT_PHYSICAL, 60};
+	SignatureMoves[18] = (MoveType) {{"Cross Chop", "Corte Cruzado"}, Fighting, CAT_PHYSICAL, 100};
+	
+	NormalMoves[19] = (MoveType) {{"Rock Throw", "Lanzamiento de Roca"}, Rock, CAT_PHYSICAL, 50};
+	SignatureMoves[19] = (MoveType) {{"Earthquake", "Terremoto"}, Ground, CAT_PHYSICAL, 100};
 	
 }
 

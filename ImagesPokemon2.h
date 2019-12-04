@@ -19,6 +19,10 @@ extern const unsigned short meowth[];
 extern const unsigned short butterfree[];
 extern const unsigned short nidoran[];
 extern const unsigned short cubone[];
+extern const unsigned short abra[];
+extern const unsigned short ghastly[];
+extern const unsigned short machamp[];
+extern const unsigned short geodude[];
 
 #endif
 
