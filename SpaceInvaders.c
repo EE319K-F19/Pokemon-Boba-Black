@@ -81,27 +81,6 @@
 uint8_t ADCStatus;
 uint8_t language; // 0 for English, 1 for Spanish
 
-//for debugging purposes
-int main1(void){
-	DisableInterrupts();
-	PLL_Init(Bus80MHz);
-	Sound_Init();
-	ADC_Init89();
-	EnableInterrupts();
-	while(1){
-		if(isPE3Pressed()){
-			Sound_Highpitch();
-			//Sound_Alarm();
-			//Sound_Buzz();
-			//Sound_Laser();
-			//Sound_Rumble();
-			//Sound_Stomp();
-			while(soundStatus == 0){}
-			soundStatus = 0;
-			}
-	}
-}
-
 int main(void){
 	DisableInterrupts();
   PLL_Init(Bus80MHz);       // Bus clock is 80 MHz 

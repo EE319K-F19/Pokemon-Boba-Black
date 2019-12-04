@@ -718,6 +718,10 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 					if(selected == 1){
 						ST7735_SetCursor(1, 12);
 						ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+						//play sound
+						Sound_Heal();
+						while(soundStatus == 0){}
+						soundStatus = 0;
 						ST7735_OutString(pokeLeft->species.name);
 						if(language) ST7735_OutString("ha sido \n curado");
 						else ST7735_OutString(" has been \n healed.");
@@ -925,19 +929,13 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 			DrawEPBars(pokeLeft, pokeRight);
 		
 			//play sound
-			if(selectedMove.category == CAT_PHYSICAL){
-				Sound_Alarm();
-			}else{
-				Sound_Buzz();
-			}
-			//Sound_Highpitch();
-			//Sound_Alarm();
-			//Sound_Buzz();
-			//Sound_Laser();
-			//Sound_Rumble();
-			//Sound_Stomp();
-			while(soundStatus == 0){}
-			soundStatus = 0;
+		if(selected == 0){
+			Sound_Attack1();
+		}else {
+			Sound_Attack2();
+		}
+		while(soundStatus == 0){}
+		soundStatus = 0;
 				
 			pokeShakeInst = rightInst;
 		
@@ -1015,17 +1013,11 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		DrawEPBars(pokeLeft, pokeRight);
 				
 		//play sound
-		if(selectedMove.category == CAT_PHYSICAL){
-			Sound_Alarm();
-		}else{
-			Sound_Buzz();
+		if(useNormal){
+			Sound_Attack1();
+		}else {
+			Sound_Attack2();
 		}
-		//Sound_Highpitch();
-		//Sound_Alarm();
-		//Sound_Buzz();
-		//Sound_Laser();
-		//Sound_Rumble();
-		//Sound_Stomp();
 		while(soundStatus == 0){}
 		soundStatus = 0;
 				
