@@ -26,7 +26,7 @@ void InitShop(void){
 	SpriteType potionSprite = {healthPotion, 40, 40};
 	SpriteType pokeballSprite = {pokeball, 40, 40};
 	
-	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 70, "70 C", 2};
+	ItemType bobaItem = {{"boba", "boba"}, bobaSprite, 50, "50 C", 2};
 	ItemType potionItem = {{"potion", "pocion"}, potionSprite, 15, "15 C", 1};
 	ItemType pokeballItem = {{"pokeball", "pokeball"}, pokeballSprite, 10, "10 C", 0};
 	
