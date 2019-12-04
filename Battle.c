@@ -45,5 +45,18 @@ void InitMoves(){
 	
 	NormalMoves[11] = (MoveType) {{"Bubble", "Burbuja"}, Water, CAT_SPECIAL, 40};
 	SignatureMoves[11] = (MoveType) {{"Dragon Pulse", "Pulso de Dragon"}, Dragon, CAT_SPECIAL, 120}; //3
+	
+	NormalMoves[12] = (MoveType) {{"Bone Club", "Club de Huesos"}, Ground, CAT_PHYSICAL, 65};
+	SignatureMoves[12] = (MoveType) {{"Headbutt", "Cabezazo"}, Normal, CAT_PHYSICAL, 80}; //5
+	
+	NormalMoves[13] = (MoveType) {{"Bug Bite", "Picadura de Insecto"}, Bug, CAT_PHYSICAL, 60};
+	SignatureMoves[13] = (MoveType) {{"Bug Buzz", "Zumbido de Insecto"}, Bug, CAT_SPECIAL, 90}; //5
+	
+	NormalMoves[14] = (MoveType) {{"Assurance", "Garantia"}, Dark, CAT_PHYSICAL, 60};
+	SignatureMoves[14] = (MoveType) {{"Play Rough", "Jugar Brusco"}, Fairy, CAT_PHYSICAL, 90}; //5
+	
+	NormalMoves[15] = (MoveType) {{"Horn Attack", "Ataque de Cuerno"}, Normal, CAT_PHYSICAL, 65};
+	SignatureMoves[15] = (MoveType) {{"Poison Jab", "Pinchazo de Veneno"}, Poison, CAT_PHYSICAL, 80}; //5
+	
 }
 
