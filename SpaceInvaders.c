@@ -130,7 +130,7 @@ void PrintWinLoseScreen(bool win, uint8_t language){
 		else ST7735_OutString("Your character\n is very happy!\n You win!");
 	}
 	else{
-		if(language) ST7735_OutString("Tu personaje\n esta muy\n triste.\n \xADT\xA3	 pierdes!");
+		if(language) ST7735_OutString("Tu personaje\n esta muy\n triste.\n \xADT\xA3 pierdes!");
 		else ST7735_OutString("Your character is\n  sad.\n  He dropped out of \n  his major.");
 	}
 }
