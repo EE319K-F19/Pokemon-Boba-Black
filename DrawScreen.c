@@ -349,6 +349,7 @@ bool DrawWorld(uint8_t language){
 		DrawField();
 		int8_t encounter = BumpedIntoWorldPokemon();
 		if(encounter > -1){
+			NVIC_DIS1_R = 1<<19; // disable IRQ 19 in NVIC
 			ClearScreenGrid();
 			DrawBattleScreen(&pokeTeam.pokemon[0], &WorldPokemons[encounter], language);
 			WorldPokemons[encounter] = GenerateRandomPokemon(encounter);

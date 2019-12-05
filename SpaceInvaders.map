@@ -792,101 +792,101 @@ Image Symbol Table
     i.DrawSwapPokemon                        0x00002840   Section        0  drawscreen.o(i.DrawSwapPokemon)
     i.DrawTitleScreen                        0x000029a8   Section        0  drawscreen.o(i.DrawTitleScreen)
     i.DrawWorld                              0x00002b78   Section        0  drawscreen.o(i.DrawWorld)
-    i.GenerateRandomPokemon                  0x00002d1c   Section        0  drawscreen.o(i.GenerateRandomPokemon)
-    i.GenerateRandomPokemonInit              0x00002e00   Section        0  drawscreen.o(i.GenerateRandomPokemonInit)
-    i.GetFieldGrid                           0x00002eec   Section        0  field.o(i.GetFieldGrid)
-    i.GetGridX                               0x00002f00   Section        0  draw.o(i.GetGridX)
-    i.GetGridY                               0x00002f1c   Section        0  draw.o(i.GetGridY)
-    i.GetObjGrid                             0x00002f38   Section        0  field.o(i.GetObjGrid)
-    i.GetPokemonGrid                         0x00002f4c   Section        0  drawscreen.o(i.GetPokemonGrid)
-    i.IncSeed                                0x00003004   Section        0  drawscreen.o(i.IncSeed)
-    i.InitBackgroundTypes                    0x00003038   Section        0  field.o(i.InitBackgroundTypes)
-    i.InitGridCoordinates                    0x00003138   Section        0  field.o(i.InitGridCoordinates)
-    i.InitInventory                          0x000031c8   Section        0  player.o(i.InitInventory)
-    i.InitMoves                              0x00003238   Section        0  battle.o(i.InitMoves)
-    i.InitPlayer                             0x00003760   Section        0  player.o(i.InitPlayer)
-    i.InitPokemon                            0x000037f4   Section        0  drawscreen.o(i.InitPokemon)
-    i.InitShop                               0x00003fd4   Section        0  shop.o(i.InitShop)
-    i.InitTeam                               0x00004144   Section        0  player.o(i.InitTeam)
-    i.IsGridObject                           0x00004158   Section        0  field.o(i.IsGridObject)
-    i.IsPokemonPosOnEdge                     0x0000418c   Section        0  drawscreen.o(i.IsPokemonPosOnEdge)
-    i.IsPokemonWalkable                      0x000041bc   Section        0  field.o(i.IsPokemonWalkable)
-    i.IsWalkable                             0x00004288   Section        0  field.o(i.IsWalkable)
-    i.IsWorldPokemon                         0x000042bc   Section        0  field.o(i.IsWorldPokemon)
-    i.MoveDown                               0x000042f8   Section        0  player.o(i.MoveDown)
-    i.MoveLeft                               0x0000435c   Section        0  player.o(i.MoveLeft)
-    i.MoveRight                              0x000043c4   Section        0  player.o(i.MoveRight)
-    i.MoveUp                                 0x0000442c   Section        0  player.o(i.MoveUp)
-    i.MoveWorldPokemon                       0x00004490   Section        0  drawscreen.o(i.MoveWorldPokemon)
-    i.Output_Init                            0x000046b4   Section        0  st7735.o(i.Output_Init)
-    i.PLL_Init                               0x000046c4   Section        0  pll.o(i.PLL_Init)
-    i.PokemonAllDead                         0x00004740   Section        0  drawscreen.o(i.PokemonAllDead)
-    i.PokemonLocationTaken                   0x00004768   Section        0  drawscreen.o(i.PokemonLocationTaken)
-    i.PrintWinLoseScreen                     0x0000479c   Section        0  spaceinvaders.o(i.PrintWinLoseScreen)
-    i.RestoreDeadPokemon                     0x00004900   Section        0  drawscreen.o(i.RestoreDeadPokemon)
-    i.ST7735_DrawBitmap                      0x0000492c   Section        0  st7735.o(i.ST7735_DrawBitmap)
-    i.ST7735_DrawCharS                       0x00004a4c   Section        0  st7735.o(i.ST7735_DrawCharS)
-    i.ST7735_DrawPixel                       0x00004b44   Section        0  st7735.o(i.ST7735_DrawPixel)
-    i.ST7735_DrawString                      0x00004b8c   Section        0  st7735.o(i.ST7735_DrawString)
-    i.ST7735_FillRect                        0x00004be4   Section        0  st7735.o(i.ST7735_FillRect)
-    i.ST7735_FillScreen                      0x00004c90   Section        0  st7735.o(i.ST7735_FillScreen)
-    i.ST7735_InitR                           0x00004cb4   Section        0  st7735.o(i.ST7735_InitR)
-    i.ST7735_OutChar                         0x00004d30   Section        0  st7735.o(i.ST7735_OutChar)
-    i.ST7735_OutString                       0x00004e04   Section        0  st7735.o(i.ST7735_OutString)
-    i.ST7735_SetCursor                       0x00004e1c   Section        0  st7735.o(i.ST7735_SetCursor)
-    i.ST7735_SetTextColor                    0x00004e3c   Section        0  st7735.o(i.ST7735_SetTextColor)
-    i.Sound_Attack1                          0x00004e48   Section        0  sound.o(i.Sound_Attack1)
-    i.Sound_Attack2                          0x00004e5c   Section        0  sound.o(i.Sound_Attack2)
-    i.Sound_Heal                             0x00004e70   Section        0  sound.o(i.Sound_Heal)
-    i.Sound_Init                             0x00004e84   Section        0  sound.o(i.Sound_Init)
-    i.Sound_Play                             0x00004eb0   Section        0  sound.o(i.Sound_Play)
-    i.Sound_Task                             0x00004ed0   Section        0  sound.o(i.Sound_Task)
-    i.SysTick_Handler                        0x00004f18   Section        0  adc_joystick.o(i.SysTick_Handler)
-    i.SysTick_Init                           0x00004f30   Section        0  adc_joystick.o(i.SysTick_Init)
-    i.Timer0A_Handler                        0x00004f4c   Section        0  timer0.o(i.Timer0A_Handler)
-    i.Timer0_Init                            0x00004f64   Section        0  timer0.o(i.Timer0_Init)
-    i.Timer1A_Handler                        0x00004fc4   Section        0  timer1.o(i.Timer1A_Handler)
-    i.Timer1_Init                            0x00004fdc   Section        0  timer1.o(i.Timer1_Init)
-    i.addPokemon                             0x0000503c   Section        0  player.o(i.addPokemon)
-    i.commandList                            0x000050ac   Section        0  st7735.o(i.commandList)
-    commandList                              0x000050ad   Thumb Code    86  st7735.o(i.commandList)
-    i.commonInit                             0x00005104   Section        0  st7735.o(i.commonInit)
-    commonInit                               0x00005105   Thumb Code   342  st7735.o(i.commonInit)
-    i.getJoystickX                           0x0000528c   Section        0  adc_joystick.o(i.getJoystickX)
-    i.getJoystickY                           0x000052b4   Section        0  adc_joystick.o(i.getJoystickY)
-    i.isPE2Pressed                           0x000052dc   Section        0  adc_joystick.o(i.isPE2Pressed)
-    i.isPE3Pressed                           0x0000530c   Section        0  adc_joystick.o(i.isPE3Pressed)
-    i.main                                   0x0000533c   Section        0  spaceinvaders.o(i.main)
-    i.moveShakeBack                          0x000053ec   Section        0  drawscreen.o(i.moveShakeBack)
-    i.moveShakeLeft                          0x000054b0   Section        0  drawscreen.o(i.moveShakeLeft)
-    i.moveShakeRight                         0x00005524   Section        0  drawscreen.o(i.moveShakeRight)
-    i.pushColor                              0x00005598   Section        0  st7735.o(i.pushColor)
-    pushColor                                0x00005599   Thumb Code    18  st7735.o(i.pushColor)
-    i.setAddrWindow                          0x000055ac   Section        0  st7735.o(i.setAddrWindow)
-    setAddrWindow                            0x000055ad   Thumb Code   106  st7735.o(i.setAddrWindow)
-    .constdata                               0x00005620   Section     2018  st7735.o(.constdata)
-    Font                                     0x00005620   Data        1275  st7735.o(.constdata)
-    Bcmd                                     0x00005b1b   Data         103  st7735.o(.constdata)
-    Rcmd1                                    0x00005b82   Data          59  st7735.o(.constdata)
-    Rcmd2green                               0x00005bbd   Data          13  st7735.o(.constdata)
-    Rcmd2red                                 0x00005bca   Data          13  st7735.o(.constdata)
-    Rcmd3                                    0x00005bd7   Data          43  st7735.o(.constdata)
-    .constdata                               0x00005e02   Section    48770  sound.o(.constdata)
-    .constdata                               0x00011c84   Section       16  spaceinvaders.o(.constdata)
-    .constdata                               0x00011c94   Section       10  systeminfo.o(.constdata)
-    .constdata                               0x00011ca0   Section      484  battle.o(.constdata)
-    .constdata                               0x00011e84   Section     1568  drawscreen.o(.constdata)
-    .constdata                               0x000124a4   Section      140  field.o(.constdata)
-    .constdata                               0x00012530   Section       22  pokemontype.o(.constdata)
-    .constdata                               0x00012548   Section      124  player.o(.constdata)
-    .constdata                               0x000125c4   Section      204  shop.o(.constdata)
-    .constdata                               0x00012690   Section    46976  imagesother.o(.constdata)
-    .constdata                               0x0001de10   Section     6144  textsprites.o(.constdata)
-    .constdata                               0x0001f610   Section    64512  imagespokemon2.o(.constdata)
-    .constdata                               0x0002f210   Section    10240  imagespokemonworld.o(.constdata)
-    .conststring                             0x00031a10   Section      985  battle.o(.conststring)
-    .conststring                             0x00031dec   Section      335  drawscreen.o(.conststring)
-    .conststring                             0x00031f3c   Section       59  shop.o(.conststring)
+    i.GenerateRandomPokemon                  0x00002d28   Section        0  drawscreen.o(i.GenerateRandomPokemon)
+    i.GenerateRandomPokemonInit              0x00002e0c   Section        0  drawscreen.o(i.GenerateRandomPokemonInit)
+    i.GetFieldGrid                           0x00002ef8   Section        0  field.o(i.GetFieldGrid)
+    i.GetGridX                               0x00002f0c   Section        0  draw.o(i.GetGridX)
+    i.GetGridY                               0x00002f28   Section        0  draw.o(i.GetGridY)
+    i.GetObjGrid                             0x00002f44   Section        0  field.o(i.GetObjGrid)
+    i.GetPokemonGrid                         0x00002f58   Section        0  drawscreen.o(i.GetPokemonGrid)
+    i.IncSeed                                0x00003010   Section        0  drawscreen.o(i.IncSeed)
+    i.InitBackgroundTypes                    0x00003044   Section        0  field.o(i.InitBackgroundTypes)
+    i.InitGridCoordinates                    0x00003144   Section        0  field.o(i.InitGridCoordinates)
+    i.InitInventory                          0x000031d4   Section        0  player.o(i.InitInventory)
+    i.InitMoves                              0x00003244   Section        0  battle.o(i.InitMoves)
+    i.InitPlayer                             0x0000376c   Section        0  player.o(i.InitPlayer)
+    i.InitPokemon                            0x00003800   Section        0  drawscreen.o(i.InitPokemon)
+    i.InitShop                               0x00003fe0   Section        0  shop.o(i.InitShop)
+    i.InitTeam                               0x00004150   Section        0  player.o(i.InitTeam)
+    i.IsGridObject                           0x00004164   Section        0  field.o(i.IsGridObject)
+    i.IsPokemonPosOnEdge                     0x00004198   Section        0  drawscreen.o(i.IsPokemonPosOnEdge)
+    i.IsPokemonWalkable                      0x000041c8   Section        0  field.o(i.IsPokemonWalkable)
+    i.IsWalkable                             0x00004294   Section        0  field.o(i.IsWalkable)
+    i.IsWorldPokemon                         0x000042c8   Section        0  field.o(i.IsWorldPokemon)
+    i.MoveDown                               0x00004304   Section        0  player.o(i.MoveDown)
+    i.MoveLeft                               0x00004368   Section        0  player.o(i.MoveLeft)
+    i.MoveRight                              0x000043d0   Section        0  player.o(i.MoveRight)
+    i.MoveUp                                 0x00004438   Section        0  player.o(i.MoveUp)
+    i.MoveWorldPokemon                       0x0000449c   Section        0  drawscreen.o(i.MoveWorldPokemon)
+    i.Output_Init                            0x000046c0   Section        0  st7735.o(i.Output_Init)
+    i.PLL_Init                               0x000046d0   Section        0  pll.o(i.PLL_Init)
+    i.PokemonAllDead                         0x0000474c   Section        0  drawscreen.o(i.PokemonAllDead)
+    i.PokemonLocationTaken                   0x00004774   Section        0  drawscreen.o(i.PokemonLocationTaken)
+    i.PrintWinLoseScreen                     0x000047a8   Section        0  spaceinvaders.o(i.PrintWinLoseScreen)
+    i.RestoreDeadPokemon                     0x0000490c   Section        0  drawscreen.o(i.RestoreDeadPokemon)
+    i.ST7735_DrawBitmap                      0x00004938   Section        0  st7735.o(i.ST7735_DrawBitmap)
+    i.ST7735_DrawCharS                       0x00004a58   Section        0  st7735.o(i.ST7735_DrawCharS)
+    i.ST7735_DrawPixel                       0x00004b50   Section        0  st7735.o(i.ST7735_DrawPixel)
+    i.ST7735_DrawString                      0x00004b98   Section        0  st7735.o(i.ST7735_DrawString)
+    i.ST7735_FillRect                        0x00004bf0   Section        0  st7735.o(i.ST7735_FillRect)
+    i.ST7735_FillScreen                      0x00004c9c   Section        0  st7735.o(i.ST7735_FillScreen)
+    i.ST7735_InitR                           0x00004cc0   Section        0  st7735.o(i.ST7735_InitR)
+    i.ST7735_OutChar                         0x00004d3c   Section        0  st7735.o(i.ST7735_OutChar)
+    i.ST7735_OutString                       0x00004e10   Section        0  st7735.o(i.ST7735_OutString)
+    i.ST7735_SetCursor                       0x00004e28   Section        0  st7735.o(i.ST7735_SetCursor)
+    i.ST7735_SetTextColor                    0x00004e48   Section        0  st7735.o(i.ST7735_SetTextColor)
+    i.Sound_Attack1                          0x00004e54   Section        0  sound.o(i.Sound_Attack1)
+    i.Sound_Attack2                          0x00004e68   Section        0  sound.o(i.Sound_Attack2)
+    i.Sound_Heal                             0x00004e7c   Section        0  sound.o(i.Sound_Heal)
+    i.Sound_Init                             0x00004e90   Section        0  sound.o(i.Sound_Init)
+    i.Sound_Play                             0x00004ebc   Section        0  sound.o(i.Sound_Play)
+    i.Sound_Task                             0x00004edc   Section        0  sound.o(i.Sound_Task)
+    i.SysTick_Handler                        0x00004f24   Section        0  adc_joystick.o(i.SysTick_Handler)
+    i.SysTick_Init                           0x00004f3c   Section        0  adc_joystick.o(i.SysTick_Init)
+    i.Timer0A_Handler                        0x00004f58   Section        0  timer0.o(i.Timer0A_Handler)
+    i.Timer0_Init                            0x00004f70   Section        0  timer0.o(i.Timer0_Init)
+    i.Timer1A_Handler                        0x00004fd0   Section        0  timer1.o(i.Timer1A_Handler)
+    i.Timer1_Init                            0x00004fe8   Section        0  timer1.o(i.Timer1_Init)
+    i.addPokemon                             0x00005048   Section        0  player.o(i.addPokemon)
+    i.commandList                            0x000050b8   Section        0  st7735.o(i.commandList)
+    commandList                              0x000050b9   Thumb Code    86  st7735.o(i.commandList)
+    i.commonInit                             0x00005110   Section        0  st7735.o(i.commonInit)
+    commonInit                               0x00005111   Thumb Code   342  st7735.o(i.commonInit)
+    i.getJoystickX                           0x00005298   Section        0  adc_joystick.o(i.getJoystickX)
+    i.getJoystickY                           0x000052c0   Section        0  adc_joystick.o(i.getJoystickY)
+    i.isPE2Pressed                           0x000052e8   Section        0  adc_joystick.o(i.isPE2Pressed)
+    i.isPE3Pressed                           0x00005318   Section        0  adc_joystick.o(i.isPE3Pressed)
+    i.main                                   0x00005348   Section        0  spaceinvaders.o(i.main)
+    i.moveShakeBack                          0x000053f8   Section        0  drawscreen.o(i.moveShakeBack)
+    i.moveShakeLeft                          0x000054bc   Section        0  drawscreen.o(i.moveShakeLeft)
+    i.moveShakeRight                         0x00005530   Section        0  drawscreen.o(i.moveShakeRight)
+    i.pushColor                              0x000055a4   Section        0  st7735.o(i.pushColor)
+    pushColor                                0x000055a5   Thumb Code    18  st7735.o(i.pushColor)
+    i.setAddrWindow                          0x000055b8   Section        0  st7735.o(i.setAddrWindow)
+    setAddrWindow                            0x000055b9   Thumb Code   106  st7735.o(i.setAddrWindow)
+    .constdata                               0x0000562c   Section     2018  st7735.o(.constdata)
+    Font                                     0x0000562c   Data        1275  st7735.o(.constdata)
+    Bcmd                                     0x00005b27   Data         103  st7735.o(.constdata)
+    Rcmd1                                    0x00005b8e   Data          59  st7735.o(.constdata)
+    Rcmd2green                               0x00005bc9   Data          13  st7735.o(.constdata)
+    Rcmd2red                                 0x00005bd6   Data          13  st7735.o(.constdata)
+    Rcmd3                                    0x00005be3   Data          43  st7735.o(.constdata)
+    .constdata                               0x00005e0e   Section    48770  sound.o(.constdata)
+    .constdata                               0x00011c90   Section       16  spaceinvaders.o(.constdata)
+    .constdata                               0x00011ca0   Section       10  systeminfo.o(.constdata)
+    .constdata                               0x00011cac   Section      484  battle.o(.constdata)
+    .constdata                               0x00011e90   Section     1568  drawscreen.o(.constdata)
+    .constdata                               0x000124b0   Section      140  field.o(.constdata)
+    .constdata                               0x0001253c   Section       22  pokemontype.o(.constdata)
+    .constdata                               0x00012554   Section      124  player.o(.constdata)
+    .constdata                               0x000125d0   Section      204  shop.o(.constdata)
+    .constdata                               0x0001269c   Section    46976  imagesother.o(.constdata)
+    .constdata                               0x0001de1c   Section     6144  textsprites.o(.constdata)
+    .constdata                               0x0001f61c   Section    64512  imagespokemon2.o(.constdata)
+    .constdata                               0x0002f21c   Section    10240  imagespokemonworld.o(.constdata)
+    .conststring                             0x00031a1c   Section      985  battle.o(.conststring)
+    .conststring                             0x00031df8   Section      335  drawscreen.o(.conststring)
+    .conststring                             0x00031f48   Section       59  shop.o(.conststring)
     .data                                    0x20000000   Section       40  st7735.o(.data)
     ColStart                                 0x2000000a   Data           1  st7735.o(.data)
     RowStart                                 0x2000000b   Data           1  st7735.o(.data)
@@ -1179,198 +1179,198 @@ Image Symbol Table
     DrawStatusScreen                         0x00002731   Thumb Code   174  drawscreen.o(i.DrawStatusScreen)
     DrawSwapPokemon                          0x00002841   Thumb Code   302  drawscreen.o(i.DrawSwapPokemon)
     DrawTitleScreen                          0x000029a9   Thumb Code   386  drawscreen.o(i.DrawTitleScreen)
-    DrawWorld                                0x00002b79   Thumb Code   356  drawscreen.o(i.DrawWorld)
-    GenerateRandomPokemon                    0x00002d1d   Thumb Code   216  drawscreen.o(i.GenerateRandomPokemon)
-    GenerateRandomPokemonInit                0x00002e01   Thumb Code   214  drawscreen.o(i.GenerateRandomPokemonInit)
-    GetFieldGrid                             0x00002eed   Thumb Code    16  field.o(i.GetFieldGrid)
-    GetGridX                                 0x00002f01   Thumb Code    18  draw.o(i.GetGridX)
-    GetGridY                                 0x00002f1d   Thumb Code    18  draw.o(i.GetGridY)
-    GetObjGrid                               0x00002f39   Thumb Code    16  field.o(i.GetObjGrid)
-    GetPokemonGrid                           0x00002f4d   Thumb Code   160  drawscreen.o(i.GetPokemonGrid)
-    IncSeed                                  0x00003005   Thumb Code    40  drawscreen.o(i.IncSeed)
-    InitBackgroundTypes                      0x00003039   Thumb Code   242  field.o(i.InitBackgroundTypes)
-    InitGridCoordinates                      0x00003139   Thumb Code   128  field.o(i.InitGridCoordinates)
-    InitInventory                            0x000031c9   Thumb Code    96  player.o(i.InitInventory)
-    InitMoves                                0x00003239   Thumb Code  1286  battle.o(i.InitMoves)
-    InitPlayer                               0x00003761   Thumb Code   140  player.o(i.InitPlayer)
-    InitPokemon                              0x000037f5   Thumb Code  1864  drawscreen.o(i.InitPokemon)
-    InitShop                                 0x00003fd5   Thumb Code   356  shop.o(i.InitShop)
-    InitTeam                                 0x00004145   Thumb Code    14  player.o(i.InitTeam)
-    IsGridObject                             0x00004159   Thumb Code    38  field.o(i.IsGridObject)
-    IsPokemonPosOnEdge                       0x0000418d   Thumb Code    38  drawscreen.o(i.IsPokemonPosOnEdge)
-    IsPokemonWalkable                        0x000041bd   Thumb Code   194  field.o(i.IsPokemonWalkable)
-    IsWalkable                               0x00004289   Thumb Code    50  field.o(i.IsWalkable)
-    IsWorldPokemon                           0x000042bd   Thumb Code    52  field.o(i.IsWorldPokemon)
-    MoveDown                                 0x000042f9   Thumb Code    92  player.o(i.MoveDown)
-    MoveLeft                                 0x0000435d   Thumb Code    96  player.o(i.MoveLeft)
-    MoveRight                                0x000043c5   Thumb Code    96  player.o(i.MoveRight)
-    MoveUp                                   0x0000442d   Thumb Code    92  player.o(i.MoveUp)
-    MoveWorldPokemon                         0x00004491   Thumb Code   538  drawscreen.o(i.MoveWorldPokemon)
-    Output_Init                              0x000046b5   Thumb Code    16  st7735.o(i.Output_Init)
-    PLL_Init                                 0x000046c5   Thumb Code   120  pll.o(i.PLL_Init)
-    PokemonAllDead                           0x00004741   Thumb Code    34  drawscreen.o(i.PokemonAllDead)
-    PokemonLocationTaken                     0x00004769   Thumb Code    48  drawscreen.o(i.PokemonLocationTaken)
-    PrintWinLoseScreen                       0x0000479d   Thumb Code   146  spaceinvaders.o(i.PrintWinLoseScreen)
-    RestoreDeadPokemon                       0x00004901   Thumb Code    38  drawscreen.o(i.RestoreDeadPokemon)
-    ST7735_DrawBitmap                        0x0000492d   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
-    ST7735_DrawCharS                         0x00004a4d   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
-    ST7735_DrawPixel                         0x00004b45   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
-    ST7735_DrawString                        0x00004b8d   Thumb Code    86  st7735.o(i.ST7735_DrawString)
-    ST7735_FillRect                          0x00004be5   Thumb Code   164  st7735.o(i.ST7735_FillRect)
-    ST7735_FillScreen                        0x00004c91   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
-    ST7735_InitR                             0x00004cb5   Thumb Code    90  st7735.o(i.ST7735_InitR)
-    ST7735_OutChar                           0x00004d31   Thumb Code   174  st7735.o(i.ST7735_OutChar)
-    ST7735_OutString                         0x00004e05   Thumb Code    24  st7735.o(i.ST7735_OutString)
-    ST7735_SetCursor                         0x00004e1d   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
-    ST7735_SetTextColor                      0x00004e3d   Thumb Code     6  st7735.o(i.ST7735_SetTextColor)
-    Sound_Attack1                            0x00004e49   Thumb Code    14  sound.o(i.Sound_Attack1)
-    Sound_Attack2                            0x00004e5d   Thumb Code    14  sound.o(i.Sound_Attack2)
-    Sound_Heal                               0x00004e71   Thumb Code    14  sound.o(i.Sound_Heal)
-    Sound_Init                               0x00004e85   Thumb Code    30  sound.o(i.Sound_Init)
-    Sound_Play                               0x00004eb1   Thumb Code    18  sound.o(i.Sound_Play)
-    Sound_Task                               0x00004ed1   Thumb Code    54  sound.o(i.Sound_Task)
-    SysTick_Handler                          0x00004f19   Thumb Code    16  adc_joystick.o(i.SysTick_Handler)
-    SysTick_Init                             0x00004f31   Thumb Code    22  adc_joystick.o(i.SysTick_Init)
-    Timer0A_Handler                          0x00004f4d   Thumb Code    16  timer0.o(i.Timer0A_Handler)
-    Timer0_Init                              0x00004f65   Thumb Code    74  timer0.o(i.Timer0_Init)
-    Timer1A_Handler                          0x00004fc5   Thumb Code    16  timer1.o(i.Timer1A_Handler)
-    Timer1_Init                              0x00004fdd   Thumb Code    74  timer1.o(i.Timer1_Init)
-    addPokemon                               0x0000503d   Thumb Code   106  player.o(i.addPokemon)
-    getJoystickX                             0x0000528d   Thumb Code    34  adc_joystick.o(i.getJoystickX)
-    getJoystickY                             0x000052b5   Thumb Code    34  adc_joystick.o(i.getJoystickY)
-    isPE2Pressed                             0x000052dd   Thumb Code    40  adc_joystick.o(i.isPE2Pressed)
-    isPE3Pressed                             0x0000530d   Thumb Code    40  adc_joystick.o(i.isPE3Pressed)
-    main                                     0x0000533d   Thumb Code   168  spaceinvaders.o(i.main)
-    moveShakeBack                            0x000053ed   Thumb Code   178  drawscreen.o(i.moveShakeBack)
-    moveShakeLeft                            0x000054b1   Thumb Code   100  drawscreen.o(i.moveShakeLeft)
-    moveShakeRight                           0x00005525   Thumb Code    98  drawscreen.o(i.moveShakeRight)
-    dBfs                                     0x00005c02   Data         512  st7735.o(.constdata)
-    highpitch                                0x00005e02   Data        1802  sound.o(.constdata)
-    Attack_Heal_Drain                        0x0000650c   Data       11467  sound.o(.constdata)
-    Mega_Punch                               0x000091d7   Data       16758  sound.o(.constdata)
-    Secret_Sword                             0x0000d34d   Data       18743  sound.o(.constdata)
-    GRID_LENGTH                              0x00011c94   Data           1  systeminfo.o(.constdata)
-    GAME_BORDER_W                            0x00011c95   Data           1  systeminfo.o(.constdata)
-    GAME_BORDER_COLOR                        0x00011c96   Data           2  systeminfo.o(.constdata)
-    SCREEN_COLUMNS                           0x00011c98   Data           2  systeminfo.o(.constdata)
-    SCREEN_ROWS                              0x00011c9a   Data           2  systeminfo.o(.constdata)
-    SCREEN_MID_COL                           0x00011c9c   Data           1  systeminfo.o(.constdata)
-    SCREEN_MID_ROW                           0x00011c9d   Data           1  systeminfo.o(.constdata)
-    CAT_PHYSICAL                             0x00011ca0   Data           1  battle.o(.constdata)
-    CAT_SPECIAL                              0x00011ca1   Data           1  battle.o(.constdata)
-    N                                        0x000124a4   Data           1  field.o(.constdata)
-    G                                        0x000124a5   Data           1  field.o(.constdata)
-    W                                        0x000124a6   Data           1  field.o(.constdata)
-    E                                        0x000124a7   Data           1  field.o(.constdata)
-    R                                        0x000124a8   Data           1  field.o(.constdata)
-    T                                        0x000124a9   Data           1  field.o(.constdata)
-    S                                        0x000124aa   Data           1  field.o(.constdata)
-    SS                                       0x000124ab   Data           1  field.o(.constdata)
-    ST                                       0x000124ac   Data           1  field.o(.constdata)
-    SO                                       0x000124ad   Data           1  field.o(.constdata)
-    SR                                       0x000124ae   Data           1  field.o(.constdata)
-    SE                                       0x000124af   Data           1  field.o(.constdata)
-    SA                                       0x000124b0   Data           1  field.o(.constdata)
-    grassTile                                0x000124b1   Data           1  field.o(.constdata)
-    waterTile                                0x000124b2   Data           1  field.o(.constdata)
-    bothTile                                 0x000124b3   Data           1  field.o(.constdata)
-    FIELD_WIDTH                              0x000124b4   Data           1  field.o(.constdata)
-    FIELD_HEIGHT                             0x000124b5   Data           1  field.o(.constdata)
-    Normal                                   0x00012530   Data           1  pokemontype.o(.constdata)
-    Fire                                     0x00012531   Data           1  pokemontype.o(.constdata)
-    Water                                    0x00012532   Data           1  pokemontype.o(.constdata)
-    Electric                                 0x00012533   Data           1  pokemontype.o(.constdata)
-    Grass                                    0x00012534   Data           1  pokemontype.o(.constdata)
-    Ice                                      0x00012535   Data           1  pokemontype.o(.constdata)
-    Fighting                                 0x00012536   Data           1  pokemontype.o(.constdata)
-    Poison                                   0x00012537   Data           1  pokemontype.o(.constdata)
-    Ground                                   0x00012538   Data           1  pokemontype.o(.constdata)
-    Flying                                   0x00012539   Data           1  pokemontype.o(.constdata)
-    Psychic                                  0x0001253a   Data           1  pokemontype.o(.constdata)
-    Bug                                      0x0001253b   Data           1  pokemontype.o(.constdata)
-    Rock                                     0x0001253c   Data           1  pokemontype.o(.constdata)
-    Ghost                                    0x0001253d   Data           1  pokemontype.o(.constdata)
-    Dragon                                   0x0001253e   Data           1  pokemontype.o(.constdata)
-    Dark                                     0x0001253f   Data           1  pokemontype.o(.constdata)
-    Steel                                    0x00012540   Data           1  pokemontype.o(.constdata)
-    Fairy                                    0x00012541   Data           1  pokemontype.o(.constdata)
-    A                                        0x00012542   Data           1  pokemontype.o(.constdata)
-    B                                        0x00012543   Data           1  pokemontype.o(.constdata)
-    C                                        0x00012544   Data           1  pokemontype.o(.constdata)
-    D                                        0x00012545   Data           1  pokemontype.o(.constdata)
-    playerFront                              0x00012690   Data         512  imagesother.o(.constdata)
-    shopnpc                                  0x00012890   Data         512  imagesother.o(.constdata)
-    playerBack                               0x00012a90   Data         512  imagesother.o(.constdata)
-    playerSide                               0x00012c90   Data         512  imagesother.o(.constdata)
-    playerSwimBack                           0x00012e90   Data         512  imagesother.o(.constdata)
-    playerSwimFront                          0x00013090   Data         512  imagesother.o(.constdata)
-    playerSwimSide                           0x00013290   Data         512  imagesother.o(.constdata)
-    torchic                                  0x00013490   Data         512  imagesother.o(.constdata)
-    pokeball                                 0x00013690   Data        3200  imagesother.o(.constdata)
-    healthPotion                             0x00014310   Data        3200  imagesother.o(.constdata)
-    boba                                     0x00014f90   Data        3200  imagesother.o(.constdata)
-    grass                                    0x00015c10   Data         512  imagesother.o(.constdata)
-    water                                    0x00015e10   Data         512  imagesother.o(.constdata)
-    ground                                   0x00016010   Data         512  imagesother.o(.constdata)
-    rock                                     0x00016210   Data         512  imagesother.o(.constdata)
-    bush                                     0x00016410   Data         512  imagesother.o(.constdata)
-    storeS                                   0x00016610   Data         512  imagesother.o(.constdata)
-    storeT                                   0x00016810   Data         512  imagesother.o(.constdata)
-    storeO                                   0x00016a10   Data         512  imagesother.o(.constdata)
-    storeR                                   0x00016c10   Data         512  imagesother.o(.constdata)
-    storeE                                   0x00016e10   Data         512  imagesother.o(.constdata)
-    storeArrow                               0x00017010   Data         512  imagesother.o(.constdata)
-    pokemonname                              0x00017210   Data       13824  imagesother.o(.constdata)
-    pokemonnameSpanish                       0x0001a810   Data       13824  imagesother.o(.constdata)
-    fight                                    0x0001de10   Data        1024  textsprites.o(.constdata)
-    pokemon                                  0x0001e210   Data        1024  textsprites.o(.constdata)
-    item                                     0x0001e610   Data        1024  textsprites.o(.constdata)
-    run                                      0x0001ea10   Data        1024  textsprites.o(.constdata)
-    lucha                                    0x0001ee10   Data        1024  textsprites.o(.constdata)
-    correr                                   0x0001f210   Data        1024  textsprites.o(.constdata)
-    bulbWorldFront                           0x0001f610   Data         512  imagespokemon2.o(.constdata)
-    bulbasaur                                0x0001f810   Data        3200  imagespokemon2.o(.constdata)
-    charmander                               0x00020490   Data        3200  imagespokemon2.o(.constdata)
-    squirtle                                 0x00021110   Data        3200  imagespokemon2.o(.constdata)
-    pidgey                                   0x00021d90   Data        3200  imagespokemon2.o(.constdata)
-    pikachu                                  0x00022a10   Data        3200  imagespokemon2.o(.constdata)
-    eevee                                    0x00023690   Data        3200  imagespokemon2.o(.constdata)
-    psyduck                                  0x00024310   Data        3200  imagespokemon2.o(.constdata)
-    vulpix                                   0x00024f90   Data        3200  imagespokemon2.o(.constdata)
-    dratini                                  0x00025c10   Data        3200  imagespokemon2.o(.constdata)
-    jigglypuff                               0x00026890   Data        3200  imagespokemon2.o(.constdata)
-    ponyta                                   0x00027510   Data        3200  imagespokemon2.o(.constdata)
-    horsea                                   0x00028190   Data        3200  imagespokemon2.o(.constdata)
-    cubone                                   0x00028e10   Data        3200  imagespokemon2.o(.constdata)
-    meowth                                   0x00029a90   Data        3200  imagespokemon2.o(.constdata)
-    nidoran                                  0x0002a710   Data        3200  imagespokemon2.o(.constdata)
-    butterfree                               0x0002b390   Data        3200  imagespokemon2.o(.constdata)
-    abra                                     0x0002c010   Data        3200  imagespokemon2.o(.constdata)
-    ghastly                                  0x0002cc90   Data        3200  imagespokemon2.o(.constdata)
-    machamp                                  0x0002d910   Data        3200  imagespokemon2.o(.constdata)
-    geodude                                  0x0002e590   Data        3200  imagespokemon2.o(.constdata)
-    jigglypuffWorldFront                     0x0002f210   Data         512  imagespokemonworld.o(.constdata)
-    vulpixWorldFront                         0x0002f410   Data         512  imagespokemonworld.o(.constdata)
-    squirtleWorldFront                       0x0002f610   Data         512  imagespokemonworld.o(.constdata)
-    psyduckWorldFront                        0x0002f810   Data         512  imagespokemonworld.o(.constdata)
-    ponytaWorldFront                         0x0002fa10   Data         512  imagespokemonworld.o(.constdata)
-    pikachuWorldFront                        0x0002fc10   Data         512  imagespokemonworld.o(.constdata)
-    pidgeyWorldFront                         0x0002fe10   Data         512  imagespokemonworld.o(.constdata)
-    eeveeWorldFront                          0x00030010   Data         512  imagespokemonworld.o(.constdata)
-    dratiniWorldFront                        0x00030210   Data         512  imagespokemonworld.o(.constdata)
-    charmanderWorldFront                     0x00030410   Data         512  imagespokemonworld.o(.constdata)
-    bulbasaurWorldFront                      0x00030610   Data         512  imagespokemonworld.o(.constdata)
-    butterfreeWorldFront                     0x00030810   Data         512  imagespokemonworld.o(.constdata)
-    cuboneWorldFront                         0x00030a10   Data         512  imagespokemonworld.o(.constdata)
-    horseaWorldFront                         0x00030c10   Data         512  imagespokemonworld.o(.constdata)
-    meowthWorldFront                         0x00030e10   Data         512  imagespokemonworld.o(.constdata)
-    nidoranWorldFront                        0x00031010   Data         512  imagespokemonworld.o(.constdata)
-    abraWorldFront                           0x00031210   Data         512  imagespokemonworld.o(.constdata)
-    ghastlyWorldFront                        0x00031410   Data         512  imagespokemonworld.o(.constdata)
-    machampWorldFront                        0x00031610   Data         512  imagespokemonworld.o(.constdata)
-    geodudeWorldFront                        0x00031810   Data         512  imagespokemonworld.o(.constdata)
-    Region$$Table$$Base                      0x00031f78   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00031f98   Number         0  anon$$obj.o(Region$$Table)
+    DrawWorld                                0x00002b79   Thumb Code   364  drawscreen.o(i.DrawWorld)
+    GenerateRandomPokemon                    0x00002d29   Thumb Code   216  drawscreen.o(i.GenerateRandomPokemon)
+    GenerateRandomPokemonInit                0x00002e0d   Thumb Code   214  drawscreen.o(i.GenerateRandomPokemonInit)
+    GetFieldGrid                             0x00002ef9   Thumb Code    16  field.o(i.GetFieldGrid)
+    GetGridX                                 0x00002f0d   Thumb Code    18  draw.o(i.GetGridX)
+    GetGridY                                 0x00002f29   Thumb Code    18  draw.o(i.GetGridY)
+    GetObjGrid                               0x00002f45   Thumb Code    16  field.o(i.GetObjGrid)
+    GetPokemonGrid                           0x00002f59   Thumb Code   160  drawscreen.o(i.GetPokemonGrid)
+    IncSeed                                  0x00003011   Thumb Code    40  drawscreen.o(i.IncSeed)
+    InitBackgroundTypes                      0x00003045   Thumb Code   242  field.o(i.InitBackgroundTypes)
+    InitGridCoordinates                      0x00003145   Thumb Code   128  field.o(i.InitGridCoordinates)
+    InitInventory                            0x000031d5   Thumb Code    96  player.o(i.InitInventory)
+    InitMoves                                0x00003245   Thumb Code  1286  battle.o(i.InitMoves)
+    InitPlayer                               0x0000376d   Thumb Code   140  player.o(i.InitPlayer)
+    InitPokemon                              0x00003801   Thumb Code  1864  drawscreen.o(i.InitPokemon)
+    InitShop                                 0x00003fe1   Thumb Code   356  shop.o(i.InitShop)
+    InitTeam                                 0x00004151   Thumb Code    14  player.o(i.InitTeam)
+    IsGridObject                             0x00004165   Thumb Code    38  field.o(i.IsGridObject)
+    IsPokemonPosOnEdge                       0x00004199   Thumb Code    38  drawscreen.o(i.IsPokemonPosOnEdge)
+    IsPokemonWalkable                        0x000041c9   Thumb Code   194  field.o(i.IsPokemonWalkable)
+    IsWalkable                               0x00004295   Thumb Code    50  field.o(i.IsWalkable)
+    IsWorldPokemon                           0x000042c9   Thumb Code    52  field.o(i.IsWorldPokemon)
+    MoveDown                                 0x00004305   Thumb Code    92  player.o(i.MoveDown)
+    MoveLeft                                 0x00004369   Thumb Code    96  player.o(i.MoveLeft)
+    MoveRight                                0x000043d1   Thumb Code    96  player.o(i.MoveRight)
+    MoveUp                                   0x00004439   Thumb Code    92  player.o(i.MoveUp)
+    MoveWorldPokemon                         0x0000449d   Thumb Code   538  drawscreen.o(i.MoveWorldPokemon)
+    Output_Init                              0x000046c1   Thumb Code    16  st7735.o(i.Output_Init)
+    PLL_Init                                 0x000046d1   Thumb Code   120  pll.o(i.PLL_Init)
+    PokemonAllDead                           0x0000474d   Thumb Code    34  drawscreen.o(i.PokemonAllDead)
+    PokemonLocationTaken                     0x00004775   Thumb Code    48  drawscreen.o(i.PokemonLocationTaken)
+    PrintWinLoseScreen                       0x000047a9   Thumb Code   146  spaceinvaders.o(i.PrintWinLoseScreen)
+    RestoreDeadPokemon                       0x0000490d   Thumb Code    38  drawscreen.o(i.RestoreDeadPokemon)
+    ST7735_DrawBitmap                        0x00004939   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
+    ST7735_DrawCharS                         0x00004a59   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
+    ST7735_DrawPixel                         0x00004b51   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
+    ST7735_DrawString                        0x00004b99   Thumb Code    86  st7735.o(i.ST7735_DrawString)
+    ST7735_FillRect                          0x00004bf1   Thumb Code   164  st7735.o(i.ST7735_FillRect)
+    ST7735_FillScreen                        0x00004c9d   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
+    ST7735_InitR                             0x00004cc1   Thumb Code    90  st7735.o(i.ST7735_InitR)
+    ST7735_OutChar                           0x00004d3d   Thumb Code   174  st7735.o(i.ST7735_OutChar)
+    ST7735_OutString                         0x00004e11   Thumb Code    24  st7735.o(i.ST7735_OutString)
+    ST7735_SetCursor                         0x00004e29   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
+    ST7735_SetTextColor                      0x00004e49   Thumb Code     6  st7735.o(i.ST7735_SetTextColor)
+    Sound_Attack1                            0x00004e55   Thumb Code    14  sound.o(i.Sound_Attack1)
+    Sound_Attack2                            0x00004e69   Thumb Code    14  sound.o(i.Sound_Attack2)
+    Sound_Heal                               0x00004e7d   Thumb Code    14  sound.o(i.Sound_Heal)
+    Sound_Init                               0x00004e91   Thumb Code    30  sound.o(i.Sound_Init)
+    Sound_Play                               0x00004ebd   Thumb Code    18  sound.o(i.Sound_Play)
+    Sound_Task                               0x00004edd   Thumb Code    54  sound.o(i.Sound_Task)
+    SysTick_Handler                          0x00004f25   Thumb Code    16  adc_joystick.o(i.SysTick_Handler)
+    SysTick_Init                             0x00004f3d   Thumb Code    22  adc_joystick.o(i.SysTick_Init)
+    Timer0A_Handler                          0x00004f59   Thumb Code    16  timer0.o(i.Timer0A_Handler)
+    Timer0_Init                              0x00004f71   Thumb Code    74  timer0.o(i.Timer0_Init)
+    Timer1A_Handler                          0x00004fd1   Thumb Code    16  timer1.o(i.Timer1A_Handler)
+    Timer1_Init                              0x00004fe9   Thumb Code    74  timer1.o(i.Timer1_Init)
+    addPokemon                               0x00005049   Thumb Code   106  player.o(i.addPokemon)
+    getJoystickX                             0x00005299   Thumb Code    34  adc_joystick.o(i.getJoystickX)
+    getJoystickY                             0x000052c1   Thumb Code    34  adc_joystick.o(i.getJoystickY)
+    isPE2Pressed                             0x000052e9   Thumb Code    40  adc_joystick.o(i.isPE2Pressed)
+    isPE3Pressed                             0x00005319   Thumb Code    40  adc_joystick.o(i.isPE3Pressed)
+    main                                     0x00005349   Thumb Code   168  spaceinvaders.o(i.main)
+    moveShakeBack                            0x000053f9   Thumb Code   178  drawscreen.o(i.moveShakeBack)
+    moveShakeLeft                            0x000054bd   Thumb Code   100  drawscreen.o(i.moveShakeLeft)
+    moveShakeRight                           0x00005531   Thumb Code    98  drawscreen.o(i.moveShakeRight)
+    dBfs                                     0x00005c0e   Data         512  st7735.o(.constdata)
+    highpitch                                0x00005e0e   Data        1802  sound.o(.constdata)
+    Attack_Heal_Drain                        0x00006518   Data       11467  sound.o(.constdata)
+    Mega_Punch                               0x000091e3   Data       16758  sound.o(.constdata)
+    Secret_Sword                             0x0000d359   Data       18743  sound.o(.constdata)
+    GRID_LENGTH                              0x00011ca0   Data           1  systeminfo.o(.constdata)
+    GAME_BORDER_W                            0x00011ca1   Data           1  systeminfo.o(.constdata)
+    GAME_BORDER_COLOR                        0x00011ca2   Data           2  systeminfo.o(.constdata)
+    SCREEN_COLUMNS                           0x00011ca4   Data           2  systeminfo.o(.constdata)
+    SCREEN_ROWS                              0x00011ca6   Data           2  systeminfo.o(.constdata)
+    SCREEN_MID_COL                           0x00011ca8   Data           1  systeminfo.o(.constdata)
+    SCREEN_MID_ROW                           0x00011ca9   Data           1  systeminfo.o(.constdata)
+    CAT_PHYSICAL                             0x00011cac   Data           1  battle.o(.constdata)
+    CAT_SPECIAL                              0x00011cad   Data           1  battle.o(.constdata)
+    N                                        0x000124b0   Data           1  field.o(.constdata)
+    G                                        0x000124b1   Data           1  field.o(.constdata)
+    W                                        0x000124b2   Data           1  field.o(.constdata)
+    E                                        0x000124b3   Data           1  field.o(.constdata)
+    R                                        0x000124b4   Data           1  field.o(.constdata)
+    T                                        0x000124b5   Data           1  field.o(.constdata)
+    S                                        0x000124b6   Data           1  field.o(.constdata)
+    SS                                       0x000124b7   Data           1  field.o(.constdata)
+    ST                                       0x000124b8   Data           1  field.o(.constdata)
+    SO                                       0x000124b9   Data           1  field.o(.constdata)
+    SR                                       0x000124ba   Data           1  field.o(.constdata)
+    SE                                       0x000124bb   Data           1  field.o(.constdata)
+    SA                                       0x000124bc   Data           1  field.o(.constdata)
+    grassTile                                0x000124bd   Data           1  field.o(.constdata)
+    waterTile                                0x000124be   Data           1  field.o(.constdata)
+    bothTile                                 0x000124bf   Data           1  field.o(.constdata)
+    FIELD_WIDTH                              0x000124c0   Data           1  field.o(.constdata)
+    FIELD_HEIGHT                             0x000124c1   Data           1  field.o(.constdata)
+    Normal                                   0x0001253c   Data           1  pokemontype.o(.constdata)
+    Fire                                     0x0001253d   Data           1  pokemontype.o(.constdata)
+    Water                                    0x0001253e   Data           1  pokemontype.o(.constdata)
+    Electric                                 0x0001253f   Data           1  pokemontype.o(.constdata)
+    Grass                                    0x00012540   Data           1  pokemontype.o(.constdata)
+    Ice                                      0x00012541   Data           1  pokemontype.o(.constdata)
+    Fighting                                 0x00012542   Data           1  pokemontype.o(.constdata)
+    Poison                                   0x00012543   Data           1  pokemontype.o(.constdata)
+    Ground                                   0x00012544   Data           1  pokemontype.o(.constdata)
+    Flying                                   0x00012545   Data           1  pokemontype.o(.constdata)
+    Psychic                                  0x00012546   Data           1  pokemontype.o(.constdata)
+    Bug                                      0x00012547   Data           1  pokemontype.o(.constdata)
+    Rock                                     0x00012548   Data           1  pokemontype.o(.constdata)
+    Ghost                                    0x00012549   Data           1  pokemontype.o(.constdata)
+    Dragon                                   0x0001254a   Data           1  pokemontype.o(.constdata)
+    Dark                                     0x0001254b   Data           1  pokemontype.o(.constdata)
+    Steel                                    0x0001254c   Data           1  pokemontype.o(.constdata)
+    Fairy                                    0x0001254d   Data           1  pokemontype.o(.constdata)
+    A                                        0x0001254e   Data           1  pokemontype.o(.constdata)
+    B                                        0x0001254f   Data           1  pokemontype.o(.constdata)
+    C                                        0x00012550   Data           1  pokemontype.o(.constdata)
+    D                                        0x00012551   Data           1  pokemontype.o(.constdata)
+    playerFront                              0x0001269c   Data         512  imagesother.o(.constdata)
+    shopnpc                                  0x0001289c   Data         512  imagesother.o(.constdata)
+    playerBack                               0x00012a9c   Data         512  imagesother.o(.constdata)
+    playerSide                               0x00012c9c   Data         512  imagesother.o(.constdata)
+    playerSwimBack                           0x00012e9c   Data         512  imagesother.o(.constdata)
+    playerSwimFront                          0x0001309c   Data         512  imagesother.o(.constdata)
+    playerSwimSide                           0x0001329c   Data         512  imagesother.o(.constdata)
+    torchic                                  0x0001349c   Data         512  imagesother.o(.constdata)
+    pokeball                                 0x0001369c   Data        3200  imagesother.o(.constdata)
+    healthPotion                             0x0001431c   Data        3200  imagesother.o(.constdata)
+    boba                                     0x00014f9c   Data        3200  imagesother.o(.constdata)
+    grass                                    0x00015c1c   Data         512  imagesother.o(.constdata)
+    water                                    0x00015e1c   Data         512  imagesother.o(.constdata)
+    ground                                   0x0001601c   Data         512  imagesother.o(.constdata)
+    rock                                     0x0001621c   Data         512  imagesother.o(.constdata)
+    bush                                     0x0001641c   Data         512  imagesother.o(.constdata)
+    storeS                                   0x0001661c   Data         512  imagesother.o(.constdata)
+    storeT                                   0x0001681c   Data         512  imagesother.o(.constdata)
+    storeO                                   0x00016a1c   Data         512  imagesother.o(.constdata)
+    storeR                                   0x00016c1c   Data         512  imagesother.o(.constdata)
+    storeE                                   0x00016e1c   Data         512  imagesother.o(.constdata)
+    storeArrow                               0x0001701c   Data         512  imagesother.o(.constdata)
+    pokemonname                              0x0001721c   Data       13824  imagesother.o(.constdata)
+    pokemonnameSpanish                       0x0001a81c   Data       13824  imagesother.o(.constdata)
+    fight                                    0x0001de1c   Data        1024  textsprites.o(.constdata)
+    pokemon                                  0x0001e21c   Data        1024  textsprites.o(.constdata)
+    item                                     0x0001e61c   Data        1024  textsprites.o(.constdata)
+    run                                      0x0001ea1c   Data        1024  textsprites.o(.constdata)
+    lucha                                    0x0001ee1c   Data        1024  textsprites.o(.constdata)
+    correr                                   0x0001f21c   Data        1024  textsprites.o(.constdata)
+    bulbWorldFront                           0x0001f61c   Data         512  imagespokemon2.o(.constdata)
+    bulbasaur                                0x0001f81c   Data        3200  imagespokemon2.o(.constdata)
+    charmander                               0x0002049c   Data        3200  imagespokemon2.o(.constdata)
+    squirtle                                 0x0002111c   Data        3200  imagespokemon2.o(.constdata)
+    pidgey                                   0x00021d9c   Data        3200  imagespokemon2.o(.constdata)
+    pikachu                                  0x00022a1c   Data        3200  imagespokemon2.o(.constdata)
+    eevee                                    0x0002369c   Data        3200  imagespokemon2.o(.constdata)
+    psyduck                                  0x0002431c   Data        3200  imagespokemon2.o(.constdata)
+    vulpix                                   0x00024f9c   Data        3200  imagespokemon2.o(.constdata)
+    dratini                                  0x00025c1c   Data        3200  imagespokemon2.o(.constdata)
+    jigglypuff                               0x0002689c   Data        3200  imagespokemon2.o(.constdata)
+    ponyta                                   0x0002751c   Data        3200  imagespokemon2.o(.constdata)
+    horsea                                   0x0002819c   Data        3200  imagespokemon2.o(.constdata)
+    cubone                                   0x00028e1c   Data        3200  imagespokemon2.o(.constdata)
+    meowth                                   0x00029a9c   Data        3200  imagespokemon2.o(.constdata)
+    nidoran                                  0x0002a71c   Data        3200  imagespokemon2.o(.constdata)
+    butterfree                               0x0002b39c   Data        3200  imagespokemon2.o(.constdata)
+    abra                                     0x0002c01c   Data        3200  imagespokemon2.o(.constdata)
+    ghastly                                  0x0002cc9c   Data        3200  imagespokemon2.o(.constdata)
+    machamp                                  0x0002d91c   Data        3200  imagespokemon2.o(.constdata)
+    geodude                                  0x0002e59c   Data        3200  imagespokemon2.o(.constdata)
+    jigglypuffWorldFront                     0x0002f21c   Data         512  imagespokemonworld.o(.constdata)
+    vulpixWorldFront                         0x0002f41c   Data         512  imagespokemonworld.o(.constdata)
+    squirtleWorldFront                       0x0002f61c   Data         512  imagespokemonworld.o(.constdata)
+    psyduckWorldFront                        0x0002f81c   Data         512  imagespokemonworld.o(.constdata)
+    ponytaWorldFront                         0x0002fa1c   Data         512  imagespokemonworld.o(.constdata)
+    pikachuWorldFront                        0x0002fc1c   Data         512  imagespokemonworld.o(.constdata)
+    pidgeyWorldFront                         0x0002fe1c   Data         512  imagespokemonworld.o(.constdata)
+    eeveeWorldFront                          0x0003001c   Data         512  imagespokemonworld.o(.constdata)
+    dratiniWorldFront                        0x0003021c   Data         512  imagespokemonworld.o(.constdata)
+    charmanderWorldFront                     0x0003041c   Data         512  imagespokemonworld.o(.constdata)
+    bulbasaurWorldFront                      0x0003061c   Data         512  imagespokemonworld.o(.constdata)
+    butterfreeWorldFront                     0x0003081c   Data         512  imagespokemonworld.o(.constdata)
+    cuboneWorldFront                         0x00030a1c   Data         512  imagespokemonworld.o(.constdata)
+    horseaWorldFront                         0x00030c1c   Data         512  imagespokemonworld.o(.constdata)
+    meowthWorldFront                         0x00030e1c   Data         512  imagespokemonworld.o(.constdata)
+    nidoranWorldFront                        0x0003101c   Data         512  imagespokemonworld.o(.constdata)
+    abraWorldFront                           0x0003121c   Data         512  imagespokemonworld.o(.constdata)
+    ghastlyWorldFront                        0x0003141c   Data         512  imagespokemonworld.o(.constdata)
+    machampWorldFront                        0x0003161c   Data         512  imagespokemonworld.o(.constdata)
+    geodudeWorldFront                        0x0003181c   Data         512  imagespokemonworld.o(.constdata)
+    Region$$Table$$Base                      0x00031f84   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00031fa4   Number         0  anon$$obj.o(Region$$Table)
     StX                                      0x20000000   Data           4  st7735.o(.data)
     StY                                      0x20000004   Data           4  st7735.o(.data)
     StTextColor                              0x20000008   Data           2  st7735.o(.data)
@@ -1460,9 +1460,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x0003285c, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00032220])
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00032868, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x0003222c])
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00031f98, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00031fa4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1556,105 +1556,105 @@ Memory Map of the image
     0x00002730   0x00002730   0x00000110   Code   RO          672    i.DrawStatusScreen  drawscreen.o
     0x00002840   0x00002840   0x00000168   Code   RO          673    i.DrawSwapPokemon   drawscreen.o
     0x000029a8   0x000029a8   0x000001d0   Code   RO          674    i.DrawTitleScreen   drawscreen.o
-    0x00002b78   0x00002b78   0x000001a4   Code   RO          675    i.DrawWorld         drawscreen.o
-    0x00002d1c   0x00002d1c   0x000000e4   Code   RO          676    i.GenerateRandomPokemon  drawscreen.o
-    0x00002e00   0x00002e00   0x000000ec   Code   RO          677    i.GenerateRandomPokemonInit  drawscreen.o
-    0x00002eec   0x00002eec   0x00000014   Code   RO          866    i.GetFieldGrid      field.o
-    0x00002f00   0x00002f00   0x0000001c   Code   RO          592    i.GetGridX          draw.o
-    0x00002f1c   0x00002f1c   0x0000001c   Code   RO          593    i.GetGridY          draw.o
-    0x00002f38   0x00002f38   0x00000014   Code   RO          867    i.GetObjGrid        field.o
-    0x00002f4c   0x00002f4c   0x000000b8   Code   RO          678    i.GetPokemonGrid    drawscreen.o
-    0x00003004   0x00003004   0x00000034   Code   RO          679    i.IncSeed           drawscreen.o
-    0x00003038   0x00003038   0x00000100   Code   RO          868    i.InitBackgroundTypes  field.o
-    0x00003138   0x00003138   0x00000090   Code   RO          869    i.InitGridCoordinates  field.o
-    0x000031c8   0x000031c8   0x00000070   Code   RO          975    i.InitInventory     player.o
-    0x00003238   0x00003238   0x00000528   Code   RO          559    i.InitMoves         battle.o
-    0x00003760   0x00003760   0x00000094   Code   RO          976    i.InitPlayer        player.o
-    0x000037f4   0x000037f4   0x000007e0   Code   RO          680    i.InitPokemon       drawscreen.o
-    0x00003fd4   0x00003fd4   0x00000170   Code   RO         1070    i.InitShop          shop.o
-    0x00004144   0x00004144   0x00000014   Code   RO          977    i.InitTeam          player.o
-    0x00004158   0x00004158   0x00000034   Code   RO          870    i.IsGridObject      field.o
-    0x0000418c   0x0000418c   0x00000030   Code   RO          681    i.IsPokemonPosOnEdge  drawscreen.o
-    0x000041bc   0x000041bc   0x000000cc   Code   RO          871    i.IsPokemonWalkable  field.o
-    0x00004288   0x00004288   0x00000032   Code   RO          872    i.IsWalkable        field.o
-    0x000042ba   0x000042ba   0x00000002   PAD
-    0x000042bc   0x000042bc   0x0000003c   Code   RO          873    i.IsWorldPokemon    field.o
-    0x000042f8   0x000042f8   0x00000064   Code   RO          979    i.MoveDown          player.o
-    0x0000435c   0x0000435c   0x00000068   Code   RO          980    i.MoveLeft          player.o
-    0x000043c4   0x000043c4   0x00000068   Code   RO          981    i.MoveRight         player.o
-    0x0000442c   0x0000442c   0x00000064   Code   RO          982    i.MoveUp            player.o
-    0x00004490   0x00004490   0x00000224   Code   RO          682    i.MoveWorldPokemon  drawscreen.o
-    0x000046b4   0x000046b4   0x00000010   Code   RO           19    i.Output_Init       st7735.o
-    0x000046c4   0x000046c4   0x0000007c   Code   RO          293    i.PLL_Init          pll.o
-    0x00004740   0x00004740   0x00000028   Code   RO          683    i.PokemonAllDead    drawscreen.o
-    0x00004768   0x00004768   0x00000034   Code   RO          684    i.PokemonLocationTaken  drawscreen.o
-    0x0000479c   0x0000479c   0x00000164   Code   RO          453    i.PrintWinLoseScreen  spaceinvaders.o
-    0x00004900   0x00004900   0x0000002c   Code   RO          685    i.RestoreDeadPokemon  drawscreen.o
-    0x0000492c   0x0000492c   0x00000120   Code   RO           23    i.ST7735_DrawBitmap  st7735.o
-    0x00004a4c   0x00004a4c   0x000000f8   Code   RO           25    i.ST7735_DrawCharS  st7735.o
-    0x00004b44   0x00004b44   0x00000048   Code   RO           28    i.ST7735_DrawPixel  st7735.o
-    0x00004b8c   0x00004b8c   0x00000056   Code   RO           29    i.ST7735_DrawString  st7735.o
-    0x00004be2   0x00004be2   0x00000002   PAD
-    0x00004be4   0x00004be4   0x000000ac   Code   RO           30    i.ST7735_FillRect   st7735.o
-    0x00004c90   0x00004c90   0x00000024   Code   RO           31    i.ST7735_FillScreen  st7735.o
-    0x00004cb4   0x00004cb4   0x0000007c   Code   RO           33    i.ST7735_InitR      st7735.o
-    0x00004d30   0x00004d30   0x000000d4   Code   RO           35    i.ST7735_OutChar    st7735.o
-    0x00004e04   0x00004e04   0x00000018   Code   RO           36    i.ST7735_OutString  st7735.o
-    0x00004e1c   0x00004e1c   0x00000020   Code   RO           46    i.ST7735_SetCursor  st7735.o
-    0x00004e3c   0x00004e3c   0x0000000c   Code   RO           48    i.ST7735_SetTextColor  st7735.o
-    0x00004e48   0x00004e48   0x00000014   Code   RO          386    i.Sound_Attack1     sound.o
-    0x00004e5c   0x00004e5c   0x00000014   Code   RO          387    i.Sound_Attack2     sound.o
-    0x00004e70   0x00004e70   0x00000014   Code   RO          388    i.Sound_Heal        sound.o
-    0x00004e84   0x00004e84   0x0000002c   Code   RO          389    i.Sound_Init        sound.o
-    0x00004eb0   0x00004eb0   0x00000020   Code   RO          390    i.Sound_Play        sound.o
-    0x00004ed0   0x00004ed0   0x00000048   Code   RO          391    i.Sound_Task        sound.o
-    0x00004f18   0x00004f18   0x00000018   Code   RO         1101    i.SysTick_Handler   adc_joystick.o
-    0x00004f30   0x00004f30   0x0000001c   Code   RO         1102    i.SysTick_Init      adc_joystick.o
-    0x00004f4c   0x00004f4c   0x00000018   Code   RO          344    i.Timer0A_Handler   timer0.o
-    0x00004f64   0x00004f64   0x00000060   Code   RO          345    i.Timer0_Init       timer0.o
-    0x00004fc4   0x00004fc4   0x00000018   Code   RO          365    i.Timer1A_Handler   timer1.o
-    0x00004fdc   0x00004fdc   0x00000060   Code   RO          366    i.Timer1_Init       timer1.o
-    0x0000503c   0x0000503c   0x00000070   Code   RO          984    i.addPokemon        player.o
-    0x000050ac   0x000050ac   0x00000056   Code   RO           50    i.commandList       st7735.o
-    0x00005102   0x00005102   0x00000002   PAD
-    0x00005104   0x00005104   0x00000188   Code   RO           51    i.commonInit        st7735.o
-    0x0000528c   0x0000528c   0x00000028   Code   RO         1103    i.getJoystickX      adc_joystick.o
-    0x000052b4   0x000052b4   0x00000028   Code   RO         1104    i.getJoystickY      adc_joystick.o
-    0x000052dc   0x000052dc   0x00000030   Code   RO         1105    i.isPE2Pressed      adc_joystick.o
-    0x0000530c   0x0000530c   0x00000030   Code   RO         1106    i.isPE3Pressed      adc_joystick.o
-    0x0000533c   0x0000533c   0x000000b0   Code   RO          454    i.main              spaceinvaders.o
-    0x000053ec   0x000053ec   0x000000c4   Code   RO          686    i.moveShakeBack     drawscreen.o
-    0x000054b0   0x000054b0   0x00000074   Code   RO          687    i.moveShakeLeft     drawscreen.o
-    0x00005524   0x00005524   0x00000074   Code   RO          688    i.moveShakeRight    drawscreen.o
-    0x00005598   0x00005598   0x00000012   Code   RO           56    i.pushColor         st7735.o
-    0x000055aa   0x000055aa   0x00000002   PAD
-    0x000055ac   0x000055ac   0x00000074   Code   RO           57    i.setAddrWindow     st7735.o
-    0x00005620   0x00005620   0x000007e2   Data   RO           59    .constdata          st7735.o
-    0x00005e02   0x00005e02   0x0000be82   Data   RO          393    .constdata          sound.o
-    0x00011c84   0x00011c84   0x00000010   Data   RO          455    .constdata          spaceinvaders.o
-    0x00011c94   0x00011c94   0x0000000a   Data   RO          546    .constdata          systeminfo.o
-    0x00011c9e   0x00011c9e   0x00000002   PAD
-    0x00011ca0   0x00011ca0   0x000001e4   Data   RO          561    .constdata          battle.o
-    0x00011e84   0x00011e84   0x00000620   Data   RO          690    .constdata          drawscreen.o
-    0x000124a4   0x000124a4   0x0000008c   Data   RO          876    .constdata          field.o
-    0x00012530   0x00012530   0x00000016   Data   RO          961    .constdata          pokemontype.o
-    0x00012546   0x00012546   0x00000002   PAD
-    0x00012548   0x00012548   0x0000007c   Data   RO          986    .constdata          player.o
-    0x000125c4   0x000125c4   0x000000cc   Data   RO         1072    .constdata          shop.o
-    0x00012690   0x00012690   0x0000b780   Data   RO         1160    .constdata          imagesother.o
-    0x0001de10   0x0001de10   0x00001800   Data   RO         1167    .constdata          textsprites.o
-    0x0001f610   0x0001f610   0x0000fc00   Data   RO         1174    .constdata          imagespokemon2.o
-    0x0002f210   0x0002f210   0x00002800   Data   RO         1181    .constdata          imagespokemonworld.o
-    0x00031a10   0x00031a10   0x000003d9   Data   RO          562    .conststring        battle.o
-    0x00031de9   0x00031de9   0x00000003   PAD
-    0x00031dec   0x00031dec   0x0000014f   Data   RO          691    .conststring        drawscreen.o
-    0x00031f3b   0x00031f3b   0x00000001   PAD
-    0x00031f3c   0x00031f3c   0x0000003b   Data   RO         1073    .conststring        shop.o
-    0x00031f77   0x00031f77   0x00000001   PAD
-    0x00031f78   0x00031f78   0x00000020   Data   RO         1351    Region$$Table       anon$$obj.o
+    0x00002b78   0x00002b78   0x000001b0   Code   RO          675    i.DrawWorld         drawscreen.o
+    0x00002d28   0x00002d28   0x000000e4   Code   RO          676    i.GenerateRandomPokemon  drawscreen.o
+    0x00002e0c   0x00002e0c   0x000000ec   Code   RO          677    i.GenerateRandomPokemonInit  drawscreen.o
+    0x00002ef8   0x00002ef8   0x00000014   Code   RO          866    i.GetFieldGrid      field.o
+    0x00002f0c   0x00002f0c   0x0000001c   Code   RO          592    i.GetGridX          draw.o
+    0x00002f28   0x00002f28   0x0000001c   Code   RO          593    i.GetGridY          draw.o
+    0x00002f44   0x00002f44   0x00000014   Code   RO          867    i.GetObjGrid        field.o
+    0x00002f58   0x00002f58   0x000000b8   Code   RO          678    i.GetPokemonGrid    drawscreen.o
+    0x00003010   0x00003010   0x00000034   Code   RO          679    i.IncSeed           drawscreen.o
+    0x00003044   0x00003044   0x00000100   Code   RO          868    i.InitBackgroundTypes  field.o
+    0x00003144   0x00003144   0x00000090   Code   RO          869    i.InitGridCoordinates  field.o
+    0x000031d4   0x000031d4   0x00000070   Code   RO          975    i.InitInventory     player.o
+    0x00003244   0x00003244   0x00000528   Code   RO          559    i.InitMoves         battle.o
+    0x0000376c   0x0000376c   0x00000094   Code   RO          976    i.InitPlayer        player.o
+    0x00003800   0x00003800   0x000007e0   Code   RO          680    i.InitPokemon       drawscreen.o
+    0x00003fe0   0x00003fe0   0x00000170   Code   RO         1070    i.InitShop          shop.o
+    0x00004150   0x00004150   0x00000014   Code   RO          977    i.InitTeam          player.o
+    0x00004164   0x00004164   0x00000034   Code   RO          870    i.IsGridObject      field.o
+    0x00004198   0x00004198   0x00000030   Code   RO          681    i.IsPokemonPosOnEdge  drawscreen.o
+    0x000041c8   0x000041c8   0x000000cc   Code   RO          871    i.IsPokemonWalkable  field.o
+    0x00004294   0x00004294   0x00000032   Code   RO          872    i.IsWalkable        field.o
+    0x000042c6   0x000042c6   0x00000002   PAD
+    0x000042c8   0x000042c8   0x0000003c   Code   RO          873    i.IsWorldPokemon    field.o
+    0x00004304   0x00004304   0x00000064   Code   RO          979    i.MoveDown          player.o
+    0x00004368   0x00004368   0x00000068   Code   RO          980    i.MoveLeft          player.o
+    0x000043d0   0x000043d0   0x00000068   Code   RO          981    i.MoveRight         player.o
+    0x00004438   0x00004438   0x00000064   Code   RO          982    i.MoveUp            player.o
+    0x0000449c   0x0000449c   0x00000224   Code   RO          682    i.MoveWorldPokemon  drawscreen.o
+    0x000046c0   0x000046c0   0x00000010   Code   RO           19    i.Output_Init       st7735.o
+    0x000046d0   0x000046d0   0x0000007c   Code   RO          293    i.PLL_Init          pll.o
+    0x0000474c   0x0000474c   0x00000028   Code   RO          683    i.PokemonAllDead    drawscreen.o
+    0x00004774   0x00004774   0x00000034   Code   RO          684    i.PokemonLocationTaken  drawscreen.o
+    0x000047a8   0x000047a8   0x00000164   Code   RO          453    i.PrintWinLoseScreen  spaceinvaders.o
+    0x0000490c   0x0000490c   0x0000002c   Code   RO          685    i.RestoreDeadPokemon  drawscreen.o
+    0x00004938   0x00004938   0x00000120   Code   RO           23    i.ST7735_DrawBitmap  st7735.o
+    0x00004a58   0x00004a58   0x000000f8   Code   RO           25    i.ST7735_DrawCharS  st7735.o
+    0x00004b50   0x00004b50   0x00000048   Code   RO           28    i.ST7735_DrawPixel  st7735.o
+    0x00004b98   0x00004b98   0x00000056   Code   RO           29    i.ST7735_DrawString  st7735.o
+    0x00004bee   0x00004bee   0x00000002   PAD
+    0x00004bf0   0x00004bf0   0x000000ac   Code   RO           30    i.ST7735_FillRect   st7735.o
+    0x00004c9c   0x00004c9c   0x00000024   Code   RO           31    i.ST7735_FillScreen  st7735.o
+    0x00004cc0   0x00004cc0   0x0000007c   Code   RO           33    i.ST7735_InitR      st7735.o
+    0x00004d3c   0x00004d3c   0x000000d4   Code   RO           35    i.ST7735_OutChar    st7735.o
+    0x00004e10   0x00004e10   0x00000018   Code   RO           36    i.ST7735_OutString  st7735.o
+    0x00004e28   0x00004e28   0x00000020   Code   RO           46    i.ST7735_SetCursor  st7735.o
+    0x00004e48   0x00004e48   0x0000000c   Code   RO           48    i.ST7735_SetTextColor  st7735.o
+    0x00004e54   0x00004e54   0x00000014   Code   RO          386    i.Sound_Attack1     sound.o
+    0x00004e68   0x00004e68   0x00000014   Code   RO          387    i.Sound_Attack2     sound.o
+    0x00004e7c   0x00004e7c   0x00000014   Code   RO          388    i.Sound_Heal        sound.o
+    0x00004e90   0x00004e90   0x0000002c   Code   RO          389    i.Sound_Init        sound.o
+    0x00004ebc   0x00004ebc   0x00000020   Code   RO          390    i.Sound_Play        sound.o
+    0x00004edc   0x00004edc   0x00000048   Code   RO          391    i.Sound_Task        sound.o
+    0x00004f24   0x00004f24   0x00000018   Code   RO         1101    i.SysTick_Handler   adc_joystick.o
+    0x00004f3c   0x00004f3c   0x0000001c   Code   RO         1102    i.SysTick_Init      adc_joystick.o
+    0x00004f58   0x00004f58   0x00000018   Code   RO          344    i.Timer0A_Handler   timer0.o
+    0x00004f70   0x00004f70   0x00000060   Code   RO          345    i.Timer0_Init       timer0.o
+    0x00004fd0   0x00004fd0   0x00000018   Code   RO          365    i.Timer1A_Handler   timer1.o
+    0x00004fe8   0x00004fe8   0x00000060   Code   RO          366    i.Timer1_Init       timer1.o
+    0x00005048   0x00005048   0x00000070   Code   RO          984    i.addPokemon        player.o
+    0x000050b8   0x000050b8   0x00000056   Code   RO           50    i.commandList       st7735.o
+    0x0000510e   0x0000510e   0x00000002   PAD
+    0x00005110   0x00005110   0x00000188   Code   RO           51    i.commonInit        st7735.o
+    0x00005298   0x00005298   0x00000028   Code   RO         1103    i.getJoystickX      adc_joystick.o
+    0x000052c0   0x000052c0   0x00000028   Code   RO         1104    i.getJoystickY      adc_joystick.o
+    0x000052e8   0x000052e8   0x00000030   Code   RO         1105    i.isPE2Pressed      adc_joystick.o
+    0x00005318   0x00005318   0x00000030   Code   RO         1106    i.isPE3Pressed      adc_joystick.o
+    0x00005348   0x00005348   0x000000b0   Code   RO          454    i.main              spaceinvaders.o
+    0x000053f8   0x000053f8   0x000000c4   Code   RO          686    i.moveShakeBack     drawscreen.o
+    0x000054bc   0x000054bc   0x00000074   Code   RO          687    i.moveShakeLeft     drawscreen.o
+    0x00005530   0x00005530   0x00000074   Code   RO          688    i.moveShakeRight    drawscreen.o
+    0x000055a4   0x000055a4   0x00000012   Code   RO           56    i.pushColor         st7735.o
+    0x000055b6   0x000055b6   0x00000002   PAD
+    0x000055b8   0x000055b8   0x00000074   Code   RO           57    i.setAddrWindow     st7735.o
+    0x0000562c   0x0000562c   0x000007e2   Data   RO           59    .constdata          st7735.o
+    0x00005e0e   0x00005e0e   0x0000be82   Data   RO          393    .constdata          sound.o
+    0x00011c90   0x00011c90   0x00000010   Data   RO          455    .constdata          spaceinvaders.o
+    0x00011ca0   0x00011ca0   0x0000000a   Data   RO          546    .constdata          systeminfo.o
+    0x00011caa   0x00011caa   0x00000002   PAD
+    0x00011cac   0x00011cac   0x000001e4   Data   RO          561    .constdata          battle.o
+    0x00011e90   0x00011e90   0x00000620   Data   RO          690    .constdata          drawscreen.o
+    0x000124b0   0x000124b0   0x0000008c   Data   RO          876    .constdata          field.o
+    0x0001253c   0x0001253c   0x00000016   Data   RO          961    .constdata          pokemontype.o
+    0x00012552   0x00012552   0x00000002   PAD
+    0x00012554   0x00012554   0x0000007c   Data   RO          986    .constdata          player.o
+    0x000125d0   0x000125d0   0x000000cc   Data   RO         1072    .constdata          shop.o
+    0x0001269c   0x0001269c   0x0000b780   Data   RO         1160    .constdata          imagesother.o
+    0x0001de1c   0x0001de1c   0x00001800   Data   RO         1167    .constdata          textsprites.o
+    0x0001f61c   0x0001f61c   0x0000fc00   Data   RO         1174    .constdata          imagespokemon2.o
+    0x0002f21c   0x0002f21c   0x00002800   Data   RO         1181    .constdata          imagespokemonworld.o
+    0x00031a1c   0x00031a1c   0x000003d9   Data   RO          562    .conststring        battle.o
+    0x00031df5   0x00031df5   0x00000003   PAD
+    0x00031df8   0x00031df8   0x0000014f   Data   RO          691    .conststring        drawscreen.o
+    0x00031f47   0x00031f47   0x00000001   PAD
+    0x00031f48   0x00031f48   0x0000003b   Data   RO         1073    .conststring        shop.o
+    0x00031f83   0x00031f83   0x00000001   PAD
+    0x00031f84   0x00031f84   0x00000020   Data   RO         1351    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00031f98, Size: 0x000008c4, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000288])
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00031fa4, Size: 0x000008c4, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000288])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1674,14 +1674,14 @@ Memory Map of the image
     0x200008c0   COMPRESSED   0x00000004   Data   RW           12    DATA                random.o
 
 
-    Execution Region ER_ZI (Exec base: 0x200008c4, Load base: 0x00032220, Size: 0x00002574, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x200008c4, Load base: 0x0003222c, Size: 0x00002574, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x200008c4        -       0x000001e0   Zero   RW          560    .bss                battle.o
     0x20000aa4        -       0x000008b0   Zero   RW          689    .bss                drawscreen.o
     0x20001354        -       0x000013fe   Zero   RW          875    .bss                field.o
-    0x20002752   0x00032220   0x00000002   PAD
+    0x20002752   0x0003222c   0x00000002   PAD
     0x20002754        -       0x00000230   Zero   RW          985    .bss                player.o
     0x20002984        -       0x00000054   Zero   RW         1071    .bss                shop.o
     0x200029d8        -       0x00000060   Zero   RW         1225    .bss                c_w.l(libspace.o)
@@ -1700,7 +1700,7 @@ Image component sizes
       1320        102       1469          0        480       3486   battle.o
         84         24          0          0          0        773   dac.o
        432         20          0          0          0       6791   draw.o
-     11068       1622       1903         21       2224      27499   drawscreen.o
+     11080       1626       1903         21       2224      27503   drawscreen.o
       1574        160        140       1812       5118      10749   field.o
          0          0      46976          0          0       1439   imagesother.o
          0          0      64512          0          0       1254   imagespokemon2.o
@@ -1722,7 +1722,7 @@ Image component sizes
        120         30          0          4          0       1392   timer1.o
 
     ----------------------------------------------------------------------
-     21520       3626     182648       2244       9492     102873   Object Totals
+     21532       3630     182648       2244       9492     102877   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          9          7          2          0   (incl. Padding)
 
@@ -1773,15 +1773,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     22048       3642     182648       2244       9588      98569   Grand Totals
-     22048       3642     182648        648       9588      98569   ELF Image Totals (compressed)
-     22048       3642     182648        648          0          0   ROM Totals
+     22060       3646     182648       2244       9588      98573   Grand Totals
+     22060       3646     182648        648       9588      98573   ELF Image Totals (compressed)
+     22060       3646     182648        648          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               204696 ( 199.90kB)
+    Total RO  Size (Code + RO Data)               204708 ( 199.91kB)
     Total RW  Size (RW Data + ZI Data)             11832 (  11.55kB)
-    Total ROM Size (Code + RO Data + RW Data)     205344 ( 200.53kB)
+    Total ROM Size (Code + RO Data + RW Data)     205356 ( 200.54kB)
 
 ==============================================================================
 
