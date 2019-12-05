@@ -14,8 +14,4 @@ void DrawAllSprites(SpriteSelectType selection);
 void DrawSpriteImg(SpriteInstType sprite);
 uint16_t GetGridX(uint8_t column);
 uint16_t GetGridY(uint8_t row);
-
-void Delay10ms(uint32_t count);
-void Delay100ms(uint32_t count);
-
 #endif

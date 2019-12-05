@@ -60,25 +60,3 @@ uint16_t GetGridX(uint8_t column){
 uint16_t GetGridY(uint8_t row){
 	return GAME_BORDER_W + row*GRID_LENGTH;
 }
-
-//must remove these delay functions and replace with interrupts
-
-void Delay10ms(uint32_t count){uint32_t volatile time;
-  while(count>0){
-    time = 727240/10;  // 0.1sec at 80 MHz
-    while(time){
-	  	time--;
-    }
-    count--;
-  }
-}
-
-void Delay100ms(uint32_t count){uint32_t volatile time;
-  while(count>0){
-    time = 727240;  // 0.1sec at 80 MHz
-    while(time){
-	  	time--;
-    }
-    count--;
-  }
-}
