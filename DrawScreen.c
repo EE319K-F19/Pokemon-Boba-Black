@@ -392,7 +392,8 @@ void DrawStatusScreen(uint8_t language){
 	ST7735_OutString("/100");
 	
 	ST7735_SetCursor(1, 7);
-	ST7735_OutString("Pokemon Team: \n ");
+	if(language) ST7735_OutString("Equipo de Pokemon: \n ");
+	else ST7735_OutString("Pokemon Team: \n ");
 	for(int i = 0; i < pokeTeam.size; i++){
 		ST7735_OutString(pokeTeam.pokemon[i].species.name);
 		ST7735_OutString(" - ");
@@ -588,7 +589,7 @@ void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uin
 						ST7735_FillRect(0, 94, 128, 56, 0xFFFF);
 						if(PokemonAllDead()){ // Ran out of pokemon (lost game)
 							ST7735_SetCursor(1, 12);
-							if(language) ST7735_OutString("Tu felicidad\n cay\xA2 por 10.");
+							if(language) ST7735_OutString("Tu felicidad\n cayo por 10.");
 							else ST7735_OutString("Your happiness\n dropped by 10.");
 							uint8_t drop = 10;
 							if(p1.happiness < 10) drop = p1.happiness;
@@ -714,7 +715,7 @@ void DrawSwapPokemon(uint8_t language, PokemonInstType* pokeRight){
 			ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
 			ST7735_SetCursor(1, 12);
 			ST7735_OutString(pokeRight->species.name);
-			if(language) ST7735_OutString(" intercambiado\n por ");
+			if(language) ST7735_OutString(" \n intercambiado\n por ");
 			else ST7735_OutString(" swapped\n for ");
 			ST7735_OutString(pokeTeam.pokemon[selected].species.name);
 			while(1){if(isPE3Pressed()) break;};
@@ -808,9 +809,9 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 								addPokemon(pokeRight, pokeTeam.size);
 								return 1;
 							}
-							ST7735_SetCursor(1, 12);
+							ST7735_SetCursor(1, 10);
 							ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
-							if(language) ST7735_OutString("Tu inventario de pokemon\n \x82sta lleno. Por favor elige\n a un pokemon para\n intercambiar");
+							if(language) ST7735_OutString("Tu inventario de\n pokemon esta lleno.\n Por favor elige\n a un pokemon para\n intercambiar");
 						  else ST7735_OutString("Your pokemon\n inventory is full.\n Please choose\n a pokemon to swap.");
 							while(1){if(isPE3Pressed()) break;};
 							DrawSwapPokemon(language, pokeRight);
