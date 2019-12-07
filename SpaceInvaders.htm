@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Dec 07 09:30:23 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Dec 07 10:18:23 2019
 <BR><P>
 <H3>Maximum Stack Usage =       1504 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -111,7 +111,7 @@ Function Pointers
  <LI><a href="#[82]">IncSeed</a> from drawscreen.o(i.IncSeed) referenced from drawscreen.o(i.DrawLanguageSelection)
  <LI><a href="#[61]">LPC0_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
  <LI><a href="#[6]">MemManage_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
- <LI><a href="#[83]">MoveWorldPokemon</a> from drawscreen.o(i.MoveWorldPokemon) referenced from drawscreen.o(i.DrawWorld)
+ <LI><a href="#[83]">MoveWorldPokemon</a> from pokemon.o(i.MoveWorldPokemon) referenced from drawscreen.o(i.DrawWorld)
  <LI><a href="#[4]">NMI_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
  <LI><a href="#[60]">PECI0_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
  <LI><a href="#[16]">PWM0Fault_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
@@ -743,9 +743,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b6]"></a>Random</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, random.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveWorldPokemon
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveWorldPokemon
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
@@ -975,7 +975,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 864 + Unknown Stack Size
 <LI>Call Chain = DrawBattleScreen &rArr; DrawPokemonInventory &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RestoreDeadPokemon
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PokemonAllDead
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSpriteImg
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_SetCursor
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_OutString
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_OutChar
@@ -983,15 +985,13 @@ Global Symbols
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isPE3Pressed
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getJoystickY
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getJoystickX
-<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RestoreDeadPokemon
-<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PokemonAllDead
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonNames
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonInventory
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawHPBars
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawEPBars
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleInventory
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSelection
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonNames
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawHPBars
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawEPBars
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawAllSprites
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearScreenWhite
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearBattleUI
@@ -1018,7 +1018,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
 </UL>
 
-<P><STRONG><a name="[ac]"></a>DrawEPBars</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, drawscreen.o(i.DrawEPBars))
+<P><STRONG><a name="[ac]"></a>DrawEPBars</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, draw.o(i.DrawEPBars))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80 + Unknown Stack Size
 <LI>Call Chain = DrawEPBars &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
@@ -1052,7 +1052,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawField
 </UL>
 
-<P><STRONG><a name="[ab]"></a>DrawHPBars</STRONG> (Thumb, 164 bytes, Stack size 40 bytes, drawscreen.o(i.DrawHPBars))
+<P><STRONG><a name="[ab]"></a>DrawHPBars</STRONG> (Thumb, 164 bytes, Stack size 40 bytes, draw.o(i.DrawHPBars))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = DrawHPBars &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
@@ -1114,7 +1114,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
 
-<P><STRONG><a name="[b0]"></a>DrawPokemonNames</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, drawscreen.o(i.DrawPokemonNames))
+<P><STRONG><a name="[b0]"></a>DrawPokemonNames</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, draw.o(i.DrawPokemonNames))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176 + Unknown Stack Size
 <LI>Call Chain = DrawPokemonNames &rArr; ST7735_OutString &rArr; ST7735_OutChar &rArr; ST7735_DrawString &rArr; ST7735_DrawCharS &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
@@ -1301,11 +1301,11 @@ Global Symbols
 
 <P><STRONG><a name="[df]"></a>GetFieldGrid</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, field.o(i.GetFieldGrid))
 <BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGridCoordinates
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveRight
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveLeft
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveDown
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 </UL>
 
 <P><STRONG><a name="[c0]"></a>GetGridX</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, draw.o(i.GetGridX))
@@ -1406,8 +1406,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveWorldPokemon
+<BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveWorldPokemon
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
 </UL>
 
 <P><STRONG><a name="[db]"></a>IsWalkable</STRONG> (Thumb, 50 bytes, Stack size 12 bytes, field.o(i.IsWalkable))
@@ -1415,11 +1415,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetObjGrid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveRight
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveLeft
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveDown
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit
 </UL>
 
@@ -1463,7 +1463,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
 
-<P><STRONG><a name="[83]"></a>MoveWorldPokemon</STRONG> (Thumb, 538 bytes, Stack size 24 bytes, drawscreen.o(i.MoveWorldPokemon))
+<P><STRONG><a name="[83]"></a>MoveWorldPokemon</STRONG> (Thumb, 538 bytes, Stack size 24 bytes, pokemon.o(i.MoveWorldPokemon))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = MoveWorldPokemon &rArr; IsPokemonWalkable &rArr; IsWalkable
 </UL>
@@ -1486,7 +1486,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b7]"></a>PokemonAllDead</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, drawscreen.o(i.PokemonAllDead))
+<P><STRONG><a name="[b7]"></a>PokemonAllDead</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, battle.o(i.PokemonAllDead))
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
 
@@ -1509,7 +1509,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[b3]"></a>RestoreDeadPokemon</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, drawscreen.o(i.RestoreDeadPokemon))
+<P><STRONG><a name="[b3]"></a>RestoreDeadPokemon</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, battle.o(i.RestoreDeadPokemon))
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
 
@@ -1631,11 +1631,11 @@ Global Symbols
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSwapPokemon
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawStatusScreen
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSimpleMenu
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonNames
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonInventory
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleInventory
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonNames
 </UL>
 
 <P><STRONG><a name="[a5]"></a>ST7735_SetCursor</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, st7735.o(i.ST7735_SetCursor))
@@ -1646,11 +1646,11 @@ Global Symbols
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSwapPokemon
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawStatusScreen
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawSimpleMenu
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonNames
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonInventory
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawMoveCommands
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleInventory
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawPokemonNames
 </UL>
 
 <P><STRONG><a name="[ca]"></a>ST7735_SetTextColor</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, st7735.o(i.ST7735_SetTextColor))

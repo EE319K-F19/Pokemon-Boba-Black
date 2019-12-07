@@ -14,5 +14,6 @@ extern uint32_t numPokemonSpecies;
 void InitPokemon(void);
 PokemonInstType GenerateRandomPokemonInit(uint8_t index);
 PokemonInstType GenerateRandomPokemon(uint8_t index);
+void MoveWorldPokemon(void);
 
 #endif

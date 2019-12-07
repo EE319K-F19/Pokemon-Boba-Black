@@ -4,6 +4,10 @@
 #include "ST7735.h"
 #include "SystemInfo.h"
 
+uint8_t pokeBattleLeftX = 2;
+uint8_t pokeBattleRightX = 86;
+uint8_t pokeBattleY = 90;
+
 void ClearScreenWhite(){
 	ST7735_FillScreen(0xFFFF);
 }
@@ -76,4 +80,44 @@ uint16_t GetGridX(uint8_t column){
 
 uint16_t GetGridY(uint8_t row){
 	return GAME_BORDER_W + row*GRID_LENGTH;
+}
+
+void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	uint32_t lowColor = 0x00FF;
+	uint32_t highColor = 0x0FF0;
+	
+	uint32_t lColor = highColor;
+	uint32_t rColor = highColor;
+	
+	if(pokeLeft->chealth <= pokeLeft->species.mhealth/2) lColor = lowColor;
+	if(pokeRight->chealth <= pokeRight->species.mhealth/2) rColor = lowColor;
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 35, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 25, 30, 2, 0x0000);
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 35, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, lColor);
+	ST7735_FillRect(pokeBattleRightX+5, 25, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
+}
+
+void DrawEPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	ST7735_FillRect(pokeBattleLeftX+5, 40, 30, 2, 0x0000);
+	ST7735_FillRect(pokeBattleRightX+5, 30, 30, 2, 0x0000);
+	
+	ST7735_FillRect(pokeBattleLeftX+5, 40, pokeLeft->cenergy*30/pokeLeft->species.menergy, 2, 0xFF00);
+	ST7735_FillRect(pokeBattleRightX+5, 30, pokeRight->cenergy*30/pokeRight->species.menergy, 2, 0xFF00);
+}
+
+void DrawPokemonNames(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
+	
+	ClearPokeLeftName();
+	ST7735_SetCursor(1, 2);
+	ST7735_OutString(pokeLeft->species.name);
+	
+	uint8_t length = 0;
+	while(pokeRight->species.name[length] != 0x0000){
+		length++;
+	}
+	
+	ST7735_SetCursor(20-length, 4);
+	ST7735_OutString(pokeRight->species.name);
 }

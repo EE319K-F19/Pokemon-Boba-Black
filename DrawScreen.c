@@ -100,50 +100,6 @@ PokemonType DrawTitleScreen(uint8_t language){
   }
 }
 
-void MoveWorldPokemon(){
-	const uint8_t waitCooldown = 5;
-	
-	for(uint8_t i=0; i<numWorldPokemon; i++){
-		uint8_t moveDir = Random()%40;
-		bool moved = true;
-		
-		if(WorldPokemons[i].numWait > 0){
-			WorldPokemons[i].numWait--;
-			continue;
-		}
-		
-		if(moveDir == 0){ //up
-			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
-				WorldPokemons[i].yPos --;
-				WorldPokemons[i].flip = false;
-			}
-		}else if(moveDir == 1){ //down
-			if(IsPokemonWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
-				WorldPokemons[i].yPos ++;
-				WorldPokemons[i].flip = true;
-			}
-		}else if(moveDir == 2){ //left
-			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
-				WorldPokemons[i].xPos --;
-				WorldPokemons[i].flip = false;
-			}
-		}else if(moveDir == 3){ //right
-			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
-				WorldPokemons[i].xPos ++;
-				WorldPokemons[i].flip = true;
-			}
-		}else {
-			moved = false;
-			if(WorldPokemons[i].numWait > 0) WorldPokemons[i].numWait--;
-		}
-		
-		if(moved) WorldPokemons[i].numWait = waitCooldown;
-	}
-}
-
-
-
-
 bool DrawWorld(uint8_t language){
 	
 	const uint32_t movePokemonTime = 6666666;
@@ -231,67 +187,6 @@ void DrawStatusScreen(uint8_t language){
 	while(1){
 		if(isPE2Pressed()) break;
 	}
-}
-
-bool PokemonAllDead(void){
-	for(int i = 0; i < pokeTeam.size; i++){
-		if(pokeTeam.pokemon[i].chealth > 0){
-			return false;
-		}
-	}
-	return true;
-}
-
-	uint8_t pokeBattleLeftX = 2;
-	uint8_t pokeBattleRightX = 86;
-	uint8_t pokeBattleY = 90;
-
-void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
-	uint32_t lowColor = 0x00FF;
-	uint32_t highColor = 0x0FF0;
-	
-	uint32_t lColor = highColor;
-	uint32_t rColor = highColor;
-	
-	if(pokeLeft->chealth <= pokeLeft->species.mhealth/2) lColor = lowColor;
-	if(pokeRight->chealth <= pokeRight->species.mhealth/2) rColor = lowColor;
-	
-	ST7735_FillRect(pokeBattleLeftX+5, 35, 30, 2, 0x0000);
-	ST7735_FillRect(pokeBattleRightX+5, 25, 30, 2, 0x0000);
-	
-	ST7735_FillRect(pokeBattleLeftX+5, 35, pokeLeft->chealth*30/pokeLeft->species.mhealth, 2, lColor);
-	ST7735_FillRect(pokeBattleRightX+5, 25, pokeRight->chealth*30/pokeRight->species.mhealth, 2, rColor);
-}
-
-void DrawEPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
-	ST7735_FillRect(pokeBattleLeftX+5, 40, 30, 2, 0x0000);
-	ST7735_FillRect(pokeBattleRightX+5, 30, 30, 2, 0x0000);
-	
-	ST7735_FillRect(pokeBattleLeftX+5, 40, pokeLeft->cenergy*30/pokeLeft->species.menergy, 2, 0xFF00);
-	ST7735_FillRect(pokeBattleRightX+5, 30, pokeRight->cenergy*30/pokeRight->species.menergy, 2, 0xFF00);
-}
-
-void RestoreDeadPokemon(void){
-	for(int i = 0; i < pokeTeam.size; i++){
-		if(pokeTeam.pokemon[i].chealth == 0){
-			pokeTeam.pokemon[i].chealth = 1;
-		}
-	}
-}
-
-void DrawPokemonNames(PokemonInstType* pokeLeft, PokemonInstType* pokeRight){
-	
-	ClearPokeLeftName();
-	ST7735_SetCursor(1, 2);
-	ST7735_OutString(pokeLeft->species.name);
-	
-	uint8_t length = 0;
-	while(pokeRight->species.name[length] != 0x0000){
-		length++;
-	}
-	
-	ST7735_SetCursor(20-length, 4);
-	ST7735_OutString(pokeRight->species.name);
 }
 	
 void DrawBattleScreen(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){

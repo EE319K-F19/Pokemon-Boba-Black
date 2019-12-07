@@ -164,6 +164,8 @@ Section Cross References
     battle.o(i.InitMoves) refers to battle.o(.constdata) for .constdata
     battle.o(i.InitMoves) refers to pokemontype.o(.constdata) for Grass
     battle.o(i.InitMoves) refers to battle.o(.bss) for NormalMoves
+    battle.o(i.PokemonAllDead) refers to player.o(.bss) for pokeTeam
+    battle.o(i.RestoreDeadPokemon) refers to player.o(.bss) for pokeTeam
     battle.o(i.moveShakeBack) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
     battle.o(i.moveShakeBack) refers to draw.o(i.DrawSpriteImg) for DrawSpriteImg
     battle.o(i.moveShakeBack) refers to battle.o(.data) for curX
@@ -184,6 +186,8 @@ Section Cross References
     draw.o(i.ClearScreenWhite) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     draw.o(i.DrawAllSprites) refers to draw.o(i.DrawSpriteImg) for DrawSpriteImg
     draw.o(i.DrawBorder) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
+    draw.o(i.DrawEPBars) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
+    draw.o(i.DrawEPBars) refers to draw.o(.data) for pokeBattleLeftX
     draw.o(i.DrawGridFill) refers to draw.o(i.GetGridY) for GetGridY
     draw.o(i.DrawGridFill) refers to draw.o(i.GetGridX) for GetGridX
     draw.o(i.DrawGridFill) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
@@ -191,6 +195,11 @@ Section Cross References
     draw.o(i.DrawGridSprite) refers to draw.o(i.GetGridY) for GetGridY
     draw.o(i.DrawGridSprite) refers to draw.o(i.GetGridX) for GetGridX
     draw.o(i.DrawGridSprite) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
+    draw.o(i.DrawHPBars) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
+    draw.o(i.DrawHPBars) refers to draw.o(.data) for pokeBattleLeftX
+    draw.o(i.DrawPokemonNames) refers to draw.o(i.ClearPokeLeftName) for ClearPokeLeftName
+    draw.o(i.DrawPokemonNames) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
+    draw.o(i.DrawPokemonNames) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
     draw.o(i.DrawSelection) refers to draw.o(i.DrawSpriteSelection) for DrawSpriteSelection
     draw.o(i.DrawSpriteImg) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
     draw.o(i.DrawSpriteInstSelection) refers to draw.o(i.DrawBorder) for DrawBorder
@@ -205,8 +214,8 @@ Section Cross References
     drawscreen.o(i.DrawBattleInventory) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
     drawscreen.o(i.DrawBattleInventory) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
     drawscreen.o(i.DrawBattleInventory) refers to sound.o(i.Sound_Heal) for Sound_Heal
-    drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(i.DrawHPBars) for DrawHPBars
-    drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(i.DrawEPBars) for DrawEPBars
+    drawscreen.o(i.DrawBattleInventory) refers to draw.o(i.DrawHPBars) for DrawHPBars
+    drawscreen.o(i.DrawBattleInventory) refers to draw.o(i.DrawEPBars) for DrawEPBars
     drawscreen.o(i.DrawBattleInventory) refers to player.o(i.addPokemon) for addPokemon
     drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(i.DrawSwapPokemon) for DrawSwapPokemon
     drawscreen.o(i.DrawBattleInventory) refers to drawscreen.o(.bss) for shopItems
@@ -217,15 +226,15 @@ Section Cross References
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.ClearScreenWhite) for ClearScreenWhite
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawSpriteImg) for DrawSpriteImg
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawAllSprites) for DrawAllSprites
-    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawHPBars) for DrawHPBars
-    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawEPBars) for DrawEPBars
-    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawPokemonNames) for DrawPokemonNames
+    drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawHPBars) for DrawHPBars
+    drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawEPBars) for DrawEPBars
+    drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawPokemonNames) for DrawPokemonNames
     drawscreen.o(i.DrawBattleScreen) refers to adc_joystick.o(i.getJoystickX) for getJoystickX
     drawscreen.o(i.DrawBattleScreen) refers to adc_joystick.o(i.getJoystickY) for getJoystickY
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.DrawSelection) for DrawSelection
     drawscreen.o(i.DrawBattleScreen) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawBattleInventory) for DrawBattleInventory
-    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.RestoreDeadPokemon) for RestoreDeadPokemon
+    drawscreen.o(i.DrawBattleScreen) refers to battle.o(i.RestoreDeadPokemon) for RestoreDeadPokemon
     drawscreen.o(i.DrawBattleScreen) refers to draw.o(i.ClearBattleUI) for ClearBattleUI
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawPokemonInventory) for DrawPokemonInventory
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.DrawMoveCommands) for DrawMoveCommands
@@ -233,14 +242,10 @@ Section Cross References
     drawscreen.o(i.DrawBattleScreen) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
     drawscreen.o(i.DrawBattleScreen) refers to random.o(.text) for Random
     drawscreen.o(i.DrawBattleScreen) refers to st7735.o(i.ST7735_OutChar) for ST7735_OutChar
-    drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(i.PokemonAllDead) for PokemonAllDead
+    drawscreen.o(i.DrawBattleScreen) refers to battle.o(i.PokemonAllDead) for PokemonAllDead
     drawscreen.o(i.DrawBattleScreen) refers to drawscreen.o(.constdata) for .constdata
     drawscreen.o(i.DrawBattleScreen) refers to spaceinvaders.o(.data) for ADCStatus
     drawscreen.o(i.DrawBattleScreen) refers to player.o(.bss) for pokeTeam
-    drawscreen.o(i.DrawEPBars) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
-    drawscreen.o(i.DrawEPBars) refers to drawscreen.o(.data) for pokeBattleLeftX
-    drawscreen.o(i.DrawHPBars) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
-    drawscreen.o(i.DrawHPBars) refers to drawscreen.o(.data) for pokeBattleLeftX
     drawscreen.o(i.DrawLanguageSelection) refers to timer1.o(i.Timer1_Init) for Timer1_Init
     drawscreen.o(i.DrawLanguageSelection) refers to draw.o(i.ClearScreenBlack) for ClearScreenBlack
     drawscreen.o(i.DrawLanguageSelection) refers to drawscreen.o(i.DrawSimpleMenu) for DrawSimpleMenu
@@ -254,8 +259,8 @@ Section Cross References
     drawscreen.o(i.DrawMoveCommands) refers to adc_joystick.o(i.isPE2Pressed) for isPE2Pressed
     drawscreen.o(i.DrawMoveCommands) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
     drawscreen.o(i.DrawMoveCommands) refers to random.o(.text) for Random
-    drawscreen.o(i.DrawMoveCommands) refers to drawscreen.o(i.DrawHPBars) for DrawHPBars
-    drawscreen.o(i.DrawMoveCommands) refers to drawscreen.o(i.DrawEPBars) for DrawEPBars
+    drawscreen.o(i.DrawMoveCommands) refers to draw.o(i.DrawHPBars) for DrawHPBars
+    drawscreen.o(i.DrawMoveCommands) refers to draw.o(i.DrawEPBars) for DrawEPBars
     drawscreen.o(i.DrawMoveCommands) refers to sound.o(i.Sound_Attack1) for Sound_Attack1
     drawscreen.o(i.DrawMoveCommands) refers to sound.o(i.Sound_Attack2) for Sound_Attack2
     drawscreen.o(i.DrawMoveCommands) refers to battle.o(i.DrawDamageShake) for DrawDamageShake
@@ -276,9 +281,6 @@ Section Cross References
     drawscreen.o(i.DrawPokemonInventory) refers to adc_joystick.o(i.isPE3Pressed) for isPE3Pressed
     drawscreen.o(i.DrawPokemonInventory) refers to player.o(.bss) for pokeTeam
     drawscreen.o(i.DrawPokemonInventory) refers to spaceinvaders.o(.data) for ADCStatus
-    drawscreen.o(i.DrawPokemonNames) refers to draw.o(i.ClearPokeLeftName) for ClearPokeLeftName
-    drawscreen.o(i.DrawPokemonNames) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
-    drawscreen.o(i.DrawPokemonNames) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
     drawscreen.o(i.DrawSimpleMenu) refers to draw.o(i.ClearBattleUI) for ClearBattleUI
     drawscreen.o(i.DrawSimpleMenu) refers to st7735.o(i.ST7735_SetCursor) for ST7735_SetCursor
     drawscreen.o(i.DrawSimpleMenu) refers to st7735.o(i.ST7735_OutString) for ST7735_OutString
@@ -339,7 +341,7 @@ Section Cross References
     drawscreen.o(i.DrawWorld) refers to shop.o(i.DrawShopScreen) for DrawShopScreen
     drawscreen.o(i.DrawWorld) refers to field.o(.bss) for WorldPokemons
     drawscreen.o(i.DrawWorld) refers to field.o(.data) for numWorldInstantiated
-    drawscreen.o(i.DrawWorld) refers to drawscreen.o(i.MoveWorldPokemon) for MoveWorldPokemon
+    drawscreen.o(i.DrawWorld) refers to pokemon.o(i.MoveWorldPokemon) for MoveWorldPokemon
     drawscreen.o(i.DrawWorld) refers to systeminfo.o(.constdata) for GAME_BORDER_COLOR
     drawscreen.o(i.DrawWorld) refers to systeminfo.o(.data) for _height
     drawscreen.o(i.DrawWorld) refers to player.o(.bss) for p1
@@ -348,12 +350,6 @@ Section Cross References
     drawscreen.o(i.DrawWorld) refers to drawscreen.o(.constdata) for .constdata
     drawscreen.o(i.DrawWorld) refers to drawscreen.o(.bss) for shopItems
     drawscreen.o(i.IncSeed) refers to drawscreen.o(.data) for seedTimer
-    drawscreen.o(i.MoveWorldPokemon) refers to random.o(.text) for Random
-    drawscreen.o(i.MoveWorldPokemon) refers to field.o(i.IsPokemonWalkable) for IsPokemonWalkable
-    drawscreen.o(i.MoveWorldPokemon) refers to field.o(.bss) for WorldPokemons
-    drawscreen.o(i.MoveWorldPokemon) refers to field.o(.data) for numWorldPokemon
-    drawscreen.o(i.PokemonAllDead) refers to player.o(.bss) for pokeTeam
-    drawscreen.o(i.RestoreDeadPokemon) refers to player.o(.bss) for pokeTeam
     drawscreen.o(.constdata) refers to imagesother.o(.constdata) for pokemonnameSpanish
     drawscreen.o(.constdata) refers to drawscreen.o(.bss) for itemInsts
     drawscreen.o(.constdata) refers to textsprites.o(.constdata) for lucha
@@ -475,6 +471,10 @@ Section Cross References
     pokemon.o(i.InitPokemon) refers to field.o(.constdata) for grassTile
     pokemon.o(i.InitPokemon) refers to pokemon.o(.bss) for BulbasaurT
     pokemon.o(i.IsPokemonPosOnEdge) refers to field.o(.constdata) for FIELD_WIDTH
+    pokemon.o(i.MoveWorldPokemon) refers to random.o(.text) for Random
+    pokemon.o(i.MoveWorldPokemon) refers to field.o(i.IsPokemonWalkable) for IsPokemonWalkable
+    pokemon.o(i.MoveWorldPokemon) refers to field.o(.bss) for WorldPokemons
+    pokemon.o(i.MoveWorldPokemon) refers to field.o(.data) for numWorldPokemon
     pokemon.o(i.PokemonLocationTaken) refers to field.o(.bss) for WorldPokemons
     pokemon.o(.constdata) refers to imagespokemon2.o(.constdata) for bulbasaur
     pokemon.o(.constdata) refers to imagespokemonworld.o(.constdata) for bulbasaurWorldFront
@@ -633,26 +633,26 @@ Image Symbol Table
 
     RESET                                    0x00000000   Section      644  startup.o(RESET)
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/dclz77c.s                  0x00000000   Number         0  __dclz77c.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
@@ -660,25 +660,25 @@ Image Symbol Table
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memclr_w.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  fpinit.o ABSOLUTE
@@ -783,14 +783,14 @@ Image Symbol Table
     i.DrawBattleScreen                       0x00000d30   Section        0  drawscreen.o(i.DrawBattleScreen)
     i.DrawBorder                             0x00001268   Section        0  draw.o(i.DrawBorder)
     i.DrawDamageShake                        0x000012e4   Section        0  battle.o(i.DrawDamageShake)
-    i.DrawEPBars                             0x00001350   Section        0  drawscreen.o(i.DrawEPBars)
+    i.DrawEPBars                             0x00001350   Section        0  draw.o(i.DrawEPBars)
     i.DrawField                              0x000013dc   Section        0  field.o(i.DrawField)
     i.DrawGridSprite                         0x00001678   Section        0  draw.o(i.DrawGridSprite)
-    i.DrawHPBars                             0x000016ac   Section        0  drawscreen.o(i.DrawHPBars)
+    i.DrawHPBars                             0x000016ac   Section        0  draw.o(i.DrawHPBars)
     i.DrawLanguageSelection                  0x00001758   Section        0  drawscreen.o(i.DrawLanguageSelection)
     i.DrawMoveCommands                       0x000017b4   Section        0  drawscreen.o(i.DrawMoveCommands)
     i.DrawPokemonInventory                   0x00001dfc   Section        0  drawscreen.o(i.DrawPokemonInventory)
-    i.DrawPokemonNames                       0x00001f9c   Section        0  drawscreen.o(i.DrawPokemonNames)
+    i.DrawPokemonNames                       0x00001f9c   Section        0  draw.o(i.DrawPokemonNames)
     i.DrawSelection                          0x00001fd6   Section        0  draw.o(i.DrawSelection)
     i.DrawShopScreen                         0x00002028   Section        0  shop.o(i.DrawShopScreen)
     i.DrawSimpleMenu                         0x00002418   Section        0  drawscreen.o(i.DrawSimpleMenu)
@@ -825,13 +825,13 @@ Image Symbol Table
     i.MoveLeft                               0x00004158   Section        0  player.o(i.MoveLeft)
     i.MoveRight                              0x000041c0   Section        0  player.o(i.MoveRight)
     i.MoveUp                                 0x00004228   Section        0  player.o(i.MoveUp)
-    i.MoveWorldPokemon                       0x0000428c   Section        0  drawscreen.o(i.MoveWorldPokemon)
+    i.MoveWorldPokemon                       0x0000428c   Section        0  pokemon.o(i.MoveWorldPokemon)
     i.Output_Init                            0x000044b0   Section        0  st7735.o(i.Output_Init)
     i.PLL_Init                               0x000044c0   Section        0  pll.o(i.PLL_Init)
-    i.PokemonAllDead                         0x0000453c   Section        0  drawscreen.o(i.PokemonAllDead)
+    i.PokemonAllDead                         0x0000453c   Section        0  battle.o(i.PokemonAllDead)
     i.PokemonLocationTaken                   0x00004564   Section        0  pokemon.o(i.PokemonLocationTaken)
     i.PrintWinLoseScreen                     0x00004598   Section        0  spaceinvaders.o(i.PrintWinLoseScreen)
-    i.RestoreDeadPokemon                     0x000046f8   Section        0  drawscreen.o(i.RestoreDeadPokemon)
+    i.RestoreDeadPokemon                     0x000046f8   Section        0  battle.o(i.RestoreDeadPokemon)
     i.ST7735_DrawBitmap                      0x00004724   Section        0  st7735.o(i.ST7735_DrawBitmap)
     i.ST7735_DrawCharS                       0x00004844   Section        0  st7735.o(i.ST7735_DrawCharS)
     i.ST7735_DrawPixel                       0x0000493c   Section        0  st7735.o(i.ST7735_DrawPixel)
@@ -908,7 +908,8 @@ Image Symbol Table
     .data                                    0x2000003c   Section        2  spaceinvaders.o(.data)
     .data                                    0x2000003e   Section        4  systeminfo.o(.data)
     .data                                    0x20000042   Section        2  battle.o(.data)
-    .data                                    0x20000044   Section       11  drawscreen.o(.data)
+    .data                                    0x20000044   Section        3  draw.o(.data)
+    .data                                    0x20000048   Section        8  drawscreen.o(.data)
     .data                                    0x20000050   Section     1812  field.o(.data)
     .data                                    0x20000764   Section      324  pokemontype.o(.data)
     .data                                    0x200008a8   Section       10  adc_joystick.o(.data)
@@ -1181,14 +1182,14 @@ Image Symbol Table
     DrawBattleScreen                         0x00000d31   Thumb Code  1332  drawscreen.o(i.DrawBattleScreen)
     DrawBorder                               0x00001269   Thumb Code   124  draw.o(i.DrawBorder)
     DrawDamageShake                          0x000012e5   Thumb Code    92  battle.o(i.DrawDamageShake)
-    DrawEPBars                               0x00001351   Thumb Code   132  drawscreen.o(i.DrawEPBars)
+    DrawEPBars                               0x00001351   Thumb Code   132  draw.o(i.DrawEPBars)
     DrawField                                0x000013dd   Thumb Code   600  field.o(i.DrawField)
     DrawGridSprite                           0x00001679   Thumb Code    52  draw.o(i.DrawGridSprite)
-    DrawHPBars                               0x000016ad   Thumb Code   164  drawscreen.o(i.DrawHPBars)
+    DrawHPBars                               0x000016ad   Thumb Code   164  draw.o(i.DrawHPBars)
     DrawLanguageSelection                    0x00001759   Thumb Code    62  drawscreen.o(i.DrawLanguageSelection)
     DrawMoveCommands                         0x000017b5   Thumb Code  1592  drawscreen.o(i.DrawMoveCommands)
     DrawPokemonInventory                     0x00001dfd   Thumb Code   358  drawscreen.o(i.DrawPokemonInventory)
-    DrawPokemonNames                         0x00001f9d   Thumb Code    58  drawscreen.o(i.DrawPokemonNames)
+    DrawPokemonNames                         0x00001f9d   Thumb Code    58  draw.o(i.DrawPokemonNames)
     DrawSelection                            0x00001fd7   Thumb Code    82  draw.o(i.DrawSelection)
     DrawShopScreen                           0x00002029   Thumb Code   678  shop.o(i.DrawShopScreen)
     DrawSimpleMenu                           0x00002419   Thumb Code   180  drawscreen.o(i.DrawSimpleMenu)
@@ -1223,13 +1224,13 @@ Image Symbol Table
     MoveLeft                                 0x00004159   Thumb Code    96  player.o(i.MoveLeft)
     MoveRight                                0x000041c1   Thumb Code    96  player.o(i.MoveRight)
     MoveUp                                   0x00004229   Thumb Code    92  player.o(i.MoveUp)
-    MoveWorldPokemon                         0x0000428d   Thumb Code   538  drawscreen.o(i.MoveWorldPokemon)
+    MoveWorldPokemon                         0x0000428d   Thumb Code   538  pokemon.o(i.MoveWorldPokemon)
     Output_Init                              0x000044b1   Thumb Code    16  st7735.o(i.Output_Init)
     PLL_Init                                 0x000044c1   Thumb Code   120  pll.o(i.PLL_Init)
-    PokemonAllDead                           0x0000453d   Thumb Code    34  drawscreen.o(i.PokemonAllDead)
+    PokemonAllDead                           0x0000453d   Thumb Code    34  battle.o(i.PokemonAllDead)
     PokemonLocationTaken                     0x00004565   Thumb Code    48  pokemon.o(i.PokemonLocationTaken)
     PrintWinLoseScreen                       0x00004599   Thumb Code   146  spaceinvaders.o(i.PrintWinLoseScreen)
-    RestoreDeadPokemon                       0x000046f9   Thumb Code    38  drawscreen.o(i.RestoreDeadPokemon)
+    RestoreDeadPokemon                       0x000046f9   Thumb Code    38  battle.o(i.RestoreDeadPokemon)
     ST7735_DrawBitmap                        0x00004725   Thumb Code   280  st7735.o(i.ST7735_DrawBitmap)
     ST7735_DrawCharS                         0x00004845   Thumb Code   236  st7735.o(i.ST7735_DrawCharS)
     ST7735_DrawPixel                         0x0000493d   Thumb Code    64  st7735.o(i.ST7735_DrawPixel)
@@ -1409,12 +1410,12 @@ Image Symbol Table
     _height                                  0x20000040   Data           2  systeminfo.o(.data)
     curX                                     0x20000042   Data           1  battle.o(.data)
     timerOn                                  0x20000043   Data           1  battle.o(.data)
-    backReturn                               0x20000044   Data           1  drawscreen.o(.data)
-    seedTimer                                0x20000045   Data           1  drawscreen.o(.data)
-    randomSeed                               0x20000048   Data           4  drawscreen.o(.data)
-    pokeBattleLeftX                          0x2000004c   Data           1  drawscreen.o(.data)
-    pokeBattleRightX                         0x2000004d   Data           1  drawscreen.o(.data)
-    pokeBattleY                              0x2000004e   Data           1  drawscreen.o(.data)
+    pokeBattleLeftX                          0x20000044   Data           1  draw.o(.data)
+    pokeBattleRightX                         0x20000045   Data           1  draw.o(.data)
+    pokeBattleY                              0x20000046   Data           1  draw.o(.data)
+    backReturn                               0x20000048   Data           1  drawscreen.o(.data)
+    seedTimer                                0x20000049   Data           1  drawscreen.o(.data)
+    randomSeed                               0x2000004c   Data           4  drawscreen.o(.data)
     numWorldPokemon                          0x20000050   Data           1  field.o(.data)
     numWorldInstantiated                     0x20000051   Data           1  field.o(.data)
     grassGridsLength                         0x20000054   Data           4  field.o(.data)
@@ -1483,133 +1484,133 @@ Memory Map of the image
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
-    0x00000284   0x00000284   0x00000008   Code   RO         1245  * !!!main             c_w.l(__main.o)
-    0x0000028c   0x0000028c   0x00000034   Code   RO         1404    !!!scatter          c_w.l(__scatter.o)
-    0x000002c0   0x000002c0   0x00000064   Code   RO         1402    !!dclz77c           c_w.l(__dclz77c.o)
-    0x00000324   0x00000324   0x0000001c   Code   RO         1406    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x00000340   0x00000340   0x00000002   Code   RO         1272    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1279    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1281    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1284    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1286    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1288    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1291    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1293    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1295    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1297    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1299    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1301    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1303    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1305    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1307    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1309    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1311    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1315    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1317    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1319    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000000   Code   RO         1321    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x00000342   0x00000342   0x00000002   Code   RO         1322    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x00000344   0x00000344   0x00000002   Code   RO         1342    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x00000346   0x00000346   0x00000000   Code   RO         1355    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x00000346   0x00000346   0x00000000   Code   RO         1357    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x00000346   0x00000346   0x00000000   Code   RO         1360    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x00000346   0x00000346   0x00000000   Code   RO         1363    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x00000346   0x00000346   0x00000000   Code   RO         1365    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x00000346   0x00000346   0x00000000   Code   RO         1368    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x00000346   0x00000346   0x00000002   Code   RO         1369    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x00000348   0x00000348   0x00000000   Code   RO         1247    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x00000348   0x00000348   0x00000000   Code   RO         1249    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x00000348   0x00000348   0x00000006   Code   RO         1261    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x0000034e   0x0000034e   0x00000000   Code   RO         1251    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x0000034e   0x0000034e   0x00000004   Code   RO         1252    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x00000352   0x00000352   0x00000000   Code   RO         1254    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x00000352   0x00000352   0x00000008   Code   RO         1255    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0000035a   0x0000035a   0x00000002   Code   RO         1276    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x0000035c   0x0000035c   0x00000000   Code   RO         1324    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x0000035c   0x0000035c   0x00000004   Code   RO         1325    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000360   0x00000360   0x00000006   Code   RO         1326    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x00000284   0x00000284   0x00000008   Code   RO         1252  * !!!main             c_w.l(__main.o)
+    0x0000028c   0x0000028c   0x00000034   Code   RO         1411    !!!scatter          c_w.l(__scatter.o)
+    0x000002c0   0x000002c0   0x00000064   Code   RO         1409    !!dclz77c           c_w.l(__dclz77c.o)
+    0x00000324   0x00000324   0x0000001c   Code   RO         1413    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x00000340   0x00000340   0x00000002   Code   RO         1279    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1286    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1288    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1291    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1293    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1295    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1298    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1300    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1302    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1304    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1306    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1308    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1310    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1312    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1314    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1316    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1318    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1322    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1324    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1326    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000000   Code   RO         1328    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x00000342   0x00000342   0x00000002   Code   RO         1329    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x00000344   0x00000344   0x00000002   Code   RO         1349    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x00000346   0x00000346   0x00000000   Code   RO         1362    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x00000346   0x00000346   0x00000000   Code   RO         1364    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x00000346   0x00000346   0x00000000   Code   RO         1367    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x00000346   0x00000346   0x00000000   Code   RO         1370    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x00000346   0x00000346   0x00000000   Code   RO         1372    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x00000346   0x00000346   0x00000000   Code   RO         1375    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x00000346   0x00000346   0x00000002   Code   RO         1376    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x00000348   0x00000348   0x00000000   Code   RO         1254    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x00000348   0x00000348   0x00000000   Code   RO         1256    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x00000348   0x00000348   0x00000006   Code   RO         1268    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x0000034e   0x0000034e   0x00000000   Code   RO         1258    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x0000034e   0x0000034e   0x00000004   Code   RO         1259    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x00000352   0x00000352   0x00000000   Code   RO         1261    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x00000352   0x00000352   0x00000008   Code   RO         1262    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0000035a   0x0000035a   0x00000002   Code   RO         1283    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0000035c   0x0000035c   0x00000000   Code   RO         1331    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0000035c   0x0000035c   0x00000004   Code   RO         1332    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000360   0x00000360   0x00000006   Code   RO         1333    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x00000366   0x00000366   0x00000002   PAD
     0x00000368   0x00000368   0x00000030   Code   RO            4    .text               startup.o
     0x00000398   0x00000398   0x0000003c   Code   RO           13    .text               random.o
     0x000003d4   0x000003d4   0x00000048   Code   RO          447    .text               lcd.o
     0x0000041c   0x0000041c   0x00000180   Code   RO          450    .text               print.o
-    0x0000059c   0x0000059c   0x00000064   Code   RO         1239    .text               c_w.l(rt_memcpy_w.o)
-    0x00000600   0x00000600   0x0000004e   Code   RO         1241    .text               c_w.l(rt_memclr_w.o)
-    0x0000064e   0x0000064e   0x00000006   Code   RO         1243    .text               c_w.l(heapauxi.o)
-    0x00000654   0x00000654   0x0000004a   Code   RO         1263    .text               c_w.l(sys_stackheap_outer.o)
-    0x0000069e   0x0000069e   0x00000012   Code   RO         1265    .text               c_w.l(exit.o)
-    0x000006b0   0x000006b0   0x00000008   Code   RO         1273    .text               c_w.l(libspace.o)
-    0x000006b8   0x000006b8   0x0000000c   Code   RO         1334    .text               c_w.l(sys_exit.o)
-    0x000006c4   0x000006c4   0x00000002   Code   RO         1345    .text               c_w.l(use_no_semi.o)
-    0x000006c6   0x000006c6   0x00000000   Code   RO         1347    .text               c_w.l(indicate_semi.o)
+    0x0000059c   0x0000059c   0x00000064   Code   RO         1246    .text               c_w.l(rt_memcpy_w.o)
+    0x00000600   0x00000600   0x0000004e   Code   RO         1248    .text               c_w.l(rt_memclr_w.o)
+    0x0000064e   0x0000064e   0x00000006   Code   RO         1250    .text               c_w.l(heapauxi.o)
+    0x00000654   0x00000654   0x0000004a   Code   RO         1270    .text               c_w.l(sys_stackheap_outer.o)
+    0x0000069e   0x0000069e   0x00000012   Code   RO         1272    .text               c_w.l(exit.o)
+    0x000006b0   0x000006b0   0x00000008   Code   RO         1280    .text               c_w.l(libspace.o)
+    0x000006b8   0x000006b8   0x0000000c   Code   RO         1341    .text               c_w.l(sys_exit.o)
+    0x000006c4   0x000006c4   0x00000002   Code   RO         1352    .text               c_w.l(use_no_semi.o)
+    0x000006c6   0x000006c6   0x00000000   Code   RO         1354    .text               c_w.l(indicate_semi.o)
     0x000006c6   0x000006c6   0x00000002   PAD
-    0x000006c8   0x000006c8   0x00000038   Code   RO         1085    i.ADC_In89          adc_joystick.o
-    0x00000700   0x00000700   0x00000124   Code   RO         1086    i.ADC_Init89        adc_joystick.o
-    0x00000824   0x00000824   0x00000044   Code   RO          848    i.BumpedIntoWorldPokemon  field.o
-    0x00000868   0x00000868   0x0000002c   Code   RO          610    i.ClearBattleUI     draw.o
-    0x00000894   0x00000894   0x00000016   Code   RO          611    i.ClearPokeLeftName  draw.o
-    0x000008aa   0x000008aa   0x0000000a   Code   RO          612    i.ClearScreenBlack  draw.o
-    0x000008b4   0x000008b4   0x00000020   Code   RO          850    i.ClearScreenGrid   field.o
-    0x000008d4   0x000008d4   0x0000000c   Code   RO          613    i.ClearScreenWhite  draw.o
+    0x000006c8   0x000006c8   0x00000038   Code   RO         1086    i.ADC_In89          adc_joystick.o
+    0x00000700   0x00000700   0x00000124   Code   RO         1087    i.ADC_Init89        adc_joystick.o
+    0x00000824   0x00000824   0x00000044   Code   RO          849    i.BumpedIntoWorldPokemon  field.o
+    0x00000868   0x00000868   0x0000002c   Code   RO          626    i.ClearBattleUI     draw.o
+    0x00000894   0x00000894   0x00000016   Code   RO          627    i.ClearPokeLeftName  draw.o
+    0x000008aa   0x000008aa   0x0000000a   Code   RO          628    i.ClearScreenBlack  draw.o
+    0x000008b4   0x000008b4   0x00000020   Code   RO          851    i.ClearScreenGrid   field.o
+    0x000008d4   0x000008d4   0x0000000c   Code   RO          629    i.ClearScreenWhite  draw.o
     0x000008e0   0x000008e0   0x00000048   Code   RO          308    i.DAC_Init          dac.o
     0x00000928   0x00000928   0x0000000c   Code   RO          309    i.DAC_Out           dac.o
     0x00000934   0x00000934   0x00000020   Code   RO           16    i.Delay1ms          st7735.o
-    0x00000954   0x00000954   0x00000024   Code   RO          614    i.DrawAllSprites    draw.o
-    0x00000978   0x00000978   0x000003b8   Code   RO          703    i.DrawBattleInventory  drawscreen.o
-    0x00000d30   0x00000d30   0x00000538   Code   RO          704    i.DrawBattleScreen  drawscreen.o
-    0x00001268   0x00001268   0x0000007c   Code   RO          615    i.DrawBorder        draw.o
+    0x00000954   0x00000954   0x00000024   Code   RO          630    i.DrawAllSprites    draw.o
+    0x00000978   0x00000978   0x000003b8   Code   RO          740    i.DrawBattleInventory  drawscreen.o
+    0x00000d30   0x00000d30   0x00000538   Code   RO          741    i.DrawBattleScreen  drawscreen.o
+    0x00001268   0x00001268   0x0000007c   Code   RO          631    i.DrawBorder        draw.o
     0x000012e4   0x000012e4   0x0000006c   Code   RO          562    i.DrawDamageShake   battle.o
-    0x00001350   0x00001350   0x0000008c   Code   RO          705    i.DrawEPBars        drawscreen.o
-    0x000013dc   0x000013dc   0x0000029c   Code   RO          851    i.DrawField         field.o
-    0x00001678   0x00001678   0x00000034   Code   RO          617    i.DrawGridSprite    draw.o
-    0x000016ac   0x000016ac   0x000000ac   Code   RO          706    i.DrawHPBars        drawscreen.o
-    0x00001758   0x00001758   0x0000005c   Code   RO          707    i.DrawLanguageSelection  drawscreen.o
-    0x000017b4   0x000017b4   0x00000648   Code   RO          708    i.DrawMoveCommands  drawscreen.o
-    0x00001dfc   0x00001dfc   0x000001a0   Code   RO          709    i.DrawPokemonInventory  drawscreen.o
-    0x00001f9c   0x00001f9c   0x0000003a   Code   RO          710    i.DrawPokemonNames  drawscreen.o
-    0x00001fd6   0x00001fd6   0x00000052   Code   RO          618    i.DrawSelection     draw.o
-    0x00002028   0x00002028   0x000003f0   Code   RO         1055    i.DrawShopScreen    shop.o
-    0x00002418   0x00002418   0x000000bc   Code   RO          711    i.DrawSimpleMenu    drawscreen.o
-    0x000024d4   0x000024d4   0x0000001e   Code   RO          619    i.DrawSpriteImg     draw.o
-    0x000024f2   0x000024f2   0x00000034   Code   RO          621    i.DrawSpriteSelection  draw.o
+    0x00001350   0x00001350   0x0000008c   Code   RO          632    i.DrawEPBars        draw.o
+    0x000013dc   0x000013dc   0x0000029c   Code   RO          852    i.DrawField         field.o
+    0x00001678   0x00001678   0x00000034   Code   RO          634    i.DrawGridSprite    draw.o
+    0x000016ac   0x000016ac   0x000000ac   Code   RO          635    i.DrawHPBars        draw.o
+    0x00001758   0x00001758   0x0000005c   Code   RO          742    i.DrawLanguageSelection  drawscreen.o
+    0x000017b4   0x000017b4   0x00000648   Code   RO          743    i.DrawMoveCommands  drawscreen.o
+    0x00001dfc   0x00001dfc   0x000001a0   Code   RO          744    i.DrawPokemonInventory  drawscreen.o
+    0x00001f9c   0x00001f9c   0x0000003a   Code   RO          636    i.DrawPokemonNames  draw.o
+    0x00001fd6   0x00001fd6   0x00000052   Code   RO          637    i.DrawSelection     draw.o
+    0x00002028   0x00002028   0x000003f0   Code   RO         1056    i.DrawShopScreen    shop.o
+    0x00002418   0x00002418   0x000000bc   Code   RO          745    i.DrawSimpleMenu    drawscreen.o
+    0x000024d4   0x000024d4   0x0000001e   Code   RO          638    i.DrawSpriteImg     draw.o
+    0x000024f2   0x000024f2   0x00000034   Code   RO          640    i.DrawSpriteSelection  draw.o
     0x00002526   0x00002526   0x00000002   PAD
-    0x00002528   0x00002528   0x0000012c   Code   RO          712    i.DrawStatusScreen  drawscreen.o
-    0x00002654   0x00002654   0x00000148   Code   RO          713    i.DrawSwapPokemon   drawscreen.o
-    0x0000279c   0x0000279c   0x000001cc   Code   RO          714    i.DrawTitleScreen   drawscreen.o
-    0x00002968   0x00002968   0x000001b0   Code   RO          715    i.DrawWorld         drawscreen.o
-    0x00002b18   0x00002b18   0x000000e4   Code   RO         1174    i.GenerateRandomPokemon  pokemon.o
-    0x00002bfc   0x00002bfc   0x000000ec   Code   RO         1175    i.GenerateRandomPokemonInit  pokemon.o
-    0x00002ce8   0x00002ce8   0x00000014   Code   RO          852    i.GetFieldGrid      field.o
-    0x00002cfc   0x00002cfc   0x0000001c   Code   RO          622    i.GetGridX          draw.o
-    0x00002d18   0x00002d18   0x0000001c   Code   RO          623    i.GetGridY          draw.o
-    0x00002d34   0x00002d34   0x00000014   Code   RO          853    i.GetObjGrid        field.o
-    0x00002d48   0x00002d48   0x000000b8   Code   RO         1176    i.GetPokemonGrid    pokemon.o
-    0x00002e00   0x00002e00   0x00000034   Code   RO          716    i.IncSeed           drawscreen.o
-    0x00002e34   0x00002e34   0x00000100   Code   RO          854    i.InitBackgroundTypes  field.o
-    0x00002f34   0x00002f34   0x00000090   Code   RO          855    i.InitGridCoordinates  field.o
-    0x00002fc4   0x00002fc4   0x00000070   Code   RO          961    i.InitInventory     player.o
+    0x00002528   0x00002528   0x0000012c   Code   RO          746    i.DrawStatusScreen  drawscreen.o
+    0x00002654   0x00002654   0x00000148   Code   RO          747    i.DrawSwapPokemon   drawscreen.o
+    0x0000279c   0x0000279c   0x000001cc   Code   RO          748    i.DrawTitleScreen   drawscreen.o
+    0x00002968   0x00002968   0x000001b0   Code   RO          749    i.DrawWorld         drawscreen.o
+    0x00002b18   0x00002b18   0x000000e4   Code   RO         1175    i.GenerateRandomPokemon  pokemon.o
+    0x00002bfc   0x00002bfc   0x000000ec   Code   RO         1176    i.GenerateRandomPokemonInit  pokemon.o
+    0x00002ce8   0x00002ce8   0x00000014   Code   RO          853    i.GetFieldGrid      field.o
+    0x00002cfc   0x00002cfc   0x0000001c   Code   RO          641    i.GetGridX          draw.o
+    0x00002d18   0x00002d18   0x0000001c   Code   RO          642    i.GetGridY          draw.o
+    0x00002d34   0x00002d34   0x00000014   Code   RO          854    i.GetObjGrid        field.o
+    0x00002d48   0x00002d48   0x000000b8   Code   RO         1177    i.GetPokemonGrid    pokemon.o
+    0x00002e00   0x00002e00   0x00000034   Code   RO          750    i.IncSeed           drawscreen.o
+    0x00002e34   0x00002e34   0x00000100   Code   RO          855    i.InitBackgroundTypes  field.o
+    0x00002f34   0x00002f34   0x00000090   Code   RO          856    i.InitGridCoordinates  field.o
+    0x00002fc4   0x00002fc4   0x00000070   Code   RO          962    i.InitInventory     player.o
     0x00003034   0x00003034   0x00000528   Code   RO          563    i.InitMoves         battle.o
-    0x0000355c   0x0000355c   0x00000094   Code   RO          962    i.InitPlayer        player.o
-    0x000035f0   0x000035f0   0x000007e0   Code   RO         1177    i.InitPokemon       pokemon.o
-    0x00003dd0   0x00003dd0   0x00000170   Code   RO         1056    i.InitShop          shop.o
-    0x00003f40   0x00003f40   0x00000014   Code   RO          963    i.InitTeam          player.o
-    0x00003f54   0x00003f54   0x00000034   Code   RO          856    i.IsGridObject      field.o
-    0x00003f88   0x00003f88   0x00000030   Code   RO         1178    i.IsPokemonPosOnEdge  pokemon.o
-    0x00003fb8   0x00003fb8   0x000000cc   Code   RO          857    i.IsPokemonWalkable  field.o
-    0x00004084   0x00004084   0x00000032   Code   RO          858    i.IsWalkable        field.o
+    0x0000355c   0x0000355c   0x00000094   Code   RO          963    i.InitPlayer        player.o
+    0x000035f0   0x000035f0   0x000007e0   Code   RO         1178    i.InitPokemon       pokemon.o
+    0x00003dd0   0x00003dd0   0x00000170   Code   RO         1057    i.InitShop          shop.o
+    0x00003f40   0x00003f40   0x00000014   Code   RO          964    i.InitTeam          player.o
+    0x00003f54   0x00003f54   0x00000034   Code   RO          857    i.IsGridObject      field.o
+    0x00003f88   0x00003f88   0x00000030   Code   RO         1179    i.IsPokemonPosOnEdge  pokemon.o
+    0x00003fb8   0x00003fb8   0x000000cc   Code   RO          858    i.IsPokemonWalkable  field.o
+    0x00004084   0x00004084   0x00000032   Code   RO          859    i.IsWalkable        field.o
     0x000040b6   0x000040b6   0x00000002   PAD
-    0x000040b8   0x000040b8   0x0000003c   Code   RO          859    i.IsWorldPokemon    field.o
-    0x000040f4   0x000040f4   0x00000064   Code   RO          965    i.MoveDown          player.o
-    0x00004158   0x00004158   0x00000068   Code   RO          966    i.MoveLeft          player.o
-    0x000041c0   0x000041c0   0x00000068   Code   RO          967    i.MoveRight         player.o
-    0x00004228   0x00004228   0x00000064   Code   RO          968    i.MoveUp            player.o
-    0x0000428c   0x0000428c   0x00000224   Code   RO          717    i.MoveWorldPokemon  drawscreen.o
+    0x000040b8   0x000040b8   0x0000003c   Code   RO          860    i.IsWorldPokemon    field.o
+    0x000040f4   0x000040f4   0x00000064   Code   RO          966    i.MoveDown          player.o
+    0x00004158   0x00004158   0x00000068   Code   RO          967    i.MoveLeft          player.o
+    0x000041c0   0x000041c0   0x00000068   Code   RO          968    i.MoveRight         player.o
+    0x00004228   0x00004228   0x00000064   Code   RO          969    i.MoveUp            player.o
+    0x0000428c   0x0000428c   0x00000224   Code   RO         1180    i.MoveWorldPokemon  pokemon.o
     0x000044b0   0x000044b0   0x00000010   Code   RO           19    i.Output_Init       st7735.o
     0x000044c0   0x000044c0   0x0000007c   Code   RO          293    i.PLL_Init          pll.o
-    0x0000453c   0x0000453c   0x00000028   Code   RO          718    i.PokemonAllDead    drawscreen.o
-    0x00004564   0x00004564   0x00000034   Code   RO         1179    i.PokemonLocationTaken  pokemon.o
+    0x0000453c   0x0000453c   0x00000028   Code   RO          564    i.PokemonAllDead    battle.o
+    0x00004564   0x00004564   0x00000034   Code   RO         1181    i.PokemonLocationTaken  pokemon.o
     0x00004598   0x00004598   0x00000160   Code   RO          453    i.PrintWinLoseScreen  spaceinvaders.o
-    0x000046f8   0x000046f8   0x0000002c   Code   RO          719    i.RestoreDeadPokemon  drawscreen.o
+    0x000046f8   0x000046f8   0x0000002c   Code   RO          565    i.RestoreDeadPokemon  battle.o
     0x00004724   0x00004724   0x00000120   Code   RO           23    i.ST7735_DrawBitmap  st7735.o
     0x00004844   0x00004844   0x000000f8   Code   RO           25    i.ST7735_DrawCharS  st7735.o
     0x0000493c   0x0000493c   0x00000048   Code   RO           28    i.ST7735_DrawPixel  st7735.o
@@ -1628,24 +1629,24 @@ Memory Map of the image
     0x00004c7c   0x00004c7c   0x0000002c   Code   RO          389    i.Sound_Init        sound.o
     0x00004ca8   0x00004ca8   0x00000020   Code   RO          390    i.Sound_Play        sound.o
     0x00004cc8   0x00004cc8   0x00000048   Code   RO          391    i.Sound_Task        sound.o
-    0x00004d10   0x00004d10   0x00000018   Code   RO         1087    i.SysTick_Handler   adc_joystick.o
-    0x00004d28   0x00004d28   0x0000001c   Code   RO         1088    i.SysTick_Init      adc_joystick.o
+    0x00004d10   0x00004d10   0x00000018   Code   RO         1088    i.SysTick_Handler   adc_joystick.o
+    0x00004d28   0x00004d28   0x0000001c   Code   RO         1089    i.SysTick_Init      adc_joystick.o
     0x00004d44   0x00004d44   0x00000018   Code   RO          344    i.Timer0A_Handler   timer0.o
     0x00004d5c   0x00004d5c   0x00000060   Code   RO          345    i.Timer0_Init       timer0.o
     0x00004dbc   0x00004dbc   0x00000018   Code   RO          365    i.Timer1A_Handler   timer1.o
     0x00004dd4   0x00004dd4   0x00000060   Code   RO          366    i.Timer1_Init       timer1.o
-    0x00004e34   0x00004e34   0x00000070   Code   RO          970    i.addPokemon        player.o
+    0x00004e34   0x00004e34   0x00000070   Code   RO          971    i.addPokemon        player.o
     0x00004ea4   0x00004ea4   0x00000056   Code   RO           50    i.commandList       st7735.o
     0x00004efa   0x00004efa   0x00000002   PAD
     0x00004efc   0x00004efc   0x00000188   Code   RO           51    i.commonInit        st7735.o
-    0x00005084   0x00005084   0x00000028   Code   RO         1089    i.getJoystickX      adc_joystick.o
-    0x000050ac   0x000050ac   0x00000028   Code   RO         1090    i.getJoystickY      adc_joystick.o
-    0x000050d4   0x000050d4   0x00000030   Code   RO         1091    i.isPE2Pressed      adc_joystick.o
-    0x00005104   0x00005104   0x00000030   Code   RO         1092    i.isPE3Pressed      adc_joystick.o
+    0x00005084   0x00005084   0x00000028   Code   RO         1090    i.getJoystickX      adc_joystick.o
+    0x000050ac   0x000050ac   0x00000028   Code   RO         1091    i.getJoystickY      adc_joystick.o
+    0x000050d4   0x000050d4   0x00000030   Code   RO         1092    i.isPE2Pressed      adc_joystick.o
+    0x00005104   0x00005104   0x00000030   Code   RO         1093    i.isPE3Pressed      adc_joystick.o
     0x00005134   0x00005134   0x000000b0   Code   RO          454    i.main              spaceinvaders.o
-    0x000051e4   0x000051e4   0x000000c4   Code   RO          564    i.moveShakeBack     battle.o
-    0x000052a8   0x000052a8   0x00000074   Code   RO          565    i.moveShakeLeft     battle.o
-    0x0000531c   0x0000531c   0x00000074   Code   RO          566    i.moveShakeRight    battle.o
+    0x000051e4   0x000051e4   0x000000c4   Code   RO          566    i.moveShakeBack     battle.o
+    0x000052a8   0x000052a8   0x00000074   Code   RO          567    i.moveShakeLeft     battle.o
+    0x0000531c   0x0000531c   0x00000074   Code   RO          568    i.moveShakeRight    battle.o
     0x00005390   0x00005390   0x00000012   Code   RO           56    i.pushColor         st7735.o
     0x000053a2   0x000053a2   0x00000002   PAD
     0x000053a4   0x000053a4   0x00000074   Code   RO           57    i.setAddrWindow     st7735.o
@@ -1654,26 +1655,26 @@ Memory Map of the image
     0x00011a7c   0x00011a7c   0x00000010   Data   RO          455    .constdata          spaceinvaders.o
     0x00011a8c   0x00011a8c   0x0000000a   Data   RO          549    .constdata          systeminfo.o
     0x00011a96   0x00011a96   0x00000002   PAD
-    0x00011a98   0x00011a98   0x000001e4   Data   RO          568    .constdata          battle.o
-    0x00011c7c   0x00011c7c   0x000000d0   Data   RO          721    .constdata          drawscreen.o
-    0x00011d4c   0x00011d4c   0x0000008c   Data   RO          862    .constdata          field.o
-    0x00011dd8   0x00011dd8   0x00000016   Data   RO          947    .constdata          pokemontype.o
+    0x00011a98   0x00011a98   0x000001e4   Data   RO          570    .constdata          battle.o
+    0x00011c7c   0x00011c7c   0x000000d0   Data   RO          752    .constdata          drawscreen.o
+    0x00011d4c   0x00011d4c   0x0000008c   Data   RO          863    .constdata          field.o
+    0x00011dd8   0x00011dd8   0x00000016   Data   RO          948    .constdata          pokemontype.o
     0x00011dee   0x00011dee   0x00000002   PAD
-    0x00011df0   0x00011df0   0x0000007c   Data   RO          972    .constdata          player.o
-    0x00011e6c   0x00011e6c   0x000000cc   Data   RO         1058    .constdata          shop.o
-    0x00011f38   0x00011f38   0x0000b780   Data   RO         1146    .constdata          imagesother.o
-    0x0001d6b8   0x0001d6b8   0x00001800   Data   RO         1153    .constdata          textsprites.o
-    0x0001eeb8   0x0001eeb8   0x0000fc00   Data   RO         1160    .constdata          imagespokemon2.o
-    0x0002eab8   0x0002eab8   0x00002800   Data   RO         1167    .constdata          imagespokemonworld.o
-    0x000312b8   0x000312b8   0x00000550   Data   RO         1181    .constdata          pokemon.o
-    0x00031808   0x00031808   0x000003d9   Data   RO          569    .conststring        battle.o
+    0x00011df0   0x00011df0   0x0000007c   Data   RO          973    .constdata          player.o
+    0x00011e6c   0x00011e6c   0x000000cc   Data   RO         1059    .constdata          shop.o
+    0x00011f38   0x00011f38   0x0000b780   Data   RO         1147    .constdata          imagesother.o
+    0x0001d6b8   0x0001d6b8   0x00001800   Data   RO         1154    .constdata          textsprites.o
+    0x0001eeb8   0x0001eeb8   0x0000fc00   Data   RO         1161    .constdata          imagespokemon2.o
+    0x0002eab8   0x0002eab8   0x00002800   Data   RO         1168    .constdata          imagespokemonworld.o
+    0x000312b8   0x000312b8   0x00000550   Data   RO         1183    .constdata          pokemon.o
+    0x00031808   0x00031808   0x000003d9   Data   RO          571    .conststring        battle.o
     0x00031be1   0x00031be1   0x00000003   PAD
-    0x00031be4   0x00031be4   0x0000009c   Data   RO          722    .conststring        drawscreen.o
-    0x00031c80   0x00031c80   0x00000047   Data   RO         1059    .conststring        shop.o
+    0x00031be4   0x00031be4   0x0000009c   Data   RO          753    .conststring        drawscreen.o
+    0x00031c80   0x00031c80   0x00000047   Data   RO         1060    .conststring        shop.o
     0x00031cc7   0x00031cc7   0x00000001   PAD
-    0x00031cc8   0x00031cc8   0x000000b3   Data   RO         1182    .conststring        pokemon.o
+    0x00031cc8   0x00031cc8   0x000000b3   Data   RO         1184    .conststring        pokemon.o
     0x00031d7b   0x00031d7b   0x00000001   PAD
-    0x00031d7c   0x00031d7c   0x00000020   Data   RO         1400    Region$$Table       anon$$obj.o
+    0x00031d7c   0x00031d7c   0x00000020   Data   RO         1407    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00031d9c, Size: 0x000008bc, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x00000284])
@@ -1686,14 +1687,15 @@ Memory Map of the image
     0x20000030   COMPRESSED   0x0000000c   Data   RW          394    .data               sound.o
     0x2000003c   COMPRESSED   0x00000002   Data   RW          456    .data               spaceinvaders.o
     0x2000003e   COMPRESSED   0x00000004   Data   RW          550    .data               systeminfo.o
-    0x20000042   COMPRESSED   0x00000002   Data   RW          570    .data               battle.o
-    0x20000044   COMPRESSED   0x0000000b   Data   RW          723    .data               drawscreen.o
-    0x2000004f   COMPRESSED   0x00000001   PAD
-    0x20000050   COMPRESSED   0x00000714   Data   RW          863    .data               field.o
-    0x20000764   COMPRESSED   0x00000144   Data   RW          948    .data               pokemontype.o
-    0x200008a8   COMPRESSED   0x0000000a   Data   RW         1093    .data               adc_joystick.o
+    0x20000042   COMPRESSED   0x00000002   Data   RW          572    .data               battle.o
+    0x20000044   COMPRESSED   0x00000003   Data   RW          643    .data               draw.o
+    0x20000047   COMPRESSED   0x00000001   PAD
+    0x20000048   COMPRESSED   0x00000008   Data   RW          754    .data               drawscreen.o
+    0x20000050   COMPRESSED   0x00000714   Data   RW          864    .data               field.o
+    0x20000764   COMPRESSED   0x00000144   Data   RW          949    .data               pokemontype.o
+    0x200008a8   COMPRESSED   0x0000000a   Data   RW         1094    .data               adc_joystick.o
     0x200008b2   COMPRESSED   0x00000002   PAD
-    0x200008b4   COMPRESSED   0x00000004   Data   RW         1183    .data               pokemon.o
+    0x200008b4   COMPRESSED   0x00000004   Data   RW         1185    .data               pokemon.o
     0x200008b8   COMPRESSED   0x00000004   Data   RW           12    DATA                random.o
 
 
@@ -1701,14 +1703,14 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x200008bc        -       0x000001ec   Zero   RW          567    .bss                battle.o
-    0x20000aa8        -       0x00000084   Zero   RW          720    .bss                drawscreen.o
-    0x20000b2c        -       0x000013fe   Zero   RW          861    .bss                field.o
+    0x200008bc        -       0x000001ec   Zero   RW          569    .bss                battle.o
+    0x20000aa8        -       0x00000084   Zero   RW          751    .bss                drawscreen.o
+    0x20000b2c        -       0x000013fe   Zero   RW          862    .bss                field.o
     0x20001f2a   0x00032020   0x00000002   PAD
-    0x20001f2c        -       0x00000230   Zero   RW          971    .bss                player.o
-    0x2000215c        -       0x00000054   Zero   RW         1057    .bss                shop.o
-    0x200021b0        -       0x00000820   Zero   RW         1180    .bss                pokemon.o
-    0x200029d0        -       0x00000060   Zero   RW         1274    .bss                c_w.l(libspace.o)
+    0x20001f2c        -       0x00000230   Zero   RW          972    .bss                player.o
+    0x2000215c        -       0x00000054   Zero   RW         1058    .bss                shop.o
+    0x200021b0        -       0x00000820   Zero   RW         1182    .bss                pokemon.o
+    0x200029d0        -       0x00000060   Zero   RW         1281    .bss                c_w.l(libspace.o)
     0x20002a30        -       0x00000000   Zero   RW            2    HEAP                startup.o
     0x20002a30        -       0x00000400   Zero   RW            1    STACK               startup.o
 
@@ -1721,10 +1723,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
        576         72          0         10          0       4320   adc_joystick.o
-      1856        170       1469          2        492       5528   battle.o
+      1940        182       1469          2        492       6490   battle.o
         84         24          0          0          0        773   dac.o
-       520         30          0          0          0       8413   draw.o
-      7166       1192        364         11        132      19358   drawscreen.o
+       890         46          0          3          0      10453   draw.o
+      6164       1154        364          8        132      15739   drawscreen.o
       1574        160        140       1812       5118      10749   field.o
          0          0      46976          0          0       1439   imagesother.o
          0          0      64512          0          0       1254   imagespokemon2.o
@@ -1732,7 +1734,7 @@ Image component sizes
         72         12          0          0          0        228   lcd.o
        800         68        124          0        560       7029   player.o
        124          4          0          0          0        439   pll.o
-      2764        324       1539          4       2080       8867   pokemon.o
+      3312        334       1539          4       2080       9602   pokemon.o
          0          0         22        324          0       1131   pokemontype.o
        384         20          0          0          0        328   print.o
         60         14          0          4          0        232   random.o
@@ -1747,7 +1749,7 @@ Image component sizes
        120         30          0          4          0       1392   timer1.o
 
     ----------------------------------------------------------------------
-     21000       3594     182660       2236       9492     107279   Object Totals
+     21000       3594     182660       2236       9492     107397   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         10          0          9          3          2          0   (incl. Padding)
 
@@ -1798,8 +1800,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     21528       3610     182660       2236       9588     102715   Grand Totals
-     21528       3610     182660        644       9588     102715   ELF Image Totals (compressed)
+     21528       3610     182660       2236       9588     102833   Grand Totals
+     21528       3610     182660        644       9588     102833   ELF Image Totals (compressed)
      21528       3610     182660        644          0          0   ROM Totals
 
 ==============================================================================

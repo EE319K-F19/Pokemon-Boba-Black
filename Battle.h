@@ -13,3 +13,5 @@ extern SpriteInstType pokeShakeInst;
 
 void InitMoves(void);
 void DrawDamageShake(void);
+bool PokemonAllDead(void);
+void RestoreDeadPokemon(void);

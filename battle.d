@@ -8,3 +8,4 @@
 .\battle.o: ../inc/tm4c123gh6pm.h
 .\battle.o: PokemonType.h
 .\battle.o: Timer1.h
+.\battle.o: Player.h

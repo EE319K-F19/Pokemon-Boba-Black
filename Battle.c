@@ -6,6 +6,7 @@
 #include "../inc/tm4c123gh6pm.h"
 #include "PokemonType.h"
 #include "Timer1.h"
+#include "Player.h"
 
 const uint8_t CAT_PHYSICAL = 1;
 const uint8_t CAT_SPECIAL = 2;
@@ -133,4 +134,21 @@ void DrawDamageShake(){
 	timerOn = true;
 	Timer1_Init(moveShakeBack, 20000);	
 	while(timerOn){}
+}
+
+bool PokemonAllDead(void){
+	for(int i = 0; i < pokeTeam.size; i++){
+		if(pokeTeam.pokemon[i].chealth > 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+void RestoreDeadPokemon(void){
+	for(int i = 0; i < pokeTeam.size; i++){
+		if(pokeTeam.pokemon[i].chealth == 0){
+			pokeTeam.pokemon[i].chealth = 1;
+		}
+	}
 }

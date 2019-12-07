@@ -18,4 +18,8 @@ void DrawAllSprites(SpriteSelectType selection);
 void DrawSpriteImg(SpriteInstType sprite);
 uint16_t GetGridX(uint8_t column);
 uint16_t GetGridY(uint8_t row);
+void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
+void DrawEPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
+void DrawPokemonNames(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
+
 #endif

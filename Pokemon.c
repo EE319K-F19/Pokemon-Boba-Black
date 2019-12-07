@@ -173,3 +173,44 @@ PokemonInstType GenerateRandomPokemon(uint8_t index){
 	}
 	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
 }
+
+void MoveWorldPokemon(){
+	const uint8_t waitCooldown = 5;
+	
+	for(uint8_t i=0; i<numWorldPokemon; i++){
+		uint8_t moveDir = Random()%40;
+		bool moved = true;
+		
+		if(WorldPokemons[i].numWait > 0){
+			WorldPokemons[i].numWait--;
+			continue;
+		}
+		
+		if(moveDir == 0){ //up
+			if(IsPokemonWalkable(WorldPokemons[i].yPos-1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
+				WorldPokemons[i].yPos --;
+				WorldPokemons[i].flip = false;
+			}
+		}else if(moveDir == 1){ //down
+			if(IsPokemonWalkable(WorldPokemons[i].yPos+1, WorldPokemons[i].xPos, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
+				WorldPokemons[i].yPos ++;
+				WorldPokemons[i].flip = true;
+			}
+		}else if(moveDir == 2){ //left
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos-1, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
+				WorldPokemons[i].xPos --;
+				WorldPokemons[i].flip = false;
+			}
+		}else if(moveDir == 3){ //right
+			if(IsPokemonWalkable(WorldPokemons[i].yPos, WorldPokemons[i].xPos+1, WorldPokemons[i].yPos, WorldPokemons[i].xPos, i)){
+				WorldPokemons[i].xPos ++;
+				WorldPokemons[i].flip = true;
+			}
+		}else {
+			moved = false;
+			if(WorldPokemons[i].numWait > 0) WorldPokemons[i].numWait--;
+		}
+		
+		if(moved) WorldPokemons[i].numWait = waitCooldown;
+	}
+}
