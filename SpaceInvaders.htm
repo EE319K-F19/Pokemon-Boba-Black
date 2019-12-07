@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\SpaceInvaders.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\SpaceInvaders.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Dec 07 10:18:23 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Dec 07 12:38:48 2019
 <BR><P>
 <H3>Maximum Stack Usage =       1504 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -111,7 +111,7 @@ Function Pointers
  <LI><a href="#[82]">IncSeed</a> from drawscreen.o(i.IncSeed) referenced from drawscreen.o(i.DrawLanguageSelection)
  <LI><a href="#[61]">LPC0_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
  <LI><a href="#[6]">MemManage_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
- <LI><a href="#[83]">MoveWorldPokemon</a> from pokemon.o(i.MoveWorldPokemon) referenced from drawscreen.o(i.DrawWorld)
+ <LI><a href="#[83]">MoveWorldPokemon</a> from drawscreen.o(i.MoveWorldPokemon) referenced from drawscreen.o(i.DrawWorld)
  <LI><a href="#[4]">NMI_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
  <LI><a href="#[60]">PECI0_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
  <LI><a href="#[16]">PWM0Fault_Handler</a> from startup.o(RESET) referenced from startup.o(RESET)
@@ -1260,11 +1260,11 @@ Global Symbols
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveLeft
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveDown
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetObjGrid
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit
-<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawShopScreen
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawField
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BumpedIntoWorldPokemon
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawStatusScreen
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBorder
@@ -1272,40 +1272,40 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[d5]"></a>GenerateRandomPokemon</STRONG> (Thumb, 216 bytes, Stack size 144 bytes, pokemon.o(i.GenerateRandomPokemon))
+<P><STRONG><a name="[d5]"></a>GenerateRandomPokemon</STRONG> (Thumb, 216 bytes, Stack size 144 bytes, drawscreen.o(i.GenerateRandomPokemon))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
 <LI>Call Chain = GenerateRandomPokemon &rArr; IsPokemonWalkable &rArr; IsWalkable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Random
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 <LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonPosOnEdge
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPokemonGrid
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
 
-<P><STRONG><a name="[cf]"></a>GenerateRandomPokemonInit</STRONG> (Thumb, 214 bytes, Stack size 88 bytes, pokemon.o(i.GenerateRandomPokemonInit))
+<P><STRONG><a name="[cf]"></a>GenerateRandomPokemonInit</STRONG> (Thumb, 214 bytes, Stack size 88 bytes, drawscreen.o(i.GenerateRandomPokemonInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100 + Unknown Stack Size
 <LI>Call Chain = GenerateRandomPokemonInit &rArr; IsWalkable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Random
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 <LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PokemonLocationTaken
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PokemonLocationTaken
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
 
 <P><STRONG><a name="[df]"></a>GetFieldGrid</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, field.o(i.GetFieldGrid))
 <BR><BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitGridCoordinates
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveRight
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveLeft
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveDown
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 </UL>
 
 <P><STRONG><a name="[c0]"></a>GetGridX</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, draw.o(i.GetGridX))
@@ -1321,7 +1321,7 @@ Global Symbols
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 </UL>
 
-<P><STRONG><a name="[d7]"></a>GetPokemonGrid</STRONG> (Thumb, 160 bytes, Stack size 24 bytes, pokemon.o(i.GetPokemonGrid))
+<P><STRONG><a name="[d7]"></a>GetPokemonGrid</STRONG> (Thumb, 160 bytes, Stack size 24 bytes, drawscreen.o(i.GetPokemonGrid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24 + Unknown Stack Size
 <LI>Call Chain = GetPokemonGrid
 </UL>
@@ -1370,7 +1370,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e2]"></a>InitPokemon</STRONG> (Thumb, 1864 bytes, Stack size 1368 bytes, pokemon.o(i.InitPokemon))
+<P><STRONG><a name="[e2]"></a>InitPokemon</STRONG> (Thumb, 1864 bytes, Stack size 1368 bytes, drawscreen.o(i.InitPokemon))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1376<LI>Call Chain = InitPokemon &rArr; __aeabi_memcpy4
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
@@ -1396,15 +1396,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawField
 </UL>
 
-<P><STRONG><a name="[d9]"></a>IsPokemonPosOnEdge</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, pokemon.o(i.IsPokemonPosOnEdge))
+<P><STRONG><a name="[d9]"></a>IsPokemonPosOnEdge</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, drawscreen.o(i.IsPokemonPosOnEdge))
 <BR><BR>[Called By]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
 </UL>
 
 <P><STRONG><a name="[d8]"></a>IsPokemonWalkable</STRONG> (Thumb, 194 bytes, Stack size 36 bytes, field.o(i.IsPokemonWalkable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = IsPokemonWalkable &rArr; IsWalkable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveWorldPokemon
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemon
@@ -1415,11 +1415,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetObjGrid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
+<BR>[Called By]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveUp
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveRight
 <LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveLeft
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MoveDown
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsPokemonWalkable
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit
 </UL>
 
@@ -1430,8 +1430,8 @@ Global Symbols
 <P><STRONG><a name="[d3]"></a>MoveDown</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, player.o(i.MoveDown))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MoveDown &rArr; IsWalkable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
@@ -1439,8 +1439,8 @@ Global Symbols
 <P><STRONG><a name="[d0]"></a>MoveLeft</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, player.o(i.MoveLeft))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MoveLeft &rArr; IsWalkable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
@@ -1448,8 +1448,8 @@ Global Symbols
 <P><STRONG><a name="[d1]"></a>MoveRight</STRONG> (Thumb, 96 bytes, Stack size 8 bytes, player.o(i.MoveRight))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MoveRight &rArr; IsWalkable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
@@ -1457,13 +1457,13 @@ Global Symbols
 <P><STRONG><a name="[d2]"></a>MoveUp</STRONG> (Thumb, 92 bytes, Stack size 8 bytes, player.o(i.MoveUp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = MoveUp &rArr; IsWalkable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<BR>[Calls]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetFieldGrid
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IsWalkable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawWorld
 </UL>
 
-<P><STRONG><a name="[83]"></a>MoveWorldPokemon</STRONG> (Thumb, 538 bytes, Stack size 24 bytes, pokemon.o(i.MoveWorldPokemon))
+<P><STRONG><a name="[83]"></a>MoveWorldPokemon</STRONG> (Thumb, 538 bytes, Stack size 24 bytes, drawscreen.o(i.MoveWorldPokemon))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = MoveWorldPokemon &rArr; IsPokemonWalkable &rArr; IsWalkable
 </UL>
@@ -1490,7 +1490,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DrawBattleScreen
 </UL>
 
-<P><STRONG><a name="[dc]"></a>PokemonLocationTaken</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, pokemon.o(i.PokemonLocationTaken))
+<P><STRONG><a name="[dc]"></a>PokemonLocationTaken</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, drawscreen.o(i.PokemonLocationTaken))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PokemonLocationTaken
 </UL>
 <BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GenerateRandomPokemonInit

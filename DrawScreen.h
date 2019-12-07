@@ -21,4 +21,11 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 int8_t DrawSimpleMenu(char *menuItems[], uint8_t menuLength, bool useBack);
 void DrawHPBars(PokemonInstType* pokeLeft, PokemonInstType* pokeRight);
 
+extern PokemonType allPokemon[20];
+extern uint32_t numPokemonSpecies;
+void InitPokemon(void);
+PokemonInstType GenerateRandomPokemonInit(uint8_t index);
+PokemonInstType GenerateRandomPokemon(uint8_t index);
+void MoveWorldPokemon(void);
+
 #endif
