@@ -662,52 +662,6 @@ uint8_t DrawBattleInventory(PokemonInstType* pokeLeft, PokemonInstType* pokeRigh
 	}
 }
 
-SpriteInstType pokeShakeInst;
-
-int8_t curX = 0;
-
-bool timerOn = false;
-void moveShakeLeft(){
-	if(curX >= -10){
-		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
-		pokeShakeInst.x_left --;
-		DrawSpriteImg(pokeShakeInst);
-		curX--;
-	}else {
-		NVIC_DIS1_R = 1<<19; 
-		timerOn = false;
-	}
-}
-
-void moveShakeRight(){
-	if(curX <= 10){
-		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
-		pokeShakeInst.x_left ++;
-		DrawSpriteImg(pokeShakeInst);
-		curX++;
-	}else {
-		NVIC_DIS1_R = 1<<19; 
-		timerOn = false;
-	}
-}
-
-void moveShakeBack(){
-	if(curX > 0){
-		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
-		pokeShakeInst.x_left --;
-		DrawSpriteImg(pokeShakeInst);
-		curX--;
-	}else if(curX < 0){
-		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
-		pokeShakeInst.x_left ++;
-		DrawSpriteImg(pokeShakeInst);
-		curX++;
-	}else {
-		NVIC_DIS1_R = 1<<19; 
-		timerOn = false;
-	}
-}
-
 uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, uint8_t language){
 	
 	// Initialize moves for both pokemon
@@ -824,22 +778,10 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		while(soundStatus == 0){}
 		soundStatus = 0;
 				
-			pokeShakeInst = rightInst;
-		
+		pokeShakeInst = rightInst;
 		// Battle animations
-		for(int i=0; i<3; i++){
-			timerOn = true;
-			Timer1_Init(moveShakeLeft, 20000);
-			while(timerOn){}
-			timerOn = true;
-			Timer1_Init(moveShakeRight, 20000);	
-			while(timerOn){}
-		}
-		timerOn = true;
-		Timer1_Init(moveShakeBack, 20000);	
-		while(timerOn){}
+		DrawDamageShake();
 		DrawSpriteImg(pokeShakeInst);
-		while(1) {if(isPE3Pressed()) break;}
 				
 		//Opponent pokemon attack
 		if(pokeRight->chealth == 0) {
@@ -909,18 +851,7 @@ uint8_t DrawMoveCommands(PokemonInstType* pokeLeft, PokemonInstType* pokeRight, 
 		soundStatus = 0;
 				
 		pokeShakeInst = leftInst;
-		
-		for(int i=0; i<3; i++){
-			timerOn = true;
-			Timer1_Init(moveShakeLeft, 20000);
-			while(timerOn){}
-			timerOn = true;
-			Timer1_Init(moveShakeRight, 20000);	
-			while(timerOn){}
-		}
-		timerOn = true;
-		Timer1_Init(moveShakeBack, 20000);	
-		while(timerOn){}
+		DrawDamageShake();
 			
 		DrawSpriteImg(pokeShakeInst);
 			while(1) if(isPE3Pressed()) break;

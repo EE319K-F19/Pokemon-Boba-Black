@@ -1,13 +1,21 @@
 
 #include "Battle.h"
 #include "StructDec.h"
+#include "ST7735.h"
+#include "Draw.h"
+#include "../inc/tm4c123gh6pm.h"
 #include "PokemonType.h"
+#include "Timer1.h"
 
 const uint8_t CAT_PHYSICAL = 1;
 const uint8_t CAT_SPECIAL = 2;
 
 MoveType NormalMoves[20];
 MoveType SignatureMoves[20];
+
+SpriteInstType pokeShakeInst;
+int8_t curX = 0;
+bool timerOn = false;
 
 void InitMoves(){
 	NormalMoves[0] = (MoveType) {{"Vine Whip", "L\xA0tigo Cepa"}, Grass, CAT_PHYSICAL, 45};
@@ -72,3 +80,57 @@ void InitMoves(){
 	
 }
 
+void moveShakeLeft(){
+	if(curX >= -10){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
+		pokeShakeInst.x_left --;
+		DrawSpriteImg(pokeShakeInst);
+		curX--;
+	}else {
+		NVIC_DIS1_R = 1<<19; 
+		timerOn = false;
+	}
+}
+
+void moveShakeRight(){
+	if(curX <= 10){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
+		pokeShakeInst.x_left ++;
+		DrawSpriteImg(pokeShakeInst);
+		curX++;
+	}else {
+		NVIC_DIS1_R = 1<<19; 
+		timerOn = false;
+	}
+}
+
+void moveShakeBack(){
+	if(curX > 0){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
+		pokeShakeInst.x_left --;
+		DrawSpriteImg(pokeShakeInst);
+		curX--;
+	}else if(curX < 0){
+		ST7735_FillRect(pokeShakeInst.x_left, pokeShakeInst.y_bottom-pokeShakeInst.sprite.height-1, pokeShakeInst.sprite.width, pokeShakeInst.sprite.height, 0xFFFF);
+		pokeShakeInst.x_left ++;
+		DrawSpriteImg(pokeShakeInst);
+		curX++;
+	}else {
+		NVIC_DIS1_R = 1<<19; 
+		timerOn = false;
+	}
+}
+
+void DrawDamageShake(){
+	for(int i=0; i<3; i++){
+		timerOn = true;
+		Timer1_Init(moveShakeLeft, 20000);
+		while(timerOn){}
+		timerOn = true;
+		Timer1_Init(moveShakeRight, 20000);	
+		while(timerOn){}
+	}
+	timerOn = true;
+	Timer1_Init(moveShakeBack, 20000);	
+	while(timerOn){}
+}
