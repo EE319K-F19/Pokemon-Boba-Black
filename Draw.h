@@ -5,6 +5,10 @@
 #include <stdint.h>
 #include "StructDec.h"
 
+void ClearScreenWhite(void);
+void ClearScreenBlack(void);
+void ClearBattleUI(void);
+void ClearPokeLeftName(void);
 void DrawBorder(uint16_t itemX, uint16_t itemY, uint16_t itemW, uint16_t itemH, uint8_t borderW, uint16_t borderColor);
 void DrawSelection(SpriteSelectType *starterSelect, uint16_t selectColor, uint16_t deselectColor, uint8_t selectWidth);
 void DrawSpriteSelection(SpriteInstType spriteInst, uint8_t width, uint16_t color);
