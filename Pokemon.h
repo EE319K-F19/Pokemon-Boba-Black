@@ -12,5 +12,7 @@ extern PokemonType CharmanderT;
 extern PokemonType allPokemon[20];
 extern uint32_t numPokemonSpecies;
 void InitPokemon(void);
+PokemonInstType GenerateRandomPokemonInit(uint8_t index);
+PokemonInstType GenerateRandomPokemon(uint8_t index);
 
 #endif

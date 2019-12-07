@@ -4,8 +4,6 @@
 #include "ST7735.h"
 #include "SystemInfo.h"
 
-uint8_t uiY = 100;
-
 void ClearScreenWhite(){
 	ST7735_FillScreen(0xFFFF);
 }
@@ -15,6 +13,7 @@ void ClearScreenBlack(){
 }
 
 void ClearBattleUI(){
+	uint8_t uiY = 100;
 	ST7735_FillRect(0, uiY, _width, _height-uiY, 0xFFFF);
 }
 

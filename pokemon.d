@@ -6,3 +6,5 @@
 .\pokemon.o: Field.h
 .\pokemon.o: ImagesPokemon2.h
 .\pokemon.o: ImagesPokemonWorld.h
+.\pokemon.o: Random.h
+.\pokemon.o: Player.h

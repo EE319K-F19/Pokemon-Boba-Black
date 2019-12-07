@@ -3,6 +3,8 @@
 #include "Field.h"
 #include "ImagesPokemon2.h"
 #include "ImagesPokemonWorld.h"
+#include "Random.h"
+#include "Player.h"
 
 PokemonType BulbasaurT;
 PokemonType SquirtleT;
@@ -115,3 +117,59 @@ void InitPokemon(){
 	allPokemon[19] = GeodudeT;
 }
 
+bool PokemonLocationTaken(uint8_t xPos, uint8_t yPos, uint8_t index){
+	for(int i=0; i<index; i++){
+		if(WorldPokemons[i].xPos == xPos && WorldPokemons[i].yPos == yPos) return true;
+	}
+	return false;
+}
+
+GridCoordinateType GetPokemonGrid(uint8_t gridType){
+	if(gridType == grassTile){
+		uint32_t count = grassGridsLength;
+		uint32_t gridIndex = Random32()%count;
+		return grassGrids[gridIndex];
+	}else if(gridType == waterTile){
+		uint32_t count = waterGridsLength;
+		uint32_t gridIndex = Random32()%count;
+		return waterGrids[gridIndex];
+	}else{
+		uint32_t count = waterGridsLength + grassGridsLength;
+		uint32_t gridIndex = Random32()%count;
+		if(gridIndex < grassGridsLength){
+			return grassGrids[gridIndex];
+		}else {
+			return waterGrids[gridIndex-grassGridsLength];
+		}
+	}
+}
+
+bool IsPokemonPosOnEdge(uint8_t xPos, uint8_t yPos){
+	if(xPos < 4 || xPos >= FIELD_WIDTH-4 || yPos < 5 || yPos >= FIELD_HEIGHT-5) return true;
+	return false;
+}
+
+PokemonInstType GenerateRandomPokemonInit(uint8_t index){
+	uint8_t pokemon = Random()%numPokemonSpecies;
+	uint8_t xPos = 0;
+	uint8_t yPos = 0;
+	while(!IsWalkable(yPos, xPos) || (xPos == p1.XPos && yPos == p1.YPos) || PokemonLocationTaken(xPos, yPos, index)){
+		xPos = Random()%(FIELD_WIDTH-8) + 4;
+		yPos = Random()%(FIELD_HEIGHT-10) + 5;
+	}
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
+}
+
+PokemonInstType GenerateRandomPokemon(uint8_t index){
+	uint8_t pokemon = Random()%numPokemonSpecies;
+	PokemonType pokemonType = allPokemon[pokemon];
+	
+	uint8_t xPos = 0;
+	uint8_t yPos = 0;
+	while(!IsPokemonWalkable(yPos, xPos, yPos, xPos, index) || (xPos == p1.XPos && yPos == p1.YPos) || IsPokemonPosOnEdge(xPos, yPos)){
+		GridCoordinateType randomCoordinate = GetPokemonGrid(pokemonType.tileType);
+		xPos = randomCoordinate.col;
+		yPos = randomCoordinate.row;
+	}
+	return (PokemonInstType) {xPos, yPos, allPokemon[pokemon].mhealth, allPokemon[pokemon], false, 0, allPokemon[pokemon].menergy};
+}
