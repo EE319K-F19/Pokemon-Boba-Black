@@ -27,3 +27,4 @@
 .\spaceinvaders.o: TextSprites.h
 .\spaceinvaders.o: Battle.h
 .\spaceinvaders.o: DrawScreen.h
+.\spaceinvaders.o: Pokemon.h

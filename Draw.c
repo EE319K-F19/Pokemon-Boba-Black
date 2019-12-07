@@ -4,6 +4,8 @@
 #include "ST7735.h"
 #include "SystemInfo.h"
 
+uint8_t uiY = 100;
+
 void ClearScreenWhite(){
 	ST7735_FillScreen(0xFFFF);
 }
@@ -13,11 +15,11 @@ void ClearScreenBlack(){
 }
 
 void ClearBattleUI(){
-	ST7735_FillRect(0, 100, 128, 60, 0xFFFF);
+	ST7735_FillRect(0, uiY, _width, _height-uiY, 0xFFFF);
 }
 
 void ClearPokeLeftName(){
-	
+	ST7735_FillRect(0, 0, 72, 30, 0xFFFF);
 }
 
 void DrawBorder(uint16_t itemX, uint16_t itemY, uint16_t itemW, uint16_t itemH, uint8_t borderW, uint16_t borderColor){

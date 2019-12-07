@@ -8,6 +8,8 @@
 #include "SystemInfo.h"
 #include "DrawScreen.h"
 #include <stdlib.h>
+#include "Pokemon.h"
+
 PlayerType p1;
 ItemInventoryType playerInventory[3];
 PokemonInstType* playerTeam;

@@ -7,8 +7,6 @@
 #include "StructDec.h"
 
 extern uint8_t language;
-extern PokemonType allPokemon[20];
-void InitPokemon(void);
 uint8_t DrawLanguageSelection(void);
 PokemonType DrawTitleScreen(uint8_t language);
 bool DrawWorld(uint8_t language);

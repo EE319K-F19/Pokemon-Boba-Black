@@ -577,6 +577,16 @@
               <FileType>1</FileType>
               <FilePath>.\ImagesPokemonWorld.c</FilePath>
             </File>
+            <File>
+              <FileName>Pokemon.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Pokemon.c</FilePath>
+            </File>
+            <File>
+              <FileName>Pokemon.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Pokemon.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

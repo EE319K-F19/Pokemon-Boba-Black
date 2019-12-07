@@ -18,5 +18,5 @@
 .\drawscreen.o: Timer1.h
 .\drawscreen.o: Sound.h
 .\drawscreen.o: ../inc/tm4c123gh6pm.h
-.\drawscreen.o: ImagesPokemonWorld.h
 .\drawscreen.o: ImagesOther.h
+.\drawscreen.o: Pokemon.h

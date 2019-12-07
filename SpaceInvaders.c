@@ -78,6 +78,7 @@
 #include "Battle.h"
 #include "DrawScreen.h"
 #include "PokemonType.h"
+#include "Pokemon.h"
 
 uint8_t ADCStatus;
 uint8_t language; // 0 for English, 1 for Spanish

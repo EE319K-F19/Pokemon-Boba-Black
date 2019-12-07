@@ -10,3 +10,5 @@
 .\player.o: SystemInfo.h
 .\player.o: DrawScreen.h
 .\player.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\player.o: Pokemon.h
+.\player.o: PokemonType.h
